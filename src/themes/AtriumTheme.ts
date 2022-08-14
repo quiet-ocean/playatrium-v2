@@ -80,6 +80,7 @@ const AtriumTheme = createTheme({
       main: '#FFDC00',
     },
   },
+  spacing: 4,
   typography: {
     // subtitle1: {
     // },
