@@ -1,6 +1,46 @@
-import { createTheme } from '@mui/material'
+import { createTheme, experimental_sx as sx } from '@mui/material'
+
+declare module '@mui/material/Button' {
+  interface ButtonPropsVariantOverrides {
+    dashed: true
+    primary: true
+  }
+}
 
 const AtriumTheme = createTheme({
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        // root: sx({
+        //   border: `1px solid #00ff00`,
+        // })
+        root: {
+          // borderRadius: 0,
+          // textTransform: 'capitalize',
+          lineHeight: '105%',
+        }
+      },
+      variants: [
+        {
+          props: { variant: 'primary' },
+          style: ({ theme }) => ({
+            background: theme.palette.background.paper,
+            color: theme.palette.text.primary,
+            fontFamily: 'Fractul',
+            fontSize: '16px',
+            fontWeight: 600,
+            padding: '6px 8px',
+            borderRadius: 0,
+            textTransform: 'capitalize',
+          }),
+          // style: {
+          //   color: '#ff0000',
+          //   border: `1px solid #0000ff`,
+          // }
+        },
+      ],
+    },
+  },
   palette: {
     background: {
       default: '#F2F2F2',
@@ -13,24 +53,24 @@ const AtriumTheme = createTheme({
     error: {
       main: '#D11F00',
     },
-    grey: {
-      100: '',
-    },
+    // grey: {
+    //   100: '',
+    // },
     info: {
       main: '#0049D1',
     },
     mode: 'dark',
-    primary: {
-      dark: '',
-      light: '',
-      main: '',
-      // contrastText: '',
-    },
-    secondary: {
-      dark: '',
-      light: '',
-      main: '',
-    },
+    // primary: {
+    //   dark: '',
+    //   light: '',
+    //   main: '',
+    //   // contrastText: '',
+    // },
+    // secondary: {
+    //   dark: '',
+    //   light: '',
+    //   main: '',
+    // },
     text: {
       disabled: '#4A4A4A',
       primary: '#F2F2F2',
@@ -85,7 +125,7 @@ const AtriumTheme = createTheme({
     },
 
     h4: {
-      fontFamily: 'Fractul Alt',
+      fontFamily: 'Fractul',
       fontSize: '36px',
       fontWeight: 600,
       letterSpacing: '-0.03em',
@@ -93,7 +133,7 @@ const AtriumTheme = createTheme({
       textAlign: 'left',
     },
     h5: {
-      fontFamily: 'Fractul Alt',
+      fontFamily: 'Fractul',
       fontSize: '24px',
       fontWeight: 600,
       letterSpacing: '-0.03em',
