@@ -60,12 +60,12 @@ const AtriumTheme = createTheme({
       main: '#0049D1',
     },
     mode: 'dark',
-    // primary: {
-    //   dark: '',
-    //   light: '',
-    //   main: '',
-    //   // contrastText: '',
-    // },
+    primary: {
+      // dark: '',
+      // light: '',
+      main: '#80868B',
+      // contrastText: '',
+    },
     // secondary: {
     //   dark: '',
     //   light: '',

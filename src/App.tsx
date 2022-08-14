@@ -25,11 +25,13 @@ const App: React.FC = () => {
   return (
     <Box>
       <ThemeProvider theme={AtriumTheme}>
-        <Header />
-        <Wrapper pt="0px !important">
-          <HeroSection />
-        </Wrapper>
-        <Footer />
+        <Box sx={{ background: AtriumTheme.palette.common.black }}>
+          <Header />
+          <Wrapper pt="0px !important">
+            <HeroSection />
+          </Wrapper>
+          <Footer />
+        </Box>
       </ThemeProvider>
     </Box>
   )
