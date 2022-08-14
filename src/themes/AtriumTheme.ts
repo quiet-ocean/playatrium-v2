@@ -3,12 +3,12 @@ import { createTheme } from "@mui/material";
 const AtriumTheme = createTheme({
   palette: {
     background: {
-      default: '',
-      paper: '',
+      default: '#F2F2F2',
+      paper: '#252525',
     },
     common: {
-      white: '',
-      black: '',
+      white: '#F2F2F2',
+      black: '#1A1A1A',
     },
     grey: {
       100: '',
@@ -26,7 +26,18 @@ const AtriumTheme = createTheme({
       dark: ''
     },
     text: {
-
+      primary: '#F2F2F2',
+      secondary: '#252525',
+      disabled: '#4A4A4A',
+    },
+    error: {
+      main: '#D11F00',
+    },
+    info: {
+      main: '#0049D1',
+    },
+    warning: {
+      main: '#FFDC00',
     }
   },
   typography: {
