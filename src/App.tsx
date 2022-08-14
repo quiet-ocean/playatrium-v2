@@ -1,5 +1,5 @@
 import { Box, styled, ThemeProvider } from '@mui/material'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import './index.css'
 import './App.css'
@@ -11,15 +11,18 @@ import { HeroSection } from './sections'
 import AtriumTheme from './themes/AtriumTheme'
 
 const Wrapper = styled(Box)(() => ({
-  width: '100%',
+  // width: '100%',
+  padding: '20px',
 }))
 const App: React.FC = () => {
-
+  useEffect(() => {
+    console.log(AtriumTheme.spacing(1))
+  }, [])
   return (
     <Box>
       <ThemeProvider theme={AtriumTheme}>
         <Header />
-        <Wrapper>
+        <Wrapper pt="0px !important">
           <HeroSection />
         </Wrapper>
         <Footer />
