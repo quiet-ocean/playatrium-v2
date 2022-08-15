@@ -11,10 +11,7 @@ import { HeroSection, UpdatesSection } from './sections'
 import AtriumTheme from './themes/AtriumTheme'
 
 const Wrapper = styled(Box)(() => ({
-  height:
-    window.outerHeight ||
-    window.innerHeight ||
-    window.document.documentElement.clientHeight,
+  height: window.innerHeight || window.document.documentElement.clientHeight,
   // width: '100%',
   padding: '20px',
 }))
