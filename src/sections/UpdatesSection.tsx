@@ -1,4 +1,4 @@
-import { Box, Typography, Button } from '@mui/material'
+import { Box, Typography, Button, styled, Container } from '@mui/material'
 
 import update1 from '../assets/images/update-1.png'
 import update3 from '../assets/images/update-3.png'
@@ -8,6 +8,15 @@ import update7 from '../assets/images/update-7.png'
 import update8 from '../assets/images/update-8.png'
 import { palette } from '../themes/AtriumTheme'
 
+const UpdateItemWrapper = styled(Box)(() => ({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '16px',
+  height: `${
+    (window.innerHeight || window.document.documentElement.clientHeight) -
+    (200 + 100 + 22)
+  }px`,
+}))
 const UpdateItem = ({
   image,
   date,
@@ -20,8 +29,17 @@ const UpdateItem = ({
   small?: boolean
 }) => {
   return (
-    <Box>
-      <img src={image} alt="" />
+    <Box display="flex" flexDirection="column">
+      <Box>
+        <img
+          src={image}
+          alt=""
+          width="100%"
+          style={{ height: small ? `23vh` : `56vh` }}
+          // height={small ? `20vh` : `50vh`}
+          // height='100%'
+        />
+      </Box>
       <Typography variant="caption">{date}</Typography>
       <Typography variant={`${small ? 'h5' : 'h4'}`}>{title}</Typography>
     </Box>
@@ -29,9 +47,10 @@ const UpdateItem = ({
 }
 export const UpdatesSection = () => {
   return (
-    <Box py={25}>
-      <Box mb={25}>
+    <Box py={20}>
+      <Box mb={20}>
         <Button
+          variant="rounded"
           sx={{
             border: `1px solid ${palette.info.main}`,
             color: palette.info.main,
@@ -41,14 +60,14 @@ export const UpdatesSection = () => {
         </Button>
       </Box>
       <Box gap={4} display="flex">
-        <Box>
+        <UpdateItemWrapper>
           <UpdateItem
             image={update1}
             date={`JULY 9TH 2022`}
             title="Atrium 2.0 is coming next month, see what’s to come!"
           />
-        </Box>
-        <Box display="flex" flexDirection="column">
+        </UpdateItemWrapper>
+        <UpdateItemWrapper>
           <UpdateItem
             image={update5}
             date="JULY 9TH 2022"
@@ -61,15 +80,15 @@ export const UpdatesSection = () => {
             title="ASAC becomes Atrium’s 1st project to reach 10k"
             small
           />
-        </Box>
-        <Box>
+        </UpdateItemWrapper>
+        <UpdateItemWrapper>
           <UpdateItem
             image={update3}
             date={`JULY 9TH 2022`}
             title="Partnership with Near Big Brain allows for new features"
           />
-        </Box>
-        <Box display="flex" flexDirection="column">
+        </UpdateItemWrapper>
+        <UpdateItemWrapper>
           <UpdateItem
             image={update7}
             date="JULY 9TH 2022"
@@ -82,7 +101,7 @@ export const UpdatesSection = () => {
             title="TAYC skins integrated, see what else is in store!"
             small
           />
-        </Box>
+        </UpdateItemWrapper>
       </Box>
     </Box>
   )
