@@ -1,5 +1,5 @@
 import { Box, styled, ThemeProvider } from '@mui/material'
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import './index.css'
 import './App.css'
@@ -16,9 +16,6 @@ const Wrapper = styled(Box)(() => ({
   padding: '20px',
 }))
 const App: React.FC = () => {
-  useEffect(() => {
-    console.log(AtriumTheme.spacing(1))
-  }, [])
   return (
     <Box>
       <ThemeProvider theme={AtriumTheme}>

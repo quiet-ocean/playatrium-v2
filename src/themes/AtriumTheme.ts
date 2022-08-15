@@ -1,4 +1,4 @@
-import { createTheme, experimental_sx as sx } from '@mui/material'
+import { createTheme } from '@mui/material'
 
 declare module '@mui/material/Button' {
   interface ButtonPropsVariantOverrides {
