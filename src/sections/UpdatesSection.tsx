@@ -1,4 +1,4 @@
-import { Box, Typography, Button, styled, Container } from '@mui/material'
+import { Box, Typography, Button, styled } from '@mui/material'
 
 import update1 from '../assets/images/update-1.png'
 import update3 from '../assets/images/update-3.png'
