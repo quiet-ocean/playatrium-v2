@@ -1,12 +1,12 @@
 import { Box, styled } from '@mui/material'
 import { useEffect, useState } from 'react'
 
-import heroImage from '../assets/images/hero.png'
-
 const HeroAnimationWrapper = styled(Box)(() => ({
   '&.animation-fill': {
     width: '100%',
   },
+  backgroundImage: 'url("/hero.png")',
+  backgroundPosition: 'center',
   height: `${
     (window.innerHeight || window.document.documentElement.clientHeight) - 20
   }px`,
@@ -21,9 +21,5 @@ export const HeroSection = () => {
   useEffect(() => {
     setAnimationClass('animation-fill')
   }, [])
-  return (
-    <HeroAnimationWrapper className={animationClass}>
-      <img src={heroImage} alt="" width="100%" height="100%" />
-    </HeroAnimationWrapper>
-  )
+  return <HeroAnimationWrapper className={animationClass} />
 }
