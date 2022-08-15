@@ -1,6 +1,6 @@
 import { Box } from '@mui/material'
 
-import logoType from '../assets/logo-type.png'
+import logoType from '../assets/images/logo-type.png'
 import { palette } from '../themes/AtriumTheme'
 
 import { Navbar } from './Navbar'
