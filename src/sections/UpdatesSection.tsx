@@ -33,8 +33,8 @@ export const UpdatesSection = () => {
       <Box mb={25}>
         <Button
           sx={{
-            border: `1px solid ${palette.success.main}`,
-            color: palette.success.main,
+            border: `1px solid ${palette.info.main}`,
+            color: palette.info.main,
           }}
         >
           updates
