@@ -8,11 +8,7 @@ const HeroAnimationWrapper = styled(Box)(() => ({
     width: '100%',
   },
   height: `${
-    (window.outerHeight ||
-      window.innerHeight ||
-      window.document.documentElement.clientHeight) -
-    20 -
-    69
+    (window.innerHeight || window.document.documentElement.clientHeight) - 20
   }px`,
   margin: 'auto',
   transition: 'width 1.5s',
