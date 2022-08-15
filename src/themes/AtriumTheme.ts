@@ -4,6 +4,7 @@ declare module '@mui/material/Button' {
   interface ButtonPropsVariantOverrides {
     dashed: true
     primary: true
+    rounded: true
   }
 }
 
@@ -37,7 +38,21 @@ const AtriumTheme = createTheme({
           //   color: '#ff0000',
           //   border: `1px solid #0000ff`,
           // }
-        },
+        }, {
+          props: { variant: 'rounded' },
+          style: () => ({
+            padding: '6px 16px',
+            borderRadius: '16px',
+            fontFamily: 'Andale Mono Regular',
+            fontSize: '18px',
+            fontWeight: 400,
+            lineHeight: '22px',
+            letterSpacing: '0em',
+            textAlign: 'center',
+            textTransform: 'uppercase',
+
+          })
+        }
       ],
     },
   },
