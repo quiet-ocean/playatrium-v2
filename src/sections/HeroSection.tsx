@@ -1,21 +1,27 @@
 import { Box, styled } from '@mui/material'
 import { useEffect, useState } from 'react'
 
+import { palette } from '../themes/AtriumTheme'
+
 const HeroAnimationWrapper = styled(Box)(() => ({
   '&.animation-fill': {
     width: '100%',
   },
-  backgroundImage: 'url("/hero.png")',
-  backgroundPosition: 'center',
-  backgroundSize: '100% 100%',
-  backgroundRepeat: 'no-repeat',
+  border: '1px solid red',
   height: `${
     (window.innerHeight || window.document.documentElement.clientHeight) - 20
   }px`,
   margin: 'auto',
-  transition: 'width 1.5s',
 
+  transition: 'width 1.5s',
+  // overflowX: 'hidden',
   width: '0%',
+  zIndex: 1,
+}))
+const SideBox = styled(Box)(() => ({
+  background: palette.common.black,
+  flex: 1,
+  zIndex: 2,
 }))
 export const HeroSection = () => {
   const [animationClass, setAnimationClass] = useState('')
@@ -23,5 +29,35 @@ export const HeroSection = () => {
   useEffect(() => {
     setAnimationClass('animation-fill')
   }, [])
-  return <HeroAnimationWrapper className={animationClass} />
+  return (
+    <Box
+      sx={{
+        position: 'relative',
+      }}
+    >
+      <Box
+        sx={{
+          backgroundImage: 'url("/hero.png")',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: '100% 100%',
+          height: '100%',
+          position: 'absolute',
+          width: '100%',
+          zIndex: 0,
+        }}
+      ></Box>
+      <Box
+        sx={{
+          display: 'flex',
+          height: '100%',
+          width: '100%',
+        }}
+      >
+        <SideBox />
+        <HeroAnimationWrapper className={animationClass}></HeroAnimationWrapper>
+        <SideBox />
+      </Box>
+    </Box>
+  )
 }
