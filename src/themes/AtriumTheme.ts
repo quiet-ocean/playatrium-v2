@@ -19,40 +19,40 @@ const AtriumTheme = createTheme({
           // borderRadius: 0,
           // textTransform: 'capitalize',
           lineHeight: '105%',
-        }
+        },
       },
       variants: [
         {
           props: { variant: 'primary' },
           style: ({ theme }) => ({
             background: theme.palette.background.paper,
+            borderRadius: 0,
             color: theme.palette.text.primary,
             fontFamily: 'Fractul',
             fontSize: '16px',
             fontWeight: 600,
             padding: '6px 8px',
-            borderRadius: 0,
             textTransform: 'capitalize',
           }),
           // style: {
           //   color: '#ff0000',
           //   border: `1px solid #0000ff`,
           // }
-        }, {
+        },
+        {
           props: { variant: 'rounded' },
           style: () => ({
-            padding: '6px 16px',
             borderRadius: '16px',
             fontFamily: 'Andale Mono Regular',
             fontSize: '18px',
             fontWeight: 400,
-            lineHeight: '22px',
             letterSpacing: '0em',
+            lineHeight: '22px',
+            padding: '6px 16px',
             textAlign: 'center',
             textTransform: 'uppercase',
-
-          })
-        }
+          }),
+        },
       ],
     },
   },

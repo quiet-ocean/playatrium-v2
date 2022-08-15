@@ -1,12 +1,10 @@
 import { Box, Button, Typography, styled } from '@mui/material'
 import React, { useRef, useEffect, useState } from 'react'
-
-import { palette } from '../themes/AtriumTheme'
-
 import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
 import { Carousel } from 'react-responsive-carousel'
 
 import overviewImage from '../assets/images/overview.png'
+import { palette } from '../themes/AtriumTheme'
 
 const str1: string = 'Atrium is a virtual world where users'
 const str2: string = 'across all Layer-1 networks can '
@@ -16,7 +14,7 @@ const str5: string = 'experience'
 const str6: string = 'through an interoperable '
 const str7: string = 'pixel-art metaverse. '
 
-const AnimationCharWrapper = styled('span')(()=>({
+const AnimationCharWrapper = styled('span')(() => ({
   '&.show': {
     opacity: 1,
   },
@@ -70,7 +68,7 @@ export const OverviewSection = () => {
   const [charClass, setCharClass] = useState('')
 
   useEffect(() => {
-    console.log(carousel)
+    // console.log(carousel)
     setCharClass('show')
   }, [carousel])
 

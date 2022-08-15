@@ -15,7 +15,7 @@ export const Header = () => {
         backgroundImage: 'url("../logo-36.png")',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        borderBottom: `1px solid ${palette.primary.main}`
+        borderBottom: `1px solid ${palette.primary.main}`,
       }}
     >
       <Box py="8px">
