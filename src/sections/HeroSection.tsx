@@ -1,7 +1,7 @@
 import { Box, styled } from '@mui/material'
 import { useEffect, useState } from 'react'
 
-import heroImage from '../assets/hero.png'
+import heroImage from '../assets/images/hero.png'
 
 const HeroAnimationWrapper = styled(Box)(() => ({
   '&.animation-fill': {
