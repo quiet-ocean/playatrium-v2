@@ -30,7 +30,10 @@ const App: React.FC = () => {
           <Wrapper pt="0px !important">
             <HeroSection />
           </Wrapper>
-          <Wrapper pt="0px !important">
+          <Wrapper
+            pt="0px !important"
+            sx={{ background: AtriumTheme.palette.background.default }}
+          >
             <UpdatesSection />
           </Wrapper>
           <Footer />
