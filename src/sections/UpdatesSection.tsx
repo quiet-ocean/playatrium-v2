@@ -14,7 +14,7 @@ const UpdateItemWrapper = styled(Box)(() => ({
   gap: '16px',
   height: `${
     (window.innerHeight || window.document.documentElement.clientHeight) -
-    (200 + 100 + 22)
+    (200 + 100 + 22 + 40)
   }px`,
 }))
 const UpdateItem = ({
