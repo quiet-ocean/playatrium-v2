@@ -7,6 +7,8 @@ const HeroAnimationWrapper = styled(Box)(() => ({
   },
   backgroundImage: 'url("/hero.png")',
   backgroundPosition: 'center',
+  backgroundSize: '100% 100%',
+  backgroundRepeat: 'no-repeat',
   height: `${
     (window.innerHeight || window.document.documentElement.clientHeight) - 20
   }px`,
