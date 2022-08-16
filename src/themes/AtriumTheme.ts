@@ -112,13 +112,21 @@ const AtriumTheme = createTheme({
 
     body2: {
       fontFamily: 'Andale Mono Regular',
-      fontSize: '28px',
+      fontSize: '18px',
       fontWeight: 400,
       letterSpacing: '-0.05em',
       lineHeight: '110%',
       textAlign: 'left',
     },
-
+    caption: {
+      fontFamily: 'Andale Mono Regular',
+      fontSize: '14px',
+      fontStyle: 'normal',
+      fontWeight: 400,
+      letterSpacing: '-0.05em',
+      lineHeight: '14.7px',
+      textAlign: 'left',
+    },
     // h1: {
     // },
     h2: {
