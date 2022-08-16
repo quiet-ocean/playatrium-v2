@@ -25,6 +25,10 @@ const AtriumTheme = createTheme({
         {
           props: { variant: 'primary' },
           style: ({ theme }) => ({
+            '&.medium': {
+              fontSize: '18px',
+              padding: '16px',
+            },
             background: theme.palette.background.paper,
             borderRadius: 0,
             color: theme.palette.text.primary,
@@ -51,6 +55,17 @@ const AtriumTheme = createTheme({
             padding: '6px 16px',
             textAlign: 'center',
             textTransform: 'uppercase',
+          }),
+        },
+        {
+          props: { color: 'info' },
+          style: ({ theme }) => ({
+            '&:hover, &.active': {
+              border: `1px solid ${theme.palette.info.main} !important`,
+              color: theme.palette.info.main,
+            },
+            background: theme.palette.info.main,
+            border: `1px solid transparent`,
           }),
         },
       ],
