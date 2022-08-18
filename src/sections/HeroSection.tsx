@@ -8,9 +8,10 @@ const HeroAnimationWrapper = styled(Box)(() => ({
     width: '100%',
   },
   border: '1px solid red',
-  height: `${
-    (window.innerHeight || window.document.documentElement.clientHeight) - 20
-  }px`,
+  // height: `${
+  //   (window.innerHeight || window.document.documentElement.clientHeight) - 20
+  // }px`,
+  height: '100%',
   margin: 'auto',
 
   transition: 'width 1.5s',
@@ -33,6 +34,7 @@ export const HeroSection = () => {
     <Box
       sx={{
         position: 'relative',
+        height: '100%',
       }}
     >
       <Box
