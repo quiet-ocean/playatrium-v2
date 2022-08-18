@@ -2,6 +2,8 @@ import { Box } from '@mui/material'
 import React, { useRef, useEffect, useState } from 'react'
 import { Carousel } from 'react-responsive-carousel'
 
+import { palette } from '../themes/AtriumTheme'
+
 export const MultiSlideAnimationWrapper = ({
   child1,
   child2,
