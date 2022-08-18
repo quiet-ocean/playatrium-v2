@@ -79,7 +79,8 @@ export const OverviewSection = () => {
       showThumbs={false}
       showArrows={false}
       showIndicators={false}
-      // showStatus={false}
+      transitionTime={1000}
+      showStatus={false}
     >
       <Box py={20} onFocus={() => setCharClass('show')} id="overview-section">
         <Box textAlign="center">
@@ -89,6 +90,7 @@ export const OverviewSection = () => {
               border: `1px solid ${palette.error.main}`,
               color: palette.error.main,
             }}
+            onClick={() => carousel?.current?.moveTo(1)}
           >
             overview
           </Button>
