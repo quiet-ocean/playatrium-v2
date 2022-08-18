@@ -24,10 +24,13 @@ const AtriumInput = () => {
         // onChange={handleChange('weight')}
         endAdornment={
           <InputAdornment position="end">
-            <Button variant="primary" sx={{
-              background: `${palette.warning.main} !important`,
-              color: palette.text.secondary,
-            }}>
+            <Button
+              variant="primary"
+              sx={{
+                background: `${palette.warning.main} !important`,
+                color: palette.text.secondary,
+              }}
+            >
               join
             </Button>
           </InputAdornment>
@@ -40,10 +43,10 @@ const AtriumInput = () => {
           '& input': {
             p: 0,
           },
-          borderRadius: 0,
-          padding: 4,
           background: 'rgba(242, 242, 242, 0.2)',
           border: 0,
+          borderRadius: 0,
+          padding: 4,
         }}
       />
     </FormControl>
@@ -88,7 +91,7 @@ export const Footer = () => {
           <Box>
             <AtriumInput />
           </Box>
-          <Box gap={6}>
+          <Box gap={6} color={palette.text.disabled}>
             <Typography variant="caption">Privacy</Typography>
             <Typography variant="caption">Terms of Use</Typography>
             <Typography variant="caption">© Atrium 2022</Typography>

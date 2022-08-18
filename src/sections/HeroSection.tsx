@@ -33,8 +33,8 @@ export const HeroSection = () => {
   return (
     <Box
       sx={{
-        position: 'relative',
         height: '100%',
+        position: 'relative',
       }}
     >
       <Box
