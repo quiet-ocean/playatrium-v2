@@ -7,7 +7,7 @@ const HeroAnimationWrapper = styled(Box)(() => ({
   '&.animation-fill': {
     width: '100%',
   },
-  border: '1px solid red',
+  // border: '1px solid red',
   // height: `${
   //   (window.innerHeight || window.document.documentElement.clientHeight) - 20
   // }px`,
