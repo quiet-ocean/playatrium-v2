@@ -7,7 +7,12 @@ import './fonts/andale/style.css'
 import './fonts/fractul/stylesheet.css'
 
 import { Header, Footer } from './components'
-import { HeroSection, UpdatesSection, OverviewSection } from './sections'
+import {
+  HeroSection,
+  UpdatesSection,
+  OverviewSection,
+  ProfilesSection,
+} from './sections'
 import AtriumTheme from './themes/AtriumTheme'
 
 const Wrapper = styled(Box)(() => ({
@@ -29,6 +34,9 @@ const App: React.FC = () => {
           </Wrapper>
           <Wrapper>
             <OverviewSection />
+          </Wrapper>
+          <Wrapper sx={{ background: AtriumTheme.palette.background.default }}>
+            <ProfilesSection />
           </Wrapper>
           <Footer />
         </Box>
