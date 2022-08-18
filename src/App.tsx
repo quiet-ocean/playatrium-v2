@@ -12,6 +12,7 @@ import {
   UpdatesSection,
   OverviewSection,
   ProfilesSection,
+  JoinSection,
 } from './sections'
 import AtriumTheme from './themes/AtriumTheme'
 
@@ -39,6 +40,7 @@ const App: React.FC = () => {
           <Wrapper sx={{ background: AtriumTheme.palette.background.default }}>
             <ProfilesSection />
           </Wrapper>
+          <JoinSection />
           <Footer />
         </Box>
       </ThemeProvider>
