@@ -1,12 +1,5 @@
-import {
-  Box,
-  Grid,
-  Typography,
-  ButtonGroup,
-  Button,
-  styled,
-} from '@mui/material'
-import React, { useRef, useEffect, useState, forwardRef } from 'react'
+import { Box, Grid, Typography, ButtonGroup, Button } from '@mui/material'
+import React, { useRef, useEffect, useState } from 'react'
 import { Carousel } from 'react-responsive-carousel'
 
 import profilePreviewImage from '../assets/images/profile-preview.png'
@@ -23,7 +16,7 @@ const MultiSlideAnimationWrapper = ({
 }) => {
   const ref = useRef<Carousel>(null)
   // ref.current.
-  const [show ,setShow] = useState(true)
+  const [show, setShow] = useState(true)
   useEffect(() => {
     if (state) {
       ref.current?.moveTo(1)
@@ -78,16 +71,29 @@ const MultiSlideAnimationWrapper = ({
           />
         </Carousel>
       </Box>
-      <Box sx={{ height: '100%', width: '100%', visibility: show? 'visible' : 'hidden' }}>{child1}</Box>
       <Box
-        sx={{ height: '100%', position: 'absolute', top: '0px', width: '100%', visibility: !show? 'visible' : 'hidden' }}
+        sx={{
+          height: '100%',
+          visibility: show ? 'visible' : 'hidden',
+          width: '100%',
+        }}
+      >
+        {child1}
+      </Box>
+      <Box
+        sx={{
+          height: '100%',
+          position: 'absolute',
+          top: '0px',
+          visibility: !show ? 'visible' : 'hidden',
+          width: '100%',
+        }}
       >
         {child2}
       </Box>
     </Box>
   )
 }
-
 
 export const ProfilesSection = () => {
   const [state, setState] = useState(true)
@@ -162,7 +168,9 @@ export const ProfilesSection = () => {
                   </Box>
                 }
                 child2={
-                  <Box sx={{ display: 'flex', flexDirection: 'column', zIndex: 0 }}>
+                  <Box
+                    sx={{ display: 'flex', flexDirection: 'column', zIndex: 0 }}
+                  >
                     <Typography variant="h3">
                       Connect your communities
                     </Typography>
@@ -185,12 +193,8 @@ export const ProfilesSection = () => {
         </Grid>
         <Grid item lg={8}>
           <MultiSlideAnimationWrapper
-            child1={
-              <img src={profilePreviewImage} alt="" width="100%" />
-            }
-            child2={
-              <img src={profilePreviewImage} alt="" width="100%" />
-            }
+            child1={<img src={profilePreviewImage} alt="" width="100%" />}
+            child2={<img src={profilePreviewImage} alt="" width="100%" />}
             state={state}
           />
         </Grid>
