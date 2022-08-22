@@ -1,5 +1,5 @@
 import { Box, ThemeProvider } from '@mui/material'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 import './index.css'
 import './App.css'
@@ -7,6 +7,7 @@ import './fonts/andale/style.css'
 import './fonts/fractul/stylesheet.css'
 
 import { Header, Footer, Wrapper } from './components'
+// import useInterval from './hooks/useInterval'
 import {
   HeroSection,
   IntegrationsSection,
@@ -17,30 +18,40 @@ import {
 } from './sections'
 import AtriumTheme from './themes/AtriumTheme'
 
-
 const App: React.FC = () => {
+
+  const [animClass, setAnimClass] = useState('')
+
+  useEffect(() => {
+    setAnimClass('bg-animation')
+  }, [])
+
   return (
     <Box>
       <ThemeProvider theme={AtriumTheme}>
         <Box sx={{ background: AtriumTheme.palette.common.black }}>
           <Box
+            className={`${animClass}`}
             sx={{
               '& > div:not(.header), .grid-bg': {
                 '&::before': {
                   backgroundImage: `linear-gradient(to right, #A8A8A8 1px, transparent 1px)`,
                   backgroundRepeat: 'repeat-x, no-repeat',
-
                   backgroundSize: `${100 / 12}% 100%, cover`,
-
                   content: '""',
-
                   height: '100%',
-
-                  left: 0,
-                  top: 0,
-                  // background: 'red',
+                  left: `50%`,
                   position: 'absolute',
-                  width: '100%',
+                  top: 0,
+                  transition: 'width 1s, left 1s',
+                  width: `0%`,
+                },
+                position: 'relative',
+              },
+              '&.bg-animation > div:not(.header), &.bg-animation .grid-bg': {
+                '&::before': {
+                  left: `0%`,
+                  width: `100%`,
                 },
                 position: 'relative',
               },
@@ -49,7 +60,7 @@ const App: React.FC = () => {
             <Wrapper className="header">
               <Box height="100%" display="flex" flexDirection="column">
                 <Header />
-                <HeroSection />
+                <HeroSection playAnimation={animClass === 'bg-animation'} />
               </Box>
             </Wrapper>
             <Wrapper
