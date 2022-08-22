@@ -1,6 +1,9 @@
 import { Box, styled } from '@mui/material'
 
 export const StyledContainer = styled(Box)(({ theme }) => ({
+  '& > div': {
+    borderRight: `1px solid ${theme.palette.primary.light}`,
+  },
   '&::before': {
     backgroundImage: `linear-gradient(to right, ${theme.palette.primary.light} 1px, transparent 1px)`,
     backgroundRepeat: 'repeat-x, no-repeat',
@@ -8,7 +11,7 @@ export const StyledContainer = styled(Box)(({ theme }) => ({
     //   lg: `${100 / 10}% 100%, cover`,
     //   xl: `${100 / 12}% 100%, cover`,
     // },
-    borderRight: `1px solid ${theme.palette.primary.light}`,
+    // borderRight: `1px solid ${theme.palette.primary.light}`,
     content: '""',
     height: '100%',
     left: `50%`,
