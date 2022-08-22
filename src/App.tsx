@@ -1,81 +1,131 @@
-import React, { useEffect, useState } from 'react'
+import { Box, ThemeProvider, styled } from '@mui/material'
+import React, { useState, useEffect } from 'react'
 
 import './index.css'
-import logo from './logo.svg'
-
 import './App.css'
+import './fonts/andale/style.css'
+import './fonts/fractul/stylesheet.css'
+import { Header, Footer, SectionContainer, GridBgContainer } from './components'
+// import useInterval from './hooks/useInterval'
+import {
+  HeroSection,
+  IntegrationsSection,
+  UpdatesSection,
+  OverviewSection,
+  ProfilesSection,
+  JoinSection,
+} from './sections'
+import AtriumTheme from './themes/AtriumTheme'
 
-type DocsList = Array<{ name: string; url: string }>
-
+const Root = styled(Box)(({ theme }) => ({
+  '& > div:not(.header)': {
+    [theme.breakpoints.up('xl')]: {
+      padding: '0px',
+    },
+    [theme.breakpoints.down('xl')]: {
+      padding: '0px 20px',
+    },
+  },
+  '&.bg-animation .grid-bg': {
+    '&::before': {
+      left: `0%`,
+      width: `100%`,
+    },
+    position: 'relative',
+  },
+}))
 const App: React.FC = () => {
-  const [count, setCount] = useState(0)
-  const [docsList, setDocsList] = useState<DocsList>([])
+  const [animClass, setAnimClass] = useState('')
 
   useEffect(() => {
-    fetch('./docs_list')
-      .then((res) => res.json())
-      .then((data) => {
-        setDocsList(data)
-      })
-      .catch()
+    setAnimClass('bg-animation')
   }, [])
 
   return (
-    <main className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button
-            type="button"
-            className="h-26 w-52 px-4 py-3 my-4 border border-white border-solid rounded"
-            onClick={() => setCount(count + 1)}
-          >
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p></p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-          {docsList.length
-            ? docsList.map((v, i) => {
-                return (
-                  <span key={i}>
-                    {' | '}
-                    <a
-                      className="App-link"
-                      href={v.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {v.name}
-                    </a>
-                  </span>
-                )
-              })
-            : false}
-        </p>
-      </header>
-    </main>
+    <Box>
+      <ThemeProvider theme={AtriumTheme}>
+        <Box sx={{ background: AtriumTheme.palette.common.black }}>
+          {/* <Box
+            className={`${animClass}`}
+            sx={{
+              //   '& > div:not(.header, .update), .grid-bg': {
+              //     '&::before': {
+              //       backgroundImage: `linear-gradient(to right, #A8A8A8 1px, transparent 1px)`,
+              //       backgroundRepeat: 'repeat-x, no-repeat',
+              //       backgroundSize: `${100 / 10}% 100%, cover`,
+              //       content: '""',
+              //       height: '100%',
+              //       left: `50%`,
+              //       position: 'absolute',
+              //       top: 0,
+              //       transition: 'width 1s, left 1s',
+              //       width: `0%`,
+              //     },
+              //     position: 'relative',
+              //   },
+              '&.bg-animation .grid-bg': {
+                '&::before': {
+                  left: `0%`,
+                  width: `100%`,
+                },
+                position: 'relative',
+              },
+              '& > div:not(.header)': {
+                [theme.breakpoints.up('xl')]: {
+                  padding: '0px',
+                },
+                [theme.breakpoints.down('xl')]: {
+                  padding: '0px 20px',
+                }
+              }
+            }}
+          > */}
+          <Root className={`${animClass}`}>
+            <SectionContainer className="header" height="100vh !important">
+              <Box height="100%" display="flex" flexDirection="column">
+                <Header />
+                <GridBgContainer>
+                  <HeroSection playAnimation={animClass === 'bg-animation'} />
+                </GridBgContainer>
+              </Box>
+            </SectionContainer>
+            <SectionContainer className="update light">
+              <UpdatesSection />
+            </SectionContainer>
+            <SectionContainer>
+              <GridBgContainer>
+                <OverviewSection />
+              </GridBgContainer>
+            </SectionContainer>
+            <SectionContainer className="light">
+              <GridBgContainer>
+                <ProfilesSection />
+              </GridBgContainer>
+            </SectionContainer>
+            <Box px={{ lg: 5, xl: 0 }}>
+              <GridBgContainer>
+                <IntegrationsSection />
+              </GridBgContainer>
+            </Box>
+            <Box
+              px={{ lg: 5, xl: 0 }}
+              sx={{
+                background: AtriumTheme.palette.info.main,
+              }}
+            >
+              <GridBgContainer>
+                <JoinSection />
+              </GridBgContainer>
+            </Box>
+            <Box px={{ lg: 5, xl: 0 }}>
+              <GridBgContainer>
+                <Footer />
+              </GridBgContainer>
+            </Box>
+          </Root>
+        </Box>
+      </ThemeProvider>
+    </Box>
   )
 }
 
