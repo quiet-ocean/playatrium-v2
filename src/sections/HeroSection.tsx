@@ -1,79 +1,76 @@
-import { Box, styled } from '@mui/material'
+import { Box, styled, Container } from '@mui/material'
 import { useEffect, useState } from 'react'
 
-import { palette } from '../themes/AtriumTheme'
+import HeroImage from '../assets/images/hero.png'
 
 const HeroAnimationWrapper = styled(Box)(() => ({
+  '& > img': {
+    height: `${
+      (window.innerHeight || window.document.documentElement.clientHeight) -
+      20 -
+      70
+    }px`,
+    position: 'absolute',
+    right: '0%',
+    top: 0,
+
+    transform: 'translateX(50%)',
+    transition: 'transform 1.5s',
+    width: `${
+      (window.innerWidth || window.document.documentElement.clientWidth) - 40
+    }px`,
+  },
+
   '&.animation-fill': {
+    '& > img': {
+      transform: 'translateX(0%)',
+    },
     width: '100%',
   },
-  // border: '1px solid red',
-  // height: `${
-  //   (window.innerHeight || window.document.documentElement.clientHeight) - 20
-  // }px`,
   height: '100%',
   margin: 'auto',
-
+  position: 'relative',
   transition: 'width 1.5s',
-  // overflowX: 'hidden',
   width: '0%',
   zIndex: 1,
 }))
-const SideBox = styled(Box)(() => ({
-  background: palette.common.black,
-  flex: 1,
-  zIndex: 2,
-}))
-export const HeroSection = () => {
+export const HeroSection = ({ playAnimation }: { playAnimation?: boolean }) => {
   const [animationClass, setAnimationClass] = useState('')
+  const [_playAnimation, setPlayAnimation] = useState(false)
 
   useEffect(() => {
-    setAnimationClass('animation-fill')
-  }, [])
+    if (playAnimation) setTimeout(() => setPlayAnimation(true), 1200)
+  }, [playAnimation])
+  useEffect(() => {
+    if (_playAnimation)
+      setTimeout(() => setAnimationClass('animation-fill'), 100)
+  }, [_playAnimation])
+
   return (
-    <Box
+    <Container
       className="grid-bg"
-      sx={{
-        height: '100%',
-        position: 'relative',
-      }}
-      p={5}
-      pt="0px !important"
+      sx={{ height: '100%', maxWidth: '100% !important', width: '100%' }}
     >
       <Box
         sx={{
-          display: 'flex',
+          display: !_playAnimation ? 'none' : 'flex',
+          // display: 'flex',
           height: '100%',
-          width: '100%',
+          position: 'relative',
+          // width: '100%',
         }}
+        p={5}
+        pt="0px !important"
       >
-        <Box
+        <HeroAnimationWrapper
+          className={animationClass}
           sx={{
-            backgroundImage: 'url("/hero.png")',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: '100% 100%',
-            height: '100%',
-            // position: 'absolute',
-            width: '100%',
-            zIndex: 0,
+            overflowX: 'hidden',
           }}
-        ></Box>
+        >
+          <img src={HeroImage} alt="" width="100%" />
+        </HeroAnimationWrapper>
       </Box>
-      <Box
-        sx={{
-          display: 'flex',
-          height: '100%',
-          left: 0,
-          position: 'absolute',
-          top: 0,
-          width: '100%',
-        }}
-      >
-        <SideBox />
-        <HeroAnimationWrapper className={animationClass}></HeroAnimationWrapper>
-        <SideBox />
-      </Box>
-    </Box>
+    </Container>
   )
 }
