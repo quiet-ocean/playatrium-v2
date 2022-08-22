@@ -7,6 +7,7 @@ import { Navbar } from './Navbar'
 export const Header = () => {
   return (
     <Box
+      className="header"
       display="flex"
       justifyContent={`space-between`}
       p="16px"

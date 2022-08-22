@@ -32,27 +32,41 @@ export const HeroSection = () => {
   }, [])
   return (
     <Box
+      className="grid-bg"
       sx={{
         height: '100%',
         position: 'relative',
       }}
+      p={5}
+      pt="0px !important"
     >
-      <Box
-        sx={{
-          backgroundImage: 'url("/hero.png")',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: '100% 100%',
-          height: '100%',
-          position: 'absolute',
-          width: '100%',
-          zIndex: 0,
-        }}
-      ></Box>
       <Box
         sx={{
           display: 'flex',
           height: '100%',
+          width: '100%',
+        }}
+      >
+        <Box
+          sx={{
+            backgroundImage: 'url("/hero.png")',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: '100% 100%',
+            height: '100%',
+            // position: 'absolute',
+            width: '100%',
+            zIndex: 0,
+          }}
+        ></Box>
+      </Box>
+      <Box
+        sx={{
+          display: 'flex',
+          height: '100%',
+          left: 0,
+          position: 'absolute',
+          top: 0,
           width: '100%',
         }}
       >
