@@ -1,6 +1,14 @@
-import { Box, Button } from '@mui/material'
+import { Box, Button, styled } from '@mui/material'
 
 import { palette } from '../themes/AtriumTheme'
+
+export const SectionLink = styled('a')(({ theme }) => ({
+  '&:hover': {
+    color: '#FFF',
+  },
+  color: theme.palette.text.primary,
+  textDecoration: 'none',
+}))
 
 const items = ['updates', 'overview', 'integrations', 'profiles', 'team']
 export const Navbar = () => {
@@ -9,7 +17,7 @@ export const Navbar = () => {
       {items.map((item: string, key: number) => (
         <Box key={key}>
           <Button variant="primary">
-            <a href={`#${item}-section`}>{item}</a>
+            <SectionLink href={`#${item}-section`}>{item}</SectionLink>
           </Button>
         </Box>
       ))}
