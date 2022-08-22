@@ -8,10 +8,9 @@ export const JoinSection = () => {
     <Box
       sx={{
         background: palette.info.main,
-        pt: 9,
       }}
     >
-      <Grid container>
+      <Grid container pt={9}>
         <Grid item lg={6}>
           <Box p={5}>
             <Box
