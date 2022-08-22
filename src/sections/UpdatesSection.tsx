@@ -12,10 +12,10 @@ const UpdateItemWrapper = styled(Box)(() => ({
   display: 'flex',
   flexDirection: 'column',
   gap: '16px',
-  height: `${
-    (window.innerHeight || window.document.documentElement.clientHeight) -
-    (200 + 100 + 22 + 40)
-  }px`,
+  // height: `${
+  //   (window.innerHeight || window.document.documentElement.clientHeight) -
+  //   (200 + 100 + 22 + 40)
+  // }px`,
 }))
 const UpdateItem = ({
   image,
@@ -29,7 +29,7 @@ const UpdateItem = ({
   small?: boolean
 }) => {
   return (
-    <Box display="flex" flexDirection="column">
+    <Box display="flex" flexDirection="column" gap={4}>
       <Box>
         <img
           src={image}
@@ -47,7 +47,7 @@ const UpdateItem = ({
 }
 export const UpdatesSection = () => {
   return (
-    <Box py={20} id="updates-section">
+    <Box py={10} id="updates-section">
       <Grid container justifyContent="center">
         <Grid item lg={12} xl={10}>
           <Box mb={20}>
