@@ -26,7 +26,7 @@ const App: React.FC = () => {
           <Box
             sx={{
               '& > div:not(.header), .grid-bg': {
-                '&::after': {
+                '&::before': {
                   backgroundImage: `linear-gradient(to right, #A8A8A8 1px, transparent 1px)`,
                   backgroundRepeat: 'repeat-x, no-repeat',
 
