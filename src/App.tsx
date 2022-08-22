@@ -5,7 +5,6 @@ import './index.css'
 import './App.css'
 import './fonts/andale/style.css'
 import './fonts/fractul/stylesheet.css'
-
 import { Header, Footer, SectionContainer, GridBgContainer } from './components'
 // import useInterval from './hooks/useInterval'
 import {
@@ -82,14 +81,12 @@ const App: React.FC = () => {
             }}
           > */}
           <Root className={`${animClass}`}>
-            <SectionContainer className="header">
+            <SectionContainer className="header" height="100vh !important">
               <Box height="100%" display="flex" flexDirection="column">
                 <Header />
-                {/* <Box px={{ lg: 5, xl: 0 }} width="100%" height="100%"> */}
-                  <GridBgContainer>
-                    <HeroSection playAnimation={animClass === 'bg-animation'} />
-                  </GridBgContainer>
-                {/* </Box> */}
+                <GridBgContainer>
+                  <HeroSection playAnimation={animClass === 'bg-animation'} />
+                </GridBgContainer>
               </Box>
             </SectionContainer>
             <SectionContainer className="update light">
@@ -110,7 +107,12 @@ const App: React.FC = () => {
                 <IntegrationsSection />
               </GridBgContainer>
             </Box>
-            <Box px={{ lg: 5, xl: 0 }}>
+            <Box
+              px={{ lg: 5, xl: 0 }}
+              sx={{
+                background: AtriumTheme.palette.info.main,
+              }}
+            >
               <GridBgContainer>
                 <JoinSection />
               </GridBgContainer>
