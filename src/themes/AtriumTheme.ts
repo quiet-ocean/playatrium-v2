@@ -9,6 +9,15 @@ declare module '@mui/material/Button' {
 }
 
 const AtriumTheme = createTheme({
+  // breakpoints: {
+  //   values: {
+  //     xs: 0,
+  //     sm: 425,
+  //     md: 768,
+  //     lg: 1440,
+  //     xl: 1690,
+  //   },
+  // },
   components: {
     MuiButton: {
       styleOverrides: {
@@ -95,7 +104,7 @@ const AtriumTheme = createTheme({
     mode: 'dark',
     primary: {
       // dark: '',
-      // light: '',
+      light: '#A8A8A8',
       main: '#80868B',
       // contrastText: '',
     },
