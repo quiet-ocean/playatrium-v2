@@ -8,7 +8,7 @@ import ProjectIntegrations from './ProjectIntegrations'
 
 export const IntegrationsSection = () => {
   return (
-    <Box>
+    <Box id="integrations-section">
       <Wrapper>
         <HomeIntegrations />
       </Wrapper>
