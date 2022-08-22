@@ -9,7 +9,7 @@ export const ProfilesSection = () => {
   const [state, setState] = useState(true)
 
   return (
-    <Box py={25}>
+    <Box py={25} id="profiles-section">
       <Grid container justifyContent="center">
         <Grid item lg={3}>
           <Box>

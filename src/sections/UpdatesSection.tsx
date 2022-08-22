@@ -47,7 +47,7 @@ const UpdateItem = ({
 }
 export const UpdatesSection = () => {
   return (
-    <Box py={20}>
+    <Box py={20} id="updates-section">
       <Grid container justifyContent="center">
         <Grid item lg={10}>
           <Box mb={20}>
