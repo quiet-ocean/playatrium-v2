@@ -9,21 +9,21 @@ export const ProfilesSection = () => {
   const [state, setState] = useState(true)
 
   return (
-    <Box p="100px 145px">
-      <Box>
-        <Button
-          variant="rounded"
-          sx={{
-            border: `1px solid ${palette.info.main}`,
-            color: palette.info.main,
-          }}
-        >
-          profiles
-        </Button>
-      </Box>
-      <Grid container spacing={10} mt={21}>
-        <Grid item lg={4}>
-          <Box py={8}>
+    <Box py={25}>
+      <Grid container justifyContent="center">
+        <Grid item lg={3}>
+          <Box>
+            <Button
+              variant="rounded"
+              sx={{
+                border: `1px solid ${palette.info.main}`,
+                color: palette.info.main,
+              }}
+            >
+              profiles
+            </Button>
+          </Box>
+          <Box py={25} pr={10}>
             <ButtonGroup
               variant="contained"
               aria-label="outlined primary button group"
@@ -66,34 +66,38 @@ export const ProfilesSection = () => {
                     </Typography>
                     <Typography variant="body2" mt={10}>
                       User profiles offer one central location for user data
-                      across all channels and apps, amplifying representation of
-                      their digital identity.
+                      across all channels and apps, amplifying representation
+                      of their digital identity.
                     </Typography>
                     <br />
                     <Typography variant="body2">
-                      The experience Atrium offers in creating user profiles is
-                      innovative in terms of the interest and preferences of our
-                      users and the communities they are a part of.
+                      The experience Atrium offers in creating user profiles
+                      is innovative in terms of the interest and preferences
+                      of our users and the communities they are a part of.
                     </Typography>
                   </Box>
                 }
                 child2={
                   <Box
-                    sx={{ display: 'flex', flexDirection: 'column', zIndex: 0 }}
+                    sx={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      zIndex: 0,
+                    }}
                   >
                     <Typography variant="h3">
                       Connect your communities
                     </Typography>
                     <Typography variant="body2" mt={10}>
                       User profiles offer one central location for user data
-                      across all channels and apps, amplifying representation of
-                      their digital identity.
+                      across all channels and apps, amplifying representation
+                      of their digital identity.
                     </Typography>
                     <br />
                     <Typography variant="body2">
-                      The experience Atrium offers in creating user profiles is
-                      innovative in terms of the interest and preferences of our
-                      users and the communities they are a part of.
+                      The experience Atrium offers in creating user profiles
+                      is innovative in terms of the interest and preferences
+                      of our users and the communities they are a part of.
                     </Typography>
                   </Box>
                 }
@@ -101,7 +105,7 @@ export const ProfilesSection = () => {
             </Box>
           </Box>
         </Grid>
-        <Grid item lg={8}>
+        <Grid item lg={7} pt={25}>
           <MultiSlideAnimationWrapper
             child1={<img src={profilePreviewImage} alt="" width="100%" />}
             child2={<img src={profilePreviewImage} alt="" width="100%" />}
