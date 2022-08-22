@@ -2,6 +2,7 @@ import {
   Box,
   Typography,
   Button,
+  Grid,
   IconButton,
   FormControl,
   OutlinedInput,
@@ -56,58 +57,60 @@ const AtriumInput = () => {
 }
 export const Footer = () => {
   return (
-    <Box sx={{ color: palette.text.primary }}>
-      <Box p={5}>
-        <Box
-          sx={{
-            '& > div, & > div > div': {
+    <Box sx={{ color: palette.text.primary }} py={5}>
+      <Grid container justifyContent="center" columns={{ lg: 10, xl: 12 }}>
+        <Grid item lg={10} xl={10}>
+          <Box
+            sx={{
+              '& > div, & > div > div': {
+                display: 'flex',
+                justifyContent: 'center',
+              },
               display: 'flex',
-              justifyContent: 'center',
-            },
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 10,
-            p: 5,
-          }}
-        >
-          <Box>
-            <img src={logo100} alt="" />
-          </Box>
-          <Box gap={6}>
-            {icons.map((item: string, key: number) => (
-              <IconButton key={key}>
-                <img src={item} alt="" />
-              </IconButton>
-            ))}
-          </Box>
-          <Box flexDirection="column" gap={6}>
+              flexDirection: 'column',
+              gap: 10,
+              p: 5,
+            }}
+          >
             <Box>
-              <Typography
-                variant="h5"
-                sx={{
-                  fontSize: '16px',
-                  lineHeight: '120%',
-                  textAlign: 'center',
-                }}
-              >
-                Stay updated for the most important news
-                <br /> about Atrium through our email.{' '}
-              </Typography>
+              <img src={logo100} alt="" />
             </Box>
-            <Box>
-              <AtriumInput />
+            <Box gap={6}>
+              {icons.map((item: string, key: number) => (
+                <IconButton key={key}>
+                  <img src={item} alt="" />
+                </IconButton>
+              ))}
             </Box>
-            <Box gap={6} color={palette.text.disabled}>
-              <Typography variant="caption">Privacy</Typography>
-              <Typography variant="caption">Terms of Use</Typography>
-              <Typography variant="caption">© Atrium 2022</Typography>
+            <Box flexDirection="column" gap={6}>
+              <Box>
+                <Typography
+                  variant="h5"
+                  sx={{
+                    fontSize: '16px',
+                    lineHeight: '120%',
+                    textAlign: 'center',
+                  }}
+                >
+                  Stay updated for the most important news
+                  <br /> about Atrium through our email.{' '}
+                </Typography>
+              </Box>
+              <Box>
+                <AtriumInput />
+              </Box>
+              <Box gap={6} color={palette.text.disabled}>
+                <Typography variant="caption">Privacy</Typography>
+                <Typography variant="caption">Terms of Use</Typography>
+                <Typography variant="caption">© Atrium 2022</Typography>
+              </Box>
             </Box>
           </Box>
-        </Box>
-        <Box display="flex" justifyContent="center" mt={15}>
-          <img src={atriumLogoType} alt="" />
-        </Box>
-      </Box>
+          <Box display="flex" justifyContent="center" mt={15}>
+            <img src={atriumLogoType} alt="" width="100%" />
+          </Box>
+        </Grid>
+      </Grid>
     </Box>
   )
 }

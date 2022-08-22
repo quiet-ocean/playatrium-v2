@@ -49,7 +49,7 @@ export const UpdatesSection = () => {
   return (
     <Box py={20} id="updates-section">
       <Grid container justifyContent="center">
-        <Grid item lg={10}>
+        <Grid item lg={12} xl={10}>
           <Box mb={20}>
             <Button
               variant="rounded"

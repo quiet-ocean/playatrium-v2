@@ -75,7 +75,7 @@ export const OverviewSection = () => {
   return (
     <Box id="overview-section">
       <Grid container justifyContent="center">
-        <Grid item lg={10}>
+        <Grid item lg={12} xl={10}>
           <Carousel
             ref={carousel}
             axis="vertical"
@@ -85,7 +85,11 @@ export const OverviewSection = () => {
             transitionTime={1000}
             showStatus={false}
           >
-            <Box py={20} onFocus={() => setCharClass('show')} id="overview-section">
+            <Box
+              py={20}
+              onFocus={() => setCharClass('show')}
+              id="overview-section"
+            >
               <Box textAlign="center">
                 <Button
                   variant="rounded"
@@ -139,7 +143,9 @@ export const OverviewSection = () => {
                     <AnimationString
                       charClass={charClass}
                       str={str5}
-                      delay={str1.length + str2.length + str3.length + str4.length}
+                      delay={
+                        str1.length + str2.length + str3.length + str4.length
+                      }
                     />
                   </span>{' '}
                   <AnimationString

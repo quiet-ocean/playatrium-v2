@@ -10,7 +10,7 @@ export const JoinSection = () => {
         background: palette.info.main,
       }}
     >
-      <Grid container pt={9} justifyContent="center">
+      <Grid container pt={9} justifyContent="center" columns={{ lg: 10, xl: 12 }}>
         <Grid item lg={4}>
           <Box p={5}>
             <Box py={25} sx={{ '& *': { color: palette.text.primary } }}>

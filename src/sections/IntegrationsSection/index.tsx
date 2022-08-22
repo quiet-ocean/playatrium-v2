@@ -1,6 +1,6 @@
 import { Box } from '@mui/material'
 
-import { Wrapper } from '../../components'
+import { SectionContainer } from '../../components'
 
 import EndlessIntegrations from './EndlessIntegrations'
 import HomeIntegrations from './HomeIntegrations'
@@ -9,15 +9,15 @@ import ProjectIntegrations from './ProjectIntegrations'
 export const IntegrationsSection = () => {
   return (
     <Box id="integrations-section">
-      <Wrapper>
+      <SectionContainer>
         <HomeIntegrations />
-      </Wrapper>
-      <Wrapper>
+      </SectionContainer>
+      <SectionContainer>
         <ProjectIntegrations />
-      </Wrapper>
-      <Wrapper>
+      </SectionContainer>
+      <SectionContainer>
         <EndlessIntegrations />
-      </Wrapper>
+      </SectionContainer>
     </Box>
   )
 }

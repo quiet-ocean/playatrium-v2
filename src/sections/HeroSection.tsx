@@ -48,23 +48,31 @@ export const HeroSection = ({ playAnimation }: { playAnimation?: boolean }) => {
 
   return (
     <Container
-      className="grid-bg"
-      sx={{ height: '100%', maxWidth: '100% !important', width: '100%' }}
+      sx={{
+        borderRight: `1px solid #A8A8A8`,
+        height: '100%',
+        // margin: '0px 20px',
+        maxWidth: '100% !important',
+        padding: '0px !important',
+        width: '100%',
+        padding: '0px 20px !important',
+      }}
     >
       <Box
+        className="grid-bg"
         sx={{
-          display: !_playAnimation ? 'none' : 'flex',
           // display: 'flex',
           height: '100%',
           position: 'relative',
           // width: '100%',
         }}
-        p={5}
-        pt="0px !important"
+        // p={5}
+        // pt="0px !important"
       >
         <HeroAnimationWrapper
           className={animationClass}
           sx={{
+            display: !_playAnimation ? 'none' : 'flex',
             overflowX: 'hidden',
           }}
         >

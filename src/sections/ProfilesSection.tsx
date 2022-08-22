@@ -10,8 +10,8 @@ export const ProfilesSection = () => {
 
   return (
     <Box py={25} id="profiles-section">
-      <Grid container justifyContent="center">
-        <Grid item lg={3}>
+      <Grid container justifyContent="center" columns={{ lg: 10, xl: 12 }}>
+        <Grid item xl={3} lg={3}>
           <Box>
             <Button
               variant="rounded"
@@ -105,7 +105,7 @@ export const ProfilesSection = () => {
             </Box>
           </Box>
         </Grid>
-        <Grid item lg={7} pt={25}>
+        <Grid item xl={7} lg={7} pt={25}>
           <MultiSlideAnimationWrapper
             child1={<img src={profilePreviewImage} alt="" width="100%" />}
             child2={<img src={profilePreviewImage} alt="" width="100%" />}
