@@ -73,7 +73,7 @@ export const OverviewSection = () => {
   }, [carousel])
 
   return (
-    <Box id="overview-section">
+    <Box id="overview-section" height="100%">
       <Grid container justifyContent="center">
         <Grid item lg={12} xl={10}>
           <Carousel
