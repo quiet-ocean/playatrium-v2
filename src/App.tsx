@@ -32,7 +32,7 @@ const App: React.FC = () => {
           <Box
             className={`${animClass}`}
             sx={{
-              '& > div:not(.header), .grid-bg': {
+              '& > div:not(.header, .update), .grid-bg': {
                 '&::before': {
                   backgroundImage: `linear-gradient(to right, #A8A8A8 1px, transparent 1px)`,
                   backgroundRepeat: 'repeat-x, no-repeat',
@@ -63,6 +63,7 @@ const App: React.FC = () => {
               </Box>
             </Wrapper>
             <Wrapper
+              className="update"
               sx={{ background: AtriumTheme.palette.background.default }}
             >
               <UpdatesSection />
