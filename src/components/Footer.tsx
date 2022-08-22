@@ -54,52 +54,54 @@ const AtriumInput = () => {
 }
 export const Footer = () => {
   return (
-    <Box p={5} sx={{ color: palette.text.primary }}>
-      <Box
-        sx={{
-          '& > div, & > div > div': {
-            display: 'flex',
-            justifyContent: 'center',
-          },
-        }}
-        display="flex"
-        flexDirection="column"
-        gap={10}
-        p={5}
-      >
-        <Box>
-          <img src={logo100} alt="" />
-        </Box>
-        <Box gap={6}>
-          <IconButton>
-            <img src={discordIcon} alt="" />
-          </IconButton>
-          <IconButton>
-            <img src={twitterIcon} alt="" />
-          </IconButton>
-          <IconButton>
-            <img src={youtubeIcon} alt="" />
-          </IconButton>
-        </Box>
-        <Box flexDirection="column" gap={6}>
+    <Box sx={{ color: palette.text.primary }}>
+      <Box p={5}>
+        <Box
+          sx={{
+            '& > div, & > div > div': {
+              display: 'flex',
+              justifyContent: 'center',
+            },
+          }}
+          display="flex"
+          flexDirection="column"
+          gap={10}
+          p={5}
+        >
           <Box>
-            <Typography variant="h5" sx={{ fontSize: '16px' }}>
-              Stay updated for the most important news about Atrium through our
-              email.{' '}
-            </Typography>
+            <img src={logo100} alt="" />
           </Box>
-          <Box>
-            <AtriumInput />
+          <Box gap={6}>
+            <IconButton>
+              <img src={discordIcon} alt="" />
+            </IconButton>
+            <IconButton>
+              <img src={twitterIcon} alt="" />
+            </IconButton>
+            <IconButton>
+              <img src={youtubeIcon} alt="" />
+            </IconButton>
           </Box>
-          <Box gap={6} color={palette.text.disabled}>
-            <Typography variant="caption">Privacy</Typography>
-            <Typography variant="caption">Terms of Use</Typography>
-            <Typography variant="caption">© Atrium 2022</Typography>
+          <Box flexDirection="column" gap={6}>
+            <Box>
+              <Typography variant="h5" sx={{ fontSize: '16px' }}>
+                Stay updated for the most important news about Atrium through our
+                email.{' '}
+              </Typography>
+            </Box>
+            <Box>
+              <AtriumInput />
+            </Box>
+            <Box gap={6} color={palette.text.disabled}>
+              <Typography variant="caption">Privacy</Typography>
+              <Typography variant="caption">Terms of Use</Typography>
+              <Typography variant="caption">© Atrium 2022</Typography>
+            </Box>
           </Box>
         </Box>
-      </Box>
-      <Box display="flex" justifyContent="center" mt={15}>
-        <img src={atriumLogoType} alt="" />
+        <Box display="flex" justifyContent="center" mt={15}>
+          <img src={atriumLogoType} alt="" />
+        </Box>
       </Box>
     </Box>
   )
