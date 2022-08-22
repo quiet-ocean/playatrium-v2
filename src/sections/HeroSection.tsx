@@ -53,9 +53,8 @@ export const HeroSection = ({ playAnimation }: { playAnimation?: boolean }) => {
         height: '100%',
         // margin: '0px 20px',
         maxWidth: '100% !important',
-        padding: '0px !important',
-        width: '100%',
         padding: '0px 20px !important',
+        width: '100%',
       }}
     >
       <Box
