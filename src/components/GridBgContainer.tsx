@@ -2,7 +2,7 @@ import { Box, styled } from '@mui/material'
 
 export const StyledContainer = styled(Box)(({ theme }) => ({
   '& > div': {
-    borderRight: `1px solid ${theme.palette.primary.light}`,
+    borderRight: `1px solid rgba(168, 168, 168, 0.1)`,
   },
   '&::before': {
     backgroundImage: `linear-gradient(to right, ${theme.palette.primary.light} 1px, transparent 1px)`,
@@ -22,6 +22,7 @@ export const StyledContainer = styled(Box)(({ theme }) => ({
     //   // padding: '0px 20px',
     //   borderRight: `1px solid ${theme.palette.primary.light}`,
     // },
+    opacity: 0.1,
     position: 'absolute',
     top: 0,
     transition: 'width 1s, left 1s',

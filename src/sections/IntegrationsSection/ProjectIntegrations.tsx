@@ -6,7 +6,7 @@ import { palette } from '../../themes/AtriumTheme'
 const ProjectIntegrations = () => {
   return (
     <Box>
-      <Grid container justifyContent="center">
+      <Grid container justifyContent="center" columns={{ lg: 10, xl: 12 }}>
         <Grid item lg={5}>
           <img src={WalkAroundGif} alt="" width="100%" />
         </Grid>

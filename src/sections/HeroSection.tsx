@@ -49,7 +49,7 @@ export const HeroSection = ({ playAnimation }: { playAnimation?: boolean }) => {
   return (
     <Container
       sx={{
-        borderRight: `1px solid #A8A8A8`,
+        borderRight: `1px solid rgba(168, 168, 168, 0.1)`,
         height: '100%',
         // margin: '0px 20px',
         maxWidth: '100% !important',

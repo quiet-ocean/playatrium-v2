@@ -32,7 +32,12 @@ const HomeIntegrations = () => {
           integrations
         </Button>
       </Box>
-      <Grid container mt={25} justifyContent="center">
+      <Grid
+        container
+        mt={25}
+        justifyContent="center"
+        columns={{ lg: 10, xl: 12 }}
+      >
         <Grid item lg={3}>
           <img src={AnimGifYellow} alt="" width="100%" />
         </Grid>
