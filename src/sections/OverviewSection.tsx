@@ -1,4 +1,4 @@
-import { Box, Button, Typography, styled } from '@mui/material'
+import { Box, Button, Typography, styled, Grid } from '@mui/material'
 import React, { useRef, useEffect, useState } from 'react'
 import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
 import { Carousel } from 'react-responsive-carousel'
@@ -74,104 +74,108 @@ export const OverviewSection = () => {
 
   return (
     <Box id="overview-section">
-      <Carousel
-        ref={carousel}
-        axis="vertical"
-        showThumbs={false}
-        showArrows={false}
-        showIndicators={false}
-        transitionTime={1000}
-        showStatus={false}
-      >
-        <Box py={20} onFocus={() => setCharClass('show')} id="overview-section">
-          <Box textAlign="center">
-            <Button
-              variant="rounded"
-              sx={{
-                border: `1px solid ${palette.error.main}`,
-                color: palette.error.main,
-              }}
-              onClick={() => carousel?.current?.moveTo(1)}
-            >
-              overview
-            </Button>
-          </Box>
-          <Box
-            py={30}
-            sx={{
-              '& *': {
-                color: palette.text.primary,
-                textAlign: 'center !important',
-              },
-            }}
+      <Grid container justifyContent="center">
+        <Grid item lg={10}>
+          <Carousel
+            ref={carousel}
+            axis="vertical"
+            showThumbs={false}
+            showArrows={false}
+            showIndicators={false}
+            transitionTime={1000}
+            showStatus={false}
           >
-            <Typography variant="h2">
-              <AnimationString charClass={charClass} str={str1} delay={0} />
-            </Typography>
-            <Typography variant="h2">
-              <AnimationString
-                charClass={charClass}
-                str={str2}
-                delay={str1.length}
-              />
+            <Box py={20} onFocus={() => setCharClass('show')} id="overview-section">
+              <Box textAlign="center">
+                <Button
+                  variant="rounded"
+                  sx={{
+                    border: `1px solid ${palette.error.main}`,
+                    color: palette.error.main,
+                  }}
+                  onClick={() => carousel?.current?.moveTo(1)}
+                >
+                  overview
+                </Button>
+              </Box>
+              <Box
+                py={30}
+                sx={{
+                  '& *': {
+                    color: palette.text.primary,
+                    textAlign: 'center !important',
+                  },
+                }}
+              >
+                <Typography variant="h2">
+                  <AnimationString charClass={charClass} str={str1} delay={0} />
+                </Typography>
+                <Typography variant="h2">
+                  <AnimationString
+                    charClass={charClass}
+                    str={str2}
+                    delay={str1.length}
+                  />
 
-              <span style={{ color: palette.error.main }}>
-                <AnimationString
-                  charClass={charClass}
-                  str={str3}
-                  delay={str1.length + str2.length}
-                />
-              </span>
-            </Typography>
-            <Typography variant="h2">
-              <span style={{ color: palette.error.main }}>
-                <AnimationString
-                  charClass={charClass}
-                  str={str4}
-                  delay={str1.length + str2.length + str3.length}
-                />
-              </span>
-            </Typography>
-            <Typography variant="h2">
-              <span style={{ color: palette.error.main }}>
-                <AnimationString
-                  charClass={charClass}
-                  str={str5}
-                  delay={str1.length + str2.length + str3.length + str4.length}
-                />
-              </span>{' '}
-              <AnimationString
-                charClass={charClass}
-                str={str6}
-                delay={
-                  str1.length +
-                  str2.length +
-                  str3.length +
-                  str4.length +
-                  str5.length
-                }
-              />
-            </Typography>
-            <Typography variant="h2">
-              <AnimationString
-                charClass={charClass}
-                str={str7}
-                delay={
-                  str1.length +
-                  str2.length +
-                  str3.length +
-                  str4.length +
-                  str5.length +
-                  str6.length
-                }
-              />
-            </Typography>
-          </Box>
-        </Box>
-        <Box p={20}>
-          <img src={overviewImage} alt="" width="100%" height="100%" />
-        </Box>
-      </Carousel>
+                  <span style={{ color: palette.error.main }}>
+                    <AnimationString
+                      charClass={charClass}
+                      str={str3}
+                      delay={str1.length + str2.length}
+                    />
+                  </span>
+                </Typography>
+                <Typography variant="h2">
+                  <span style={{ color: palette.error.main }}>
+                    <AnimationString
+                      charClass={charClass}
+                      str={str4}
+                      delay={str1.length + str2.length + str3.length}
+                    />
+                  </span>
+                </Typography>
+                <Typography variant="h2">
+                  <span style={{ color: palette.error.main }}>
+                    <AnimationString
+                      charClass={charClass}
+                      str={str5}
+                      delay={str1.length + str2.length + str3.length + str4.length}
+                    />
+                  </span>{' '}
+                  <AnimationString
+                    charClass={charClass}
+                    str={str6}
+                    delay={
+                      str1.length +
+                      str2.length +
+                      str3.length +
+                      str4.length +
+                      str5.length
+                    }
+                  />
+                </Typography>
+                <Typography variant="h2">
+                  <AnimationString
+                    charClass={charClass}
+                    str={str7}
+                    delay={
+                      str1.length +
+                      str2.length +
+                      str3.length +
+                      str4.length +
+                      str5.length +
+                      str6.length
+                    }
+                  />
+                </Typography>
+              </Box>
+            </Box>
+            <Box py={20}>
+              <img src={overviewImage} alt="" width="100%" height="100%" />
+            </Box>
+          </Carousel>
+        </Grid>
+      </Grid>
     </Box>
   )
 }
