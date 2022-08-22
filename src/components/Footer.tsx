@@ -15,6 +15,8 @@ import twitterIcon from '../assets/images/twitter-icon.png'
 import youtubeIcon from '../assets/images/youtube-icon.png'
 import { palette } from '../themes/AtriumTheme'
 
+const icons = [discordIcon, twitterIcon, youtubeIcon]
+
 const AtriumInput = () => {
   return (
     <FormControl sx={{ m: 1, width: '40%' }} variant="outlined">
@@ -62,31 +64,34 @@ export const Footer = () => {
               display: 'flex',
               justifyContent: 'center',
             },
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 10,
+            p: 5,
           }}
-          display="flex"
-          flexDirection="column"
-          gap={10}
-          p={5}
         >
           <Box>
             <img src={logo100} alt="" />
           </Box>
           <Box gap={6}>
-            <IconButton>
-              <img src={discordIcon} alt="" />
-            </IconButton>
-            <IconButton>
-              <img src={twitterIcon} alt="" />
-            </IconButton>
-            <IconButton>
-              <img src={youtubeIcon} alt="" />
-            </IconButton>
+            {icons.map((item: string, key: number) => (
+              <IconButton key={key}>
+                <img src={item} alt="" />
+              </IconButton>
+            ))}
           </Box>
           <Box flexDirection="column" gap={6}>
             <Box>
-              <Typography variant="h5" sx={{ fontSize: '16px' }}>
-                Stay updated for the most important news about Atrium through our
-                email.{' '}
+              <Typography
+                variant="h5"
+                sx={{
+                  fontSize: '16px',
+                  lineHeight: '120%',
+                  textAlign: 'center',
+                }}
+              >
+                Stay updated for the most important news
+                <br /> about Atrium through our email.{' '}
               </Typography>
             </Box>
             <Box>
