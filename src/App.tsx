@@ -1,4 +1,4 @@
-import { Box, styled, ThemeProvider } from '@mui/material'
+import { Box, ThemeProvider } from '@mui/material'
 import React from 'react'
 
 import './index.css'
@@ -6,22 +6,18 @@ import './App.css'
 import './fonts/andale/style.css'
 import './fonts/fractul/stylesheet.css'
 
-import { Header, Footer } from './components'
+import { Header, Footer, Wrapper } from './components'
 import {
   HeroSection,
+  IntegrationsSection,
   UpdatesSection,
   OverviewSection,
   ProfilesSection,
   JoinSection,
 } from './sections'
-import AtriumTheme, { palette } from './themes/AtriumTheme'
+import AtriumTheme from './themes/AtriumTheme'
 
-const Wrapper = styled(Box)(() => ({
-  // height: window.innerHeight || window.document.documentElement.clientHeight,
-  height: '100vh',
-  // width: '100%',
-  // padding: '20px',
-}))
+
 const App: React.FC = () => {
   return (
     <Box>
@@ -30,7 +26,7 @@ const App: React.FC = () => {
           <Box
             sx={{
               '& > div:not(.header), .grid-bg': {
-                '&::before': {
+                '&::after': {
                   backgroundImage: `linear-gradient(to right, #A8A8A8 1px, transparent 1px)`,
                   backgroundRepeat: 'repeat-x, no-repeat',
 
@@ -40,7 +36,8 @@ const App: React.FC = () => {
 
                   height: '100%',
 
-                  left: '0px',
+                  left: 0,
+                  top: 0,
                   // background: 'red',
                   position: 'absolute',
                   width: '100%',
@@ -68,6 +65,7 @@ const App: React.FC = () => {
             >
               <ProfilesSection />
             </Wrapper>
+            <IntegrationsSection />
             <JoinSection />
             <Footer />
           </Box>
