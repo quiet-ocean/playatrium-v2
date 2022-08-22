@@ -18,13 +18,13 @@ export const SectionContainer = styled(Box)(({ theme }) => ({
   // borderLeft: `1px solid #A8A8A8`,
   // borderRight: `1px solid #A8A8A8`,
   // height: window.innerHeight || window.document.documentElement.clientHeight,
-  height: '100vh',
-  // [theme.breakpoints.up('xl')]: {
-  //   padding: '0px',
-  // },
-  // [theme.breakpoints.down('xl')]: {
-  //   padding: '0px 20px',
-  // }
+  
+  [theme.breakpoints.up('lg')]: {
+    height: '100vh',
+  },
+  [theme.breakpoints.down('lg')]: {
+    height: '100%',
+  }
   // width: '100%',
   // margin: '0px 20px',
 }))
