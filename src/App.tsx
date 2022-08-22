@@ -1,4 +1,4 @@
-import { Box, ThemeProvider } from '@mui/material'
+import { Box, ThemeProvider, styled } from '@mui/material'
 import React, { useState, useEffect } from 'react'
 
 import './index.css'
@@ -6,7 +6,7 @@ import './App.css'
 import './fonts/andale/style.css'
 import './fonts/fractul/stylesheet.css'
 
-import { Header, Footer, Wrapper } from './components'
+import { Header, Footer, SectionContainer, GridBgContainer } from './components'
 // import useInterval from './hooks/useInterval'
 import {
   HeroSection,
@@ -18,6 +18,23 @@ import {
 } from './sections'
 import AtriumTheme from './themes/AtriumTheme'
 
+const Root = styled(Box)(({ theme }) => ({
+  '& > div:not(.header)': {
+    [theme.breakpoints.up('xl')]: {
+      padding: '0px',
+    },
+    [theme.breakpoints.down('xl')]: {
+      padding: '0px 20px',
+    },
+  },
+  '&.bg-animation .grid-bg': {
+    '&::before': {
+      left: `0%`,
+      width: `100%`,
+    },
+    position: 'relative',
+  },
+}))
 const App: React.FC = () => {
   const [animClass, setAnimClass] = useState('')
 
@@ -29,57 +46,81 @@ const App: React.FC = () => {
     <Box>
       <ThemeProvider theme={AtriumTheme}>
         <Box sx={{ background: AtriumTheme.palette.common.black }}>
-          <Box
+          {/* <Box
             className={`${animClass}`}
             sx={{
-              '& > div:not(.header, .update), .grid-bg': {
-                '&::before': {
-                  backgroundImage: `linear-gradient(to right, #A8A8A8 1px, transparent 1px)`,
-                  backgroundRepeat: 'repeat-x, no-repeat',
-                  backgroundSize: `${100 / 12}% 100%, cover`,
-                  content: '""',
-                  height: '100%',
-                  left: `50%`,
-                  position: 'absolute',
-                  top: 0,
-                  transition: 'width 1s, left 1s',
-                  width: `0%`,
-                },
-                position: 'relative',
-              },
-              '&.bg-animation > div:not(.header), &.bg-animation .grid-bg': {
+              //   '& > div:not(.header, .update), .grid-bg': {
+              //     '&::before': {
+              //       backgroundImage: `linear-gradient(to right, #A8A8A8 1px, transparent 1px)`,
+              //       backgroundRepeat: 'repeat-x, no-repeat',
+              //       backgroundSize: `${100 / 10}% 100%, cover`,
+              //       content: '""',
+              //       height: '100%',
+              //       left: `50%`,
+              //       position: 'absolute',
+              //       top: 0,
+              //       transition: 'width 1s, left 1s',
+              //       width: `0%`,
+              //     },
+              //     position: 'relative',
+              //   },
+              '&.bg-animation .grid-bg': {
                 '&::before': {
                   left: `0%`,
                   width: `100%`,
                 },
                 position: 'relative',
               },
+              '& > div:not(.header)': {
+                [theme.breakpoints.up('xl')]: {
+                  padding: '0px',
+                },
+                [theme.breakpoints.down('xl')]: {
+                  padding: '0px 20px',
+                }
+              }
             }}
-          >
-            <Wrapper className="header">
+          > */}
+          <Root className={`${animClass}`}>
+            <SectionContainer className="header">
               <Box height="100%" display="flex" flexDirection="column">
                 <Header />
-                <HeroSection playAnimation={animClass === 'bg-animation'} />
+                {/* <Box px={{ lg: 5, xl: 0 }} width="100%" height="100%"> */}
+                  <GridBgContainer>
+                    <HeroSection playAnimation={animClass === 'bg-animation'} />
+                  </GridBgContainer>
+                {/* </Box> */}
               </Box>
-            </Wrapper>
-            <Wrapper
-              className="update"
-              sx={{ background: AtriumTheme.palette.background.default }}
-            >
+            </SectionContainer>
+            <SectionContainer className="update light">
               <UpdatesSection />
-            </Wrapper>
-            <Wrapper>
-              <OverviewSection />
-            </Wrapper>
-            <Wrapper
-              sx={{ background: AtriumTheme.palette.background.default }}
-            >
-              <ProfilesSection />
-            </Wrapper>
-            <IntegrationsSection />
-            <JoinSection />
-            <Footer />
-          </Box>
+            </SectionContainer>
+            <SectionContainer>
+              <GridBgContainer>
+                <OverviewSection />
+              </GridBgContainer>
+            </SectionContainer>
+            <SectionContainer className="light">
+              <GridBgContainer>
+                <ProfilesSection />
+              </GridBgContainer>
+            </SectionContainer>
+            <Box px={{ lg: 5, xl: 0 }}>
+              <GridBgContainer>
+                <IntegrationsSection />
+              </GridBgContainer>
+            </Box>
+            <Box px={{ lg: 5, xl: 0 }}>
+              <GridBgContainer>
+                <JoinSection />
+              </GridBgContainer>
+            </Box>
+            <Box px={{ lg: 5, xl: 0 }}>
+              <GridBgContainer>
+                <Footer />
+              </GridBgContainer>
+            </Box>
+          </Root>
         </Box>
       </ThemeProvider>
     </Box>
