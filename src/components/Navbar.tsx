@@ -8,7 +8,9 @@ export const Navbar = () => {
     <Box display={`flex`} gap={`12px`} p="4px">
       {items.map((item: string, key: number) => (
         <Box key={key}>
-          <Button variant="primary">{item}</Button>
+          <Button variant="primary">
+            <a href={`#${item}-section`}>{item}</a>
+          </Button>
         </Box>
       ))}
       <Box>
