@@ -19,7 +19,6 @@ import {
 import AtriumTheme from './themes/AtriumTheme'
 
 const App: React.FC = () => {
-
   const [animClass, setAnimClass] = useState('')
 
   useEffect(() => {

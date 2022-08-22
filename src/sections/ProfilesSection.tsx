@@ -66,14 +66,14 @@ export const ProfilesSection = () => {
                     </Typography>
                     <Typography variant="body2" mt={10}>
                       User profiles offer one central location for user data
-                      across all channels and apps, amplifying representation
-                      of their digital identity.
+                      across all channels and apps, amplifying representation of
+                      their digital identity.
                     </Typography>
                     <br />
                     <Typography variant="body2">
-                      The experience Atrium offers in creating user profiles
-                      is innovative in terms of the interest and preferences
-                      of our users and the communities they are a part of.
+                      The experience Atrium offers in creating user profiles is
+                      innovative in terms of the interest and preferences of our
+                      users and the communities they are a part of.
                     </Typography>
                   </Box>
                 }
@@ -90,14 +90,14 @@ export const ProfilesSection = () => {
                     </Typography>
                     <Typography variant="body2" mt={10}>
                       User profiles offer one central location for user data
-                      across all channels and apps, amplifying representation
-                      of their digital identity.
+                      across all channels and apps, amplifying representation of
+                      their digital identity.
                     </Typography>
                     <br />
                     <Typography variant="body2">
-                      The experience Atrium offers in creating user profiles
-                      is innovative in terms of the interest and preferences
-                      of our users and the communities they are a part of.
+                      The experience Atrium offers in creating user profiles is
+                      innovative in terms of the interest and preferences of our
+                      users and the communities they are a part of.
                     </Typography>
                   </Box>
                 }

@@ -1,7 +1,7 @@
 import { Box, Typography, Grid } from '@mui/material'
 
 import WalkAroundGif from '../../assets/gifs/walkaround 1.gif'
-import { palette} from '../../themes/AtriumTheme'
+import { palette } from '../../themes/AtriumTheme'
 
 const ProjectIntegrations = () => {
   return (
