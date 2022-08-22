@@ -10,13 +10,10 @@ export const JoinSection = () => {
         background: palette.info.main,
       }}
     >
-      <Grid container pt={9}>
-        <Grid item lg={6}>
+      <Grid container pt={9} justifyContent="center">
+        <Grid item lg={4}>
           <Box p={5}>
-            <Box
-              p="100px 145px"
-              sx={{ '& *': { color: palette.text.primary } }}
-            >
+            <Box py={25} sx={{ '& *': { color: palette.text.primary } }}>
               <Typography variant="h3">Join our Community</Typography>
               <Box
                 py={6}
@@ -64,9 +61,10 @@ export const JoinSection = () => {
           <Box
             sx={{
               display: 'flex',
-              flexDirection: 'column',
+              // flexDirection: 'column',
               height: '100%',
-              justifyContent: 'end',
+              justifyContent: 'center',
+              width: '100%',
             }}
           >
             <img src={figure} alt="" width="80%" />
