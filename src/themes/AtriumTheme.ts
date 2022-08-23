@@ -25,16 +25,16 @@ const AtriumTheme = createTheme({
         //   border: `1px solid #00ff00`,
         // })
         root: ({ theme }) => ({
+          '& a': {
+            '&:hover': {
+              color: '#FFF',
+            },
+            color: theme.palette.text.primary,
+            textDecoration: 'none',
+          },
           // borderRadius: 0,
           // textTransform: 'capitalize',
           lineHeight: '105%',
-          '& a': {
-            color: theme.palette.text.primary,
-            textDecoration: 'none',
-            '&:hover': {
-              color: '#FFF',
-            }
-          },
         }),
       },
       variants: [
@@ -63,9 +63,9 @@ const AtriumTheme = createTheme({
           props: { variant: 'rounded' },
           style: () => ({
             '&.x-small': {
-              padding: '4px 10px',
               fontSize: '12px',
               lineHeight: '100%',
+              padding: '4px 10px',
             },
             borderRadius: '16px',
             fontFamily: 'Andale Mono Regular',

@@ -1,26 +1,27 @@
+import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt'
 import { Box, Button, Typography, styled, Collapse } from '@mui/material'
 import { useState } from 'react'
-import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
-import { palette } from '../../themes/AtriumTheme';
+
+import { palette } from '../../themes/AtriumTheme'
 
 const BuilderContent = styled(Box)(({ theme }) => ({
   '& > .MuiTypography-root': {
     color: theme.palette.text.primary,
   },
   '&.hover': {
-    background: theme.palette.common.white,
     '& > .MuiTypography-root': {
       color: theme.palette.common.black,
     },
+    background: theme.palette.common.white,
   },
   display: 'flex',
   flexDirection: 'column',
   gap: '16px',
   padding: '24px',
-  transition: 'background 0.5s',  
+  transition: 'background 0.5s',
   // height: '700px',
-})) 
-export interface IBuilder { 
+}))
+export interface IBuilder {
   pfp: string
   title: string
   name: string
@@ -30,7 +31,13 @@ export interface IBuilder {
   discordLink: string
   hover?: boolean
 }
-export const Builder = ({ builder, handleHover }: { builder: IBuilder, handleHover: AnyFunction }) => {
+export const Builder = ({
+  builder,
+  handleHover,
+}: {
+  builder: IBuilder
+  handleHover: AnyFunction
+}) => {
   const [hover, setHover] = useState(false)
 
   const _handleHover = (hover: boolean) => {
@@ -52,7 +59,9 @@ export const Builder = ({ builder, handleHover }: { builder: IBuilder, handleHov
     >
       <img src={builder.pfp} alt="" width="100%" />
       <BuilderContent className={hover ? 'hover' : ''}>
-        <Typography variant="body2" sx={{ textTransform: 'uppercase' }}>{builder.title}</Typography>
+        <Typography variant="body2" sx={{ textTransform: 'uppercase' }}>
+          {builder.title}
+        </Typography>
         <Typography variant="h4">{builder.name}</Typography>
         <Collapse in={hover}>
           <Box display="flex" gap={3}>
@@ -67,24 +76,23 @@ export const Builder = ({ builder, handleHover }: { builder: IBuilder, handleHov
                     color: palette.text.secondary,
                     textTransform: 'capitalize !important',
                   }}
-                >{item}</Button>
+                >
+                  {item}
+                </Button>
               </Box>
             ))}
           </Box>
           <Box mt={4}>
-            <Typography variant="caption" sx={{ fontSize: '16px' }}>{builder.bio}</Typography>
+            <Typography variant="caption" sx={{ fontSize: '16px' }}>
+              {builder.bio}
+            </Typography>
           </Box>
           <Box mt={10} display="flex" gap={4}>
             <Button variant="primary" endIcon={<ArrowRightAltIcon />}>
-              <a href='/#'>
-                twitter
-                
-              </a>
+              <a href="/#">twitter</a>
             </Button>
             <Button variant="primary" endIcon={<ArrowRightAltIcon />}>
-              <a href='/#'>
-                discord
-              </a>
+              <a href="/#">discord</a>
             </Button>
           </Box>
         </Collapse>

@@ -1,4 +1,4 @@
-import { Box, Button, styled } from '@mui/material'
+import { Box, Button } from '@mui/material'
 
 import { palette } from '../themes/AtriumTheme'
 

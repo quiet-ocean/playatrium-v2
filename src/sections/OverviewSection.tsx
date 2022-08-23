@@ -64,7 +64,7 @@ const AnimationString = ({
   )
 }
 export const OverviewSection = () => {
-  const carousel = useRef(null)
+  const carousel = useRef<Carousel>(null)
   const [charClass, setCharClass] = useState('')
 
   useEffect(() => {
@@ -72,6 +72,10 @@ export const OverviewSection = () => {
     setCharClass('show')
   }, [carousel])
 
+  const handleClick = () => {
+    if (carousel.current)
+      carousel.current.moveTo(1)
+  }
   return (
     <Box id="overview-section" height="100%">
       <Grid container justifyContent="center">
@@ -97,7 +101,7 @@ export const OverviewSection = () => {
                     border: `1px solid ${palette.error.main}`,
                     color: palette.error.main,
                   }}
-                  onClick={() => carousel?.current?.moveTo(1)}
+                  onClick={handleClick}
                 >
                   overview
                 </Button>

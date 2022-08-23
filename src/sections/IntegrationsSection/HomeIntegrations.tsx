@@ -11,11 +11,12 @@ import RunningMonkey from '../../assets/gifs/GIF_ASAC_RunDown_v2.gif'
 import { palette } from '../../themes/AtriumTheme'
 
 const HomeIntegrations = () => {
-  const carousel = useRef(null)
+  const carousel = useRef<Carousel>(null)
   const [index, setIndex] = useState<0 | 1>(1)
   const handleNext = () => {
     console.log(carousel)
-    carousel.current?.moveTo(index)
+    if(carousel.current && carousel.current.moveTo)
+      carousel.current.moveTo(index)
     setIndex(index === 0 ? 1 : 0)
   }
   return (
