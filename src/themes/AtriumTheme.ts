@@ -102,7 +102,7 @@ const AtriumTheme = createTheme({
     },
     common: {
       black: '#1A1A1A',
-      white: '#F2F2F2',
+      white: '#FFF',
     },
     error: {
       main: '#D11F00',
