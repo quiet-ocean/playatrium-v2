@@ -86,9 +86,7 @@ const App: React.FC = () => {
                   {/* </Toolbar> */}
                 </AppBar>
               </HideOnScroll>
-                <Box>
-                  <Header />
-                </Box>
+                <Header />
                 <GridBgContainer>
                   <HeroSection playAnimation={animClass === 'bg-animation'} />
                 </GridBgContainer>

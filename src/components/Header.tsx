@@ -20,7 +20,9 @@ export const Header = () => {
       }}
     >
       <Box py="8px">
-        <img src={logoType} alt="" />
+        <a href="/#">
+          <img src={logoType} alt="" />
+        </a>
       </Box>
       <Navbar />
     </Box>
