@@ -79,13 +79,11 @@ const App: React.FC = () => {
           <Root className={`${animClass}`}>
             <SectionContainer className="header" height="100vh !important">
               <Box height="100%" display="flex" flexDirection="column">
-              <HideOnScroll>
-                <AppBar>
-                  {/* <Toolbar> */}
-                  <Header />
-                  {/* </Toolbar> */}
-                </AppBar>
-              </HideOnScroll>
+                <HideOnScroll>
+                  <AppBar>
+                    <Header />
+                  </AppBar>
+                </HideOnScroll>
                 <Header />
                 <GridBgContainer>
                   <HeroSection playAnimation={animClass === 'bg-animation'} />
