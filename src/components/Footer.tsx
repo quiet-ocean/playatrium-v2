@@ -90,10 +90,11 @@ export const Footer = () => {
                     fontSize: '16px',
                     lineHeight: '120%',
                     textAlign: 'center',
+                    textTransform: 'none',
                   }}
                 >
-                  Stay updated for the most important news
-                  <br /> about Atrium through our email.{' '}
+                  Stay updated for the most important 
+                  <br />news about Atrium through our email.{' '}
                 </Typography>
               </Box>
               <Box>

@@ -66,10 +66,9 @@ export const Builder = ({
         <Collapse in={hover}>
           <Box display="flex" gap={3}>
             {builder.tags.map((item: string, key: number) => (
-              <Box>
+              <Box key={key}>
                 <Button
                   className="x-small"
-                  key={key}
                   variant="rounded"
                   sx={{
                     border: `1px solid ${palette.text.secondary}`,

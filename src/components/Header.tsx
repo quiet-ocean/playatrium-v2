@@ -9,18 +9,17 @@ export const Header = () => {
     <Box
       className="header"
       display="flex"
-      justifyContent={`space-between`}
+      // justifyContent={`space-between`}
       p="16px"
       sx={{
         background: palette.common.black,
-        backgroundImage: 'url("../logo-36.png")',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
         borderBottom: `1px solid ${palette.primary.main}`,
       }}
     >
-      <Box py="8px">
-        <img src={logoType} alt="" />
+      <Box py="8px" pl={{ xl: 30, lg: 0, md: 0 }} width="100%">
+        <a href="/#">
+          <img src={logoType} alt="" />
+        </a>
       </Box>
       <Navbar />
     </Box>

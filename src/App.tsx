@@ -1,5 +1,7 @@
-import { Box, ThemeProvider, styled } from '@mui/material'
+import { Box, ThemeProvider, styled, CssBaseline, Slide, AppBar } from '@mui/material'
 import React, { useState, useEffect } from 'react'
+import useScrollTrigger from '@mui/material/useScrollTrigger';
+
 
 import './index.css'
 import './App.css'
@@ -35,55 +37,66 @@ const Root = styled(Box)(({ theme }) => ({
     position: 'relative',
   },
 }))
+
+interface Props {
+  /**
+   * Injected by the documentation to work in an iframe.
+   * You won't need it on your project.
+   */
+  window?: () => Window;
+  children: React.ReactElement;
+}
+function HideOnScroll(props: Props) {
+  const { children, window } = props;
+  // Note that you normally won't need to set the window ref as useScrollTrigger
+  // will default to window.
+  // This is only being set here because the demo is in an iframe.
+  const trigger = useScrollTrigger({
+    target: window ? window() : undefined,
+  });
+  useEffect(() => {
+    console.log(trigger)
+  }, [trigger])
+
+  return (
+    <Slide appear={false} direction="down" in={!trigger}>
+      {children}
+    </Slide>
+  );
+}
+
 const App: React.FC = () => {
+
   const [animClass, setAnimClass] = useState('')
 
   useEffect(() => {
+    document.body.style.overflow = 'hidden'
+    document.body.style.paddingRight = '10px'
     setAnimClass('bg-animation')
+
+    setTimeout(() => {
+      document.body.style.overflow = 'visible'
+      document.body.style.paddingRight = '0px'
+    }, 4000)
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
   }, [])
 
   return (
-    <Box>
+    <React.Fragment >
+      <CssBaseline />
       <ThemeProvider theme={AtriumTheme}>
         <Box sx={{ background: AtriumTheme.palette.common.black }}>
-          {/* <Box
-            className={`${animClass}`}
-            sx={{
-              //   '& > div:not(.header, .update), .grid-bg': {
-              //     '&::before': {
-              //       backgroundImage: `linear-gradient(to right, #A8A8A8 1px, transparent 1px)`,
-              //       backgroundRepeat: 'repeat-x, no-repeat',
-              //       backgroundSize: `${100 / 10}% 100%, cover`,
-              //       content: '""',
-              //       height: '100%',
-              //       left: `50%`,
-              //       position: 'absolute',
-              //       top: 0,
-              //       transition: 'width 1s, left 1s',
-              //       width: `0%`,
-              //     },
-              //     position: 'relative',
-              //   },
-              '&.bg-animation .grid-bg': {
-                '&::before': {
-                  left: `0%`,
-                  width: `100%`,
-                },
-                position: 'relative',
-              },
-              '& > div:not(.header)': {
-                [theme.breakpoints.up('xl')]: {
-                  padding: '0px',
-                },
-                [theme.breakpoints.down('xl')]: {
-                  padding: '0px 20px',
-                }
-              }
-            }}
-          > */}
           <Root className={`${animClass}`}>
             <SectionContainer className="header" height="100vh !important">
               <Box height="100%" display="flex" flexDirection="column">
+                <HideOnScroll>
+                  <AppBar>
+                    <Header />
+                  </AppBar>
+                </HideOnScroll>
                 <Header />
                 <GridBgContainer>
                   <HeroSection playAnimation={animClass === 'bg-animation'} />
@@ -131,7 +144,7 @@ const App: React.FC = () => {
           </Root>
         </Box>
       </ThemeProvider>
-    </Box>
+    </React.Fragment>
   )
 }
 
