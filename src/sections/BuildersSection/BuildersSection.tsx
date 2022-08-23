@@ -78,17 +78,6 @@ export const BuildersSection = () => {
     // ],
   }
 
-  useEffect(() => {
-    console.log(sliderRef)
-    const id = setInterval(() => {
-      if(sliderRef && sliderRef.current) {
-        // sliderRef.current.state.transform += 100
-      }
-    }, 100)
-
-    return () => clearInterval(id)
-  }, [sliderRef])
-
   const handleHover = (hover: boolean) => {
     if (sliderRef.current) {
       if (hover) sliderRef.current.slickPause()

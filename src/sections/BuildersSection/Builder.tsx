@@ -4,17 +4,6 @@ import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import { palette } from '../../themes/AtriumTheme';
 
 const BuilderContent = styled(Box)(({ theme }) => ({
-  // '& > div': {
-  //   height: '0px',
-  //   transition: 'height 1s, opacity 1s',
-  //   border: `1px solid red`,
-  //   opacity: 0,
-  //   '& > *': {
-  //     // display: 'none',
-  //     // opacity: 0,
-  //     // transition: 'opacity 1s',
-  //   }
-  // },
   '& > .MuiTypography-root': {
     color: theme.palette.text.primary,
   },
@@ -23,20 +12,12 @@ const BuilderContent = styled(Box)(({ theme }) => ({
     '& > .MuiTypography-root': {
       color: theme.palette.common.black,
     },
-  //   '& > div': {
-  //     height: '100px',
-  //     opacity: 1,
-  //     // '& > *': {
-  //       // display: 'flex',
-  //       // opacity: 1,
-  //     // }
-  //   },
   },
   display: 'flex',
   flexDirection: 'column',
   gap: '16px',
   padding: '24px',
-  transition: 'background 1s',  
+  transition: 'background 0.5s',  
   // height: '700px',
 })) 
 export interface IBuilder { 
