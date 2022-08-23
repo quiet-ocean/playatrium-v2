@@ -54,9 +54,6 @@ function HideOnScroll(props: Props) {
   const trigger = useScrollTrigger({
     target: window ? window() : undefined,
   });
-  useEffect(() => {
-    console.log(trigger)
-  }, [trigger])
 
   return (
     <Slide appear={false} direction="down" in={!trigger}>
@@ -68,6 +65,7 @@ function HideOnScroll(props: Props) {
 const App: React.FC = () => {
 
   const [animClass, setAnimClass] = useState('')
+  const [enable, setEnable] = useState(false)
 
   useEffect(() => {
     document.body.style.overflow = 'hidden'
@@ -77,6 +75,7 @@ const App: React.FC = () => {
     setTimeout(() => {
       document.body.style.overflow = 'visible'
       document.body.style.paddingRight = '0px'
+      setEnable(true)
     }, 4000)
 
     return () => {
@@ -94,7 +93,9 @@ const App: React.FC = () => {
               <Box height="100%" display="flex" flexDirection="column">
                 <HideOnScroll>
                   <AppBar>
-                    <Header />
+                    <Box pr={ enable ? '0px' : '10px' } sx={{ background: AtriumTheme.palette.common.black }}>
+                      <Header />
+                    </Box>
                   </AppBar>
                 </HideOnScroll>
                 <Header />
