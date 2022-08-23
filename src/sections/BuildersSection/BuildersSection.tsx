@@ -1,4 +1,4 @@
-import { Box } from '@mui/material'
+import { Box, Button } from '@mui/material'
 import { useState, useRef, useEffect } from 'react'
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
@@ -6,6 +6,7 @@ import Slider from "react-slick";
 
 import BuilderImage from '../../assets/images/builder-1.png'
 import { Builder, IBuilder } from './Builder';
+import { palette } from '../../themes/AtriumTheme';
 
 const builders: IBuilder[] = [
   {
@@ -88,15 +89,23 @@ export const BuildersSection = () => {
   }
   return (
     <Box id="team-section" py={25}>
-      <Slider {...settings} ref={sliderRef}>
-        {new Array(10).fill(2).map((_, key: number) => (
-          <Builder
-            key={key}
-            builder={builders[0]}
-            handleHover={handleHover}
-          />
-        ))}
-      </Slider>
+      <Box display="flex" justifyContent="center">
+        <Button variant="rounded" sx={{
+          color: palette.error.main,
+          border: `1px solid ${palette.error.main}`
+        }}>the grid builders</Button>
+      </Box>
+      <Box mt={25}>
+        <Slider {...settings} ref={sliderRef}>
+          {new Array(10).fill(2).map((_, key: number) => (
+            <Builder
+              key={key}
+              builder={builders[0]}
+              handleHover={handleHover}
+            />
+          ))}
+        </Slider>
+      </Box>
     </Box>
   )
 }
