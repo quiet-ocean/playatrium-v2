@@ -13,13 +13,10 @@ export const Header = () => {
       p="16px"
       sx={{
         background: palette.common.black,
-        backgroundImage: 'url("../logo-36.png")',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
         borderBottom: `1px solid ${palette.primary.main}`,
       }}
     >
-      <Box py="8px">
+      <Box py="8px" pl={{ xl: 30, lg: 0, md: 0 }}>
         <a href="/#">
           <img src={logoType} alt="" />
         </a>
