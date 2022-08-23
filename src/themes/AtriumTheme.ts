@@ -24,11 +24,18 @@ const AtriumTheme = createTheme({
         // root: sx({
         //   border: `1px solid #00ff00`,
         // })
-        root: {
+        root: ({ theme }) => ({
+          '& a': {
+            '&:hover': {
+              color: '#FFF',
+            },
+            color: theme.palette.text.primary,
+            textDecoration: 'none',
+          },
           // borderRadius: 0,
           // textTransform: 'capitalize',
           lineHeight: '105%',
-        },
+        }),
       },
       variants: [
         {
@@ -55,6 +62,11 @@ const AtriumTheme = createTheme({
         {
           props: { variant: 'rounded' },
           style: () => ({
+            '&.x-small': {
+              fontSize: '12px',
+              lineHeight: '100%',
+              padding: '4px 10px',
+            },
             borderRadius: '16px',
             fontFamily: 'Andale Mono Regular',
             fontSize: '18px',
@@ -90,7 +102,7 @@ const AtriumTheme = createTheme({
     },
     common: {
       black: '#1A1A1A',
-      white: '#F2F2F2',
+      white: '#FFF',
     },
     error: {
       main: '#D11F00',
@@ -164,6 +176,7 @@ const AtriumTheme = createTheme({
       letterSpacing: '-0.03em',
       lineHeight: '76px',
       textAlign: 'left',
+      textTransform: 'capitalize',
     },
 
     h3: {
@@ -173,6 +186,7 @@ const AtriumTheme = createTheme({
       letterSpacing: '-0.03em',
       lineHeight: '105%',
       textAlign: 'left',
+      textTransform: 'capitalize',
     },
 
     h4: {
@@ -182,6 +196,7 @@ const AtriumTheme = createTheme({
       letterSpacing: '-0.03em',
       lineHeight: '105%',
       textAlign: 'left',
+      textTransform: 'capitalize',
     },
     h5: {
       fontFamily: 'Fractul',
@@ -190,6 +205,7 @@ const AtriumTheme = createTheme({
       letterSpacing: '-0.03em',
       lineHeight: '105%',
       textAlign: 'left',
+      textTransform: 'capitalize',
     },
     // button: {
 
