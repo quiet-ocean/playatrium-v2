@@ -13,6 +13,7 @@ import {
   UpdatesSection,
   OverviewSection,
   ProfilesSection,
+  BuildersSection,
   JoinSection,
 } from './sections'
 import AtriumTheme from './themes/AtriumTheme'
@@ -107,6 +108,11 @@ const App: React.FC = () => {
                 <IntegrationsSection />
               </GridBgContainer>
             </Box>
+            <SectionContainer>
+              <GridBgContainer>
+                <BuildersSection />
+              </GridBgContainer>
+            </SectionContainer>
             <Box
               px={{ lg: 5, xl: 0 }}
               sx={{
