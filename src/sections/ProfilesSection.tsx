@@ -66,7 +66,7 @@ export const ProfilesSection = () => {
             <Box display={{ md: 'block', xs: 'none' }}>
               <TabButtonGroup />
             </Box>
-            <Box mt={24} pr={13}>
+            <Box mt={{ md: 24, xs: 0 }} pr={{ md: 13, xs: 0 }}>
               <MultiSlideAnimationWrapper
                 state={state}
                 child1={
