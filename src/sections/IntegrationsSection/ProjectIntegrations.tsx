@@ -5,7 +5,7 @@ import { palette } from '../../themes/AtriumTheme'
 
 const ProjectIntegrations = () => {
   return (
-    <Box>
+    <Box >
       <Grid container justifyContent="center" columns={{ md: 10, xl: 12 }}>
         <Grid item md={5}>
           <img src={WalkAroundGif} alt="" width="100%" />
@@ -16,7 +16,9 @@ const ProjectIntegrations = () => {
           md={2}
           sx={{ color: palette.text.primary, pt: { md: 50, x: 16 } }}
         >
-          <Typography variant="h3">Project Integrations</Typography>
+          <Typography variant="h3" fontSize={{ md: '48px', xs: '36px' }}>
+            Project Integrations
+          </Typography>
           <Typography variant="body2" mt={6}>
             Atrium gives utility to other projects through integrating their
             artwork, products, and communities into our metaverse platform.

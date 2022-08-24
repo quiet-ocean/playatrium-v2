@@ -1,16 +1,16 @@
 import { Box, Button } from '@mui/material'
 
 import { SectionContainer } from '../../components'
+import { palette } from '../../themes/AtriumTheme'
 
 import EndlessIntegrations from './EndlessIntegrations'
 // import HomeIntegrations from './HomeIntegrations'
 import ProjectIntegrations from './ProjectIntegrations'
-import { palette } from '../../themes/AtriumTheme'
 
 export const IntegrationsSection = () => {
   return (
     <Box id="integrations-section">
-      <Box display="flex" justifyContent="center">
+      <Box display="flex" justifyContent="center" pt={{ md: 25, xs: 16 }}>
         <Button
           variant="rounded"
           sx={{
