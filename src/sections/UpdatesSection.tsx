@@ -153,10 +153,10 @@ export const UpdatesSection = () => {
     speed: 2000,
   }
   return (
-    <Box py={10} id="updates-section">
+    <Box py={{ md: 10, xs: 6 }} id="updates-section">
       <Grid container justifyContent="center">
         <Grid item lg={12} xl={10}>
-          <Box mb={20}>
+          <Box mb={{ md: 12, xs: 6 }}>
             <Button
               variant="rounded"
               sx={{
