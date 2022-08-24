@@ -15,7 +15,7 @@ const pages = ['updates', 'overview', 'integrations', 'profiles', 'team']
 
 const Logo = ({ sx }: { sx?: object }) => {
   return (
-    <Box py={2} pl={{ xl: 30, lg: 0, md: 0 }} width="100%" sx={sx}>
+    <Box py={2} width="100%" sx={sx}>
       <a href="/#">
         <img src={logoType} alt="" />
       </a>
@@ -84,7 +84,7 @@ export const ResponsiveAppBar = () => {
 
   return (
     <AppBar position="static">
-      <Container maxWidth="xl" sx={{ paddingRight: {xl: 30, xs: 6} }} >
+      <Container maxWidth="xl" /*sx={{ paddingRight: {xl: 30, xs: 6} }} */ >
         <Toolbar disableGutters>
           <Logo sx={{
             display: { xs: 'none', md: 'flex' },
@@ -140,19 +140,31 @@ export const ResponsiveAppBar = () => {
             </Box>
           </Box>
           <Box sx={{
-            flexGrow: 1,
             display: { xs: 'none', md: 'flex' },
-            gap: 3,
+            flexGrow: 1,
+            justifyContent: 'space-between',
+            width: '100%',
           }}>
-            {pages.map((item: string, key: number) => (
-              <Box key={key}>
-                <Button variant="primary">
-                  <a href={`#${item}-section`}>{item}</a>
-                </Button>
+            <Box
+              sx={{ width: 36, height: 36 }}
+            >
+              <img src={CrossIcon} alt="" width="100%" height="100%"/>
+            </Box>
+            <Box sx={{
+              display: 'flex',
+              gap: 3,
+              py: 1,
+            }}>
+              {pages.map((item: string, key: number) => (
+                <Box key={key}>
+                  <Button variant="primary">
+                    <a href={`#${item}-section`}>{item}</a>
+                  </Button>
+                </Box>
+              ))}
+              <Box>
+                <JoinButton />
               </Box>
-            ))}
-            <Box>
-              <JoinButton />
             </Box>
           </Box>
         </Toolbar>
