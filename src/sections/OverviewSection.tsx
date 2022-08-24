@@ -1,103 +1,75 @@
-import { Box, Button, Typography, styled, Grid } from '@mui/material'
-import React, { useRef, useEffect, useState } from 'react'
-import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
-import { Carousel } from 'react-responsive-carousel'
+import { Box, Button, Typography, Grid } from '@mui/material'
+import { useRef, useEffect, useState } from 'react'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+import Slider from 'react-slick'
 
 import overviewImage from '../assets/images/overview.png'
 import { palette } from '../themes/AtriumTheme'
 
-const str1: string = 'Atrium is a virtual world where users'
-const str2: string = 'across all Layer-1 networks can '
-const str3: string = 'build,'
-const str4: string = 'own, and monetize their online '
-const str5: string = 'experience'
-const str6: string = 'through an interoperable '
-const str7: string = 'pixel-art metaverse. '
+const text: string =
+  'Atrium is a virtual world where users across all Layer-1 networks can build, own, and monetize their online experience through an interoperable pixel-art metaverse.'
+// const text: string = 'Atrium'
 
-const AnimationCharWrapper = styled('span')(() => ({
-  '&.show': {
-    opacity: 1,
-  },
-  color: 'inherit',
-  display: 'inline',
-  opacity: 0,
-  transition: 'opacity 0.05s',
-}))
-const AnimationChar = ({
-  children,
-  charClass,
-  index,
-}: {
-  children: React.ReactNode
-  charClass: string
-  index: number
-}) => {
-  // return <AnimationCharWrapper>{children}</AnimationCharWrapper>
-  return (
-    <AnimationCharWrapper
-      className={charClass}
-      sx={{
-        transitionDelay: `${0.05 * index}s`,
-      }}
-    >
-      {children}
-    </AnimationCharWrapper>
-  )
-}
-const AnimationString = ({
-  str,
-  delay,
-  charClass,
-}: {
-  str: string
-  delay: number
-  charClass: string
-}) => {
-  return (
-    <>
-      {str.split('').map((item: string, key: number) => (
-        <AnimationChar charClass={charClass} key={key} index={delay + key}>
-          {item}
-        </AnimationChar>
-      ))}
-    </>
-  )
-}
 export const OverviewSection = () => {
-  const carousel = useRef<Carousel>(null)
-  const [charClass, setCharClass] = useState('')
+  const length = text.length
+  const sliderRef = useRef<Slider>(null)
+  const sectionRef = useRef<HTMLDivElement>(null)
+
+  const [index, setIndex] = useState(0)
+  const [disableScroll, setDisableScroll] = useState(true)
 
   useEffect(() => {
-    // console.log(carousel)
-    setCharClass('show')
-  }, [carousel])
+    if (!sectionRef.current) {
+      return
+    }
+    sectionRef.current.addEventListener('wheel', handleWheel, {
+      passive: false,
+    })
 
-  const handleClick = () => {
-    if (carousel.current)
-      carousel.current.moveTo(1)
+    return () => sectionRef.current?.removeEventListener('wheel', handleWheel)
+  }, [sectionRef, disableScroll])
+
+  const handleWheel = (event: WheelEvent) => {
+    if (event.deltaY > 0 && disableScroll) {
+      event.preventDefault()
+      setIndex((prevIndex) => {
+        if (prevIndex < length) return prevIndex + 1
+        else {
+          handleClick()
+          return length
+        }
+      })
+    }
   }
-  const handleScroll = () => {
-    console.log('scroll')
+  const handleClick = () => {
+    if (sliderRef.current) sliderRef.current.slickNext()
+    setDisableScroll(false)
+  }
+  const settings = {
+    arrows: false,
+    infinite: false,
+    slidesToScroll: 1,
+    slidesToShow: 1,
+    vertical: true,
+    verticalSwiping: true,
   }
   return (
-    <Box id="overview-section" height="100%">
+    <Box id="overview-section" height="100%" ref={sectionRef}>
       <Grid container justifyContent="center">
-        <Grid item lg={12} xl={10}>
-          <Carousel
-            ref={carousel}
-            axis="vertical"
-            showThumbs={false}
-            showArrows={false}
-            showIndicators={false}
-            transitionTime={1000}
-            showStatus={false}
-          >
-            <Box
-              py={20}
-              onFocus={() => setCharClass('show')}
-              id="overview-section"
-              onScroll={() => handleScroll}
-            >
+        <Grid
+          item
+          lg={12}
+          xl={10}
+          sx={{
+            '& li.slide': {
+              // height: '100%',
+              '& li.slide > div': { height: '100%' },
+            },
+          }}
+        >
+          <Slider ref={sliderRef} {...settings}>
+            <Box py={20} id="overview-section">
               <Box textAlign="center">
                 <Button
                   variant="rounded"
@@ -119,75 +91,31 @@ export const OverviewSection = () => {
                   },
                 }}
               >
-                <Typography variant="h2">
-                  <AnimationString charClass={charClass} str={str1} delay={0} />
-                </Typography>
-                <Typography variant="h2">
-                  <AnimationString
-                    charClass={charClass}
-                    str={str2}
-                    delay={str1.length}
-                  />
-
-                  <span style={{ color: palette.error.main }}>
-                    <AnimationString
-                      charClass={charClass}
-                      str={str3}
-                      delay={str1.length + str2.length}
-                    />
-                  </span>
-                </Typography>
-                <Typography variant="h2">
-                  <span style={{ color: palette.error.main }}>
-                    <AnimationString
-                      charClass={charClass}
-                      str={str4}
-                      delay={str1.length + str2.length + str3.length}
-                    />
-                  </span>
-                </Typography>
-                <Typography variant="h2">
-                  <span style={{ color: palette.error.main }}>
-                    <AnimationString
-                      charClass={charClass}
-                      str={str5}
-                      delay={
-                        str1.length + str2.length + str3.length + str4.length
-                      }
-                    />
-                  </span>{' '}
-                  <AnimationString
-                    charClass={charClass}
-                    str={str6}
-                    delay={
-                      str1.length +
-                      str2.length +
-                      str3.length +
-                      str4.length +
-                      str5.length
-                    }
-                  />
-                </Typography>
-                <Typography variant="h2">
-                  <AnimationString
-                    charClass={charClass}
-                    str={str7}
-                    delay={
-                      str1.length +
-                      str2.length +
-                      str3.length +
-                      str4.length +
-                      str5.length +
-                      str6.length
-                    }
-                  />
+                <Typography
+                  variant="h2"
+                  sx={{ margin: 'auto', maxWidth: 1300 }}
+                >
+                  {text.split('').map((char: string, key: number) => (
+                    <span
+                      key={key}
+                      style={{ visibility: index > key ? 'visible' : 'hidden' }}
+                    >
+                      {char}
+                    </span>
+                  ))}
                 </Typography>
               </Box>
             </Box>
             <Box py={20}>
-              <img src={overviewImage} alt="" width="100%" height="100%" />
+              <img
+                src={overviewImage}
+                alt=""
+                width="100%"
+                height="100%"
+                style={{ borderRadius: '12px' }}
+              />
             </Box>
-          </Carousel>
+          </Slider>
         </Grid>
       </Grid>
     </Box>
