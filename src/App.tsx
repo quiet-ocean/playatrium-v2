@@ -92,11 +92,11 @@ const App: React.FC = () => {
             <SectionContainer className="header" height="100vh !important">
               <Box height="100%" display="flex" flexDirection="column">
                 <HideOnScroll>
-                  <Box>
+                  <AppBar sx={{ paddingRight: {xl: 30, xs: 6} }}>
                     {/* <Box pr={ enable ? '0px' : '10px' } sx={{ background: AtriumTheme.palette.common.black }}> */}
                       <ResponsiveAppBar />
                     {/* </Box> */}
-                  </Box>
+                  </AppBar>
                 </HideOnScroll>
                 <Box mt="77px" sx={{ height: '100%', width: '100%' }}>
                   <GridBgContainer>
