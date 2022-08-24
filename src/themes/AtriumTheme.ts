@@ -92,6 +92,19 @@ const AtriumTheme = createTheme({
             color: theme.palette.info.main,
           }),
         },
+        {
+          props: { color: 'warning' },
+          style: ({ theme }) => ({
+            '&:hover, &.active': {
+              background: theme.palette.text.secondary,
+              border: `1px solid ${theme.palette.warning.main} !important`,
+              color: theme.palette.warning.main,
+            },
+            background: theme.palette.warning.main,
+            border: `1px solid transparent`,
+            color: theme.palette.text.secondary,
+          }),
+        },
       ],
     },
   },
