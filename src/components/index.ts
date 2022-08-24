@@ -1,4 +1,3 @@
-export * from './DesktopAppBar'
 export * from './Footer'
 export * from './MultiSlideAnimationWrapper'
 export * from './SectionContainer'
