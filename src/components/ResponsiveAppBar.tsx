@@ -139,17 +139,20 @@ export const ResponsiveAppBar = () => {
               <JoinButton />
             </Box>
           </Box>
+          <Box width="100%" display={{ xs: 'none', md: 'flex' }} justifyContent="center">
+            <Box
+              sx={{ width: 36, height: 36 }}
+            >
+              <img src={CrossIcon} alt="" width="100%" height="100%"/>
+            </Box>
+          </Box>
           <Box sx={{
             display: { xs: 'none', md: 'flex' },
             flexGrow: 1,
             justifyContent: 'space-between',
             width: '100%',
           }}>
-            <Box
-              sx={{ width: 36, height: 36 }}
-            >
-              <img src={CrossIcon} alt="" width="100%" height="100%"/>
-            </Box>
+            
             <Box sx={{
               display: 'flex',
               gap: 3,
