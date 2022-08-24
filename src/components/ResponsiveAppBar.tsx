@@ -41,6 +41,31 @@ const JoinButton = () => {
     </Button>
   )
 }
+const menuStyle = {
+  '& > .MuiPaper-root': {
+    display: { xs: 'block', md: 'none' },
+    width: '100%',
+    height: '100%',
+    background: 'transparent',
+    '& li': {
+      padding: 6,
+      borderTop: `1px solid ${palette.background.default}`,
+    },
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      height: '100%',
+      width: '100%',
+      background: 'rgba(26, 26, 26, 0.75)',
+      /* Bg Blur Dark */
+  
+      backdropFilter: 'blur(20px)',
+    }
+  },
+}
+
 export const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
@@ -60,34 +85,6 @@ export const ResponsiveAppBar = () => {
     setAnchorElUser(null);
   };
 
-  const NavMenu = () => {
-    return (
-      <Menu
-        id="menu-appbar"
-        anchorEl={anchorElNav}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
-        }}
-        keepMounted
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'left',
-        }}
-        open={Boolean(anchorElNav)}
-        onClose={handleCloseNavMenu}
-        sx={{
-          display: { xs: 'block', md: 'none' },
-        }}
-      >
-        {pages.map((page) => (
-          <MenuItem key={page} onClick={handleCloseNavMenu}>
-            <Typography textAlign="center">{page}</Typography>
-          </MenuItem>
-        ))}
-      </Menu>
-    )
-  }
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -101,7 +98,32 @@ export const ResponsiveAppBar = () => {
             width: '100%',
           }}>
             <Logo />
-            <NavMenu />
+            {/* <NavMenu /> */}
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={menuStyle}
+            >
+              <Box display="flex" justifyContent="center" pt={5} pb={10}>
+                <img src={CrossIcon} alt="" width={36} height={36} />
+              </Box>
+              {pages.map((page) => (
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Typography variant="h4" fontFamily={'Fractul Alt'} textAlign="center">{page}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
           </Box>
           <Box
             sx={{
