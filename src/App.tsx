@@ -7,7 +7,7 @@ import './index.css'
 import './App.css'
 import './fonts/andale/style.css'
 import './fonts/fractul/stylesheet.css'
-import { ResponsiveAppBar, DesktopAppBar, Footer, SectionContainer, GridBgContainer } from './components'
+import { ResponsiveAppBar, Footer, SectionContainer, GridBgContainer } from './components'
 // import useInterval from './hooks/useInterval'
 import {
   HeroSection,
@@ -92,7 +92,7 @@ const App: React.FC = () => {
             <SectionContainer className="header" height="100vh !important">
               <Box height="100%" display="flex" flexDirection="column">
                 <HideOnScroll>
-                  <AppBar sx={{ paddingRight: {xl: 30, xs: 6} }}>
+                  <AppBar>
                     {/* <Box pr={ enable ? '0px' : '10px' } sx={{ background: AtriumTheme.palette.common.black }}> */}
                       <ResponsiveAppBar />
                     {/* </Box> */}

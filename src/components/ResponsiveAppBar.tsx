@@ -2,16 +2,11 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import logoType from '../assets/images/logo-type.png'
 import { palette } from '../themes/AtriumTheme'
 import CrossIcon from '../assets/images/logo-36.png'
@@ -47,6 +42,8 @@ const menuStyle = {
     width: '100%',
     height: '100%',
     background: 'transparent',
+    left: '0px !important',
+    right: '0px !important',
     '& li': {
       padding: 6,
       borderTop: `1px solid ${palette.background.default}`,
@@ -87,7 +84,7 @@ export const ResponsiveAppBar = () => {
 
   return (
     <AppBar position="static">
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" /*sx={{ paddingRight: {xl: 30, xs: 6} }}*/ >
         <Toolbar disableGutters>
           <Logo sx={{
             display: { xs: 'none', md: 'flex' },
@@ -115,7 +112,7 @@ export const ResponsiveAppBar = () => {
               onClose={handleCloseNavMenu}
               sx={menuStyle}
             >
-              <Box display="flex" justifyContent="center" pt={5} pb={10}>
+              <Box display="flex" justifyContent="center" pt={2} pb={10}>
                 <img src={CrossIcon} alt="" width={36} height={36} />
               </Box>
               {pages.map((page) => (
