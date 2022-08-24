@@ -69,12 +69,12 @@ const App: React.FC = () => {
 
   useEffect(() => {
     document.body.style.overflow = 'hidden'
-    document.body.style.paddingRight = '10px'
+    // document.body.style.paddingRight = '10px'
     setAnimClass('bg-animation')
 
     setTimeout(() => {
       document.body.style.overflow = 'visible'
-      document.body.style.paddingRight = '0px'
+      // document.body.style.paddingRight = '0px'
       setEnable(true)
     }, 4000)
 
