@@ -50,35 +50,35 @@ export const BuildersSection = () => {
     dots: false,
     infinite: true,
     pauseOnHover: true,
+    responsive: [
+      // {
+      //   breakpoint: 1024,
+      //   settings: {
+      //     slidesToShow: 3,
+      //     slidesToScroll: 3,
+      //     infinite: true,
+      //     dots: true
+      //   }
+      // },
+      {
+        breakpoint: 900,
+        settings: {
+          initialSlide: 3,
+          slidesToScroll: 1,
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToScroll: 1,
+          slidesToShow: 1,
+        },
+      },
+    ],
     slidesToScroll: 1,
     slidesToShow: 5,
     speed: 2000,
-    // responsive: [
-    //   {
-    //     breakpoint: 1024,
-    //     settings: {
-    //       slidesToShow: 3,
-    //       slidesToScroll: 3,
-    //       infinite: true,
-    //       dots: true
-    //     }
-    //   },
-    //   {
-    //     breakpoint: 600,
-    //     settings: {
-    //       slidesToShow: 2,
-    //       slidesToScroll: 2,
-    //       initialSlide: 2
-    //     }
-    //   },
-    //   {
-    //     breakpoint: 480,
-    //     settings: {
-    //       slidesToShow: 1,
-    //       slidesToScroll: 1
-    //     }
-    //   }
-    // ],
   }
 
   const handleHover = (hover: boolean) => {
@@ -89,7 +89,7 @@ export const BuildersSection = () => {
     }
   }
   return (
-    <Box id="team-section" py={25}>
+    <Box id="team-section" py={{ md: 25, xs: 16 }}>
       <Box display="flex" justifyContent="center">
         <Button
           variant="rounded"
@@ -101,7 +101,7 @@ export const BuildersSection = () => {
           the grid builders
         </Button>
       </Box>
-      <Box mt={25}>
+      <Box mt={{ md: 25, xs: 16 }}>
         <Slider {...settings} ref={sliderRef}>
           {new Array(10).fill(2).map((_, key: number) => (
             <Builder

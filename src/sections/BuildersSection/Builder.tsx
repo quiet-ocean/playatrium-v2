@@ -17,8 +17,13 @@ const BuilderContent = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   gap: '16px',
-  padding: '24px',
   transition: 'background 0.5s',
+  [theme.breakpoints.up('md')]: {
+    padding: '24px',
+  },
+  [theme.breakpoints.down('md')]: {
+    padding: '16px',
+  },
   // height: '700px',
 }))
 export interface IBuilder {
