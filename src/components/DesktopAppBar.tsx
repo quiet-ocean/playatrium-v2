@@ -4,7 +4,7 @@ import logoType from '../assets/images/logo-type.png'
 import { palette } from '../themes/AtriumTheme'
 
 import { Navbar } from './Navbar'
-export const Header = () => {
+export const DesktopAppBar = () => {
   return (
     <Box
       className="header"

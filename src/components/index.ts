@@ -1,5 +1,6 @@
-export * from './Header'
+export * from './DesktopAppBar'
 export * from './Footer'
 export * from './MultiSlideAnimationWrapper'
 export * from './SectionContainer'
 export * from './GridBgContainer'
+export * from './ResponsiveAppBar'

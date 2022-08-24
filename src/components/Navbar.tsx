@@ -3,6 +3,7 @@ import { Box, Button } from '@mui/material'
 import { palette } from '../themes/AtriumTheme'
 
 import CrossIcon from '../assets/images/logo-36.png'
+import { ResponsiveMenuContainer } from './MobileAppBar'
 
 const items = ['updates', 'overview', 'integrations', 'profiles', 'team']
 export const Navbar = () => {
@@ -14,13 +15,16 @@ export const Navbar = () => {
         </a>
       </Box>
       <Box display="flex" gap={`12px`}>
-        {items.map((item: string, key: number) => (
-          <Box key={key}>
-            <Button variant="primary">
-              <a href={`#${item}-section`}>{item}</a>
-            </Button>
-          </Box>
-        ))}
+        <ResponsiveMenuContainer>
+          {items.map((item: string, key: number) => (
+            <Box key={key}>
+              <Button variant="primary">
+                <a href={`#${item}-section`}>{item}</a>
+              </Button>
+            </Box>
+          ))}
+        </ResponsiveMenuContainer>
+        
         <Box>
           <Button
             variant="primary"
