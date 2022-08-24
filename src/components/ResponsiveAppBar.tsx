@@ -10,6 +10,11 @@ import MenuItem from '@mui/material/MenuItem';
 import logoType from '../assets/images/logo-type.png'
 import { palette } from '../themes/AtriumTheme'
 import CrossIcon from '../assets/images/logo-36.png'
+import IconButton from '@mui/material/IconButton'
+
+import DiscordIcon from '../assets/images/discord-icon.png'
+import TwitterIcon from '../assets/images/twitter-icon.png'
+import YoutubeIcon from '../assets/images/youtube-icon.png'
 
 const pages = ['updates', 'overview', 'integrations', 'profiles', 'team']
 
@@ -46,7 +51,7 @@ const menuStyle = {
     right: '0px !important',
     '& li': {
       padding: 6,
-      borderTop: `1px solid ${palette.background.default}`,
+      borderTop: `1px solid rgba(242, 242, 242, 0.2)`,
     },
     '&::before': {
       content: '""',
@@ -120,6 +125,23 @@ export const ResponsiveAppBar = () => {
                   <Typography variant="h4" fontFamily={'Fractul Alt'} textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
+              <Box display="flex" justifyContent="center" pt={10} gap={12} borderTop={`1px solid rgba(242, 242, 242, 0.2)`}>
+                <IconButton>
+                  <a href="/#">
+                    <img src={DiscordIcon} alt="" />
+                  </a>
+                </IconButton>
+                <IconButton>
+                  <a href="/#">
+                    <img src={TwitterIcon} alt="" />
+                  </a>
+                </IconButton>
+                <IconButton>
+                  <a href="/#">
+                    <img src={YoutubeIcon} alt="" />
+                  </a>
+                </IconButton>
+              </Box>
             </Menu>
           </Box>
           <Box
