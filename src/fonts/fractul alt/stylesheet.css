@@ -1,0 +1,216 @@
+@font-face {
+    font-family: 'Fractul Alt';
+    src: url('FractulAlt-BlackItalic.eot');
+    src: local('Fractul Alt Black Italic'), local('FractulAlt-BlackItalic'),
+        url('FractulAlt-BlackItalic.eot?#iefix') format('embedded-opentype'),
+        url('FractulAlt-BlackItalic.woff2') format('woff2'),
+        url('FractulAlt-BlackItalic.woff') format('woff'),
+        url('FractulAlt-BlackItalic.ttf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Fractul Alt';
+    src: url('FractulAlt-Italic.eot');
+    src: local('Fractul Alt Italic'), local('FractulAlt-Italic'),
+        url('FractulAlt-Italic.eot?#iefix') format('embedded-opentype'),
+        url('FractulAlt-Italic.woff2') format('woff2'),
+        url('FractulAlt-Italic.woff') format('woff'),
+        url('FractulAlt-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Fractul Alt';
+    src: url('FractulAlt-Regular.eot');
+    src: local('Fractul Alt Regular'), local('FractulAlt-Regular'),
+        url('FractulAlt-Regular.eot?#iefix') format('embedded-opentype'),
+        url('FractulAlt-Regular.woff2') format('woff2'),
+        url('FractulAlt-Regular.woff') format('woff'),
+        url('FractulAlt-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Fractul Alt';
+    src: url('FractulAlt-SemiBoldItalic.eot');
+    src: local('Fractul Alt SemiBold Italic'), local('FractulAlt-SemiBoldItalic'),
+        url('FractulAlt-SemiBoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('FractulAlt-SemiBoldItalic.woff2') format('woff2'),
+        url('FractulAlt-SemiBoldItalic.woff') format('woff'),
+        url('FractulAlt-SemiBoldItalic.ttf') format('truetype');
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Fractul Alt Hairline';
+    src: url('FractulAlt-HairlineItalic.eot');
+    src: local('Fractul Alt Hairline Italic'), local('FractulAlt-HairlineItalic'),
+        url('FractulAlt-HairlineItalic.eot?#iefix') format('embedded-opentype'),
+        url('FractulAlt-HairlineItalic.woff2') format('woff2'),
+        url('FractulAlt-HairlineItalic.woff') format('woff'),
+        url('FractulAlt-HairlineItalic.ttf') format('truetype');
+    font-weight: 200;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Fractul Alt';
+    src: url('FractulAlt-ExtraBoldItalic.eot');
+    src: local('Fractul Alt ExtraBold Italic'), local('FractulAlt-ExtraBoldItalic'),
+        url('FractulAlt-ExtraBoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('FractulAlt-ExtraBoldItalic.woff2') format('woff2'),
+        url('FractulAlt-ExtraBoldItalic.woff') format('woff'),
+        url('FractulAlt-ExtraBoldItalic.ttf') format('truetype');
+    font-weight: 800;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Fractul Alt';
+    src: url('FractulAlt-Light.eot');
+    src: local('Fractul Alt Light'), local('FractulAlt-Light'),
+        url('FractulAlt-Light.eot?#iefix') format('embedded-opentype'),
+        url('FractulAlt-Light.woff2') format('woff2'),
+        url('FractulAlt-Light.woff') format('woff'),
+        url('FractulAlt-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Fractul Alt';
+    src: url('FractulAlt-Thin.eot');
+    src: local('Fractul Alt Thin'), local('FractulAlt-Thin'),
+        url('FractulAlt-Thin.eot?#iefix') format('embedded-opentype'),
+        url('FractulAlt-Thin.woff2') format('woff2'),
+        url('FractulAlt-Thin.woff') format('woff'),
+        url('FractulAlt-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Fractul Alt';
+    src: url('FractulAlt-SemiBold.eot');
+    src: local('Fractul Alt SemiBold'), local('FractulAlt-SemiBold'),
+        url('FractulAlt-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('FractulAlt-SemiBold.woff2') format('woff2'),
+        url('FractulAlt-SemiBold.woff') format('woff'),
+        url('FractulAlt-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Fractul Alt';
+    src: url('FractulAlt-Black.eot');
+    src: local('Fractul Alt Black'), local('FractulAlt-Black'),
+        url('FractulAlt-Black.eot?#iefix') format('embedded-opentype'),
+        url('FractulAlt-Black.woff2') format('woff2'),
+        url('FractulAlt-Black.woff') format('woff'),
+        url('FractulAlt-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Fractul Alt';
+    src: url('FractulAlt-BoldItalic.eot');
+    src: local('Fractul Alt Bold Italic'), local('FractulAlt-BoldItalic'),
+        url('FractulAlt-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('FractulAlt-BoldItalic.woff2') format('woff2'),
+        url('FractulAlt-BoldItalic.woff') format('woff'),
+        url('FractulAlt-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Fractul Alt';
+    src: url('FractulAlt-ExtraBold.eot');
+    src: local('Fractul Alt ExtraBold'), local('FractulAlt-ExtraBold'),
+        url('FractulAlt-ExtraBold.eot?#iefix') format('embedded-opentype'),
+        url('FractulAlt-ExtraBold.woff2') format('woff2'),
+        url('FractulAlt-ExtraBold.woff') format('woff'),
+        url('FractulAlt-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Fractul Alt';
+    src: url('FractulAlt-ThinItalic.eot');
+    src: local('Fractul Alt Thin Italic'), local('FractulAlt-ThinItalic'),
+        url('FractulAlt-ThinItalic.eot?#iefix') format('embedded-opentype'),
+        url('FractulAlt-ThinItalic.woff2') format('woff2'),
+        url('FractulAlt-ThinItalic.woff') format('woff'),
+        url('FractulAlt-ThinItalic.ttf') format('truetype');
+    font-weight: 100;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Fractul Alt';
+    src: url('FractulAlt-Medium.eot');
+    src: local('Fractul Alt Medium'), local('FractulAlt-Medium'),
+        url('FractulAlt-Medium.eot?#iefix') format('embedded-opentype'),
+        url('FractulAlt-Medium.woff2') format('woff2'),
+        url('FractulAlt-Medium.woff') format('woff'),
+        url('FractulAlt-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Fractul Alt';
+    src: url('FractulAlt-LightItalic.eot');
+    src: local('Fractul Alt Light Italic'), local('FractulAlt-LightItalic'),
+        url('FractulAlt-LightItalic.eot?#iefix') format('embedded-opentype'),
+        url('FractulAlt-LightItalic.woff2') format('woff2'),
+        url('FractulAlt-LightItalic.woff') format('woff'),
+        url('FractulAlt-LightItalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Fractul Alt';
+    src: url('FractulAlt-Bold.eot');
+    src: local('Fractul Alt Bold'), local('FractulAlt-Bold'),
+        url('FractulAlt-Bold.eot?#iefix') format('embedded-opentype'),
+        url('FractulAlt-Bold.woff2') format('woff2'),
+        url('FractulAlt-Bold.woff') format('woff'),
+        url('FractulAlt-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Fractul Alt Hairline';
+    src: url('FractulAlt-Hairline.eot');
+    src: local('Fractul Alt Hairline'), local('FractulAlt-Hairline'),
+        url('FractulAlt-Hairline.eot?#iefix') format('embedded-opentype'),
+        url('FractulAlt-Hairline.woff2') format('woff2'),
+        url('FractulAlt-Hairline.woff') format('woff'),
+        url('FractulAlt-Hairline.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Fractul Alt';
+    src: url('FractulAlt-MediumItalic.eot');
+    src: local('Fractul Alt Medium Italic'), local('FractulAlt-MediumItalic'),
+        url('FractulAlt-MediumItalic.eot?#iefix') format('embedded-opentype'),
+        url('FractulAlt-MediumItalic.woff2') format('woff2'),
+        url('FractulAlt-MediumItalic.woff') format('woff'),
+        url('FractulAlt-MediumItalic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+}
+

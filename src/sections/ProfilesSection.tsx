@@ -8,11 +8,45 @@ import { palette } from '../themes/AtriumTheme'
 export const ProfilesSection = () => {
   const [state, setState] = useState(true)
 
+  const TabButtonGroup = () => (
+    <ButtonGroup
+      variant="contained"
+      aria-label="outlined primary button group"
+      sx={{
+        width: '100%',
+      }}
+    >
+      <Button
+        variant="primary"
+        className={`medium ${state ? 'active' : ''}`}
+        color="info"
+        sx={{
+          borderRight: '0px !important',
+          width: '100%',
+        }}
+        onClick={() => setState(true)}
+      >
+        personal profile
+      </Button>
+      <Button
+        variant="primary"
+        className={`medium ${!state ? 'active' : ''}`}
+        color="info"
+        sx={{
+          borderLeft: '0px !important',
+          width: '100%',
+        }}
+        onClick={() => setState(false)}
+      >
+        community hub
+      </Button>
+    </ButtonGroup>
+  )
   return (
-    <Box py={25} id="profiles-section">
+    <Box py={{ md: 25, xs: 16 }} id="profiles-section">
       <Grid container justifyContent="center" columns={{ lg: 10, xl: 12 }}>
-        <Grid item xl={3} lg={3}>
-          <Box>
+        <Grid item xs={12} width="100%">
+          <Box width="100%">
             <Button
               variant="rounded"
               sx={{
@@ -23,40 +57,16 @@ export const ProfilesSection = () => {
               profiles
             </Button>
           </Box>
-          <Box py={25} pr={10}>
-            <ButtonGroup
-              variant="contained"
-              aria-label="outlined primary button group"
-              sx={{
-                width: '100%',
-              }}
-            >
-              <Button
-                variant="primary"
-                className={`medium ${state ? 'active' : ''}`}
-                color="info"
-                sx={{
-                  borderRight: '0px !important',
-                  width: '100%',
-                }}
-                onClick={() => setState(true)}
-              >
-                personal profile
-              </Button>
-              <Button
-                variant="primary"
-                className={`medium ${!state ? 'active' : ''}`}
-                color="info"
-                sx={{
-                  borderLeft: '0px !important',
-                  width: '100%',
-                }}
-                onClick={() => setState(false)}
-              >
-                community hub
-              </Button>
-            </ButtonGroup>
-            <Box mt={24} pr={13}>
+          <Box display={{ md: 'none', xs: 'block' }} pt={16}>
+            <TabButtonGroup />
+          </Box>
+        </Grid>
+        <Grid item xl={3} lg={3} sx={{ order: { md: 1, xs: 2 } }}>
+          <Box py={{ md: 25, xs: 16 }} pr={{ md: 10, xs: 0 }}>
+            <Box display={{ md: 'block', xs: 'none' }}>
+              <TabButtonGroup />
+            </Box>
+            <Box mt={{ md: 24, xs: 0 }} pr={{ md: 13, xs: 0 }}>
               <MultiSlideAnimationWrapper
                 state={state}
                 child1={
@@ -105,7 +115,13 @@ export const ProfilesSection = () => {
             </Box>
           </Box>
         </Grid>
-        <Grid item xl={7} lg={7} pt={25}>
+        <Grid
+          item
+          xl={7}
+          lg={7}
+          pt={{ md: 25, xs: 16 }}
+          sx={{ order: { md: 2, xs: 1 } }}
+        >
           <MultiSlideAnimationWrapper
             child1={<img src={profilePreviewImage} alt="" width="100%" />}
             child2={<img src={profilePreviewImage} alt="" width="100%" />}

@@ -48,7 +48,7 @@ const AtriumTheme = createTheme({
             background: theme.palette.background.paper,
             borderRadius: 0,
             color: theme.palette.text.primary,
-            fontFamily: 'Fractul',
+            fontFamily: 'Fractul Alt',
             fontSize: '16px',
             fontWeight: 600,
             padding: '6px 8px',
@@ -90,6 +90,19 @@ const AtriumTheme = createTheme({
             background: theme.palette.text.primary,
             border: `1px solid ${theme.palette.info.main}`,
             color: theme.palette.info.main,
+          }),
+        },
+        {
+          props: { color: 'warning' },
+          style: ({ theme }) => ({
+            '&:hover, &.active': {
+              background: theme.palette.text.secondary,
+              border: `1px solid ${theme.palette.warning.main} !important`,
+              color: theme.palette.warning.main,
+            },
+            background: theme.palette.warning.main,
+            border: `1px solid transparent`,
+            color: theme.palette.text.secondary,
           }),
         },
       ],
@@ -170,7 +183,7 @@ const AtriumTheme = createTheme({
     // },
     h2: {
       //styleName: Desktop/H2;
-      fontFamily: 'Fractul',
+      fontFamily: 'Fractul Alt',
       fontSize: '72px',
       fontWeight: 600,
       letterSpacing: '-0.03em',
@@ -180,7 +193,7 @@ const AtriumTheme = createTheme({
     },
 
     h3: {
-      fontFamily: 'Fractul',
+      fontFamily: 'Fractul Alt',
       fontSize: '48px',
       fontWeight: 600,
       letterSpacing: '-0.03em',
@@ -190,7 +203,7 @@ const AtriumTheme = createTheme({
     },
 
     h4: {
-      fontFamily: 'Fractul',
+      fontFamily: 'Fractul Alt',
       fontSize: '36px',
       fontWeight: 600,
       letterSpacing: '-0.03em',
@@ -199,7 +212,7 @@ const AtriumTheme = createTheme({
       textTransform: 'capitalize',
     },
     h5: {
-      fontFamily: 'Fractul',
+      fontFamily: 'Fractul Alt',
       fontSize: '24px',
       fontWeight: 600,
       letterSpacing: '-0.03em',

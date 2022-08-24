@@ -5,14 +5,22 @@ import { palette } from '../../themes/AtriumTheme'
 
 const ProjectIntegrations = () => {
   return (
-    <Box>
-      <Grid container justifyContent="center" columns={{ lg: 10, xl: 12 }}>
-        <Grid item lg={5}>
-          <img src={EndlessGif} alt="" width="100%" />
+    <Box py={{ xs: 16 }}>
+      <Grid container justifyContent="center" columns={{ md: 10, xl: 12 }}>
+        <Grid item md={5}>
+          <Box py={16}>
+            <img src={EndlessGif} alt="" width="100%" />
+          </Box>
         </Grid>
-        <Grid item lg={1} />
-        <Grid item lg={2} sx={{ color: palette.text.primary, pt: 50 }}>
-          <Typography variant="h3">Endless Integrations</Typography>
+        <Grid item md={1} />
+        <Grid
+          item
+          md={2}
+          sx={{ color: palette.text.primary, pt: { md: 50, xs: 16 } }}
+        >
+          <Typography variant="h3" fontSize={{ md: '48px', xs: '36px' }}>
+            Endless Integrations
+          </Typography>
           <Typography variant="body2" mt={6}>
             We’ve started with ASAC, and we are looking to integrate our next 50
             projects. If you want a central hub inside Atrium, submit your

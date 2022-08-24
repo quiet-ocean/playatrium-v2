@@ -7,8 +7,11 @@ export const JoinSection = () => {
   return (
     <Grid container pt={9} justifyContent="center" columns={{ lg: 10, xl: 12 }}>
       <Grid item lg={4}>
-        <Box p={5}>
-          <Box py={25} sx={{ '& *': { color: palette.text.primary } }}>
+        <Box p={{ md: 5, xs: 0 }}>
+          <Box
+            py={{ md: 25, xs: 16 }}
+            sx={{ '& *': { color: palette.text.primary } }}
+          >
             <Typography variant="h3">Join our Community</Typography>
             <Box
               py={6}
@@ -39,11 +42,11 @@ export const JoinSection = () => {
             <Box py={4}>
               <Button
                 variant="primary"
+                color="warning"
                 sx={{
-                  background: palette.warning.main,
-                  color: palette.text.secondary,
                   fontSize: '24px',
                   padding: '16px 24px',
+                  width: { md: 'auto', xs: '100%' },
                 }}
               >
                 join discord
