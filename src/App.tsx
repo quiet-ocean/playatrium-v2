@@ -7,7 +7,7 @@ import './index.css'
 import './App.css'
 import './fonts/andale/style.css'
 import './fonts/fractul/stylesheet.css'
-import { Header, Footer, SectionContainer, GridBgContainer } from './components'
+import { ResponsiveAppBar, Footer, SectionContainer, GridBgContainer } from './components'
 // import useInterval from './hooks/useInterval'
 import {
   HeroSection,
@@ -54,9 +54,6 @@ function HideOnScroll(props: Props) {
   const trigger = useScrollTrigger({
     target: window ? window() : undefined,
   });
-  useEffect(() => {
-    console.log(trigger)
-  }, [trigger])
 
   return (
     <Slide appear={false} direction="down" in={!trigger}>
@@ -68,15 +65,17 @@ function HideOnScroll(props: Props) {
 const App: React.FC = () => {
 
   const [animClass, setAnimClass] = useState('')
+  const [enable, setEnable] = useState(false)
 
   useEffect(() => {
     document.body.style.overflow = 'hidden'
-    document.body.style.paddingRight = '10px'
+    // document.body.style.paddingRight = '10px'
     setAnimClass('bg-animation')
 
     setTimeout(() => {
       document.body.style.overflow = 'visible'
-      document.body.style.paddingRight = '0px'
+      // document.body.style.paddingRight = '0px'
+      setEnable(true)
     }, 4000)
 
     return () => {
@@ -94,13 +93,16 @@ const App: React.FC = () => {
               <Box height="100%" display="flex" flexDirection="column">
                 <HideOnScroll>
                   <AppBar>
-                    <Header />
+                    {/* <Box pr={ enable ? '0px' : '10px' } sx={{ background: AtriumTheme.palette.common.black }}> */}
+                      <ResponsiveAppBar />
+                    {/* </Box> */}
                   </AppBar>
                 </HideOnScroll>
-                <Header />
-                <GridBgContainer>
-                  <HeroSection playAnimation={animClass === 'bg-animation'} />
-                </GridBgContainer>
+                <Box mt={16} sx={{ height: '100%', width: '100%' }}>
+                  <GridBgContainer>
+                    <HeroSection playAnimation={animClass === 'bg-animation'} />
+                  </GridBgContainer>
+                </Box>
               </Box>
             </SectionContainer>
             <SectionContainer className="update light">

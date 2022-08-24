@@ -76,6 +76,9 @@ export const OverviewSection = () => {
     if (carousel.current)
       carousel.current.moveTo(1)
   }
+  const handleScroll = () => {
+    console.log('scroll')
+  }
   return (
     <Box id="overview-section" height="100%">
       <Grid container justifyContent="center">
@@ -93,6 +96,7 @@ export const OverviewSection = () => {
               py={20}
               onFocus={() => setCharClass('show')}
               id="overview-section"
+              onScroll={() => handleScroll}
             >
               <Box textAlign="center">
                 <Button
