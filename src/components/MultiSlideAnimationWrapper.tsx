@@ -1,6 +1,7 @@
 import { Box } from '@mui/material'
 import React, { useRef, useEffect, useState } from 'react'
 import { Carousel } from 'react-responsive-carousel'
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
 import { palette } from '../themes/AtriumTheme'
 
