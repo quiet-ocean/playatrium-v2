@@ -20,13 +20,19 @@ const icons = [discordIcon, twitterIcon, youtubeIcon]
 
 const AtriumInput = () => {
   return (
-    <FormControl sx={{ m: 1, width: '40%' }} variant="outlined">
+    <FormControl
+      sx={{ m: 1, width: { md: '40%', xs: '100%' } }}
+      variant="outlined"
+    >
       <OutlinedInput
         id="outlined-adornment-weight"
         // value={values.weight}
         // onChange={handleChange('weight')}
         endAdornment={
-          <InputAdornment position="end">
+          <InputAdornment
+            position="end"
+            sx={{ display: { md: 'flex', xs: 'none' } }}
+          >
             <Button
               variant="primary"
               sx={{
@@ -101,15 +107,42 @@ export const Footer = () => {
               <Box>
                 <AtriumInput />
               </Box>
-              <Box gap={6} color={palette.text.disabled}>
-                <Typography variant="caption">Privacy</Typography>
-                <Typography variant="caption">Terms of Use</Typography>
-                <Typography variant="caption">© Atrium 2022</Typography>
+              <Box display={{ md: 'none !important', xs: 'block !important' }}>
+                <Button
+                  variant="primary"
+                  sx={{
+                    background: palette.warning.main,
+                    color: palette.text.secondary,
+                    fontSize: '24px',
+                    padding: '16px 24px',
+                    width: { md: 'auto', xs: '100%' },
+                  }}
+                >
+                  sign up
+                </Button>
               </Box>
             </Box>
           </Box>
-          <Box display="flex" justifyContent="center" mt={15}>
-            <img src={atriumLogoType} alt="" width="100%" />
+          <Box display="flex" flexDirection="column" gap={{ xs: 6 }}>
+            <Box
+              gap={6}
+              color={palette.text.disabled}
+              display="flex"
+              justifyContent={{ md: 'center', xs: 'space-between' }}
+              order={{ md: 1, xs: 2 }}
+            >
+              <Typography variant="caption">Privacy</Typography>
+              <Typography variant="caption">Terms of Use</Typography>
+              <Typography variant="caption">© Atrium 2022</Typography>
+            </Box>
+            <Box
+              display="flex"
+              justifyContent="center"
+              mt={15}
+              order={{ md: 2, xs: 1 }}
+            >
+              <img src={atriumLogoType} alt="" width="100%" />
+            </Box>
           </Box>
         </Grid>
       </Grid>
