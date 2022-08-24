@@ -144,7 +144,8 @@ export const UpdatesSection = () => {
         breakpoint: 425,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
+          slidesToScroll: 1,
+          initialSlide: 1,
         }
       }
     ],
