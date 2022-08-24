@@ -13,6 +13,7 @@ import './index.css'
 import './App.css'
 import './fonts/andale/style.css'
 import './fonts/fractul/stylesheet.css'
+import './fonts/fractul alt/stylesheet.css'
 import {
   ResponsiveAppBar,
   Footer,

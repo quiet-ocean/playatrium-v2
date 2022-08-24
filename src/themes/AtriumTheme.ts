@@ -48,7 +48,7 @@ const AtriumTheme = createTheme({
             background: theme.palette.background.paper,
             borderRadius: 0,
             color: theme.palette.text.primary,
-            fontFamily: 'Fractul',
+            fontFamily: 'Fractul Alt',
             fontSize: '16px',
             fontWeight: 600,
             padding: '6px 8px',
@@ -183,7 +183,7 @@ const AtriumTheme = createTheme({
     // },
     h2: {
       //styleName: Desktop/H2;
-      fontFamily: 'Fractul',
+      fontFamily: 'Fractul Alt',
       fontSize: '72px',
       fontWeight: 600,
       letterSpacing: '-0.03em',
@@ -193,7 +193,7 @@ const AtriumTheme = createTheme({
     },
 
     h3: {
-      fontFamily: 'Fractul',
+      fontFamily: 'Fractul Alt',
       fontSize: '48px',
       fontWeight: 600,
       letterSpacing: '-0.03em',
@@ -203,7 +203,7 @@ const AtriumTheme = createTheme({
     },
 
     h4: {
-      fontFamily: 'Fractul',
+      fontFamily: 'Fractul Alt',
       fontSize: '36px',
       fontWeight: 600,
       letterSpacing: '-0.03em',
@@ -212,7 +212,7 @@ const AtriumTheme = createTheme({
       textTransform: 'capitalize',
     },
     h5: {
-      fontFamily: 'Fractul',
+      fontFamily: 'Fractul Alt',
       fontSize: '24px',
       fontWeight: 600,
       letterSpacing: '-0.03em',
