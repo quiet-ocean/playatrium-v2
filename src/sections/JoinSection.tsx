@@ -39,12 +39,11 @@ export const JoinSection = () => {
             <Box py={4}>
               <Button
                 variant="primary"
+                color="warning"
                 sx={{
-                  background: palette.warning.main,
-                  color: palette.text.secondary,
                   fontSize: '24px',
                   padding: '16px 24px',
-                  width: { md: 'auto', xs: '100%' }
+                  width: { md: 'auto', xs: '100%' },
                 }}
               >
                 join discord

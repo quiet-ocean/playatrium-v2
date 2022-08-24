@@ -14,7 +14,6 @@ import CrossIcon from '../assets/images/logo-36.png'
 import logoType from '../assets/images/logo-type.png'
 import TwitterIcon from '../assets/images/twitter-icon.png'
 import YoutubeIcon from '../assets/images/youtube-icon.png'
-import { palette } from '../themes/AtriumTheme'
 
 const pages = ['updates', 'overview', 'integrations', 'profiles', 'team']
 
@@ -29,14 +28,7 @@ const Logo = ({ sx }: { sx?: object }) => {
 }
 const JoinButton = () => {
   return (
-    <Button
-      variant="primary"
-      sx={{
-        background: palette.warning.main,
-        color: palette.text.secondary,
-        width: '124px',
-      }}
-    >
+    <Button variant="primary" color="warning" sx={{ width: '124px' }}>
       join discord
     </Button>
   )

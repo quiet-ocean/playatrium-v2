@@ -110,9 +110,8 @@ export const Footer = () => {
               <Box display={{ md: 'none !important', xs: 'block !important' }}>
                 <Button
                   variant="primary"
+                  color="warning"
                   sx={{
-                    background: palette.warning.main,
-                    color: palette.text.secondary,
                     fontSize: '24px',
                     padding: '16px 24px',
                     width: { md: 'auto', xs: '100%' },
