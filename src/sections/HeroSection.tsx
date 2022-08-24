@@ -75,7 +75,7 @@ export const HeroSection = ({ playAnimation }: { playAnimation?: boolean }) => {
             overflowX: 'hidden',
           }}
         >
-          <img src={HeroImage} alt="" width="100%" />
+          <img src={HeroImage} alt="" width="100%" height="100%" />
         </HeroAnimationWrapper>
       </Box>
     </Container>
