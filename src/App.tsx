@@ -98,7 +98,7 @@ const App: React.FC = () => {
                     {/* </Box> */}
                   </AppBar>
                 </HideOnScroll>
-                <Box mt="77px" sx={{ height: '100%', width: '100%' }}>
+                <Box mt={16} sx={{ height: '100%', width: '100%' }}>
                   <GridBgContainer>
                     <HeroSection playAnimation={animClass === 'bg-animation'} />
                   </GridBgContainer>
