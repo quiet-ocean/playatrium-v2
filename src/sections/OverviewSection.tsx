@@ -59,7 +59,7 @@ export const OverviewSection = () => {
       <Grid container justifyContent="center">
         <Grid
           item
-          lg={12}
+          xs={12}
           xl={10}
           sx={{
             '& li.slide': {
@@ -68,54 +68,63 @@ export const OverviewSection = () => {
             },
           }}
         >
-          <Slider ref={sliderRef} {...settings}>
-            <Box py={20} id="overview-section">
-              <Box textAlign="center">
-                <Button
-                  variant="rounded"
+          <Box sx={{ height: '100%', width: '100%' }}>
+            <Slider ref={sliderRef} {...settings}>
+              <Box py={20} id="overview-section">
+                <Box textAlign="center">
+                  <Button
+                    variant="rounded"
+                    sx={{
+                      border: `1px solid ${palette.error.main}`,
+                      color: palette.error.main,
+                    }}
+                    onClick={handleClick}
+                  >
+                    overview
+                  </Button>
+                </Box>
+                <Box
+                  py={30}
                   sx={{
-                    border: `1px solid ${palette.error.main}`,
-                    color: palette.error.main,
+                    '& *': {
+                      color: palette.text.primary,
+                    },
                   }}
-                  onClick={handleClick}
                 >
-                  overview
-                </Button>
+                  <Typography
+                    variant="h2"
+                    sx={{
+                      fontSize: { md: 72, xs: 48 },
+                      lineHeight: { md: '110%', xs: '120%' },
+                      margin: 'auto',
+                      maxWidth: 1300,
+                      textAlign: { md: 'right', xs: 'left' },
+                    }}
+                  >
+                    {text.split('').map((char: string, key: number) => (
+                      <span
+                        key={key}
+                        style={{
+                          visibility: index > key ? 'visible' : 'hidden',
+                        }}
+                      >
+                        {char}
+                      </span>
+                    ))}
+                  </Typography>
+                </Box>
               </Box>
-              <Box
-                py={30}
-                sx={{
-                  '& *': {
-                    color: palette.text.primary,
-                    textAlign: 'center !important',
-                  },
-                }}
-              >
-                <Typography
-                  variant="h2"
-                  sx={{ margin: 'auto', maxWidth: 1300 }}
-                >
-                  {text.split('').map((char: string, key: number) => (
-                    <span
-                      key={key}
-                      style={{ visibility: index > key ? 'visible' : 'hidden' }}
-                    >
-                      {char}
-                    </span>
-                  ))}
-                </Typography>
+              <Box py={20}>
+                <img
+                  src={overviewImage}
+                  alt=""
+                  width="100%"
+                  height="100%"
+                  style={{ borderRadius: '12px' }}
+                />
               </Box>
-            </Box>
-            <Box py={20}>
-              <img
-                src={overviewImage}
-                alt=""
-                width="100%"
-                height="100%"
-                style={{ borderRadius: '12px' }}
-              />
-            </Box>
-          </Slider>
+            </Slider>
+          </Box>
         </Grid>
       </Grid>
     </Box>

@@ -1,13 +1,24 @@
-import { Box, ThemeProvider, styled, CssBaseline, Slide, AppBar } from '@mui/material'
+import {
+  Box,
+  ThemeProvider,
+  styled,
+  CssBaseline,
+  Slide,
+  AppBar,
+} from '@mui/material'
+import useScrollTrigger from '@mui/material/useScrollTrigger'
 import React, { useState, useEffect } from 'react'
-import useScrollTrigger from '@mui/material/useScrollTrigger';
-
 
 import './index.css'
 import './App.css'
 import './fonts/andale/style.css'
 import './fonts/fractul/stylesheet.css'
-import { ResponsiveAppBar, Footer, SectionContainer, GridBgContainer } from './components'
+import {
+  ResponsiveAppBar,
+  Footer,
+  SectionContainer,
+  GridBgContainer,
+} from './components'
 // import useInterval from './hooks/useInterval'
 import {
   HeroSection,
@@ -36,6 +47,7 @@ const Root = styled(Box)(({ theme }) => ({
     },
     position: 'relative',
   },
+  scrollSnapType: 'y mandatory',
 }))
 
 interface Props {
@@ -43,29 +55,28 @@ interface Props {
    * Injected by the documentation to work in an iframe.
    * You won't need it on your project.
    */
-  window?: () => Window;
-  children: React.ReactElement;
+  window?: () => Window
+  children: React.ReactElement
 }
 function HideOnScroll(props: Props) {
-  const { children, window } = props;
+  const { children, window } = props
   // Note that you normally won't need to set the window ref as useScrollTrigger
   // will default to window.
   // This is only being set here because the demo is in an iframe.
   const trigger = useScrollTrigger({
     target: window ? window() : undefined,
-  });
+  })
 
   return (
     <Slide appear={false} direction="down" in={!trigger}>
       {children}
     </Slide>
-  );
+  )
 }
 
 const App: React.FC = () => {
-
   const [animClass, setAnimClass] = useState('')
-  const [enable, setEnable] = useState(false)
+  // const [enable, setEnable] = useState(false)
 
   useEffect(() => {
     document.body.style.overflow = 'hidden'
@@ -75,16 +86,16 @@ const App: React.FC = () => {
     setTimeout(() => {
       document.body.style.overflow = 'visible'
       // document.body.style.paddingRight = '0px'
-      setEnable(true)
+      // setEnable(true)
     }, 4000)
 
     return () => {
-      document.body.style.overflow = "auto";
-    };
+      document.body.style.overflow = 'auto'
+    }
   }, [])
 
   return (
-    <React.Fragment >
+    <React.Fragment>
       <CssBaseline />
       <ThemeProvider theme={AtriumTheme}>
         <Box sx={{ background: AtriumTheme.palette.common.black }}>
@@ -94,7 +105,7 @@ const App: React.FC = () => {
                 <HideOnScroll>
                   <AppBar>
                     {/* <Box pr={ enable ? '0px' : '10px' } sx={{ background: AtriumTheme.palette.common.black }}> */}
-                      <ResponsiveAppBar />
+                    <ResponsiveAppBar />
                     {/* </Box> */}
                   </AppBar>
                 </HideOnScroll>
@@ -108,7 +119,11 @@ const App: React.FC = () => {
             <SectionContainer className="update light">
               <UpdatesSection />
             </SectionContainer>
-            <SectionContainer>
+            <SectionContainer
+              sx={{
+                scrollSnapAlign: 'center',
+              }}
+            >
               <GridBgContainer>
                 <OverviewSection />
               </GridBgContainer>

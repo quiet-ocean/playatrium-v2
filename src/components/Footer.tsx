@@ -93,8 +93,9 @@ export const Footer = () => {
                     textTransform: 'none',
                   }}
                 >
-                  Stay updated for the most important 
-                  <br />news about Atrium through our email.{' '}
+                  Stay updated for the most important
+                  <br />
+                  news about Atrium through our email.{' '}
                 </Typography>
               </Box>
               <Box>
