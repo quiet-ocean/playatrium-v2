@@ -67,7 +67,7 @@ export const OverviewSection = () => {
     const matches = useMediaQuery(theme.breakpoints.up('md'))
 
     return (
-      <Box py={20} id="overview-section">
+      <Box py={{ md: 20, xs: 16 }} id="overview-section">
         <Box textAlign="center">
           <Button
             variant="rounded"
@@ -81,7 +81,7 @@ export const OverviewSection = () => {
           </Button>
         </Box>
         <Box
-          py={30}
+          py={{ md: 30, xs: 16 }}
           sx={{
             '& *': {
               color: palette.text.primary,
@@ -102,7 +102,10 @@ export const OverviewSection = () => {
               <span
                 key={key}
                 style={{
-                  color: key >= startPos && key < endPos ? theme.palette.error.main : '',
+                  color:
+                    key >= startPos && key < endPos
+                      ? theme.palette.error.main
+                      : '',
                   visibility: matches
                     ? index > key
                       ? 'visible'
@@ -119,7 +122,7 @@ export const OverviewSection = () => {
     )
   }
   const Slide2 = () => (
-    <Box py={20}>
+    <Box py={{ md: 20, xs: 0 }} pb={{ md: 20, xs: 16 }}>
       <img
         src={overviewImage}
         alt=""
