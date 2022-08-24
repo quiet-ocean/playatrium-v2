@@ -165,7 +165,9 @@ export const ResponsiveAppBar = () => {
             <Box
               sx={{ width: 36, height: 36 }}
             >
-              <img src={CrossIcon} alt="" width="100%" height="100%"/>
+              <a href="/#">
+                <img src={CrossIcon} alt="" width="100%" height="100%"/>
+              </a>
             </Box>
           </Box>
           <Box sx={{
