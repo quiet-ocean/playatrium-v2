@@ -8,7 +8,10 @@ export const JoinSection = () => {
     <Grid container pt={9} justifyContent="center" columns={{ lg: 10, xl: 12 }}>
       <Grid item lg={4}>
         <Box p={{ md: 5, xs: 0 }}>
-          <Box py={{ md: 25, xs: 16 }} sx={{ '& *': { color: palette.text.primary } }}>
+          <Box
+            py={{ md: 25, xs: 16 }}
+            sx={{ '& *': { color: palette.text.primary } }}
+          >
             <Typography variant="h3">Join our Community</Typography>
             <Box
               py={6}
