@@ -50,8 +50,8 @@ const menuStyle = {
       height: '100%',
 
       left: 0,
-
-      position: 'absolute',
+      opacity: 1,
+      position: 'fixed',
 
       top: 0,
 
@@ -60,9 +60,13 @@ const menuStyle = {
     background: 'transparent',
     display: { md: 'none', xs: 'block' },
     height: '100%',
+    maxHeight: '100%',
     left: '0px !important',
     right: '0px !important',
     width: '100%',
+    maxWidth: '100%',
+    top: '0px !important',
+    bottom: '0px !important',
   },
 }
 
@@ -153,13 +157,24 @@ export const ResponsiveAppBar = () => {
           <Box
             sx={{
               display: { md: 'none', xs: 'flex' },
-              justifyContent: 'space-between',
+              justifyContent: 'center',
               width: '100%',
             }}
           >
             <Box sx={{ height: 36, width: 36 }} onClick={handleOpenNavMenu}>
               <img src={CrossIcon} alt="" width="100%" height="100%" />
             </Box>
+          </Box>
+          <Box
+            sx={{
+              display: { md: 'none', xs: 'flex' },
+              justifyContent: 'end',
+              width: '100%',
+            }}
+          >
+            {/* <Box sx={{ height: 36, width: 36 }} onClick={handleOpenNavMenu}>
+              <img src={CrossIcon} alt="" width="100%" height="100%" />
+            </Box> */}
             <Box>
               <JoinButton />
             </Box>
