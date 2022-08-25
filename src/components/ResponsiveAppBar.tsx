@@ -14,7 +14,7 @@ import CrossIcon from '../assets/images/logo-36.png'
 import logoType from '../assets/images/logo-type.png'
 import TwitterIcon from '../assets/images/twitter-icon.png'
 import YoutubeIcon from '../assets/images/youtube-icon.png'
-
+import { palette } from '../themes/AtriumTheme'
 const pages = ['updates', 'overview', 'integrations', 'profiles', 'team']
 
 const Logo = ({ sx }: { sx?: object }) => {
@@ -58,15 +58,15 @@ const menuStyle = {
       width: '100%',
     },
     background: 'transparent',
+    bottom: '0px !important',
     display: { md: 'none', xs: 'block' },
     height: '100%',
-    maxHeight: '100%',
     left: '0px !important',
-    right: '0px !important',
-    width: '100%',
+    maxHeight: '100%',
     maxWidth: '100%',
+    right: '0px !important',
     top: '0px !important',
-    bottom: '0px !important',
+    width: '100%',
   },
 }
 
@@ -125,7 +125,12 @@ export const ResponsiveAppBar = () => {
                     fontFamily={'Fractul Alt'}
                     textAlign="center"
                   >
-                    {page}
+                    <a
+                      href={`/#${page}-section`}
+                      style={{ color: palette.text.primary }}
+                    >
+                      {page}
+                    </a>
                   </Typography>
                 </MenuItem>
               ))}
