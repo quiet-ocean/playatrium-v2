@@ -45,6 +45,10 @@ button {
   scroll-behavior: smooth;
 }
 
+a {
+  text-decoration: none;
+}
+
 /* #root {
   overflow: hidden;
 } */

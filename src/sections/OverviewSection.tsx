@@ -40,7 +40,7 @@ export const OverviewSection = () => {
       if (event.deltaY > 0 && index < length) {
         event.preventDefault()
         setIndex((prevIndex) => {
-          if (prevIndex < length) return prevIndex + 1
+          if (prevIndex < length) return prevIndex + 2
           else {
             handleClick()
             return length
