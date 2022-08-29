@@ -88,7 +88,7 @@ const App: React.FC = () => {
       document.body.style.overflow = 'visible'
       // document.body.style.paddingRight = '0px'
       // setEnable(true)
-    }, 4000)
+    }, 4200)
 
     return () => {
       document.body.style.overflow = 'auto'
@@ -105,13 +105,11 @@ const App: React.FC = () => {
               <Box height="100%" display="flex" flexDirection="column">
                 <HideOnScroll>
                   <AppBar>
-                    {/* <Box pr={ enable ? '0px' : '10px' } sx={{ background: AtriumTheme.palette.common.black }}> */}
                     <ResponsiveAppBar />
-                    {/* </Box> */}
                   </AppBar>
                 </HideOnScroll>
-                <Box mt={16} sx={{ height: '100%', width: '100%' }}>
-                  <GridBgContainer>
+                <Box sx={{ height: '100%', width: '100%' }}>
+                  <GridBgContainer top>
                     <HeroSection playAnimation={animClass === 'bg-animation'} />
                   </GridBgContainer>
                 </Box>
@@ -139,8 +137,16 @@ const App: React.FC = () => {
                 <IntegrationsSection />
               </GridBgContainer>
             </Box>
-            <SectionContainer>
-              <GridBgContainer>
+            <SectionContainer
+              minHeight="100vh !important"
+              height="100% !important"
+            >
+              <GridBgContainer
+                sx={{
+                  height: '100% !important',
+                  minHeight: '100vh !important',
+                }}
+              >
                 <BuildersSection />
               </GridBgContainer>
             </SectionContainer>

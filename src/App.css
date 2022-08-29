@@ -45,10 +45,14 @@ button {
   scroll-behavior: smooth;
 }
 
+.custom-cursor {
+  /* cursor: pointer;
+   */
+  /* cursor: url('/public/cursor.svg') 12 12, pointer; */
+}
 a {
   text-decoration: none;
 }
-
 /* #root {
   overflow: hidden;
 } */

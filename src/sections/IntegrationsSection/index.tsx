@@ -2,6 +2,7 @@ import { Box, Button } from '@mui/material'
 
 import { SectionContainer } from '../../components'
 import { palette } from '../../themes/AtriumTheme'
+import { SubtitleText } from '../UpdatesSection'
 
 import EndlessIntegrations from './EndlessIntegrations'
 // import HomeIntegrations from './HomeIntegrations'
@@ -11,16 +12,7 @@ export const IntegrationsSection = () => {
   return (
     <Box id="integrations-section">
       <Box display="flex" justifyContent="center" pt={{ md: 25, xs: 16 }}>
-        <Button
-          variant="rounded"
-          sx={{
-            border: `1px solid ${palette.warning.main}`,
-            color: palette.warning.main,
-          }}
-          // onClick={handleNext}
-        >
-          integrations
-        </Button>
+        <SubtitleText color={palette.warning.main}>integrations</SubtitleText>
       </Box>
       {/* <SectionContainer display={{ md: 'block', xs: 'none' }}>
         <HomeIntegrations />

@@ -1,4 +1,4 @@
-import { Box, Button, Typography, Grid } from '@mui/material'
+import { Box, Typography, Grid } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { useRef, useEffect, useState, useCallback } from 'react'
@@ -8,6 +8,8 @@ import Slider from 'react-slick'
 
 import overviewImage from '../assets/images/overview.png'
 import { palette } from '../themes/AtriumTheme'
+
+import { SubtitleText } from './UpdatesSection'
 
 const text: string =
   'Atrium is a virtual world where users across all Layer-1 networks can build, own, and monetize their online experience through an interoperable pixel-art metaverse.'
@@ -69,16 +71,7 @@ export const OverviewSection = () => {
     return (
       <Box py={{ md: 20, xs: 16 }} id="overview-section">
         <Box textAlign="center">
-          <Button
-            variant="rounded"
-            sx={{
-              border: `1px solid ${palette.error.main}`,
-              color: palette.error.main,
-            }}
-            onClick={handleClick}
-          >
-            overview
-          </Button>
+          <SubtitleText color={palette.error.main}>overview</SubtitleText>
         </Box>
         <Box
           py={{ md: 30, xs: 16 }}

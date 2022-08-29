@@ -33,14 +33,17 @@ export const StyledContainer = styled(Box)(({ theme }) => ({
 }))
 
 export const GridBgContainer = ({
-  children,
+  children, top, sx,
 }: {
   children: React.ReactNode
+  top?: boolean
+  sx?: object
 }) => {
   return (
     <StyledContainer
       className="grid-bg"
       sx={{
+        ...sx,
         '&::before': {
           backgroundSize: {
             lg: `${100 / 10}% 100%, cover`,
@@ -48,6 +51,7 @@ export const GridBgContainer = ({
             sm: `${100 / 5}% 100%, cover`,
             xl: `${100 / 12}% 100%, cover`,
             xs: `${100 / 5}% 100%, cover`,
+            zIndex: top ? 2 : 0,
           },
         },
       }}

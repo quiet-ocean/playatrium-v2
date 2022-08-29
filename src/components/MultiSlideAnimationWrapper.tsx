@@ -76,6 +76,7 @@ export const MultiSlideAnimationWrapper = ({
           height: '100%',
           visibility: show ? 'visible' : 'hidden',
           width: '100%',
+          zIndex: 2,
         }}
       >
         {child1}
@@ -87,6 +88,7 @@ export const MultiSlideAnimationWrapper = ({
           top: '0px',
           visibility: !show ? 'visible' : 'hidden',
           width: '100%',
+          zIndex: 2,
         }}
       >
         {child2}

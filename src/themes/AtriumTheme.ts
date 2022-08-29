@@ -179,8 +179,14 @@ const AtriumTheme = createTheme({
       lineHeight: '14.7px',
       textAlign: 'left',
     },
-    // h1: {
-    // },
+    h1: {
+      fontFamily: 'Fractul Alt',
+      fontSize: '64px',
+      fontWeight: 600,
+      letterSpacing: '-0.03em',
+      lineHeight: '70px',
+      textAlign: 'center',
+    },
     h2: {
       //styleName: Desktop/H2;
       fontFamily: 'Fractul Alt',
@@ -215,6 +221,15 @@ const AtriumTheme = createTheme({
       letterSpacing: '-0.03em',
       lineHeight: '105%',
       textAlign: 'left',
+    },
+    h6: {
+      fontFamily: 'Fractul Alt',
+      fontSize: '16px',
+      fontWeight: 600,
+      letterSpacing: '-0.03em',
+      lineHeight: '110%',
+      textAlign: 'left',
+      textTransform: 'capitalize',
     },
     // button: {
 

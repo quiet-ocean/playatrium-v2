@@ -1,17 +1,55 @@
-import { Box, Typography, Button, styled, Grid } from '@mui/material'
+import { Box, Typography, Button, styled, Grid, SvgIcon } from '@mui/material'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import React from 'react'
 import Slider from 'react-slick'
 
+// import { ReactComponent as Update1} from '../assets/images/update-1.svg'
+// // import update2 from '../assets/images/update-2.svg'
+// import update3 from '../assets/images/update-3.svg'
+// // import update4 from '../assets/images/update-4.svg'
+// // import update5 from '../assets/images/update-5.svg'
+// // import update6 from '../assets/images/update-6.svg'
+
+// // import { ReactComponent as UpdateOne } from '../assets/images/update-1.svg'
+// import { ReactComponent as Update2 } from '../assets/images/update-4.svg'
+
+// // import Update2 from '../assets/images/update-1.svg'
+// // import Update1 from '../assets/images/update-4.svg'
+
 import update1 from '../assets/images/update-1.png'
+import update2 from '../assets/images/update-2.png'
 import update3 from '../assets/images/update-3.png'
+import update4 from '../assets/images/update-4.png'
 import update5 from '../assets/images/update-5.png'
 import update6 from '../assets/images/update-6.png'
-import update7 from '../assets/images/update-7.png'
-import update8 from '../assets/images/update-8.png'
 import { palette } from '../themes/AtriumTheme'
 
+export const SubtitleText = ({
+  children,
+  color,
+}: {
+  children: React.ReactNode
+  color?: string
+}) => {
+  return (
+    <Box>
+      <Typography
+        variant="body2"
+        sx={{
+          border: `1px solid ${color}`,
+          borderRadius: '100px',
+          color: color,
+          display: 'inline',
+          padding: '6px 16px',
+          textTransform: 'uppercase',
+        }}
+      >
+        {children}
+      </Typography>
+    </Box>
+  )
+}
 const UpdateItemWrapper = styled(Box)(() => ({
   display: 'flex',
   flexDirection: 'column',
@@ -33,9 +71,23 @@ const UpdateItem = ({
   small?: boolean
 }) => {
   return (
-    <Box display="flex" flexDirection="column" gap={4}>
+    <Box
+      display="flex"
+      flexDirection="column"
+      gap={4}
+      sx={{
+        '&:hover': {
+          color: palette.info.main,
+        }
+      }}
+    >
       <Box
         sx={{
+          '& svg': {
+            height: '100%',
+            width: '100%',
+          },
+
           // height: {
           //   // lg: small ? `198px` : `534px`,
           //   // md: small ? `186px` : `534px`,
@@ -52,6 +104,12 @@ const UpdateItem = ({
           // height={small ? `20vh` : `50vh`}
           // height='100%'
         />
+        {/* <Update1 /> */}
+        {/* <UpdateOne /> */}
+        {/* <UpdateTwo /> */}
+        {/* <SvgIcon component={update3} /> */}
+        {/* <SvgIcon component={Update2} />
+        <SvgIcon component={Update1} /> */}
       </Box>
       <Typography variant="caption">{date}</Typography>
       <Typography
@@ -72,19 +130,20 @@ export const UpdatesSection = () => {
     <UpdateItemWrapper>
       <UpdateItem
         image={update1}
+        // image=''
         date={`JULY 9TH 2022`}
         title="Atrium 2.0 is coming next month, see what’s to come!"
       />
     </UpdateItemWrapper>,
     <UpdateItemWrapper>
       <UpdateItem
-        image={update5}
+        image={update2}
         date="JULY 9TH 2022"
         title="New meeting points established for newbies"
         small
       />
       <UpdateItem
-        image={update6}
+        image={update3}
         date="JULY 9TH 2022"
         title="ASAC becomes Atrium’s 1st project to reach 10k"
         small
@@ -92,20 +151,20 @@ export const UpdatesSection = () => {
     </UpdateItemWrapper>,
     <UpdateItemWrapper>
       <UpdateItem
-        image={update3}
+        image={update4}
         date={`JULY 9TH 2022`}
         title="Partnership with Near Big Brain allows for new features"
       />
     </UpdateItemWrapper>,
     <UpdateItemWrapper>
       <UpdateItem
-        image={update7}
+        image={update5}
         date="JULY 9TH 2022"
         title="Haven DAO grows to the largest project on Atrium"
         small
       />
       <UpdateItem
-        image={update8}
+        image={update6}
         date="JULY 9TH 2022"
         title="TAYC skins integrated, see what else is in store!"
         small
@@ -157,15 +216,40 @@ export const UpdatesSection = () => {
       <Grid container justifyContent="center">
         <Grid item lg={12} xl={10}>
           <Box mb={{ md: 12, xs: 6 }}>
-            <Button
-              variant="rounded"
-              sx={{
-                border: `1px solid ${palette.info.main}`,
-                color: palette.info.main,
-              }}
-            >
-              updates
-            </Button>
+            <Grid container>
+              <Grid
+                item
+                sm={6}
+                xs={12}
+                justifyContent={{ sm: 'start', xs: 'center' }}
+              >
+                <Box
+                  display="flex"
+                  justifyContent={{ sm: 'start', xs: 'center' }}
+                >
+                  <SubtitleText color={palette.info.main}>updates</SubtitleText>
+                </Box>
+              </Grid>
+              <Grid
+                item
+                sm={6}
+                xs={12}
+                display="flex"
+                justifyContent={{ sm: 'end', xs: 'center' }}
+              >
+                <Typography
+                  variant="h6"
+                  sx={{
+                    maxWidth: '340px',
+                    py: { sm: 0, xs: 3 },
+                    textAlign: { sm: 'right', xs: 'center' },
+                  }}
+                >
+                  Stay updated on the most important updates about Atrium
+                  through our newsletter
+                </Typography>
+              </Grid>
+            </Grid>
           </Box>
           <Box gap={4} display={{ md: 'flex', xs: 'none' }}>
             {items.map((item: React.ReactNode, key: number) => (

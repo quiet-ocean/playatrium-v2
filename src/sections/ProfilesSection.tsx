@@ -5,6 +5,12 @@ import profilePreviewImage from '../assets/images/profile-preview.png'
 import { MultiSlideAnimationWrapper } from '../components'
 import { palette } from '../themes/AtriumTheme'
 
+import { SubtitleText } from './UpdatesSection'
+
+const videoStyle = {
+  borderRadius: '12px',
+  height: '100%',
+}
 export const ProfilesSection = () => {
   const [state, setState] = useState(true)
 
@@ -45,17 +51,9 @@ export const ProfilesSection = () => {
   return (
     <Box py={{ md: 25, xs: 16 }} id="profiles-section">
       <Grid container justifyContent="center" columns={{ lg: 10, xl: 12 }}>
-        <Grid item xs={10} width="100%">
+        <Grid item xl={10} xs={12} width="100%">
           <Box width="100%">
-            <Button
-              variant="rounded"
-              sx={{
-                border: `1px solid ${palette.info.main}`,
-                color: palette.info.main,
-              }}
-            >
-              profiles
-            </Button>
+            <SubtitleText color={palette.info.main}>profiles</SubtitleText>
           </Box>
           <Box display={{ md: 'none', xs: 'block' }} pt={16}>
             <TabButtonGroup />
@@ -125,6 +123,20 @@ export const ProfilesSection = () => {
           <MultiSlideAnimationWrapper
             child1={<img src={profilePreviewImage} alt="" width="100%" />}
             child2={<img src={profilePreviewImage} alt="" width="100%" />}
+            // child1={
+            //   <video width="100%" height="100%" controls style={videoStyle}>
+            //     <track kind="captions" />
+            //     <source src="/gamedemo.mp4" type="video/mp4" />
+            //   </video>
+            //   // <CardMedia sx={{ height: '100%', width: '100%' }} src="/gamedemo.mp4" />
+            // }
+            // child2={
+            //   <video width="100%" height="100%" controls style={videoStyle}>
+            //     <track kind="captions" />
+            //     <source src="/gamedemo.mp4" type="video/mp4" />
+            //   </video>
+            //   // <CardMedia sx={{ height: '100%', width: '100%' }} src="/gamedemo.mp4" />
+            // }
             state={state}
           />
         </Grid>
