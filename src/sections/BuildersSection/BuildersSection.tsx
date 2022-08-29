@@ -4,8 +4,9 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
 
-import BuilderImage from '../../assets/images/builder-1.png'
+import BuilderImage from '../../assets/images/builder.png'
 import { palette } from '../../themes/AtriumTheme'
+import { SubtitleText } from '../UpdatesSection'
 
 import type { IBuilder } from './Builder'
 import { Builder } from './Builder'
@@ -91,15 +92,9 @@ export const BuildersSection = () => {
   return (
     <Box id="team-section" py={{ md: 25, xs: 16 }}>
       <Box display="flex" justifyContent="center">
-        <Button
-          variant="rounded"
-          sx={{
-            border: `1px solid ${palette.error.main}`,
-            color: palette.error.main,
-          }}
-        >
+        <SubtitleText color={palette.error.main}>
           the grid builders
-        </Button>
+        </SubtitleText>
       </Box>
       <Box mt={{ md: 25, xs: 16 }}>
         <Slider {...settings} ref={sliderRef}>
