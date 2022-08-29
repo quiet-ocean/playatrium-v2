@@ -247,11 +247,7 @@ export const UpdatesSection = () => {
                 >
                   Stay updated on the most important updates about Atrium
                   through our{' '}
-                  <a
-                    href="/newsletter"
-                    target="_blank"
-                    style={{ color: palette.info.main }}
-                  >
+                  <a href="/#footer" style={{ color: palette.info.main }}>
                     newsletter
                   </a>
                 </Typography>

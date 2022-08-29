@@ -68,7 +68,7 @@ const AtriumInput = () => {
 }
 export const Footer = () => {
   return (
-    <Box sx={{ color: palette.text.primary }} py={5}>
+    <Box sx={{ color: palette.text.primary }} py={5} id="footer">
       <Grid container justifyContent="center" columns={{ lg: 10, xl: 12 }}>
         <Grid item lg={10} xl={10}>
           <Box
