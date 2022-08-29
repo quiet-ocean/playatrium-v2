@@ -11,7 +11,7 @@ import * as React from 'react'
 
 import CrossIcon from '../assets/images/cross-icon-36.png'
 import DiscordIcon from '../assets/images/discord-icon.png'
-import logoType from '../assets/images/logo-type-small.png'
+import logoType from '../assets/images/logo-type-small.svg'
 import TwitterIcon from '../assets/images/twitter-icon.png'
 import YoutubeIcon from '../assets/images/youtube-icon.png'
 import { palette } from '../themes/AtriumTheme'
@@ -184,17 +184,6 @@ export const ResponsiveAppBar = () => {
               <JoinButton />
             </Box>
           </Box>
-          {/*<Box
-            width="100%"
-            display={{ md: 'flex', xs: 'none' }}
-            justifyContent="center"
-          >
-             <Box sx={{ height: 36, width: 36 }}>
-              <a href="/#">
-                <img src={CrossIcon} alt="" width="100%" height="100%" />
-              </a>
-            </Box> 
-          </Box>*/}
           <Box
             sx={{
               display: { md: 'flex', xs: 'none' },
