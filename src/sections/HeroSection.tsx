@@ -1,7 +1,8 @@
-import { Box, styled } from '@mui/material'
+import { Box, styled, Typography, Collapse } from '@mui/material'
 import { useEffect, useState } from 'react'
 
 import HeroImage from '../assets/images/hero.png'
+import { palette } from '../themes/AtriumTheme'
 
 const HeroAnimationWrapper = styled(Box)(({ theme }) => ({
   '& > div': {
@@ -12,7 +13,7 @@ const HeroAnimationWrapper = styled(Box)(({ theme }) => ({
     width: '0%',
   },
   '& > div.slide': {
-    background: theme.palette.background.paper,
+    background: theme.palette.common.black,
     transition: 'width 1s',
     width: '100%',
   },
@@ -33,42 +34,79 @@ const HeroAnimationWrapper = styled(Box)(({ theme }) => ({
 }))
 const HeroAnimation = ({
   children,
-  className,
+  start,
 }: {
   children: React.ReactNode
-  className: string
+  start: boolean
 }) => {
+  const [fade, setFade] = useState(false)
+  const [animClassName, setAnimClassName] = useState('')
+  useEffect(() => {
+    if (start) {
+      setFade(true)
+      setTimeout(() => {
+        setAnimClassName('animation-fill')
+      }, 1000)
+    }
+  }, [start])
   return (
     <Box
       sx={{
         '& img': {
           objectFit: { sm: 'fill', xs: 'cover' },
         },
+        // display: 'flex',
+
+        // flexDirection: 'column',
+
         height: '100%',
-        position: 'relative',
+        // position: 'relative',
         width: '100%',
       }}
     >
-      {children}
-      <HeroAnimationWrapper className={className}>
-        <Box className="slide" />
-        <Box className="main" />
-        <Box className="slide" />
-      </HeroAnimationWrapper>
+      <Box height="100%" position="relative">
+        <Box
+          p={{ md: 10, xs: '20px 10px' }}
+          position="absolute"
+          top="0"
+          width="100%"
+        >
+          <Collapse in={fade}>
+            <Typography variant="h1" color={palette.text.primary}>
+              Making web3 fun again.
+            </Typography>
+          </Collapse>
+        </Box>
+        <Box height="100%" pt={{ md: '150px', xs: '180px' }}>
+          <Box
+            sx={{
+              height: '100%',
+              position: 'relative',
+              width: '100%',
+            }}
+          >
+            {children}
+            <HeroAnimationWrapper className={animClassName}>
+              <Box className="slide" />
+              <Box className="main" />
+              <Box className="slide" />
+            </HeroAnimationWrapper>
+          </Box>
+        </Box>
+      </Box>
     </Box>
   )
 }
 export const HeroSection = ({ playAnimation }: { playAnimation?: boolean }) => {
-  const [animationClass, setAnimationClass] = useState('')
-  const [_playAnimation, setPlayAnimation] = useState(false)
+  // const [_playAnimation, setPlayAnimation] = useState(false)
+  const [startAnimation, setStartAnimation] = useState(false)
 
+  // useEffect(() => {
+  //   if (playAnimation) setTimeout(() => setPlayAnimation(true), 1200)
+  // }, [playAnimation])
   useEffect(() => {
-    if (playAnimation) setTimeout(() => setPlayAnimation(true), 1200)
+    if (playAnimation) setTimeout(() => setStartAnimation(true), 1200)
   }, [playAnimation])
-  useEffect(() => {
-    if (_playAnimation)
-      setTimeout(() => setAnimationClass('animation-fill'), 100)
-  }, [_playAnimation])
 
   return (
     <Box
@@ -85,7 +123,7 @@ export const HeroSection = ({ playAnimation }: { playAnimation?: boolean }) => {
           position: 'relative',
         }}
       >
-        <HeroAnimation className={animationClass}>
+        <HeroAnimation start={startAnimation}>
           <img src={HeroImage} alt="" width="100%" height="100%" />
         </HeroAnimation>
       </Box>
