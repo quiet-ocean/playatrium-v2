@@ -9,6 +9,7 @@ const HeroAnimationWrapper = styled(Box)(({ theme }) => ({
     height: '100%',
   },
   '& > div.main': {
+    cursor: 'url("/public/cursor.svg") 12 12, pointer',
     transition: 'width 1s',
     width: '0%',
   },
@@ -20,6 +21,7 @@ const HeroAnimationWrapper = styled(Box)(({ theme }) => ({
   '&.animation-fill': {
     '& > div.main': {
       width: '100%',
+      zIndex: 10,
     },
     '& > div.slide': {
       width: '0%',
@@ -55,11 +57,14 @@ const HeroAnimation = ({
         '& img': {
           objectFit: { sm: 'fill', xs: 'cover' },
         },
+
+        // cursor: 'url("../assets/images/cursor.svg"), auto',
+        cursor: 'url("../assets/images/cursor.svg"), auto',
+
         // display: 'flex',
-
         // flexDirection: 'column',
-
         height: '100%',
+
         // position: 'relative',
         width: '100%',
       }}
@@ -88,7 +93,7 @@ const HeroAnimation = ({
             {children}
             <HeroAnimationWrapper className={animClassName}>
               <Box className="slide" />
-              <Box className="main" />
+              <Box className="main custom-cursor" />
               <Box className="slide" />
             </HeroAnimationWrapper>
           </Box>
