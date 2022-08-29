@@ -105,13 +105,11 @@ const App: React.FC = () => {
               <Box height="100%" display="flex" flexDirection="column">
                 <HideOnScroll>
                   <AppBar>
-                    {/* <Box pr={ enable ? '0px' : '10px' } sx={{ background: AtriumTheme.palette.common.black }}> */}
                     <ResponsiveAppBar />
-                    {/* </Box> */}
                   </AppBar>
                 </HideOnScroll>
-                <Box mt={16} sx={{ height: '100%', width: '100%' }}>
-                  <GridBgContainer>
+                <Box sx={{ height: '100%', width: '100%' }}>
+                  <GridBgContainer top>
                     <HeroSection playAnimation={animClass === 'bg-animation'} />
                   </GridBgContainer>
                 </Box>

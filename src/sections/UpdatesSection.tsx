@@ -209,6 +209,7 @@ export const UpdatesSection = () => {
           <Box mb={{ md: 12, xs: 6 }}>
             <Grid container>
               <Grid
+                item
                 sm={6}
                 xs={12}
                 justifyContent={{ sm: 'start', xs: 'center' }}
@@ -221,6 +222,7 @@ export const UpdatesSection = () => {
                 </Box>
               </Grid>
               <Grid
+                item
                 sm={6}
                 xs={12}
                 display="flex"

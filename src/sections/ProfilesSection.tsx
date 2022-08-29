@@ -47,7 +47,7 @@ export const ProfilesSection = () => {
   return (
     <Box py={{ md: 25, xs: 16 }} id="profiles-section">
       <Grid container justifyContent="center" columns={{ lg: 10, xl: 12 }}>
-        <Grid item xs={12} width="100%">
+        <Grid item xl={10} xs={12} width="100%">
           <Box width="100%">
             <SubtitleText color={palette.info.main}>profiles</SubtitleText>
           </Box>
