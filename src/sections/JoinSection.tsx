@@ -1,12 +1,12 @@
 import { Box, Grid, Typography, Button } from '@mui/material'
 
-import figure from '../assets/images/community-figure.png'
+import figure from '../assets/images/community-figure.svg'
 import { palette } from '../themes/AtriumTheme'
 
 export const JoinSection = () => {
   return (
     <Grid container pt={9} justifyContent="center" columns={{ lg: 10, xl: 12 }}>
-      <Grid item lg={4}>
+      <Grid item lg={5}>
         <Box p={{ md: 5, xs: 0 }}>
           <Box
             py={{ md: 25, xs: 16 }}
@@ -55,7 +55,7 @@ export const JoinSection = () => {
           </Box>
         </Box>
       </Grid>
-      <Grid item lg={6}>
+      <Grid item lg={5}>
         <Box
           sx={{
             display: 'flex',
