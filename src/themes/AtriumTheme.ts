@@ -195,7 +195,6 @@ const AtriumTheme = createTheme({
       letterSpacing: '-0.03em',
       lineHeight: '76px',
       textAlign: 'left',
-      textTransform: 'capitalize',
     },
 
     h3: {
@@ -205,7 +204,6 @@ const AtriumTheme = createTheme({
       letterSpacing: '-0.03em',
       lineHeight: '105%',
       textAlign: 'left',
-      textTransform: 'capitalize',
     },
 
     h4: {
@@ -215,7 +213,6 @@ const AtriumTheme = createTheme({
       letterSpacing: '-0.03em',
       lineHeight: '105%',
       textAlign: 'left',
-      textTransform: 'capitalize',
     },
     h5: {
       fontFamily: 'Fractul Alt',
@@ -224,7 +221,6 @@ const AtriumTheme = createTheme({
       letterSpacing: '-0.03em',
       lineHeight: '105%',
       textAlign: 'left',
-      textTransform: 'capitalize',
     },
     h6: {
       fontFamily: 'Fractul Alt',
