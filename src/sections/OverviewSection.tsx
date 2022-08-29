@@ -1,4 +1,4 @@
-import { Box, Typography, Grid, CardMedia  } from '@mui/material'
+import { Box, Typography, Grid, CardMedia } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { useRef, useEffect, useState, useCallback } from 'react'
@@ -45,16 +45,22 @@ export const OverviewSection = () => {
   const handleWheel = useCallback(
     (event: WheelEvent) => {
       // console.log(index, length)
-      if (event.deltaY > 0 && index < length) {
-        event.preventDefault()
-        setIndex((prevIndex) => {
-          if (prevIndex <= length) return prevIndex + 10
-          else {
-            handleClick()
-            // return length
+      if (event.deltaY > 0) {
+        if (index < length) {
+          event.preventDefault()
+          setIndex((prevIndex) => {
+            if (prevIndex <= length) return prevIndex + 10
             return prevIndex
-          }
-        })
+            // else {
+
+            //   handleClick()
+            //   // return length
+            //   return prevIndex
+            // }
+          })
+        } else {
+          handleClick()
+        }
       }
     },
     [index]
@@ -66,15 +72,35 @@ export const OverviewSection = () => {
     // let video = document.querySelector("#video")
     // video.pause()
     // video.play()
-    if(videoRef.current) {
+    if (videoRef.current) {
       // window.vcomp = videoRef.current
       console.log('play video')
       // videoRef.current.pause()
-      // await videoRef.current.load()
-      // setTimeout(async () => {
-        await videoRef.current?.play()
-      // }, 0)
-      
+      // videoRef.current.load()
+      // .then((res: any) => {
+      //   console.log('Video loaded: ', res)
+      // })
+      // // .catch((err: Error) => console.log('Error: ', err))
+      setTimeout(async () => {
+        // const playPromise = videoRef.current?.play()
+        // await videoRef.current?.play()
+        // if (playPromise) playPromise() 
+        videoRef.current.nativeElement.muted = true
+        
+        if (videoRef.current.play)
+          // await videoRef.current.play()
+          videoRef.current
+            .play()
+            .then((res: any) => {
+              console.log('Video started to play: ', res)
+            })
+            .catch((err: Error) =>
+              console.log('Error occurrd while start video: ', err)
+            )
+      }, 0)
+      // const media = document.querySelector('#video').nativeElement;
+      // media.muted = true; // without this line it's not working although I have "muted" in HTML
+      // media.play();
     }
   }
   const settings = {
@@ -144,7 +170,16 @@ export const OverviewSection = () => {
         height="100%"
         style={{ borderRadius: '12px' }}
       /> */}
-      <video id="video" width="100%" height="100%" controls style={videoStyle} ref={videoRef}>
+      <video
+        id="video"
+        preload="none"
+        width="100%"
+        height="100%"
+        controls
+        style={videoStyle}
+        ref={videoRef}
+        muted={true}
+      >
         <track kind="captions" />
         <source src="/gamedemo.mp4" type="video/mp4" />
       </video>
