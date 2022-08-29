@@ -9,9 +9,9 @@ import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import * as React from 'react'
 
+import CrossIcon from '../assets/images/cross-icon-36.png'
 import DiscordIcon from '../assets/images/discord-icon.png'
-import CrossIcon from '../assets/images/logo-36.png'
-import logoType from '../assets/images/logo-type.png'
+import logoType from '../assets/images/logo-type-small.png'
 import TwitterIcon from '../assets/images/twitter-icon.png'
 import YoutubeIcon from '../assets/images/youtube-icon.png'
 
@@ -81,11 +81,23 @@ export const ResponsiveAppBar = () => {
     <AppBar position="static">
       <Container maxWidth="xl" /*sx={{ paddingRight: {xl: 30, xs: 6} }} */>
         <Toolbar disableGutters>
-          <Logo
-            sx={{
-              display: { md: 'flex', xs: 'none' },
-            }}
-          />
+          <Box
+            width="100%"
+            display={{ md: 'flex', xs: 'none' }}
+            justifyContent="space-between"
+          >
+            <Logo
+              sx={{
+                display: { md: 'flex', xs: 'none' },
+              }}
+            />
+            <Box sx={{ height: 36, width: 36 }}>
+              <a href="/#">
+                <img src={CrossIcon} alt="" width="100%" height="100%" />
+              </a>
+            </Box>
+          </Box>
+
           <Box
             sx={{
               display: { md: 'none', xs: 'flex' },
@@ -164,22 +176,22 @@ export const ResponsiveAppBar = () => {
               <JoinButton />
             </Box>
           </Box>
-          <Box
+          {/*<Box
             width="100%"
             display={{ md: 'flex', xs: 'none' }}
             justifyContent="center"
           >
-            <Box sx={{ height: 36, width: 36 }}>
+             <Box sx={{ height: 36, width: 36 }}>
               <a href="/#">
                 <img src={CrossIcon} alt="" width="100%" height="100%" />
               </a>
-            </Box>
-          </Box>
+            </Box> 
+          </Box>*/}
           <Box
             sx={{
               display: { md: 'flex', xs: 'none' },
               flexGrow: 1,
-              justifyContent: 'space-between',
+              justifyContent: 'end',
               width: '100%',
             }}
           >
