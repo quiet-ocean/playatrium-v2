@@ -1,4 +1,4 @@
-import { Box, Button, Typography, Grid } from '@mui/material'
+import { Box, Typography, Grid } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { useRef, useEffect, useState, useCallback } from 'react'
@@ -42,7 +42,7 @@ export const OverviewSection = () => {
       if (event.deltaY > 0 && index < length) {
         event.preventDefault()
         setIndex((prevIndex) => {
-          if (prevIndex < length) return prevIndex + 1
+          if (prevIndex < length) return prevIndex + 2
           else {
             handleClick()
             return length

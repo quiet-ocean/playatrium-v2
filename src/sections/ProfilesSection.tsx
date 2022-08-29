@@ -7,6 +7,10 @@ import { palette } from '../themes/AtriumTheme'
 
 import { SubtitleText } from './UpdatesSection'
 
+const videoStyle = {
+  borderRadius: '12px',
+  height: '100%',
+}
 export const ProfilesSection = () => {
   const [state, setState] = useState(true)
 
@@ -119,6 +123,20 @@ export const ProfilesSection = () => {
           <MultiSlideAnimationWrapper
             child1={<img src={profilePreviewImage} alt="" width="100%" />}
             child2={<img src={profilePreviewImage} alt="" width="100%" />}
+            // child1={
+            //   <video width="100%" height="100%" controls style={videoStyle}>
+            //     <track kind="captions" />
+            //     <source src="/gamedemo.mp4" type="video/mp4" />
+            //   </video>
+            //   // <CardMedia sx={{ height: '100%', width: '100%' }} src="/gamedemo.mp4" />
+            // }
+            // child2={
+            //   <video width="100%" height="100%" controls style={videoStyle}>
+            //     <track kind="captions" />
+            //     <source src="/gamedemo.mp4" type="video/mp4" />
+            //   </video>
+            //   // <CardMedia sx={{ height: '100%', width: '100%' }} src="/gamedemo.mp4" />
+            // }
             state={state}
           />
         </Grid>

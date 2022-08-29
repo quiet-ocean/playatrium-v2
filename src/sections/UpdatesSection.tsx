@@ -71,7 +71,16 @@ const UpdateItem = ({
   small?: boolean
 }) => {
   return (
-    <Box display="flex" flexDirection="column" gap={4}>
+    <Box
+      display="flex"
+      flexDirection="column"
+      gap={4}
+      sx={{
+        '&:hover': {
+          color: palette.info.main,
+        }
+      }}
+    >
       <Box
         sx={{
           '& svg': {

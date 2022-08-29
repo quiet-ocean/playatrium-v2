@@ -68,38 +68,40 @@ export const Builder = ({
           {builder.title}
         </Typography>
         <Typography variant="h4">{builder.name}</Typography>
-        <Collapse in={hover}>
-          <Box display="flex" gap={3}>
-            {builder.tags.map((item: string, key: number) => (
-              <Box key={key}>
-                <Button
-                  className="x-small"
-                  variant="rounded"
-                  sx={{
-                    border: `1px solid ${palette.text.secondary}`,
-                    color: palette.text.secondary,
-                    textTransform: 'capitalize !important',
-                  }}
-                >
-                  {item}
-                </Button>
-              </Box>
-            ))}
-          </Box>
-          <Box mt={4}>
-            <Typography variant="caption" sx={{ fontSize: '16px' }}>
-              {builder.bio}
-            </Typography>
-          </Box>
-          <Box mt={10} display="flex" gap={4}>
-            <Button variant="primary" endIcon={<ArrowRightAltIcon />}>
-              <a href="/#">twitter</a>
-            </Button>
-            <Button variant="primary" endIcon={<ArrowRightAltIcon />}>
-              <a href="/#">discord</a>
-            </Button>
-          </Box>
-        </Collapse>
+        <Box height="100%">
+          <Collapse in={hover}>
+            <Box display="flex" gap={3}>
+              {builder.tags.map((item: string, key: number) => (
+                <Box key={key}>
+                  <Button
+                    className="x-small"
+                    variant="rounded"
+                    sx={{
+                      border: `1px solid ${palette.text.secondary}`,
+                      color: palette.text.secondary,
+                      textTransform: 'capitalize !important',
+                    }}
+                  >
+                    {item}
+                  </Button>
+                </Box>
+              ))}
+            </Box>
+            <Box mt={4}>
+              <Typography variant="caption" sx={{ fontSize: '16px' }}>
+                {builder.bio}
+              </Typography>
+            </Box>
+            <Box mt={10} display="flex" gap={4}>
+              <Button variant="primary" endIcon={<ArrowRightAltIcon />}>
+                <a href="/#">twitter</a>
+              </Button>
+              <Button variant="primary" endIcon={<ArrowRightAltIcon />}>
+                <a href="/#">discord</a>
+              </Button>
+            </Box>
+          </Collapse>
+        </Box>
       </BuilderContent>
     </Box>
   )

@@ -137,8 +137,16 @@ const App: React.FC = () => {
                 <IntegrationsSection />
               </GridBgContainer>
             </Box>
-            <SectionContainer>
-              <GridBgContainer>
+            <SectionContainer
+              minHeight="100vh !important"
+              height="100% !important"
+            >
+              <GridBgContainer
+                sx={{
+                  height: '100% !important',
+                  minHeight: '100vh !important',
+                }}
+              >
                 <BuildersSection />
               </GridBgContainer>
             </SectionContainer>

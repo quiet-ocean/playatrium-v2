@@ -14,7 +14,7 @@ import DiscordIcon from '../assets/images/discord-icon.png'
 import logoType from '../assets/images/logo-type-small.png'
 import TwitterIcon from '../assets/images/twitter-icon.png'
 import YoutubeIcon from '../assets/images/youtube-icon.png'
-
+import { palette } from '../themes/AtriumTheme'
 const pages = ['updates', 'overview', 'integrations', 'profiles', 'team']
 
 const Logo = ({ sx }: { sx?: object }) => {
@@ -61,7 +61,10 @@ const menuStyle = {
     display: { md: 'none', xs: 'block' },
     height: '100%',
     left: '0px !important',
+    maxHeight: '100%',
+    maxWidth: '100%',
     right: '0px !important',
+    top: '0px !important',
     width: '100%',
   },
 }
@@ -133,7 +136,12 @@ export const ResponsiveAppBar = () => {
                     fontFamily={'Fractul Alt'}
                     textAlign="center"
                   >
-                    {page}
+                    <a
+                      href={`/#${page}-section`}
+                      style={{ color: palette.text.primary }}
+                    >
+                      {page}
+                    </a>
                   </Typography>
                 </MenuItem>
               ))}
