@@ -32,7 +32,16 @@ import {
 } from './sections'
 import AtriumTheme from './themes/AtriumTheme'
 
+// app bar style when scroll up
+// background: rgba(26, 26, 26, 0.8);
+// backdrop-filter: blur(15px);
+
 const Root = styled(Box)(({ theme }) => ({
+  '& .MuiAppBar-root': {
+    background: AtriumTheme.palette.common.black,
+    backgroundImage: 'none',
+    boxShadow: 'none',
+  },
   '& > div:not(.header)': {
     [theme.breakpoints.up('xl')]: {
       padding: '0px',
@@ -68,6 +77,9 @@ function HideOnScroll(props: Props) {
     target: window ? window() : undefined,
   })
 
+  useEffect(() => {
+    console.log('Trigger changed: ', trigger)
+  }, [trigger])
   return (
     <Slide appear={false} direction="down" in={!trigger}>
       {children}
@@ -90,6 +102,9 @@ const App: React.FC = () => {
       // setEnable(true)
     }, 4200)
 
+    window.onscroll = function() {
+      console.log('scroll')
+    }
     return () => {
       document.body.style.overflow = 'auto'
     }
@@ -104,7 +119,9 @@ const App: React.FC = () => {
             <SectionContainer className="header" height="100vh !important">
               <Box height="100%" display="flex" flexDirection="column">
                 <HideOnScroll>
-                  <AppBar>
+                  <AppBar
+                    sx={{ borderBottom: `1px solid rgba(168, 168, 168, 0.1)` }}
+                  >
                     <ResponsiveAppBar />
                   </AppBar>
                 </HideOnScroll>

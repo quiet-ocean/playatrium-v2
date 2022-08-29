@@ -9,11 +9,16 @@ import {
   InputAdornment,
 } from '@mui/material'
 
-import atriumLogoType from '../assets/images/logo-type-large.png'
-import discordIcon from '../assets/images/discord-icon.png'
-import logo100 from '../assets/images/cross-icon-100.png'
-import twitterIcon from '../assets/images/twitter-icon.png'
+import logo100 from '../assets/images/cross-icon-100.svg'
+import discordIcon from '../assets/images/discord-icon.svg'
+import atriumLogoType from '../assets/images/logo-type-large.svg'
+import twitterIcon from '../assets/images/twitter-icon.svg'
 import youtubeIcon from '../assets/images/youtube-icon.png'
+// import atriumLogoType from '../assets/images/logo-type-large.png'
+// import discordIcon from '../assets/images/discord-icon.png'
+// import logo100 from '../assets/images/cross-icon-100.png'
+// import twitterIcon from '../assets/images/twitter-icon.png'
+// import youtubeIcon from '../assets/images/youtube-icon.png'
 import { palette } from '../themes/AtriumTheme'
 
 const icons = [discordIcon, twitterIcon, youtubeIcon]
@@ -63,7 +68,7 @@ const AtriumInput = () => {
 }
 export const Footer = () => {
   return (
-    <Box sx={{ color: palette.text.primary }} py={5}>
+    <Box sx={{ color: palette.text.primary }} py={5} id="footer">
       <Grid container justifyContent="center" columns={{ lg: 10, xl: 12 }}>
         <Grid item lg={10} xl={10}>
           <Box

@@ -59,7 +59,7 @@ const HeroAnimation = ({
         },
 
         // cursor: 'url("../assets/images/cursor.svg"), auto',
-        cursor: 'url("../assets/images/cursor.svg"), auto',
+        // cursor: 'url("../assets/images/cursor.svg"), auto',
 
         // display: 'flex',
         // flexDirection: 'column',

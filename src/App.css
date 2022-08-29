@@ -58,10 +58,10 @@ a {
 } */
 
 /* width */
-/* ::-webkit-scrollbar {
-  width: 10px;
-  position: fixed;
-} */
+::-webkit-scrollbar {
+  width: 0px;
+  /* position: fixed; */
+}
 
 /* Track */
 /* ::-webkit-scrollbar-track {

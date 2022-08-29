@@ -1,4 +1,4 @@
-import { Box, Typography, Grid } from '@mui/material'
+import { Box, Typography, Grid, CardMedia } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { useRef, useEffect, useState, useCallback } from 'react'
@@ -11,6 +11,11 @@ import { palette } from '../themes/AtriumTheme'
 
 import { SubtitleText } from './UpdatesSection'
 
+const videoStyle = {
+  borderRadius: '12px',
+  height: '100%',
+}
+
 const text: string =
   'Atrium is a virtual world where users across all Layer-1 networks can build, own, and monetize their online experience through an interoperable pixel-art metaverse.'
 // const text: string = 'Atrium'
@@ -21,6 +26,7 @@ export const OverviewSection = () => {
   const endPos = text.indexOf('through')
   const sliderRef = useRef<Slider>(null)
   const sectionRef = useRef<HTMLDivElement>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
 
   const [index, setIndex] = useState(0)
   const [disableScroll, setDisableScroll] = useState(true)
@@ -39,22 +45,63 @@ export const OverviewSection = () => {
   const handleWheel = useCallback(
     (event: WheelEvent) => {
       // console.log(index, length)
-      if (event.deltaY > 0 && index < length) {
-        event.preventDefault()
-        setIndex((prevIndex) => {
-          if (prevIndex < length) return prevIndex + 2
-          else {
-            handleClick()
-            return length
-          }
-        })
+      if (event.deltaY > 0) {
+        if (index < length) {
+          event.preventDefault()
+          setIndex((prevIndex) => {
+            if (prevIndex <= length) return prevIndex + 10
+            return prevIndex
+            // else {
+
+            //   handleClick()
+            //   // return length
+            //   return prevIndex
+            // }
+          })
+        } else {
+          handleClick()
+        }
       }
     },
     [index]
   )
-  const handleClick = () => {
+  const handleClick = async () => {
+    console.log('handle next')
     if (sliderRef.current) sliderRef.current.slickNext()
     setDisableScroll(false)
+    // let video = document.querySelector("#video")
+    // video.pause()
+    // video.play()
+    if (videoRef.current) {
+      // window.vcomp = videoRef.current
+      console.log('play video')
+      // videoRef.current.pause()
+      // videoRef.current.load()
+      // .then((res: any) => {
+      //   console.log('Video loaded: ', res)
+      // })
+      // // .catch((err: Error) => console.log('Error: ', err))
+      setTimeout(async () => {
+        // const playPromise = videoRef.current?.play()
+        // await videoRef.current?.play()
+        // if (playPromise) playPromise() 
+        videoRef.current.nativeElement.muted = true
+        
+        if (videoRef.current.play)
+          // await videoRef.current.play()
+          videoRef.current
+            .play()
+            .then((res: any) => {
+              console.log('Video started to play: ', res)
+            })
+            .catch((err: Error) =>
+              console.log('Error occurrd while start video: ', err)
+            )
+      }, 0)
+      // const media = document.querySelector('#video').nativeElement;
+      // media.muted = true; // without this line it's not working although I have "muted" in HTML
+      // media.play();
+    }
   }
   const settings = {
     arrows: false,
@@ -115,14 +162,27 @@ export const OverviewSection = () => {
     )
   }
   const Slide2 = () => (
-    <Box py={{ md: 20, xs: 0 }} pb={{ md: 20, xs: 16 }}>
-      <img
+    <Box p={{ md: 20, xs: 16 }} height="100%">
+      {/* <img
         src={overviewImage}
         alt=""
         width="100%"
         height="100%"
         style={{ borderRadius: '12px' }}
-      />
+      /> */}
+      <video
+        id="video"
+        preload="none"
+        width="100%"
+        height="100%"
+        controls
+        style={videoStyle}
+        ref={videoRef}
+        muted={true}
+      >
+        <track kind="captions" />
+        <source src="/gamedemo.mp4" type="video/mp4" />
+      </video>
     </Box>
   )
   return (
