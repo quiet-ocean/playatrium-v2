@@ -7,10 +7,10 @@ import { palette } from '../themes/AtriumTheme'
 
 import { SubtitleText } from './UpdatesSection'
 
-const videoStyle = {
-  borderRadius: '12px',
-  height: '100%',
-}
+// const videoStyle = {
+//   borderRadius: '12px',
+//   height: '100%',
+// }
 export const ProfilesSection = () => {
   const [state, setState] = useState(true)
 
