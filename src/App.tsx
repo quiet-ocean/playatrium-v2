@@ -88,7 +88,7 @@ const App: React.FC = () => {
       document.body.style.overflow = 'visible'
       // document.body.style.paddingRight = '0px'
       // setEnable(true)
-    }, 4000)
+    }, 4200)
 
     return () => {
       document.body.style.overflow = 'auto'
