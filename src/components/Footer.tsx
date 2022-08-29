@@ -9,9 +9,9 @@ import {
   InputAdornment,
 } from '@mui/material'
 
-import atriumLogoType from '../assets/images/atrium-logo-large.png'
+import atriumLogoType from '../assets/images/logo-type-large.png'
 import discordIcon from '../assets/images/discord-icon.png'
-import logo100 from '../assets/images/logo-100.png'
+import logo100 from '../assets/images/cross-icon-100.png'
 import twitterIcon from '../assets/images/twitter-icon.png'
 import youtubeIcon from '../assets/images/youtube-icon.png'
 import { palette } from '../themes/AtriumTheme'
