@@ -220,6 +220,15 @@ const AtriumTheme = createTheme({
       textAlign: 'left',
       textTransform: 'capitalize',
     },
+    h6: {
+      fontFamily: 'Fractul Alt',
+      fontSize: '16px',
+      fontWeight: 600,
+      letterSpacing: '-0.03em',
+      lineHeight: '110%',
+      textAlign: 'left',
+      textTransform: 'capitalize',
+    },
     // button: {
 
     // },
