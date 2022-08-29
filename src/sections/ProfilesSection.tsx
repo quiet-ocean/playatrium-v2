@@ -5,6 +5,8 @@ import profilePreviewImage from '../assets/images/profile-preview.png'
 import { MultiSlideAnimationWrapper } from '../components'
 import { palette } from '../themes/AtriumTheme'
 
+import { SubtitleText } from './UpdatesSection'
+
 export const ProfilesSection = () => {
   const [state, setState] = useState(true)
 
@@ -47,15 +49,7 @@ export const ProfilesSection = () => {
       <Grid container justifyContent="center" columns={{ lg: 10, xl: 12 }}>
         <Grid item xs={12} width="100%">
           <Box width="100%">
-            <Button
-              variant="rounded"
-              sx={{
-                border: `1px solid ${palette.info.main}`,
-                color: palette.info.main,
-              }}
-            >
-              profiles
-            </Button>
+            <SubtitleText color={palette.info.main}>profiles</SubtitleText>
           </Box>
           <Box display={{ md: 'none', xs: 'block' }} pt={16}>
             <TabButtonGroup />
