@@ -78,7 +78,7 @@ const UpdateItem = ({
       sx={{
         '&:hover': {
           color: palette.info.main,
-        }
+        },
       }}
     >
       <Box
@@ -246,7 +246,14 @@ export const UpdatesSection = () => {
                   }}
                 >
                   Stay updated on the most important updates about Atrium
-                  through our newsletter
+                  through our{' '}
+                  <a
+                    href="/newsletter"
+                    target="_blank"
+                    style={{ color: palette.info.main }}
+                  >
+                    newsletter
+                  </a>
                 </Typography>
               </Grid>
             </Grid>
