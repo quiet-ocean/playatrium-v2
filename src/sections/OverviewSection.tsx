@@ -162,7 +162,7 @@ export const OverviewSection = () => {
     )
   }
   const Slide2 = () => (
-    <Box p={{ md: 20, xs: 16 }} height="100%">
+    <Box pt={{ md: 20, xs: 0 }} pb={9} height="100%">
       {/* <img
         src={overviewImage}
         alt=""
