@@ -214,43 +214,41 @@ export const UpdatesSection = () => {
   return (
     <Box py={{ md: 10, xs: 6 }} id="updates-section">
       <Grid container justifyContent="center">
-        <Grid item lg={12} xl={10}>
-          <Box mb={{ md: 12, xs: 6 }}>
-            <Grid container>
+        <Grid item lg={12} xl={10} width="100%">
+          <Box mb={{ md: 12, xs: 6 }} width="100%">
+            <Grid container  width="100%">
               <Grid
                 item
                 sm={6}
                 xs={12}
-                justifyContent={{ sm: 'start', xs: 'center' }}
+                width="100%"
+                justifyContent={{ sm: 'start', xs: 'start' }}
               >
                 <Box
                   display="flex"
-                  justifyContent={{ sm: 'start', xs: 'center' }}
+                  justifyContent={{ sm: 'start', xs: 'start' }}
+                  p={{ md: 0, xs: 4 }}
                 >
                   <SubtitleText color={palette.info.main}>updates</SubtitleText>
                 </Box>
               </Grid>
-              <Grid
-                item
-                sm={6}
-                xs={12}
-                display="flex"
-                justifyContent={{ sm: 'end', xs: 'center' }}
-              >
-                <Typography
-                  variant="h6"
-                  sx={{
-                    maxWidth: '340px',
-                    py: { sm: 0, xs: 3 },
-                    textAlign: { sm: 'right', xs: 'center' },
-                  }}
-                >
-                  Stay updated on the most important updates about Atrium
-                  through our{' '}
-                  <a href="/#footer" style={{ color: palette.info.main }}>
-                    newsletter
-                  </a>
-                </Typography>
+              <Grid item sm={6} xs={12}>
+                <Box display={{ md: 'flex', xs: 'none' }} justifyContent="end">
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      maxWidth: '340px',
+                      py: { sm: 0, xs: 3 },
+                      textAlign: { sm: 'right', xs: 'center' },
+                    }}
+                  >
+                    Stay updated on the most important updates about Atrium
+                    through our{' '}
+                    <a href="/#footer" style={{ color: palette.info.main }}>
+                      newsletter
+                    </a>
+                  </Typography>
+                </Box>
               </Grid>
             </Grid>
           </Box>
