@@ -1,14 +1,19 @@
 import { Box, Typography, Grid } from '@mui/material'
 
 import WalkAroundGif from '../../assets/gifs/walkaround 1.gif'
+import WalkAroungImage from '../../assets/images/w.png'
 import { palette } from '../../themes/AtriumTheme'
 
-const ProjectIntegrations = () => {
+const ProjectIntegrations = ({ animate }: { animate: boolean }) => {
   return (
     <Box>
       <Grid container justifyContent="center" columns={{ md: 10, xl: 12 }}>
         <Grid item md={5}>
-          <img src={WalkAroundGif} alt="" width="100%" />
+          <img
+            src={animate ? WalkAroundGif : WalkAroungImage}
+            alt=""
+            width="100%"
+          />
         </Grid>
         <Grid item md={1} />
         <Grid

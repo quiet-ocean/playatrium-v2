@@ -69,6 +69,7 @@ export const Home = () => {
           },
           position: 'relative',
         },
+        scrollSnapType: 'y mandatory',
       }}
     >
       <SectionContainer className="header" height="100vh !important">
@@ -97,11 +98,11 @@ export const Home = () => {
           <ProfilesSection />
         </GridBgContainer>
       </SectionContainer>
-      <Box px={{ lg: 5, xl: 0 }}>
+      <SectionContainer>
         <GridBgContainer>
           <IntegrationsSection />
         </GridBgContainer>
-      </Box>
+      </SectionContainer>
       <SectionContainer minHeight="100vh !important" height="100% !important">
         <GridBgContainer
           sx={{
