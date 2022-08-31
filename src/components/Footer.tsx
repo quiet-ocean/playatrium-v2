@@ -52,13 +52,12 @@ const AtriumInput = () => {
         aria-describedby="outlined-weight-helper-text"
         inputProps={{
           'aria-label': 'weight',
-          'placeholder': 'Email',
+          placeholder: 'Email',
         }}
         sx={{
           '& input': {
             p: 0,
             textAlign: { md: 'left', xs: 'center' },
-            
           },
           background: 'rgba(242, 242, 242, 0.2)',
           border: 0,

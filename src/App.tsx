@@ -1,13 +1,6 @@
-import {
-  Box,
-  ThemeProvider,
-  styled,
-  CssBaseline,
-  Slide,
-  AppBar,
-} from '@mui/material'
+import { Box, ThemeProvider, CssBaseline, Slide, AppBar } from '@mui/material'
 import useScrollTrigger from '@mui/material/useScrollTrigger'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 
 import './index.css'
 import './App.css'
@@ -19,6 +12,7 @@ import {
   Footer,
   SectionContainer,
   GridBgContainer,
+  RootLayout,
 } from './components'
 // import useInterval from './hooks/useInterval'
 import {
@@ -36,29 +30,7 @@ import AtriumTheme from './themes/AtriumTheme'
 // background: rgba(26, 26, 26, 0.8);
 // backdrop-filter: blur(15px);
 
-const Root = styled(Box)(({ theme }) => ({
-  '& .MuiAppBar-root': {
-    background: AtriumTheme.palette.common.black,
-    backgroundImage: 'none',
-    boxShadow: 'none',
-  },
-  '& > div:not(.header)': {
-    [theme.breakpoints.up('xl')]: {
-      padding: '0px',
-    },
-    [theme.breakpoints.down('xl')]: {
-      padding: '0px 20px',
-    },
-  },
-  '&.bg-animation .grid-bg': {
-    '&::before': {
-      left: `0%`,
-      width: `100%`,
-    },
-    position: 'relative',
-  },
-  scrollSnapType: 'y mandatory',
-}))
+const sticky = 500
 
 interface Props {
   /**
@@ -77,9 +49,6 @@ function HideOnScroll(props: Props) {
     target: window ? window() : undefined,
   })
 
-  useEffect(() => {
-    console.log('Trigger changed: ', trigger)
-  }, [trigger])
   return (
     <Slide appear={false} direction="down" in={!trigger}>
       {children}
@@ -88,8 +57,10 @@ function HideOnScroll(props: Props) {
 }
 
 const App: React.FC = () => {
+  //
   const [animClass, setAnimClass] = useState('')
-  // const [enable, setEnable] = useState(false)
+  const [scrollUp, setScrollUp] = useState(false)
+  const [y, setY] = useState(window.scrollY)
 
   useEffect(() => {
     document.body.style.overflow = 'hidden'
@@ -102,20 +73,42 @@ const App: React.FC = () => {
       // setEnable(true)
     }, 4200)
 
-    window.onscroll = function() {
-      console.log('scroll')
-    }
     return () => {
       document.body.style.overflow = 'auto'
     }
   }, [])
+
+  const handleNavigation = useCallback(() => {
+    // const window = e.currentTarget
+    if (y > window.scrollY) {
+      // console.log("scrolling up");
+      setScrollUp(true)
+    } else if (y < window.scrollY) {
+      // console.log("scrolling down");
+      setScrollUp(false)
+    }
+    setY(window.scrollY)
+  }, [y])
+
+  useEffect(() => {
+    setY(window.scrollY)
+    window.addEventListener('scroll', handleNavigation)
+
+    return () => {
+      window.removeEventListener('scroll', handleNavigation)
+    }
+  }, [handleNavigation])
 
   return (
     <React.Fragment>
       <CssBaseline />
       <ThemeProvider theme={AtriumTheme}>
         <Box sx={{ background: AtriumTheme.palette.common.black }}>
-          <Root className={`${animClass}`}>
+          <RootLayout
+            className={`${animClass} ${
+              scrollUp && y > sticky ? 'scroll-up' : ''
+            }`}
+          >
             <SectionContainer className="header" height="100vh !important">
               <Box height="100%" display="flex" flexDirection="column">
                 <HideOnScroll>
@@ -182,7 +175,7 @@ const App: React.FC = () => {
                 <Footer />
               </GridBgContainer>
             </Box>
-          </Root>
+          </RootLayout>
         </Box>
       </ThemeProvider>
     </React.Fragment>
