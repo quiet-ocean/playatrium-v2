@@ -84,7 +84,7 @@ export const ResponsiveAppBar = () => {
   return (
     <AppBar position="static">
       <Container maxWidth="xl" /*sx={{ paddingRight: {xl: 30, xs: 6} }} */>
-        <Toolbar disableGutters>
+        <Toolbar disableGutters sx={{ minHeight: 64 }}>
           <Box
             width="100%"
             display={{ md: 'flex', xs: 'none' }}
