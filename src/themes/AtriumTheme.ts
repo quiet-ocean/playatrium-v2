@@ -149,8 +149,14 @@ const AtriumTheme = createTheme({
   },
   spacing: 4,
   typography: {
-    // subtitle1: {
-    // },
+    subtitle1: {
+      fontFamily: 'Andale Mono Regular',
+      fontSize: '16px',
+      fontWeight: 400,
+      letterSpacing: '-0.05em',
+      lineHeight: '24px',
+      textAlign: 'left',
+    },
     // subtitle2: {
     // },
     body1: {
