@@ -64,10 +64,10 @@ const App: React.FC = () => {
 
   useEffect(() => {
     setY(window.scrollY)
-    window.addEventListener('scroll', handleNavigation)
+    window.addEventListener('wheel', handleNavigation)
 
     return () => {
-      window.removeEventListener('scroll', handleNavigation)
+      window.removeEventListener('wheel', handleNavigation)
     }
   }, [handleNavigation])
 
