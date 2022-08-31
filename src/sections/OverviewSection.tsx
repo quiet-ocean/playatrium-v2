@@ -40,9 +40,11 @@ export const OverviewSection = () => {
   const handleWheel = useCallback(
     (event: WheelEvent) => {
       // console.log(index, length)
+      if (disableScroll) {
+        event.preventDefault()
+      }
       if (event.deltaY > 0) {
         if (index < length) {
-          event.preventDefault()
           setIndex((prevIndex) => {
             if (prevIndex <= length) return prevIndex + 10
             return prevIndex
@@ -58,12 +60,12 @@ export const OverviewSection = () => {
         }
       }
     },
-    [index]
+    [index, disableScroll]
   )
   const handleClick = async () => {
     // console.log('handle next')
     if (sliderRef.current) sliderRef.current.slickNext()
-    setDisableScroll(false)
+    setTimeout(() => setDisableScroll(false), 1000)
     // let video = document.querySelector("#video")
     // video.pause()
     // video.play()
