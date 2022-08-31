@@ -1,4 +1,4 @@
-import { Box, Button } from '@mui/material'
+import { Box } from '@mui/material'
 
 import { SectionContainer } from '../../components'
 import { palette } from '../../themes/AtriumTheme'

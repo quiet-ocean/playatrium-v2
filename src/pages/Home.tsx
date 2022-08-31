@@ -1,7 +1,7 @@
 import { Box } from '@mui/material'
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect } from 'react'
 
-import { SectionContainer, GridBgContainer, RootLayout } from '../components'
+import { SectionContainer, GridBgContainer } from '../components'
 // import useInterval from './hooks/useInterval'
 import {
   HeroSection,

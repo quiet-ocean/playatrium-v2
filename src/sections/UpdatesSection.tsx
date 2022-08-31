@@ -1,4 +1,4 @@
-import { Box, Typography, Button, styled, Grid, SvgIcon } from '@mui/material'
+import { Box, Typography, styled, Grid } from '@mui/material'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import React from 'react'
@@ -216,7 +216,7 @@ export const UpdatesSection = () => {
       <Grid container justifyContent="center">
         <Grid item lg={12} xl={10} width="100%">
           <Box mb={{ md: 12, xs: 6 }} width="100%">
-            <Grid container  width="100%">
+            <Grid container width="100%">
               <Grid
                 item
                 sm={6}
