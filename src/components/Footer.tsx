@@ -137,6 +137,11 @@ export const Footer = () => {
               display="flex"
               justifyContent={{ md: 'center', xs: 'space-between' }}
               order={{ md: 1, xs: 2 }}
+              sx={{
+                '& .MuiTypography-root': {
+                  zIndex: 10000,
+                },
+              }}
             >
               <Typography variant="caption">
                 <Link to="/policy">Privacy</Link>
