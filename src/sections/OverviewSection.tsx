@@ -6,14 +6,12 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
 
-// import overviewImage from '../assets/images/overview.png'
 import { palette } from '../themes/AtriumTheme'
 
 import { SubtitleText } from './UpdatesSection'
 
 const text: string =
   'Atrium is a virtual world where users across all Layer-1 networks can build, own, and monetize their online experience through an interoperable pixel-art metaverse.'
-// const text: string = 'Atrium'
 
 export const OverviewSection = () => {
   const length = text.length
@@ -39,7 +37,6 @@ export const OverviewSection = () => {
 
   const handleWheel = useCallback(
     (event: WheelEvent) => {
-      // console.log(index, length)
       if (disableScroll) {
         event.preventDefault()
       }
@@ -48,12 +45,6 @@ export const OverviewSection = () => {
           setIndex((prevIndex) => {
             if (prevIndex <= length) return prevIndex + 10
             return prevIndex
-            // else {
-
-            //   handleClick()
-            //   // return length
-            //   return prevIndex
-            // }
           })
         } else {
           handleClick()
@@ -63,42 +54,8 @@ export const OverviewSection = () => {
     [index, disableScroll]
   )
   const handleClick = async () => {
-    // console.log('handle next')
     if (sliderRef.current) sliderRef.current.slickNext()
     setTimeout(() => setDisableScroll(false), 1000)
-    // let video = document.querySelector("#video")
-    // video.pause()
-    // video.play()
-    // if (videoRef.current) {
-    //   // window.vcomp = videoRef.current
-    //   // console.log('play video')
-    //   // videoRef.current.pause()
-    //   // videoRef.current.load()
-    //   // .then((res: any) => {
-    //   //   console.log('Video loaded: ', res)
-    //   // })
-    //   // // .catch((err: Error) => console.log('Error: ', err))
-    //   setTimeout(async () => {
-    //     // const playPromise = videoRef.current?.play()
-    //     // await videoRef.current?.play()
-    //     // if (playPromise) playPromise()
-    //     videoRef.current?.nativeElement.muted = true
-
-    //     if (videoRef.current?.play)
-    //       // await videoRef.current.play()
-    //       videoRef.current?
-    //         .play()
-    //         .then((res: any) => {
-    //           console.log('Video started to play: ', res)
-    //         })
-    //         .catch((err: Error) =>
-    //           // console.log('Error occurrd while start video: ', err)
-    //         )
-    //   }, 0)
-    //   // const media = document.querySelector('#video').nativeElement;
-    //   // media.muted = true; // without this line it's not working although I have "muted" in HTML
-    //   // media.play();
-    // }
   }
   const settings = {
     arrows: false,
@@ -166,25 +123,15 @@ export const OverviewSection = () => {
         '& > video': {
           borderRadius: { md: '12px', xs: '8px' },
           height: '100%',
-          // objectFit: 'cover',
           objectFit: 'fill',
         },
       }}
     >
-      {/* <img
-        src={overviewImage}
-        alt=""
-        width="100%"
-        height="100%"
-        style={{ borderRadius: '12px' }}
-      /> */}
       <video
         id="video"
         preload="none"
         width="100%"
-        // height="100%"
         controls
-        // style={videoStyle}
         ref={videoRef}
         muted={true}
       >
@@ -202,7 +149,6 @@ export const OverviewSection = () => {
           xl={10}
           sx={{
             '& li.slide': {
-              // height: '100%',
               '& li.slide > div': { height: '100%' },
             },
           }}
