@@ -1,15 +1,20 @@
 import { Box, Typography, Grid } from '@mui/material'
 
 import EndlessGif from '../../assets/gifs/endless.gif'
+import EndlessImage from '../../assets/gifs/endless.png'
 import { palette } from '../../themes/AtriumTheme'
 
-const ProjectIntegrations = () => {
+const EndlessIntegrations = ({ animate }: { animate: boolean }) => {
   return (
     <Box py={{ xs: 16 }}>
       <Grid container justifyContent="center" columns={{ md: 10, xl: 12 }}>
         <Grid item md={5}>
           <Box py={16}>
-            <img src={EndlessGif} alt="" width="100%" />
+            <img
+              src={animate ? EndlessGif : EndlessImage}
+              alt=""
+              width="100%"
+            />
           </Box>
         </Grid>
         <Grid item md={1} />
@@ -32,4 +37,4 @@ const ProjectIntegrations = () => {
   )
 }
 
-export default ProjectIntegrations
+export default EndlessIntegrations
