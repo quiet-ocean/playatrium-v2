@@ -111,7 +111,7 @@ export const IntegrationsSection = () => {
       ref={sectionRef}
       sx={{
         '& .slick-list': {
-          height: 'auto !important',
+          height: { md: 'auto !important', xs: '' },
         },
         height: '100%',
       }}
