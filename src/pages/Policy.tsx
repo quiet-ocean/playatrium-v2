@@ -4,22 +4,24 @@ import { GridBgContainer } from '../components'
 
 export const Policy = () => {
   return (
-    <Box
-      mt={16}
-      sx={{
-        '& .grid-bg': {
-          '&::before': {
-            left: `0%`,
-            width: `100%`,
+    <Box>
+      <Box
+        mt={16}
+        sx={{
+          '& .grid-bg': {
+            '&::before': {
+              left: `0%`,
+              width: `100%`,
+            },
+            position: 'relative',
           },
-          position: 'relative',
-        },
-        // minHeight: '1000px',
-      }}
-    >
-      <GridBgContainer>
-        <Typography variant="h1">Privacy Policy</Typography>
-      </GridBgContainer>
+          // minHeight: '1000px',
+        }}
+      >
+        <GridBgContainer>
+          <Typography variant="h1">Privacy Policy</Typography>
+        </GridBgContainer>
+      </Box>
     </Box>
   )
 }
