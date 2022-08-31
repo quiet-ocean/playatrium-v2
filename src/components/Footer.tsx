@@ -8,6 +8,7 @@ import {
   OutlinedInput,
   InputAdornment,
 } from '@mui/material'
+import { Link } from 'react-router-dom'
 
 import logo100 from '../assets/images/cross-icon-100.svg'
 import discordIcon from '../assets/images/discord-icon.svg'
@@ -70,7 +71,7 @@ const AtriumInput = () => {
 }
 export const Footer = () => {
   return (
-    <Box sx={{ color: palette.text.primary }} py={5} id="footer">
+    <Box sx={{ color: palette.text.primary }} py={5} id="footer" zIndex={100}>
       <Grid container justifyContent="center" columns={{ lg: 10, xl: 12 }}>
         <Grid item lg={10} xl={10}>
           <Box
@@ -137,7 +138,9 @@ export const Footer = () => {
               justifyContent={{ md: 'center', xs: 'space-between' }}
               order={{ md: 1, xs: 2 }}
             >
-              <Typography variant="caption">Privacy</Typography>
+              <Typography variant="caption">
+                <Link to="/policy">Privacy</Link>
+              </Typography>
               <Typography variant="caption">Terms of Use</Typography>
               <Typography variant="caption">© Atrium 2022</Typography>
             </Box>
