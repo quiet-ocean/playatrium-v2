@@ -81,14 +81,14 @@ const App: React.FC = () => {
               scrollUp && y > sticky ? 'scroll-up' : ''
             }`}
           >
-            <HideOnScroll>
-              <AppBar
-                sx={{ borderBottom: `1px solid rgba(168, 168, 168, 0.1)` }}
-              >
-                <ResponsiveAppBar />
-              </AppBar>
-            </HideOnScroll>
             <BrowserRouter>
+              <HideOnScroll>
+                <AppBar
+                  sx={{ borderBottom: `1px solid rgba(168, 168, 168, 0.1)` }}
+                >
+                  <ResponsiveAppBar />
+                </AppBar>
+              </HideOnScroll>
               <Routes>
                 <Route path="" element={<Home />} />
                 <Route path="home" element={<Home />} />

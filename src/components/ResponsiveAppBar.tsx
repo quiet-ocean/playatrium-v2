@@ -8,6 +8,7 @@ import MenuItem from '@mui/material/MenuItem'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import * as React from 'react'
+import { Link } from 'react-router-dom'
 
 import CrossIcon from '../assets/images/cross-icon-36.svg'
 import DiscordIcon from '../assets/images/discord-icon.svg'
@@ -20,9 +21,9 @@ const pages = ['updates', 'overview', 'integrations', 'profiles', 'team']
 const Logo = ({ sx }: { sx?: object }) => {
   return (
     <Box py={2} width="100%" sx={sx}>
-      <a href="/#">
+      <Link to="/">
         <img src={logoType} alt="" />
-      </a>
+      </Link>
     </Box>
   )
 }
