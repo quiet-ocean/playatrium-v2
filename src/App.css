@@ -53,15 +53,20 @@ button {
 a {
   text-decoration: none;
 }
+::-webkit-scrollbar {
+  display: none;
+  width: 0px;
+  -webkit-appearance: none;
+}
+
 /* #root {
   overflow: hidden;
 } */
 
 /* width */
-::-webkit-scrollbar {
-  width: 0px;
+/* ::-webkit-scrollbar { */
   /* position: fixed; */
-}
+/* } */
 
 /* Track */
 /* ::-webkit-scrollbar-track {

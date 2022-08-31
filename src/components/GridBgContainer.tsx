@@ -33,7 +33,9 @@ export const StyledContainer = styled(Box)(({ theme }) => ({
 }))
 
 export const GridBgContainer = ({
-  children, top, sx,
+  children,
+  top,
+  sx,
 }: {
   children: React.ReactNode
   top?: boolean

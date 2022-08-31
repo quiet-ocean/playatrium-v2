@@ -1,4 +1,4 @@
-import { Box, Typography, Grid, CardMedia } from '@mui/material'
+import { Box, Typography, Grid } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { useRef, useEffect, useState, useCallback } from 'react'
@@ -6,7 +6,7 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
 
-import overviewImage from '../assets/images/overview.png'
+// import overviewImage from '../assets/images/overview.png'
 import { palette } from '../themes/AtriumTheme'
 
 import { SubtitleText } from './UpdatesSection'
@@ -86,7 +86,7 @@ export const OverviewSection = () => {
         // await videoRef.current?.play()
         // if (playPromise) playPromise() 
         videoRef.current.nativeElement.muted = true
-        
+
         if (videoRef.current.play)
           // await videoRef.current.play()
           videoRef.current
@@ -162,7 +162,18 @@ export const OverviewSection = () => {
     )
   }
   const Slide2 = () => (
-    <Box p={{ md: 20, xs: 16 }} height="100%">
+    <Box
+      py={{ md: 20, xs: 4 }}
+      height="100%"
+      sx={{
+        '& > video': {
+          borderRadius: { md: '12px', xs: '8px' },
+          height: '100%',
+          // objectFit: 'cover',
+          objectFit: 'fill',
+        }
+      }}  
+    >
       {/* <img
         src={overviewImage}
         alt=""
@@ -174,9 +185,9 @@ export const OverviewSection = () => {
         id="video"
         preload="none"
         width="100%"
-        height="100%"
+        // height="100%"
         controls
-        style={videoStyle}
+        // style={videoStyle}
         ref={videoRef}
         muted={true}
       >
