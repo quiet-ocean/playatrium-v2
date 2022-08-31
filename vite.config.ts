@@ -1,7 +1,7 @@
 import react from '@vitejs/plugin-react'
-import svgr from 'vite-plugin-svgr';
-// import svgLoader from 'vite-svg-loader'
 import { defineConfig } from 'vite'
+import svgr from 'vite-plugin-svgr'
+// import svgLoader from 'vite-svg-loader'
 // import reactSvgPlugin from 'vite-plugin-react-svg'
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -11,7 +11,7 @@ export default defineConfig({
   plugins: [
     react(),
     svgr({
-      include: 'src/assets/images/*.svg'
+      include: 'src/assets/images/*.svg',
     }),
     // reactSvgPlugin()
   ],

@@ -11,11 +11,6 @@ import { palette } from '../themes/AtriumTheme'
 
 import { SubtitleText } from './UpdatesSection'
 
-const videoStyle = {
-  borderRadius: '12px',
-  height: '100%',
-}
-
 const text: string =
   'Atrium is a virtual world where users across all Layer-1 networks can build, own, and monetize their online experience through an interoperable pixel-art metaverse.'
 // const text: string = 'Atrium'
@@ -66,42 +61,42 @@ export const OverviewSection = () => {
     [index]
   )
   const handleClick = async () => {
-    console.log('handle next')
+    // console.log('handle next')
     if (sliderRef.current) sliderRef.current.slickNext()
     setDisableScroll(false)
     // let video = document.querySelector("#video")
     // video.pause()
     // video.play()
-    if (videoRef.current) {
-      // window.vcomp = videoRef.current
-      console.log('play video')
-      // videoRef.current.pause()
-      // videoRef.current.load()
-      // .then((res: any) => {
-      //   console.log('Video loaded: ', res)
-      // })
-      // // .catch((err: Error) => console.log('Error: ', err))
-      setTimeout(async () => {
-        // const playPromise = videoRef.current?.play()
-        // await videoRef.current?.play()
-        // if (playPromise) playPromise() 
-        videoRef.current.nativeElement.muted = true
+    // if (videoRef.current) {
+    //   // window.vcomp = videoRef.current
+    //   // console.log('play video')
+    //   // videoRef.current.pause()
+    //   // videoRef.current.load()
+    //   // .then((res: any) => {
+    //   //   console.log('Video loaded: ', res)
+    //   // })
+    //   // // .catch((err: Error) => console.log('Error: ', err))
+    //   setTimeout(async () => {
+    //     // const playPromise = videoRef.current?.play()
+    //     // await videoRef.current?.play()
+    //     // if (playPromise) playPromise()
+    //     videoRef.current?.nativeElement.muted = true
 
-        if (videoRef.current.play)
-          // await videoRef.current.play()
-          videoRef.current
-            .play()
-            .then((res: any) => {
-              console.log('Video started to play: ', res)
-            })
-            .catch((err: Error) =>
-              console.log('Error occurrd while start video: ', err)
-            )
-      }, 0)
-      // const media = document.querySelector('#video').nativeElement;
-      // media.muted = true; // without this line it's not working although I have "muted" in HTML
-      // media.play();
-    }
+    //     if (videoRef.current?.play)
+    //       // await videoRef.current.play()
+    //       videoRef.current?
+    //         .play()
+    //         .then((res: any) => {
+    //           console.log('Video started to play: ', res)
+    //         })
+    //         .catch((err: Error) =>
+    //           // console.log('Error occurrd while start video: ', err)
+    //         )
+    //   }, 0)
+    //   // const media = document.querySelector('#video').nativeElement;
+    //   // media.muted = true; // without this line it's not working although I have "muted" in HTML
+    //   // media.play();
+    // }
   }
   const settings = {
     arrows: false,
@@ -171,8 +166,8 @@ export const OverviewSection = () => {
           height: '100%',
           // objectFit: 'cover',
           objectFit: 'fill',
-        }
-      }}  
+        },
+      }}
     >
       {/* <img
         src={overviewImage}

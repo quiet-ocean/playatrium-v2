@@ -77,7 +77,11 @@ const HeroAnimation = ({
           width="100%"
         >
           <Collapse in={fade}>
-            <Typography variant="h1" fontSize={{ md: 64, xs: 48 }} color={palette.text.primary}>
+            <Typography
+              variant="h1"
+              fontSize={{ md: 64, xs: 48 }}
+              color={palette.text.primary}
+            >
               Making web3 fun again.
             </Typography>
           </Collapse>
