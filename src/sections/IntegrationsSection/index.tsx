@@ -85,7 +85,7 @@ export const IntegrationsSection = () => {
         },
       })
       setAnimated(true)
-    }, 5000)
+    }, 3000)
   }
   const handleAnimation = () => {
     if (!animated) {
@@ -96,8 +96,8 @@ export const IntegrationsSection = () => {
       }
     }
   }
-  const handleWheel = (e: Event) => {
-    if (isFocused() && !animated) {
+  const handleWheel = (e: WheelEvent) => {
+    if (isFocused() && !animated && e.deltaY > 0) {
       e.preventDefault()
       handleAnimation()
     }
