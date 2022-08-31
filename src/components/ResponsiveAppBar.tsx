@@ -9,11 +9,11 @@ import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import * as React from 'react'
 
-import CrossIcon from '../assets/images/cross-icon-36.png'
-import DiscordIcon from '../assets/images/discord-icon.png'
+import CrossIcon from '../assets/images/cross-icon-36.svg'
+import DiscordIcon from '../assets/images/discord-icon.svg'
 import logoType from '../assets/images/logo-type-small.svg'
-import TwitterIcon from '../assets/images/twitter-icon.png'
-import YoutubeIcon from '../assets/images/youtube-icon.png'
+import TwitterIcon from '../assets/images/twitter-icon.svg'
+import YoutubeIcon from '../assets/images/youtube-icon.svg'
 import { palette } from '../themes/AtriumTheme'
 const pages = ['updates', 'overview', 'integrations', 'profiles', 'team']
 
