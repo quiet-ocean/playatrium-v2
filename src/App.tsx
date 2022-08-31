@@ -103,7 +103,7 @@ const App: React.FC = () => {
                       left: `0%`,
                       width: `100%`,
                     },
-                    // position: 'relative',
+                    position: 'relative',
                   },
                   // minHeight: '1000px',
                 }}
