@@ -1,7 +1,7 @@
 import { Box } from '@mui/material'
 import { useState, useEffect, useRef } from 'react'
+import Slider from 'react-slick'
 
-import { SectionContainer } from '../../components'
 import { palette } from '../../themes/AtriumTheme'
 import { SubtitleText } from '../UpdatesSection'
 
@@ -11,10 +11,9 @@ import ProjectIntegrations from './ProjectIntegrations'
 
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import Slider from 'react-slick'
 
 const settings = {
-  // arrows: false,
+  arrows: false,
   infinite: false,
   slidesToScroll: 1,
   slidesToShow: 1,
@@ -44,14 +43,7 @@ export const IntegrationsSection = () => {
     return () => {
       sectionRef.current?.removeEventListener('wheel', handleWheel)
     }
-    // window.addEventListener('scroll', handleWheel, { passive: false })
-    // return () => {
-    //   window.removeEventListener('scroll', handleWheel)
-    // }
   })
-  useEffect(() => {
-    console.log(status)
-  }, [status])
 
   const isFocused = () => {
     return true
@@ -93,43 +85,33 @@ export const IntegrationsSection = () => {
         },
       })
       setAnimated(true)
-    }, 5000)
+    }, 3000)
   }
   const handleAnimation = () => {
     if (!animated) {
       if (!status.project.done) {
         animateProject()
       } else if (status.project.done && !status.endless.done) {
-        console.log('Slick next')
         sliderRef.current?.slickNext()
-        // sliderRef.current?.slickPlay()
       }
     }
   }
-  const handleWheel = (e: Event) => {
-    // console.log(sectionRef.current?.getBoundingClientRect().top)
-    // console.log(isFocused(), animated)
-    if (isFocused() && !animated) {
+  const handleWheel = (e: WheelEvent) => {
+    if (isFocused() && !animated && e.deltaY > 0) {
       e.preventDefault()
       handleAnimation()
-      // animateProject()
-
-      // setTimeout(() => {
-      //   sliderRef.current?.slickNext()
-      //   animateEndless()
-      // }, 2000)
     }
   }
-  const handleHover = () => {
-    console.log('hover')
-  }
+  // const handleHover = () => {
+  //   console.log('hover')
+  // }
   return (
     <Box
       id="integrations-section"
       ref={sectionRef}
       sx={{
         '& .slick-list': {
-          height: 'auto !important',
+          height: { md: 'auto !important', xs: '' },
         },
         height: '100%',
       }}
@@ -143,7 +125,6 @@ export const IntegrationsSection = () => {
       <Slider
         {...settings}
         afterChange={() => {
-          console.log('After slick change')
           animateEndless()
         }}
         ref={sliderRef}
