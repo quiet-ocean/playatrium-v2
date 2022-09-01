@@ -9,7 +9,7 @@ const EndlessIntegrations = ({ animate }: { animate: boolean }) => {
     <Box py={{ xs: 16 }}>
       <Grid container justifyContent="center" columns={{ md: 10, xl: 12 }}>
         <Grid item md={5}>
-          <Box py={16}>
+          <Box p={16}>
             <img
               src={animate ? EndlessGif : EndlessImage}
               alt=""
