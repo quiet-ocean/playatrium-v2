@@ -34,16 +34,39 @@ export const IntegrationsSection = () => {
       done: false,
     },
   })
+  let scrolling = false
+  let intervalId: any = 0
+
   useEffect(() => {
     if (!sectionRef.current) return
 
-    sectionRef.current.addEventListener('wheel', handleWheel, {
+    sectionRef.current.addEventListener('wheel', handleScroll, {
       passive: false,
     })
+
+    intervalId = setInterval(() => {
+      if (scrolling) {
+        scrolling = false
+        handleAnimation()
+      }
+    }, 50)
     return () => {
-      sectionRef.current?.removeEventListener('wheel', handleWheel)
+      clearEventListeners()
     }
   })
+
+  const clearEventListeners = () => {
+    sectionRef.current?.removeEventListener('wheel', handleScroll)
+    clearInterval(intervalId)
+  }
+  const handleScroll = (e: WheelEvent) => {
+    console.log('scroll')
+    scrolling = true
+    if (isFocused() && !animated && e.deltaY > 0) {
+      e.preventDefault()
+      // handleAnimation()
+    }
+  }
 
   const isFocused = () => {
     return true
@@ -85,6 +108,7 @@ export const IntegrationsSection = () => {
         },
       })
       setAnimated(true)
+      clearEventListeners()
     }, 3000)
   }
   const handleAnimation = () => {
@@ -99,7 +123,7 @@ export const IntegrationsSection = () => {
   const handleWheel = (e: WheelEvent) => {
     if (isFocused() && !animated && e.deltaY > 0) {
       e.preventDefault()
-      handleAnimation()
+      // handleAnimation()
     }
   }
   // const handleHover = () => {
@@ -111,7 +135,7 @@ export const IntegrationsSection = () => {
       ref={sectionRef}
       sx={{
         '& .slick-list': {
-          height: { md: 'auto !important', xs: '' },
+          // height: { md: 'auto !important', xs: '' },
         },
         height: '100%',
       }}
