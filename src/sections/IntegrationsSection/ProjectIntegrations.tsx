@@ -10,9 +10,16 @@ const ProjectIntegrations = ({ animate }: { animate: boolean }) => {
       <Grid container justifyContent="center" columns={{ md: 10, xl: 12 }}>
         <Grid item md={5}>
           <img
-            src={animate ? WalkAroundGif : WalkAroungImage}
+            src={WalkAroungImage}
             alt=""
             width="100%"
+            style={{ display: !animate ? 'block' : 'none' }}
+          />
+          <img
+            src={WalkAroundGif}
+            alt=""
+            width="100%"
+            style={{ display: animate ? 'block' : 'none' }}
           />
         </Grid>
         <Grid item md={1} />
