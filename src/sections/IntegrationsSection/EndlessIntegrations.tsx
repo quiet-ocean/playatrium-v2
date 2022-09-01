@@ -11,9 +11,16 @@ const EndlessIntegrations = ({ animate }: { animate: boolean }) => {
         <Grid item md={5}>
           <Box p={16}>
             <img
-              src={animate ? EndlessGif : EndlessImage}
+              src={EndlessGif}
               alt=""
               width="100%"
+              style={{ display: animate ? 'block' : 'none' }}
+            />
+            <img
+              src={EndlessImage}
+              alt=""
+              width="100%"
+              style={{ display: !animate ? 'block' : 'none' }}
             />
           </Box>
         </Grid>
