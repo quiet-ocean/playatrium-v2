@@ -47,6 +47,10 @@ export const Home = () => {
           let p = (self.progress * 100).toFixed(1)
           setProgress(p)
         },
+        onLeave: function(self) {
+          self.disable()
+          // self.animation.progress(1)
+        },
         pin: true,
         refreshPriority: 1,
         start: 'top 0%',
@@ -54,7 +58,7 @@ export const Home = () => {
         trigger: ref.current,
       },
     })
-
+    
     setTween(scrollTween)
   }, [])
 

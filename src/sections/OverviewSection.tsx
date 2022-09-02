@@ -4,18 +4,16 @@ import useMediaQuery from '@mui/material/useMediaQuery'
 import { useRef, useEffect, useState, useCallback } from 'react'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+import ReactPlayer from 'react-player'
+import ScrollTrigger from 'react-scroll-trigger'
+import ReactScrollWheelHandler from 'react-scroll-wheel-handler'
 import Slider from 'react-slick'
 
+import useCustomScroller from '../hooks/useCustomScroller'
 import useIntersection from '../hooks/useIntersection'
 import { palette } from '../themes/AtriumTheme'
 
 import { SubtitleText } from './UpdatesSection'
-
-import ReactPlayer from 'react-player'
-import useCustomScroller from '../hooks/useCustomScroller'
-import ReactScrollWheelHandler from 'react-scroll-wheel-handler'
-import ScrollTrigger from 'react-scroll-trigger';
-
 
 // import { gsap } from "gsap";
 // import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -53,7 +51,7 @@ export const OverviewSection = ({ progress }: { progress: number }) => {
   const handleAnimation = () => {
     // console.log('progress in handle animation function is: ', progress)
 
-    setIndex(length * progress / keyframe)
+    setIndex((length * progress) / keyframe)
   }
 
   const handleSlickChange = () => {
@@ -62,21 +60,21 @@ export const OverviewSection = ({ progress }: { progress: number }) => {
 
   const settings = {
     arrows: false,
+    draggable: false,
     infinite: false,
     slidesToScroll: 1,
     slidesToShow: 1,
-    vertical: true,
-    verticalSwiping: true,
-    draggable: false,
     swipeToSlide: false,
     touchMove: false,
+    vertical: true,
+    verticalSwiping: true,
   }
   const Slide1 = () => {
     const theme = useTheme()
     const matches = useMediaQuery(theme.breakpoints.up('md'))
 
     return (
-      <Box /* py={{ md: 20, xs: 16 }} */>
+      <Box>
         {/* <Box textAlign="center">
           <SubtitleText color={palette.error.main}>overview</SubtitleText>
         </Box> */}
@@ -152,7 +150,12 @@ export const OverviewSection = ({ progress }: { progress: number }) => {
     </Box>
   )
   return (
-    <Box id="overview-section" height="100%" ref={sectionRef}py={{ md: 20, xs: 16 }}>
+    <Box
+      id="overview-section"
+      height="100%"
+      ref={sectionRef}
+      py={{ md: 20, xs: 16 }}
+    >
       <Box textAlign="center">
         <SubtitleText color={palette.error.main}>overview</SubtitleText>
       </Box>
