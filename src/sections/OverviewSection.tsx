@@ -11,26 +11,19 @@ import { palette } from '../themes/AtriumTheme'
 
 import { SubtitleText } from './UpdatesSection'
 
+import ReactPlayer from 'react-player'
+import useCustomScroller from '../hooks/useCustomScroller'
+import ReactScrollWheelHandler from 'react-scroll-wheel-handler'
+import ScrollTrigger from 'react-scroll-trigger';
+
+
+// import { gsap } from "gsap";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 const text: string =
   'Atrium is a virtual world where users across all Layer-1 networks can build, own, and monetize their online experience through an interoperable pixel-art metaverse.'
 
-function disableScroll() {
-  document.body.style.overflowY = 'hidden'
-}
-function enableScroll() {
-  document.body.style.overflowY = 'scroll'
-}
-
-const applyScrollEventListener = (ref: any, onWheel: AnyFunction) => {
-  ref?.addEventListener('wheel', onWheel, { passive: false })
-
-  // intervalId = setInterval(handleWheel, 100)
-}
-const removeScrollEventListener = (ref: any, onWheel: AnyFunction) => {
-  ref?.addEventListener('wheel', onWheel)
-  // clearInterval(intervalId)
-}
-export const OverviewSection = () => {
+export const OverviewSection = ({ progress }: { progress: number }) => {
   const length = text.length
   const startPos = text.indexOf('build')
   const endPos = text.indexOf('through')
@@ -38,96 +31,33 @@ export const OverviewSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
 
-  const [y, setY] = useState(0)
-  const [isScrollDown, setIsScrollDown] = useState(false)
   const [index, setIndex] = useState(0)
   const [isScrollDisabled, setIsScrollDisabled] = useState(true)
   const [done, setDone] = useState(false)
   const [playing, setPlaying] = useState(false)
 
-  const adjustSectionPosition = () => {
-    console.log('adjust section position')
-
-    const sectionTop = sectionRef.current?.getBoundingClientRect().top || 0
-    const bodyTop = document.body.getBoundingClientRect().top
-
-    // console.log(sectionTop, bodyTop)
-
-    window.scrollTo({ behavior: 'smooth', top: window.scrollY + sectionTop })
-
-    // sectionRef.current?.scrollIntoView()
-    // document.querySelector('#overview-section-container')?.scrollIntoView()
-  }
-  const isVisible = useIntersection(sectionRef, '0px')
-
+  const keyframe = 80
   useEffect(() => {
-    // const isWheelDown = window.scrollY > y
-    // console.log('intersection: ', isVisible, 'scroll down: ', isWheelDown)
-    if (isVisible && !done) {
-      // onScroll()
-      adjustSectionPosition()
-      disableScroll()
-      applyScrollEventListener(sectionRef.current, onWheel)
-    }
-    setY(window.scrollY)
-    return () => {
-      removeScrollEventListener(sectionRef.current, onWheel)
-    }
-  }, [isVisible])
+    handleAnimation()
+  }, [progress])
+  // const handleAnimation = useCallback(() => {
+  //   console.log('progress in handle animation function is: ', progress)
+  // }, [progress])
   useEffect(() => {
-    console.log('change done')
-    if (done) enableScroll()
-  }, [done])
-  const onWheel = (event: WheelEvent) => {
-    if (event.deltaY > 0 && !done) onScroll()
-  }
-  // useCustomScroller(
-  //   (isScrollDown: boolean, callback: AnyFunction) => {
-  //     console.log('scroll down: ', isScrollDown)
-  //     const top = sectionRef.current?.getBoundingClientRect().top
-  //     // // console.log(top, sectionRef.current?.scrollHeight)
-  //     const inViewport = top < 50
-  //     // console.log('is in viewport', inViewport)
-  //     if (isScrollDown && inViewport && !done) {
-  //       adjustSectionPosition()
-  //       console.log('animation')
-  //       onScroll()
-  //     } else {
-  //       callback()
-  //     }
-
-  //     // callback()
-  //   },
-  //   done,
-  //   index
-  // )
-  useEffect(() => {
-    if (index >= length && !done) {
-      slickNext()
-    }
-  }, [index])
-  // useEffect
-  const onScroll = useCallback(() => {
-    console.log('on scroll', index, length)
-
-    if (!done) {
-      if (index < length) {
-        setIndex((idx) => idx + 10)
-      } else {
-        slickNext()
-      }
-    }
-  }, [index, done])
-  const slickNext = () => {
-    console.log('slick next')
-    if (!done) {
+    console.log(index, length)
+    if (index > length && !done) {
+      setDone(true)
       sliderRef.current?.slickNext()
     }
+  }, [index, done])
+  const handleAnimation = () => {
+    // console.log('progress in handle animation function is: ', progress)
+
+    setIndex(length * progress / keyframe)
   }
 
   const handleSlickChange = () => {
-    console.log('handle slick change')
-    if (!done) setDone(true)
+    console.log('handle slick')
   }
 
   const settings = {
@@ -137,6 +67,9 @@ export const OverviewSection = () => {
     slidesToShow: 1,
     vertical: true,
     verticalSwiping: true,
+    draggable: false,
+    swipeToSlide: false,
+    touchMove: false,
   }
   const Slide1 = () => {
     const theme = useTheme()
@@ -200,17 +133,22 @@ export const OverviewSection = () => {
         },
       }}
     >
-      {done ? (
-        <video id="video" width="100%" autoPlay>
+      {/* <ReactPlayer url={`/gamedemo.mp4`} playing={done} width="100%" height="100%" /> */}
+      <video id="video" width="100%" autoPlay={done}>
+        <track kind="captions" />
+        <source src="/gamedemo.mp4" type="video/mp4" />
+      </video>
+      {/* {done ? (
+        <video preload="none" id="video" width="100%" autoPlay>
           <track kind="captions" />
           <source src="/gamedemo.mp4" type="video/mp4" />
         </video>
       ) : (
-        <video id="video" preload="none" width="100%" controls>
+        <video preload="none"  id="video" width="100%" controls>
           <track kind="captions" />
           <source src="/gamedemo.mp4" type="video/mp4" />
         </video>
-      )}
+      )} */}
     </Box>
   )
   return (
@@ -237,10 +175,17 @@ export const OverviewSection = () => {
               ref={sliderRef}
               {...settings}
               afterChange={handleSlickChange}
+              onInit={() => {
+                console.log('init slick')
+              }}
             >
               <Slide1 />
               <Slide2 />
             </Slider>
+            {/* <video id="video" width="100%" autoPlay={done}>
+              <track kind="captions" />
+              <source src="/gamedemo.mp4" type="video/mp4" />
+            </video> */}
           </Box>
           <Box sx={{ display: { md: 'none', xs: 'block' } }}>
             <Slide1 />

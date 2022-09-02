@@ -1,5 +1,7 @@
 import { Box } from '@mui/material'
-import React, { useState, useEffect } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import React, { useState, useEffect, useRef } from 'react'
 
 import { SectionContainer, GridBgContainer } from '../components'
 // import useInterval from './hooks/useInterval'
@@ -20,6 +22,41 @@ export const Home = () => {
   const [animClass, setAnimClass] = useState('')
   // const [scrollUp, setScrollUp] = useState(false)
   // const [y, setY] = useState(window.scrollY)
+
+  const ref = useRef(null)
+  const [progress, setProgress] = useState(0)
+  const [tween, setTween] = useState<AnyFunction>(null)
+
+  useEffect(() => {
+    console.log(progress)
+  }, [progress])
+  useEffect(() => {
+    if (tween) return
+
+    gsap.registerPlugin(ScrollTrigger)
+    let scrollTween = gsap.to(ref.current, {
+      // backgroundColor: '#DAF7A6',
+      ease: 'none',
+      scrollTrigger: {
+        anticipatePin: 1,
+        end: '+=300%',
+        invalidateOnRefresh: true,
+        markers: false,
+        onUpdate: (self) => {
+          // console.log(self)
+          let p = (self.progress * 100).toFixed(1)
+          setProgress(p)
+        },
+        pin: true,
+        refreshPriority: 1,
+        start: 'top 0%',
+        toggleActions: 'play reset play reset',
+        trigger: ref.current,
+      },
+    })
+
+    setTween(scrollTween)
+  }, [])
 
   useEffect(() => {
     document.body.style.overflow = 'hidden'
@@ -88,9 +125,11 @@ export const Home = () => {
         sx={{
           scrollSnapAlign: 'center',
         }}
+        ref={ref}
+        id="hscroll"
       >
         <GridBgContainer>
-          <OverviewSection />
+          <OverviewSection progress={progress} />
         </GridBgContainer>
       </SectionContainer>
       <SectionContainer className="light">
