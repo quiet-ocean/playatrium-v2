@@ -6,6 +6,7 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
 
+import useIntersection from '../hooks/useIntersection'
 import { palette } from '../themes/AtriumTheme'
 
 import { SubtitleText } from './UpdatesSection'
@@ -13,6 +14,22 @@ import { SubtitleText } from './UpdatesSection'
 const text: string =
   'Atrium is a virtual world where users across all Layer-1 networks can build, own, and monetize their online experience through an interoperable pixel-art metaverse.'
 
+function disableScroll() {
+  document.body.style.overflowY = 'hidden'
+}
+function enableScroll() {
+  document.body.style.overflowY = 'scroll'
+}
+
+const applyScrollEventListener = (ref: any, onWheel: AnyFunction) => {
+  ref?.addEventListener('wheel', onWheel, { passive: false })
+
+  // intervalId = setInterval(handleWheel, 100)
+}
+const removeScrollEventListener = (ref: any, onWheel: AnyFunction) => {
+  ref?.addEventListener('wheel', onWheel)
+  // clearInterval(intervalId)
+}
 export const OverviewSection = () => {
   const length = text.length
   const startPos = text.indexOf('build')
@@ -21,42 +38,98 @@ export const OverviewSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
 
+  const [y, setY] = useState(0)
+  const [isScrollDown, setIsScrollDown] = useState(false)
   const [index, setIndex] = useState(0)
-  const [disableScroll, setDisableScroll] = useState(true)
+  const [isScrollDisabled, setIsScrollDisabled] = useState(true)
+  const [done, setDone] = useState(false)
+  const [playing, setPlaying] = useState(false)
+
+  const adjustSectionPosition = () => {
+    console.log('adjust section position')
+
+    const sectionTop = sectionRef.current?.getBoundingClientRect().top || 0
+    const bodyTop = document.body.getBoundingClientRect().top
+
+    // console.log(sectionTop, bodyTop)
+
+    window.scrollTo({ behavior: 'smooth', top: window.scrollY + sectionTop })
+
+    // sectionRef.current?.scrollIntoView()
+    // document.querySelector('#overview-section-container')?.scrollIntoView()
+  }
+  const isVisible = useIntersection(sectionRef, '0px')
 
   useEffect(() => {
-    if (!sectionRef.current) {
-      return
+    // const isWheelDown = window.scrollY > y
+    // console.log('intersection: ', isVisible, 'scroll down: ', isWheelDown)
+    if (isVisible && !done) {
+      // onScroll()
+      adjustSectionPosition()
+      disableScroll()
+      applyScrollEventListener(sectionRef.current, onWheel)
     }
-    sectionRef.current.addEventListener('wheel', handleWheel, {
-      passive: false,
-    })
-
-    return () => sectionRef.current?.removeEventListener('wheel', handleWheel)
-  }, [sectionRef, disableScroll, index])
-
-  const handleWheel = useCallback(
-    (event: WheelEvent) => {
-      if (disableScroll) {
-        event.preventDefault()
-      }
-      if (event.deltaY > 0) {
-        if (index < length) {
-          setIndex((prevIndex) => {
-            if (prevIndex <= length) return prevIndex + 10
-            return prevIndex
-          })
-        } else {
-          handleClick()
-        }
-      }
-    },
-    [index, disableScroll]
-  )
-  const handleClick = async () => {
-    if (sliderRef.current) sliderRef.current.slickNext()
-    setTimeout(() => setDisableScroll(false), 1000)
+    setY(window.scrollY)
+    return () => {
+      removeScrollEventListener(sectionRef.current, onWheel)
+    }
+  }, [isVisible])
+  useEffect(() => {
+    console.log('change done')
+    if (done) enableScroll()
+  }, [done])
+  const onWheel = (event: WheelEvent) => {
+    if (event.deltaY > 0 && !done) onScroll()
   }
+  // useCustomScroller(
+  //   (isScrollDown: boolean, callback: AnyFunction) => {
+  //     console.log('scroll down: ', isScrollDown)
+  //     const top = sectionRef.current?.getBoundingClientRect().top
+  //     // // console.log(top, sectionRef.current?.scrollHeight)
+  //     const inViewport = top < 50
+  //     // console.log('is in viewport', inViewport)
+  //     if (isScrollDown && inViewport && !done) {
+  //       adjustSectionPosition()
+  //       console.log('animation')
+  //       onScroll()
+  //     } else {
+  //       callback()
+  //     }
+
+  //     // callback()
+  //   },
+  //   done,
+  //   index
+  // )
+  useEffect(() => {
+    if (index >= length && !done) {
+      slickNext()
+    }
+  }, [index])
+  // useEffect
+  const onScroll = useCallback(() => {
+    console.log('on scroll', index, length)
+
+    if (!done) {
+      if (index < length) {
+        setIndex((idx) => idx + 10)
+      } else {
+        slickNext()
+      }
+    }
+  }, [index, done])
+  const slickNext = () => {
+    console.log('slick next')
+    if (!done) {
+      sliderRef.current?.slickNext()
+    }
+  }
+
+  const handleSlickChange = () => {
+    console.log('handle slick change')
+    if (!done) setDone(true)
+  }
+
   const settings = {
     arrows: false,
     infinite: false,
@@ -70,7 +143,7 @@ export const OverviewSection = () => {
     const matches = useMediaQuery(theme.breakpoints.up('md'))
 
     return (
-      <Box py={{ md: 20, xs: 16 }} id="overview-section">
+      <Box py={{ md: 20, xs: 16 }}>
         <Box textAlign="center">
           <SubtitleText color={palette.error.main}>overview</SubtitleText>
         </Box>
@@ -127,17 +200,17 @@ export const OverviewSection = () => {
         },
       }}
     >
-      <video
-        id="video"
-        preload="none"
-        width="100%"
-        controls
-        ref={videoRef}
-        muted={true}
-      >
-        <track kind="captions" />
-        <source src="/gamedemo.mp4" type="video/mp4" />
-      </video>
+      {done ? (
+        <video id="video" width="100%" autoPlay>
+          <track kind="captions" />
+          <source src="/gamedemo.mp4" type="video/mp4" />
+        </video>
+      ) : (
+        <video id="video" preload="none" width="100%" controls>
+          <track kind="captions" />
+          <source src="/gamedemo.mp4" type="video/mp4" />
+        </video>
+      )}
     </Box>
   )
   return (
@@ -160,7 +233,11 @@ export const OverviewSection = () => {
               width: '100%',
             }}
           >
-            <Slider ref={sliderRef} {...settings}>
+            <Slider
+              ref={sliderRef}
+              {...settings}
+              afterChange={handleSlickChange}
+            >
               <Slide1 />
               <Slide2 />
             </Slider>
