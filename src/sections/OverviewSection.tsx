@@ -76,10 +76,10 @@ export const OverviewSection = ({ progress }: { progress: number }) => {
     const matches = useMediaQuery(theme.breakpoints.up('md'))
 
     return (
-      <Box py={{ md: 20, xs: 16 }}>
-        <Box textAlign="center">
+      <Box /* py={{ md: 20, xs: 16 }} */>
+        {/* <Box textAlign="center">
           <SubtitleText color={palette.error.main}>overview</SubtitleText>
-        </Box>
+        </Box> */}
         <Box
           py={{ md: 30, xs: 16 }}
           sx={{
@@ -123,7 +123,7 @@ export const OverviewSection = ({ progress }: { progress: number }) => {
   }
   const Slide2 = () => (
     <Box
-      py={{ md: 20, xs: 4 }}
+      // py={{ md: 20, xs: 4 }}
       height="100%"
       sx={{
         '& > video': {
@@ -152,7 +152,10 @@ export const OverviewSection = ({ progress }: { progress: number }) => {
     </Box>
   )
   return (
-    <Box id="overview-section" height="100%" ref={sectionRef}>
+    <Box id="overview-section" height="100%" ref={sectionRef}py={{ md: 20, xs: 16 }}>
+      <Box textAlign="center">
+        <SubtitleText color={palette.error.main}>overview</SubtitleText>
+      </Box>
       <Grid container justifyContent="center">
         <Grid
           item
