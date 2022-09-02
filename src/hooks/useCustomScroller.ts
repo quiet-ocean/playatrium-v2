@@ -20,7 +20,7 @@ function throttle(cb: AnyFunction, limit: number) {
     }
   }
 }
-const useCustomScroller = (callback: AnyFunction, done: boolean, index: number) => {
+const useCustomScroller = (callback: AnyFunction, done: boolean, index: number, ref: any) => {
   // let y = 0
   // let to = 0
   // let distance: number = 0
@@ -48,7 +48,7 @@ const useCustomScroller = (callback: AnyFunction, done: boolean, index: number) 
   }, [callback, done, index])
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [to, y])
 
@@ -74,6 +74,7 @@ const useCustomScroller = (callback: AnyFunction, done: boolean, index: number) 
             behavior: 'smooth',
             top: _y,
           })
+          // ref.current?.scrollTop += 50
         }, 10)()
 
         return _y
@@ -91,6 +92,7 @@ const useCustomScroller = (callback: AnyFunction, done: boolean, index: number) 
             behavior: 'smooth',
             top: _y,
           })
+          // ref.current?.scrollTop += 50
         }, 10)()
 
         return _y
