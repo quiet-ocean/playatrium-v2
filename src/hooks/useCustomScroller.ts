@@ -6,13 +6,13 @@ function disableScroll() {
 function enableScroll() {
   document.body.style.overflowY = 'scroll'
 }
-function throttle(callback: AnyFunction, limit: number) {
+function throttle(cb: AnyFunction, limit: number) {
   // console.log('throttle function')
   var wait = false
   return function () {
     // console.log('throttle function content')
     if (!wait) {
-      callback()
+      cb()
       wait = true
       setTimeout(function () {
         wait = false
@@ -20,13 +20,13 @@ function throttle(callback: AnyFunction, limit: number) {
     }
   }
 }
-const useCustomScroller = (callback: AnyFunction, scrollable) => {
+const useCustomScroller = (callback: AnyFunction, done: boolean, index: number) => {
   // let y = 0
   // let to = 0
   // let distance: number = 0
   let wheeling = false
   let intervalId: any = 0
-  const speed = 10
+  const speed = 9
 
   const [y, setY] = useState(0)
   const [distance, setDistance] = useState(0)
@@ -45,39 +45,70 @@ const useCustomScroller = (callback: AnyFunction, scrollable) => {
     applyScrollEventListener()
 
     return () => removeScrollEventListener()
-  }, [callback])
+  }, [callback, done, index])
 
   useEffect(() => {
-    // window.addEventListener('scroll', handleScroll)
-    // return () => window.removeEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [to, y])
 
+  // const doScroll = (pos) => {
+  //   window.scrollTo(0, _y)
+  //   callback()
+  // }
   const handleScroll = useCallback(() => {
+    // callback(to > y, doScroll)
+    doScroll()
+  }, [y, to])
+  const doScroll = useCallback(() => {
     console.log('handle scroll', to, y)
     if (distance > 0 && to > y) {
       // if (to > y) {
       // y += 10
-      setY((y) => y + speed * 5)
+      setY((y) => {
+        const _y = y + speed * 5
+
+        throttle(() => {
+          // window.scrollTo(0, _y)
+          window.scrollTo({
+            behavior: 'smooth',
+            top: _y,
+          })
+        }, 10)()
+
+        return _y
+      })
       // throttle(() => {
       //   window.scrollTo(0, y)
       // }, 10)()
       // }
     } else if (distance < 0 && to < y) {
-      setY((y) => y - speed * 5)
+      setY((y) => {
+        const _y = y - speed * 5
+
+        throttle(() => {
+          window.scrollTo({
+            behavior: 'smooth',
+            top: _y,
+          })
+        }, 10)()
+
+        return _y
+      })
     }
-    throttle(() => {
-      window.scrollTo(0, y)
-    }, 10)()
+    // throttle(() => {
+    //   window.scrollTo(0, y)
+    // }, 10)()
   }, [to, y])
 
-  useEffect(() => {
-    handleScroll()
-  }, [y])
+  // useEffect(() => {
+  //   handleScroll()
+  // }, [y])
   useEffect(() => {
     handleScroll()
   }, [to])
   useEffect(() => {
-    console.log('distance: ', distance)
+    // console.log('distance: ', distance)
   }, [distance])
   const scrollTo = useCallback(() => {
     // to = y + distance
@@ -113,11 +144,14 @@ const useCustomScroller = (callback: AnyFunction, scrollable) => {
 
     // throttle(() => {
     if (wheeling) {
-      console.log('handle wheel function')
+      // console.log('handle wheel function')
       wheeling = false
-      handleScroll()
+      // handleScroll()
       // to = y + distance
-      setTo(y + distance)
+      // setTo(y + distance)
+      callback(to < y, () => {
+        setTo(y + distance * 5)
+      })
       // if (window.scrollY > y) {
       // callback(distance > 0, () => {
 
@@ -132,7 +166,7 @@ const useCustomScroller = (callback: AnyFunction, scrollable) => {
     // y = window.scrollY
   }, [distance, y])
   const enableWheel = (e: WheelEvent) => {
-    console.log('wheel event', e)
+    // console.log('wheel event', e)
     e.preventDefault()
     e.stopPropagation()
     // distance = e.deltaY
@@ -143,7 +177,7 @@ const useCustomScroller = (callback: AnyFunction, scrollable) => {
   const applyScrollEventListener = () => {
     window.addEventListener('wheel', enableWheel, { passive: false })
 
-    intervalId = setInterval(handleWheel, 10)
+    intervalId = setInterval(handleWheel, 100)
   }
   const removeScrollEventListener = () => {
     window.addEventListener('wheel', enableWheel)
