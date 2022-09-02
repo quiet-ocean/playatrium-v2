@@ -1,16 +1,10 @@
 import { Box, Typography, Grid } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
-import { useRef, useEffect, useState, useCallback } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import ReactPlayer from 'react-player'
-import ScrollTrigger from 'react-scroll-trigger'
-import ReactScrollWheelHandler from 'react-scroll-wheel-handler'
 import Slider from 'react-slick'
-
-import useCustomScroller from '../hooks/useCustomScroller'
-import useIntersection from '../hooks/useIntersection'
 import { palette } from '../themes/AtriumTheme'
 
 import { SubtitleText } from './UpdatesSection'
@@ -27,12 +21,9 @@ export const OverviewSection = ({ progress }: { progress: number }) => {
   const endPos = text.indexOf('through')
   const sliderRef = useRef<Slider>(null)
   const sectionRef = useRef<HTMLDivElement>(null)
-  const videoRef = useRef<HTMLVideoElement>(null)
 
   const [index, setIndex] = useState(0)
-  const [isScrollDisabled, setIsScrollDisabled] = useState(true)
   const [done, setDone] = useState(false)
-  const [playing, setPlaying] = useState(false)
 
   const keyframe = 80
   useEffect(() => {
@@ -42,7 +33,6 @@ export const OverviewSection = ({ progress }: { progress: number }) => {
   //   console.log('progress in handle animation function is: ', progress)
   // }, [progress])
   useEffect(() => {
-    console.log(index, length)
     if (index > length && !done) {
       setDone(true)
       sliderRef.current?.slickNext()
@@ -55,7 +45,7 @@ export const OverviewSection = ({ progress }: { progress: number }) => {
   }
 
   const handleSlickChange = () => {
-    console.log('handle slick')
+    console.log('handle after slick')
   }
 
   const settings = {

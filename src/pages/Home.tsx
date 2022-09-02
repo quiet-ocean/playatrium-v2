@@ -27,9 +27,9 @@ export const Home = () => {
   const [progress, setProgress] = useState(0)
   const [tween, setTween] = useState<AnyFunction>(null)
 
-  useEffect(() => {
-    console.log(progress)
-  }, [progress])
+  // useEffect(() => {
+  //   console.log(progress)
+  // }, [progress])
   useEffect(() => {
     if (tween) return
 
@@ -77,27 +77,6 @@ export const Home = () => {
       document.body.style.overflow = 'auto'
     }
   }, [])
-
-  // const handleNavigation = useCallback(() => {
-  //   // const window = e.currentTarget
-  //   if (y > window.scrollY) {
-  //     // console.log("scrolling up");
-  //     setScrollUp(true)
-  //   } else if (y < window.scrollY) {
-  //     // console.log("scrolling down");
-  //     setScrollUp(false)
-  //   }
-  //   setY(window.scrollY)
-  // }, [y])
-
-  // useEffect(() => {
-  //   setY(window.scrollY)
-  //   window.addEventListener('scroll', handleNavigation)
-
-  //   return () => {
-  //     window.removeEventListener('scroll', handleNavigation)
-  //   }
-  // }, [handleNavigation])
 
   return (
     <Box
