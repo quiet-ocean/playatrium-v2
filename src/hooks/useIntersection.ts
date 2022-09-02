@@ -8,7 +8,7 @@ const useIntersection = (element: any, rootMargin: string) => {
       ([entry]) => {
         setState(entry.isIntersecting)
       },
-      { rootMargin }
+      { rootMargin, threshold: 1 }
     )
 
     element.current && observer.observe(element.current)
