@@ -82,3 +82,12 @@ a {
 /* ::-webkit-scrollbar-thumb:hover {
   background: #555; 
 } */
+
+.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.sticky div {
+  z-index: 1000000;
+}

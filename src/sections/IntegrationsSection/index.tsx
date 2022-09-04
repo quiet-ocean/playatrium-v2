@@ -20,7 +20,7 @@ const settings = {
   vertical: true,
   verticalSwiping: true,
 }
-export const IntegrationsSection = () => {
+export const IntegrationsSection = ({ progress }: { progress: number }) => {
   const sectionRef = useRef<HTMLDivElement>(null)
   const sliderRef = useRef<Slider>(null)
   const [animated, setAnimated] = useState(false)
@@ -34,44 +34,49 @@ export const IntegrationsSection = () => {
       done: false,
     },
   })
-  let scrolling = false
-  let intervalId: any = 0
 
   useEffect(() => {
-    if (!sectionRef.current) return
+    console.log(progress, ' in integrations')
 
-    sectionRef.current.addEventListener('wheel', handleScroll, {
-      passive: false,
-    })
+    handleAnimation()
+  }, [progress])
+  useEffect(() => {
+    // if (!sectionRef.current) return
+    // sectionRef.current.addEventListener('wheel', handleScroll, {
+    //   passive: false,
+    // })
+    // intervalId = setInterval(() => {
+    //   if (scrolling) {
+    //     scrolling = false
+    //     handleAnimation()
+    //   }
+    // }, 50)
+    // return () => {
+    //   clearEventListeners()
+    // }
+  }, [])
 
-    intervalId = setInterval(() => {
-      if (scrolling) {
-        scrolling = false
-        handleAnimation()
-      }
-    }, 50)
-    return () => {
-      clearEventListeners()
-    }
-  })
+  useEffect(() => {
+    console.log(status)
+  }, [status])
 
   const clearEventListeners = () => {
-    sectionRef.current?.removeEventListener('wheel', handleScroll)
-    clearInterval(intervalId)
+    // sectionRef.current?.removeEventListener('wheel', handleScroll)
+    // clearInterval(intervalId)
   }
-  const handleScroll = (e: WheelEvent) => {
-    console.log('scroll')
-    scrolling = true
-    if (isFocused() && !animated && e.deltaY > 0) {
-      e.preventDefault()
-      // handleAnimation()
-    }
-  }
+  // const handleScroll = (e: WheelEvent) => {
+  //   console.log('scroll')
+  //   scrolling = true
+  //   if (isFocused() && !animated && e.deltaY > 0) {
+  //     e.preventDefault()
+  //     // handleAnimation()
+  //   }
+  // }
 
   const isFocused = () => {
     return true
   }
-  const animateProject = () => {
+  async function animateProject() {
     setStatus({
       ...status,
       project: {
@@ -79,17 +84,40 @@ export const IntegrationsSection = () => {
         done: false,
       },
     })
+    let myPromise = new Promise(function (resolve) {
+      setTimeout(function () {
+        resolve('I love You !!')
+        setStatus({
+          ...status,
+          project: {
+            animate: false,
+            done: true,
+          },
+        })
+      }, 3000)
+    })
 
-    setTimeout(() => {
-      setStatus({
-        ...status,
-        project: {
-          animate: false,
-          done: true,
-        },
-      })
-    }, 5000)
+    return myPromise
   }
+  // const animateProject = () => {
+  //   setStatus({
+  //     ...status,
+  //     project: {
+  //       animate: true,
+  //       done: false,
+  //     },
+  //   })
+
+  //   setTimeout(() => {
+  //     setStatus({
+  //       ...status,
+  //       project: {
+  //         animate: false,
+  //         done: true,
+  //       },
+  //     })
+  //   }, 5000)
+  // }
   const animateEndless = () => {
     setStatus({
       ...status,
@@ -111,11 +139,16 @@ export const IntegrationsSection = () => {
       clearEventListeners()
     }, 3000)
   }
-  const handleAnimation = () => {
+  const handleAnimation = async () => {
     if (!animated) {
-      if (!status.project.done) {
-        animateProject()
-      } else if (status.project.done && !status.endless.done) {
+      if (!status.project.done && !status.project.animate) {
+        await animateProject()
+      } else if (
+        !status.project.animate &&
+        status.project.done &&
+        !status.endless.animate &&
+        !status.endless.done
+      ) {
         sliderRef.current?.slickNext()
       }
     }

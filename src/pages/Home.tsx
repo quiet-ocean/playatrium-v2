@@ -4,7 +4,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import React, { useState, useEffect, useRef } from 'react'
 
 import { SectionContainer, GridBgContainer } from '../components'
-// import useInterval from './hooks/useInterval'
 import {
   HeroSection,
   IntegrationsSection,
@@ -16,40 +15,44 @@ import {
 } from '../sections'
 import AtriumTheme from '../themes/AtriumTheme'
 
-// const sticky = 500
-
+let container
 export const Home = () => {
   const [animClass, setAnimClass] = useState('')
-  // const [scrollUp, setScrollUp] = useState(false)
-  // const [y, setY] = useState(window.scrollY)
 
   const ref = useRef(null)
+  const integrationsRef = useRef<HTMLDivElement>(null)
   const [progress, setProgress] = useState(0)
-  const [tween, setTween] = useState<AnyFunction>(null)
-
-  // useEffect(() => {
-  //   console.log(progress)
-  // }, [progress])
+  const [progressForIntegration, setProgressForIntegration] = useState(0)
+  const [tween, setTween] = useState<gsap.core.Tween>(null)
+  const [done, setDone] = useState(false)
+  // const [sticky, setSticky] = useState(false)
   useEffect(() => {
-    if (tween) return
-
+    // REGISTER SCROLL ANIMATION PLUGIN
     gsap.registerPlugin(ScrollTrigger)
     let scrollTween = gsap.to(ref.current, {
       // backgroundColor: '#DAF7A6',
       ease: 'none',
       scrollTrigger: {
         anticipatePin: 1,
-        end: '+=300%',
+        // end: '+=500%',
+        end: '+=400%',
         invalidateOnRefresh: true,
         markers: false,
+        onKill: (self) => {
+          console.log('on kill')
+          self.disable()
+        },
+        onLeave: function (self) {
+          self.disable()
+          console.log('on leave')
+          // tween.kill()
+          // self.animation.progress(1)
+          applyTweenForIntegrations()
+        },
         onUpdate: (self) => {
           // console.log(self)
           let p = (self.progress * 100).toFixed(1)
           setProgress(p)
-        },
-        onLeave: function(self) {
-          self.disable()
-          // self.animation.progress(1)
         },
         pin: true,
         refreshPriority: 1,
@@ -58,25 +61,56 @@ export const Home = () => {
         trigger: ref.current,
       },
     })
-    
     setTween(scrollTween)
-  }, [])
 
-  useEffect(() => {
+    // ENABLE SCROLL AFTER HERO ANIMATION
     document.body.style.overflow = 'hidden'
-    // document.body.style.paddingRight = '10px'
     setAnimClass('bg-animation')
 
     setTimeout(() => {
       document.body.style.overflow = 'visible'
-      // document.body.style.paddingRight = '0px'
-      // setEnable(true)
     }, 4200)
 
+    // ADD SCROLL EVENT LISTENER
+
+    container = document.getElementById('overview-container')
+    // CLEAN UP
     return () => {
       document.body.style.overflow = 'auto'
     }
+    // console.log('margin height: ', ref.current?.getBoundingClientRect().top)
   }, [])
+
+  const applyTweenForIntegrations = () => {
+    let scrollTweenForITSection = gsap.to(integrationsRef.current, {
+      ease: 'none',
+      scrollTrigger: {
+        anticipatePin: 1,
+        end: '+=300%',
+        invalidateOnRefresh: true,
+        markers: false,
+        onLeave: (self) => {
+          self.disable()
+          // self.animation.progress(1)
+        },
+        onUpdate: (self) => {
+          let p = (self.progress * 100).toFixed(1)
+          setProgressForIntegration(p)
+        },
+        pin: true,
+        refreshPriority: 1,
+        start: 'top 0%',
+        toggleActions: 'play reset play reset',
+        trigger: integrationsRef.current,
+      },
+    })
+  }
+
+  const callback = () => {
+    if (tween) {
+      tween.kill()
+    }
+  }
 
   return (
     <Box
@@ -105,14 +139,21 @@ export const Home = () => {
         <UpdatesSection />
       </SectionContainer>
       <SectionContainer
+        // className={`${sticky ? 'sticky' : ''}`}
         sx={{
+          // height: '100% !important',
           scrollSnapAlign: 'center',
         }}
         ref={ref}
-        id="hscroll"
+        id="overview-container"
       >
         <GridBgContainer>
-          <OverviewSection progress={progress} />
+          <OverviewSection
+            progress={progress}
+            callback={callback}
+            done={done}
+            setDone={setDone}
+          />
         </GridBgContainer>
       </SectionContainer>
       <SectionContainer className="light">
@@ -120,9 +161,9 @@ export const Home = () => {
           <ProfilesSection />
         </GridBgContainer>
       </SectionContainer>
-      <SectionContainer>
+      <SectionContainer ref={integrationsRef}>
         <GridBgContainer>
-          <IntegrationsSection />
+          <IntegrationsSection progress={progressForIntegration} />
         </GridBgContainer>
       </SectionContainer>
       <SectionContainer minHeight="100vh !important" height="100% !important">
