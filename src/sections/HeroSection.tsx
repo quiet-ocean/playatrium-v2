@@ -25,6 +25,7 @@ const HeroAnimationWrapper = styled(Box)(({ theme }) => ({
     },
     '& > div.slide': {
       width: '0%',
+      // width: '20px',
     },
   },
   display: 'flex',
@@ -57,7 +58,7 @@ const HeroAnimation = ({
         '& img': {
           objectFit: { sm: 'fill', xs: 'cover' },
         },
-
+        p: { xl: '0px 20px 20px 20px', xs: '0px 0px 20px 0px' },
         // cursor: 'url("../assets/images/cursor.svg"), auto',
         // cursor: 'url("../assets/images/cursor.svg"), auto',
 

@@ -8,7 +8,7 @@ export const RootLayout = styled(Box)(({ theme }) => ({
     backgroundImage: 'none',
     boxShadow: 'none',
   },
-  '& > div > div:not(.header, .grid-bg), footer': {
+  '& > div > div:not(.grid-bg), footer': {
     [theme.breakpoints.up('xl')]: {
       padding: '0px',
     },
