@@ -9,7 +9,7 @@ const ProjectIntegrations = ({ animate }: { animate: boolean }) => {
     <Box>
       <Grid container justifyContent="center" columns={{ md: 10, xl: 12 }}>
         <Grid item md={7}>
-          <Box px={25}>
+          <Box px={{ md: 25, xs: 3 }}>
             <img
               src={WalkAroungImage}
               alt=""
