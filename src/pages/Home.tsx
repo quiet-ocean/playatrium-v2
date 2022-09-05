@@ -28,7 +28,7 @@ export const Home = () => {
 
   const overviewRef = useRef<HTMLDivElement>(null)
   const integrationsRef = useRef<HTMLDivElement>(null)
-  const [progress, setProgress] = useState(0)
+  const [overviewPG, setOverviewPG] = useState(0)
   // const [progressForIntegration, setProgressForIntegration] = useState(0)
   // const [tween, setTween] = useState<gsap.core.Tween>(null)
   const [done, setDone] = useState(false)
@@ -97,7 +97,7 @@ export const Home = () => {
   }
   const applyOverviewTween = () => {
     // let tween = gsap.to(overviewRef.current, {
-      gsap.to(overviewRef.current, {
+    gsap.to(overviewRef.current, {
       // backgroundColor: '#DAF7A6',
       ease: 'none',
       scrollTrigger: {
@@ -119,7 +119,7 @@ export const Home = () => {
         onUpdate: (self) => {
           // console.log(self)
           let p = parseInt((self.progress * 100).toFixed(1))
-          setProgress(p)
+          setOverviewPG(p)
         },
         pin: true,
         refreshPriority: 1,
@@ -264,7 +264,7 @@ export const Home = () => {
       >
         <GridBgContainer>
           <OverviewSection
-            progress={progress}
+            progress={overviewPG}
             // callback={callback}
             done={done}
             setDone={setDone}
