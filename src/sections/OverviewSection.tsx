@@ -34,7 +34,7 @@ const OverviewText = forwardRef<
         '& *': {
           color: palette.text.primary,
         },
-        height: `${height}px`,
+        height: { md: `${height}px`, xs: '100%' },
       }}
     >
       <Typography
