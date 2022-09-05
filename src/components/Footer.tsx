@@ -8,6 +8,7 @@ import {
   OutlinedInput,
   InputAdornment,
 } from '@mui/material'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import logo100 from '../assets/images/cross-icon-100.svg'
@@ -21,10 +22,17 @@ import youtubeIcon from '../assets/images/youtube-icon.png'
 // import twitterIcon from '../assets/images/twitter-icon.png'
 // import youtubeIcon from '../assets/images/youtube-icon.png'
 import { palette } from '../themes/AtriumTheme'
+import { isValidEmail } from '../utils'
 
 const icons = [discordIcon, twitterIcon, youtubeIcon]
 
-const AtriumInput = () => {
+const AtriumInput = ({
+  value,
+  onChange,
+}: {
+  value: string | number
+  onChange: AnyFunction
+}) => {
   return (
     <FormControl
       sx={{ m: 1, width: { md: '40%', xs: '100%' } }}
@@ -32,6 +40,8 @@ const AtriumInput = () => {
     >
       <OutlinedInput
         id="outlined-adornment-weight"
+        value={value}
+        onChange={onChange}
         // value={values.weight}
         // onChange={handleChange('weight')}
         endAdornment={
@@ -70,6 +80,20 @@ const AtriumInput = () => {
   )
 }
 export const Footer = () => {
+  const [email, setEmail] = useState('')
+
+  // useEffect(() => {
+  //   console.log(isValidEmail(email))
+  // }, [email])
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const _email = e.target.value
+    setEmail(_email)
+  }
+  const handleJoin = () => {
+    if (isValidEmail(email)) {
+      // JOIN
+    }
+  }
   return (
     <Box sx={{ color: palette.text.primary }} py={5} id="footer" zIndex={100}>
       <Grid container justifyContent="center" columns={{ lg: 10, xl: 12 }}>
@@ -113,7 +137,7 @@ export const Footer = () => {
                 </Typography>
               </Box>
               <Box>
-                <AtriumInput />
+                <AtriumInput value={email} onChange={handleChange} />
               </Box>
               <Box display={{ md: 'none !important', xs: 'block !important' }}>
                 <Button
@@ -124,6 +148,7 @@ export const Footer = () => {
                     padding: '16px 24px',
                     width: { md: 'auto', xs: '100%' },
                   }}
+                  onClick={handleJoin}
                 >
                   sign up
                 </Button>
