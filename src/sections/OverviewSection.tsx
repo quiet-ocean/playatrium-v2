@@ -15,12 +15,12 @@ const text: string =
 
 export const OverviewSection = ({
   progress,
-  callback,
+  // callback,
   done,
   setDone,
 }: {
   progress: number
-  callback: AnyFunction
+  // callback: AnyFunction
   done: boolean
   setDone: AnyFunction
 }) => {
@@ -114,7 +114,7 @@ export const OverviewSection = ({
     carouselRef.current?.slickNext()
   }
   const handleSlick = () => {
-    console.log('handle slick')
+    // console.log('handle slick')
 
     setDone(true)
   }

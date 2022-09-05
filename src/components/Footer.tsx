@@ -144,7 +144,7 @@ export const Footer = () => {
               }}
             >
               <Typography variant="caption">
-                <Link to="/policy">Privacy</Link>
+                <Link to="/policy" style={{ color: palette.text.disabled }}>Privacy</Link>
               </Typography>
               <Typography variant="caption">Terms of Use</Typography>
               <Typography variant="caption">© Atrium 2022</Typography>

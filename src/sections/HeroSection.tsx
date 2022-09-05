@@ -58,13 +58,13 @@ const HeroAnimation = ({
         '& img': {
           objectFit: { sm: 'fill', xs: 'cover' },
         },
-        p: { xl: '0px 20px 20px 20px', xs: '0px 0px 20px 0px' },
         // cursor: 'url("../assets/images/cursor.svg"), auto',
         // cursor: 'url("../assets/images/cursor.svg"), auto',
-
         // display: 'flex',
         // flexDirection: 'column',
         height: '100%',
+
+        p: { xl: '0px 20px 20px 20px', xs: '0px 0px 20px 0px' },
 
         // position: 'relative',
         width: '100%',
