@@ -23,7 +23,8 @@ const settings = {
   verticalSwiping: true,
 }
 
-export const IntegrationsSection = () => {
+import { PlayState } from '../../pages'
+export const IntegrationsSection = ({ state }: { state: PlayState }) => {
   const sectionRef = useRef<HTMLDivElement>(null)
   const sliderRef = useRef<Slider>(null)
 
@@ -60,12 +61,12 @@ export const IntegrationsSection = () => {
       > */}
       <Grid container columns={{ lg: 10, xl: 12 }} justifyContent="center">
         <Grid item xs={10} className="project-panel">
-          <IntegrationsContainer>
-            <Box>
-              <ProjectIntegrations animate={true} />
+          <IntegrationsContainer done={state === 'done'}>
+            <Box className="project-panel">
+              <ProjectIntegrations animate={state === 'project'} />
             </Box>
-            <Box className="endless-panel">
-              <EndlessIntegrations animate={true} />
+            <Box className="endless-panel" mt={3}>
+              <EndlessIntegrations animate={state === 'endless'} />
             </Box>
           </IntegrationsContainer>
         </Grid>

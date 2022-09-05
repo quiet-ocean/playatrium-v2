@@ -1,5 +1,6 @@
 import { Box } from '@mui/material'
 import { gsap } from 'gsap'
+import GSAPTimeline from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import React, { useState, useEffect, useRef } from 'react'
 
@@ -16,7 +17,9 @@ import {
 import AtriumTheme from '../themes/AtriumTheme'
 
 let container
+export type PlayState = 'none' | 'project' | 'endless' | 'done'
 export const Home = () => {
+
   const [animClass, setAnimClass] = useState('')
 
   const ref = useRef(null)
@@ -26,10 +29,13 @@ export const Home = () => {
   const [tween, setTween] = useState<gsap.core.Tween>(null)
   const [done, setDone] = useState(false)
   // const [sticky, setSticky] = useState(false)
+  const [playState, setPlayState] = useState<PlayState>('none')
+  const [integrationTL, setIntegrationTL] = useState<GSAPTimeline>(null)
+
   useEffect(() => {
     // REGISTER SCROLL ANIMATION PLUGIN
     gsap.registerPlugin(ScrollTrigger)
-    
+
     // applyOverviewTween()
     applyIntegrationsTween()
 
@@ -54,8 +60,25 @@ export const Home = () => {
     // console.log('margin height: ', ref.current?.getBoundingClientRect().top)
   }, [])
 
+
+  useEffect(() => {
+
+    // let flag = false
+    // console.log(playState)
+    // if (playState === 'project' && !flag) {
+    //   flag = true
+    //   setTimeout(() => {
+    //     setPlayState('none')
+    //   }, 4000)
+    //   console.log(integrationTL)
+    //   integrationTL.pause()
+    // } else {
+    //   // if (integrationTL)
+    //   //   integrationTL.resume()
+    // }
+  }, [playState])
   const applyOverviewTween = () => {
-    let scrollTween = gsap.to(ref.current, {
+    let tween = gsap.to(ref.current, {
       // backgroundColor: '#DAF7A6',
       ease: 'none',
       scrollTrigger: {
@@ -87,33 +110,101 @@ export const Home = () => {
         trigger: ref.current,
       },
     })
-    setTween(scrollTween)
-  } 
+    setTween(tween)
+  }
   const applyIntegrationsTween = () => {
     if (integrationsRef.current) {
-      let tl = gsap.timeline({
-        scrollTrigger: {
-          anticipatePin: 1,
-          // makes the height of the scrolling (while pinning) match the width, thus the speed remains constant (vertical/horizontal)
-          // end: () => "+=" + section.offsetWidth,
-          end: () => '+=3000',
-          pin: true,
-          scrub: true,
-          start: 'top 0%',
-          trigger: integrationsRef.current,
-          onLeave: function (self) {
-            // console.log('disable integration animation')
-            self.disable()
+      let tl = gsap
+        .timeline({
+          scrollTrigger: {
+            anticipatePin: 1,
+            // makes the height of the scrolling (while pinning) match the width, thus the speed remains constant (vertical/horizontal)
+            // end: () => "+=" + section.offsetWidth,
+            end: () => '+=3000',
+            onLeave: function (self) {
+              self.disable()
+              // setPlayState('done')
+              // console.log('disable integration animation')
+              // self.disable()
+            },
+            onUpdate: (self) => {
+              // console.log(self)
+              let p = (self.progress * 100).toFixed(1)
+              // setProgress(p)
+              // console.log('Integration animation progress: ', p)
+              // console.log(p)
+            },
+            // duration: 12,
+            // deplay: 3,
+            pin: true,
+            scrub: true,
+            start: 'top 0%',
+            trigger: integrationsRef.current,
           },
-        },
-        // defaults: {ease: "none"}
-      }).delay(5)
+          // defaults: {ease: "none"}
+        })
+        .delay(3)
       // tl.deplay(2)
-      tl.fromTo(
+      // tl.
+      // tl
+      // .add(() => {
+      //   setPlayState('project')
+      // })
+      // .to(
+      //   integrationsRef.current?.querySelector('.endless-panel'),
+      //   { duration: 3 }
+      // )
+      // .add(() => {
+      //   // setPlayState('none')
+      // })
+      // .to(
+      //   integrationsRef.current?.querySelector('.endless-panel'),
+      //   // { top: '100%' },
+      //   { duration: 3, top: '1%' }
+      // )
+      // .to(
+      //   integrationsRef.current?.querySelector('.endless-panel'),
+      //   // { top: '100%' },
+      //   { duration: 3, top: '1%' }
+      // )
+      // .to(
+      //   integrationsRef.current?.querySelector('.endless-panel'),
+      //   // { top: '100%' },
+      //   { duration: 3, top: '100%' }
+      // )
+      tl
+      .add(() => {
+        if (playState === 'done') tl.pause()
+      })
+      .add(() => {
+        setPlayState('project')
+      })
+      .to(
+        integrationsRef.current?.querySelector('.endless-panel'),
+        { duration: 3 }
+      )
+      .add(() => {
+        setPlayState('none')
+      })
+      .fromTo(
         integrationsRef.current?.querySelector('.endless-panel'),
         { top: '100%' },
-        { duration: 3, top: '1%' }
+        { duration: 3, top: '0%' }
       )
+      .to(
+        integrationsRef.current?.querySelector('.endless-panel'),
+        { duration: 3 }
+      )
+      // .pause()
+      // .kill()
+      .add(() => {
+        setPlayState('done')
+      })
+      .to(
+        integrationsRef.current?.querySelector('.endless-panel'),
+        { duration: 1 }
+      )
+      setIntegrationTL(tl)
     }
     // let scrollTweenForITSection = gsap.to(integrationsRef.current, {
     //   ease: 'none',
@@ -196,7 +287,7 @@ export const Home = () => {
       </SectionContainer>
       <SectionContainer ref={integrationsRef}>
         <GridBgContainer>
-          <IntegrationsSection />
+          <IntegrationsSection state={playState}/>
         </GridBgContainer>
       </SectionContainer>
       <SectionContainer minHeight="100vh !important" height="100% !important">
