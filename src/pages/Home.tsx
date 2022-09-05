@@ -26,7 +26,7 @@ const integrationTweenEnd = '+=500%'
 export const Home = () => {
   const [animClass, setAnimClass] = useState('')
 
-  const ref = useRef(null)
+  const overviewRef = useRef<HTMLDivElement>(null)
   const integrationsRef = useRef<HTMLDivElement>(null)
   const [progress, setProgress] = useState(0)
   // const [progressForIntegration, setProgressForIntegration] = useState(0)
@@ -41,7 +41,7 @@ export const Home = () => {
     // REGISTER SCROLL ANIMATION PLUGIN
     gsap.registerPlugin(ScrollTrigger)
 
-    applyOverviewTween()
+    // applyOverviewTween()
 
     // ENABLE SCROLL AFTER HERO ANIMATION
     document.body.style.overflow = 'hidden'
@@ -54,11 +54,17 @@ export const Home = () => {
     // SCROLL TO TOP
     window.scrollTo({ behavior: 'smooth', top: 0 })
 
-    // ADD SCROLL EVENT LISTENER
+    // ADD WHEEL EVENT LISTENER
 
+    if (overviewRef.current) {
+      overviewRef.current.addEventListener('wheel', handleWeel())
+    }
     // CLEAN UP
     return () => {
       document.body.style.overflow = 'auto'
+      // if (overviewRef.current) {
+      overviewRef.current?.removeEventListener('wheel', handleWeel())
+      // }
     }
     // console.log('margin height: ', ref.current?.getBoundingClientRect().top)
   }, [])
@@ -78,9 +84,20 @@ export const Home = () => {
     //   //   integrationTL.resume()
     // }
   }, [playState])
+  const handleWeel = () => {
+    console.log('handle wheel')
+    let isExecuted = false
+    return () => {
+      if (!isExecuted) {
+        console.log('execute handle wheel')
+        isExecuted = true
+        applyOverviewTween()
+      }
+    }
+  }
   const applyOverviewTween = () => {
-    let tween = gsap.to(ref.current, {
-    // gsap.to(ref.current, {
+    let tween = gsap.to(overviewRef.current, {
+      // gsap.to(ref.current, {
       // backgroundColor: '#DAF7A6',
       ease: 'none',
       scrollTrigger: {
@@ -108,7 +125,7 @@ export const Home = () => {
         refreshPriority: 1,
         start: 'top 0%',
         toggleActions: 'play reset play reset',
-        trigger: ref.current,
+        trigger: overviewRef.current,
       },
     })
     // setTween(tween)
@@ -242,7 +259,7 @@ export const Home = () => {
           // height: '100% !important',
           scrollSnapAlign: 'center',
         }}
-        ref={ref}
+        ref={overviewRef}
         id="overview-container"
       >
         <GridBgContainer>
