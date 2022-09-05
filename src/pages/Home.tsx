@@ -97,6 +97,7 @@ export const Home = () => {
   }
   const applyOverviewTween = () => {
     // let tween = gsap.to(overviewRef.current, {
+    const set = setOverviewPG
     gsap.to(overviewRef.current, {
       // backgroundColor: '#DAF7A6',
       ease: 'none',
@@ -119,7 +120,8 @@ export const Home = () => {
         onUpdate: (self) => {
           // console.log(self)
           let p = parseInt((self.progress * 100).toFixed(1))
-          setOverviewPG(p)
+          // setOverviewPG(p)
+          set(p)
         },
         pin: true,
         refreshPriority: 1,
