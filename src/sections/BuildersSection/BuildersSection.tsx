@@ -93,9 +93,11 @@ export const BuildersSection = () => {
       id="team-section"
       py={{ md: 25, xs: 16 }}
       height="100%"
-      sx={{
-        // minHeight: 
-      }}
+      sx={
+        {
+          // minHeight:
+        }
+      }
     >
       <Box display="flex" justifyContent="center">
         <SubtitleText color={palette.error.main}>
