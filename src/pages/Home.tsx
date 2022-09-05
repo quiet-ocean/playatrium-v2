@@ -29,39 +29,9 @@ export const Home = () => {
   useEffect(() => {
     // REGISTER SCROLL ANIMATION PLUGIN
     gsap.registerPlugin(ScrollTrigger)
-    let scrollTween = gsap.to(ref.current, {
-      // backgroundColor: '#DAF7A6',
-      ease: 'none',
-      scrollTrigger: {
-        anticipatePin: 1,
-        end: '+=500%',
-        // end: '+=400%',
-        invalidateOnRefresh: true,
-        markers: false,
-        onKill: (self) => {
-          console.log('on kill')
-          self.disable()
-        },
-        onLeave: function (self) {
-          self.disable()
-          console.log('on leave')
-          // tween.kill()
-          // self.animation.progress(1)
-          applyTweenForIntegrations()
-        },
-        onUpdate: (self) => {
-          // console.log(self)
-          let p = (self.progress * 100).toFixed(1)
-          setProgress(p)
-        },
-        pin: true,
-        refreshPriority: 1,
-        start: 'top 0%',
-        toggleActions: 'play reset play reset',
-        trigger: ref.current,
-      },
-    })
-    setTween(scrollTween)
+    
+    // applyOverviewTween()
+    applyIntegrationsTween()
 
     // ENABLE SCROLL AFTER HERO ANIMATION
     document.body.style.overflow = 'hidden'
@@ -85,29 +55,89 @@ export const Home = () => {
     // console.log('margin height: ', ref.current?.getBoundingClientRect().top)
   }, [])
 
-  const applyTweenForIntegrations = () => {
-    let scrollTweenForITSection = gsap.to(integrationsRef.current, {
+  const applyOverviewTween = () => {
+    let scrollTween = gsap.to(ref.current, {
+      // backgroundColor: '#DAF7A6',
       ease: 'none',
       scrollTrigger: {
         anticipatePin: 1,
-        end: '+=300%',
+        end: '+=500%',
+        // end: '+=400%',
         invalidateOnRefresh: true,
         markers: false,
-        onLeave: (self) => {
+        onKill: (self) => {
+          console.log('on kill')
           self.disable()
+        },
+        onLeave: function (self) {
+          self.disable()
+          console.log('on leave')
+          // tween.kill()
           // self.animation.progress(1)
+          // applyTweenForIntegrations()
         },
         onUpdate: (self) => {
+          // console.log(self)
           let p = (self.progress * 100).toFixed(1)
-          setProgressForIntegration(p)
+          setProgress(p)
         },
         pin: true,
         refreshPriority: 1,
         start: 'top 0%',
         toggleActions: 'play reset play reset',
-        trigger: integrationsRef.current,
+        trigger: ref.current,
       },
     })
+    setTween(scrollTween)
+  } 
+  const applyIntegrationsTween = () => {
+    if (integrationsRef.current) {
+      let tl = gsap.timeline({
+        scrollTrigger: {
+          anticipatePin: 1,
+          // makes the height of the scrolling (while pinning) match the width, thus the speed remains constant (vertical/horizontal)
+          // end: () => "+=" + section.offsetWidth,
+          end: () => '+=3000',
+          pin: true,
+          scrub: true,
+          start: 'top 0%',
+          trigger: integrationsRef.current,
+          onLeave: function (self) {
+            console.log('disable integration animation')
+            self.disable()
+          },
+        },
+        // defaults: {ease: "none"}
+      }).delay(5)
+      // tl.deplay(2)
+      tl.fromTo(
+        integrationsRef.current?.querySelector('.endless-panel'),
+        { top: '100%' },
+        { duration: 3, top: '1%' }
+      )
+    }
+    // let scrollTweenForITSection = gsap.to(integrationsRef.current, {
+    //   ease: 'none',
+    //   scrollTrigger: {
+    //     anticipatePin: 1,
+    //     end: '+=300%',
+    //     invalidateOnRefresh: true,
+    //     markers: false,
+    //     onLeave: (self) => {
+    //       self.disable()
+    //       // self.animation.progress(1)
+    //     },
+    //     onUpdate: (self) => {
+    //       let p = (self.progress * 100).toFixed(1)
+    //       setProgressForIntegration(p)
+    //     },
+    //     pin: true,
+    //     refreshPriority: 1,
+    //     start: 'top 0%',
+    //     toggleActions: 'play reset play reset',
+    //     trigger: integrationsRef.current,
+    //   },
+    // })
   }
 
   const callback = () => {
@@ -167,7 +197,7 @@ export const Home = () => {
       </SectionContainer>
       <SectionContainer ref={integrationsRef}>
         <GridBgContainer>
-          <IntegrationsSection progress={progressForIntegration} />
+          <IntegrationsSection />
         </GridBgContainer>
       </SectionContainer>
       <SectionContainer minHeight="100vh !important" height="100% !important">
