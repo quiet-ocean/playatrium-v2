@@ -13,7 +13,7 @@ const EndlessIntegrations = ({ animate }: { animate: boolean }) => {
             p={25}
             sx={{
               '& img': {
-                maxHeight: { md: 'auto', xs: 360 },
+                maxHeight: { md: 512, xs: 360 },
               },
             }}
           >
@@ -32,7 +32,7 @@ const EndlessIntegrations = ({ animate }: { animate: boolean }) => {
           </Box>
         </Grid>
         <Grid item md={3} sx={{ color: palette.text.primary }}>
-          <Box p={{ md: 20, xs: 12 }} pt={{ md: 30, xs: 22 }}>
+          <Box p={{ md: 20, xs: 12 }} pt={{ md: 49, xs: 22 }}>
             <Typography variant="h3" fontSize={{ md: '48px', xs: '36px' }}>
               Endless Integrations
             </Typography>
