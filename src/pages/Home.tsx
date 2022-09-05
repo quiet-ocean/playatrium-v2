@@ -1,6 +1,8 @@
 import { Box } from '@mui/material'
-// import type GSAPTimeline from 'gsap'
+import type GSAPTimeline from 'gsap'
+import type GSAPTween from 'gsap'
 import { gsap } from 'gsap'
+// import type GSAPTween, GSAPTimeline, { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import React, { useState, useEffect, useRef } from 'react'
 
@@ -32,7 +34,8 @@ export const Home = () => {
   const [done, setDone] = useState(false)
   // const [sticky, setSticky] = useState(false)
   const [playState, setPlayState] = useState<PlayState>('none')
-  // const [integrationTL, setIntegrationTL] = useState<GSAPTimeline>(null)
+  const [overviewTween, setOverviewTween] = useState<GSAPTween>(null)
+  const [integrationTL, setIntegrationTL] = useState<GSAPTimeline>(null)
 
   useEffect(() => {
     // REGISTER SCROLL ANIMATION PLUGIN
@@ -76,8 +79,8 @@ export const Home = () => {
     // }
   }, [playState])
   const applyOverviewTween = () => {
-    // let tween = gsap.to(ref.current, {
-    gsap.to(ref.current, {
+    let tween = gsap.to(ref.current, {
+    // gsap.to(ref.current, {
       // backgroundColor: '#DAF7A6',
       ease: 'none',
       scrollTrigger: {
@@ -109,6 +112,7 @@ export const Home = () => {
       },
     })
     // setTween(tween)
+    setOverviewTween(tween)
   }
   const applyIntegrationsTween = () => {
     if (integrationsRef.current) {
@@ -196,7 +200,7 @@ export const Home = () => {
         .to(integrationsRef.current?.querySelector('.endless-panel'), {
           duration: 1,
         })
-      // setIntegrationTL(tl)
+      setIntegrationTL(tl)
     }
   }
 
