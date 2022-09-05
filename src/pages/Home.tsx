@@ -115,7 +115,6 @@ export const Home = () => {
           applyIntegrationsTween()
           // tween.kill()
           // self.animation.progress(1)
-          // applyTweenForIntegrations()
         },
         onUpdate: (self) => {
           // console.log(self)
@@ -221,6 +220,7 @@ export const Home = () => {
         })
       // setIntegrationTL(tl)
     }
+    console.log('init integrations animation')
   }
 
   // const callback = () => {
