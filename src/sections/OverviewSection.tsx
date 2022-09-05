@@ -13,6 +13,102 @@ import { SubtitleText } from './UpdatesSection'
 const text: string =
   'Atrium is a virtual world where users across all Layer-1 networks can build, own, and monetize their online experience through an interoperable pixel-art metaverse.'
 
+const length = text.length
+const startPos = text.indexOf('build')
+const endPos = text.indexOf('through')
+
+const OverviewText = ({
+  ref,
+  index,
+  height,
+}: {
+  ref: React.RefObject<HTMLDivElement>
+  index: number
+  height: number
+}) => {
+  const theme = useTheme()
+  const matches = useMediaQuery(theme.breakpoints.up('md'))
+  return (
+    <Box
+      ref={ref}
+      py={{ md: 20, xs: 12 }}
+      sx={{
+        '& *': {
+          color: palette.text.primary,
+        },
+        height: `${height}px`,
+      }}
+    >
+      <Typography
+        variant="h2"
+        sx={{
+          fontSize: { md: 72, xs: 48 },
+          lineHeight: { md: '110%', xs: '120%' },
+          margin: 'auto',
+          maxWidth: 1300,
+          textAlign: { md: 'center', xs: 'left' },
+        }}
+      >
+        {text.split('').map((char: string, key: number) => (
+          <span
+            key={key}
+            style={{
+              color:
+                key >= startPos && key < endPos ? theme.palette.error.main : '',
+              // visibility: matches
+              //   ? index > key
+              //     ? 'visible'
+              //     : 'hidden'
+              //   : 'visible',
+              visibility: index > key ? 'visible' : 'hidden',
+            }}
+          >
+            {char}
+          </span>
+        ))}
+      </Typography>
+    </Box>
+  )
+}
+const OverviewVideo = ({
+  ref,
+  height,
+}: {
+  ref: React.RefObject<HTMLVideoElement>
+  height: number
+}) => {
+  return (
+    <Box
+      py={{ md: 20, xs: 12 }}
+      sx={{
+        '& > video': {
+          borderRadius: { md: '12px', xs: '8px' },
+          // display: `${!done ? 'none' : 'block'}`,
+          height: '100%',
+          objectFit: 'fill',
+        },
+        height: `${height}px`,
+      }}
+      id="video-container"
+    >
+      <video
+        muted
+        ref={ref}
+        preload="none"
+        controls
+        id="video"
+        width="100%"
+        autoPlay
+      >
+        <track kind="captions" />
+        <source src="/gamedemo.mp4" type="video/mp4" />
+      </video>
+    </Box>
+  )
+}
+// const MobileContent = () => {
+
+// }
 export const OverviewSection = ({
   progress,
   // callback,
@@ -24,13 +120,6 @@ export const OverviewSection = ({
   done: boolean
   setDone: AnyFunction
 }) => {
-  const theme = useTheme()
-  const matches = useMediaQuery(theme.breakpoints.up('md'))
-
-  const length = text.length
-  const startPos = text.indexOf('build')
-  const endPos = text.indexOf('through')
-
   const [index, setIndex] = useState(0)
   const [height, setHeight] = useState(0)
 
@@ -62,48 +151,14 @@ export const OverviewSection = ({
       //
     }
     if (done) {
-      let videoContainer = document.getElementById('video-container')
-      // console.log('video container', videoContainer)
-      if (videoContainer) {
-        // videoContainer.innerHTML =
-        //   '<video preload="none" controls id="video" width="100%">' +
-        //   '<track kind="captions" />' +
-        //   '<source src="/gamedemo.mp4" type="video/mp4" />' +
-        //   '</video>'
-
-        // console.log('replace video')
-
-        setTimeout(() => {
-          if (videoRef.current) {
-            videoRef.current?.play()
-          }
-        }, 500)
-      }
+      setTimeout(() => {
+        if (videoRef.current) {
+          videoRef.current?.play()
+        }
+      }, 500)
     }
   }, [index, done])
-
-  // useEffect(() => {
-  //   console.log(height)
-  // }, [height])
-
-  // const handleScroll = (e: Event) => {
-  // const sectionTop = 0
-  // const scrolled = document.documentElement.scrollTop
-  // console.log(scrolled)
-
-  // if (scrolled > sectionTop) {
-  //   e.preventDefault()
-  //   console.log('sticky')
-
-  //   sectionRef.current.addC
-  // }
-  // }
   const handleResize = () => {
-    // console.log(
-    //   document.documentElement.clientWidth,
-    //   document.documentElement.clientHeight
-    // )
-
     setHeight(document.documentElement.clientHeight - 80 * 2 - 24)
   }
   const handleAnimation = () => {
@@ -145,97 +200,24 @@ export const OverviewSection = ({
 
               // height: `${height}px`,
 
-              overflowAnchor: 'auto',
+              // overflowAnchor: 'auto',
 
-              overflowY: { md: 'scroll', xs: 'visible' },
+              // overflowY: { md: 'scroll', xs: 'visible' },
+              display: { md: 'block', xs: 'none' },
             }}
           >
             <Slider ref={carouselRef} afterChange={handleSlick} {...settings}>
               {/* TEXT */}
-              <Box
-                ref={textRef}
-                py={{ md: 20, xs: 12 }}
-                sx={{
-                  '& *': {
-                    color: palette.text.primary,
-                  },
-                  height: `${height}px`,
-                }}
-              >
-                <Typography
-                  variant="h2"
-                  sx={{
-                    fontSize: { md: 72, xs: 48 },
-                    lineHeight: { md: '110%', xs: '120%' },
-                    margin: 'auto',
-                    maxWidth: 1300,
-                    textAlign: { md: 'center', xs: 'left' },
-                  }}
-                >
-                  {text.split('').map((char: string, key: number) => (
-                    <span
-                      key={key}
-                      style={{
-                        color:
-                          key >= startPos && key < endPos
-                            ? theme.palette.error.main
-                            : '',
-                        visibility: matches
-                          ? index > key
-                            ? 'visible'
-                            : 'hidden'
-                          : 'visible',
-                      }}
-                    >
-                      {char}
-                    </span>
-                  ))}
-                </Typography>
-              </Box>
+              <OverviewText ref={textRef} index={index} height={height} />
               {/* VIDEO */}
-              <Box
-                py={{ md: 20, xs: 12 }}
-                sx={{
-                  '& > video': {
-                    borderRadius: { md: '12px', xs: '8px' },
-                    display: `${!done ? 'none' : 'block'}`,
-                    height: '100%',
-                    objectFit: 'fill',
-                  },
-                  height: `${height}px`,
-                }}
-                id="video-container"
-              >
-                <video
-                  muted
-                  ref={videoRef}
-                  preload="none"
-                  controls
-                  id="video"
-                  width="100%"
-                  autoPlay
-                >
-                  <track kind="captions" />
-                  <source src="/gamedemo.mp4" type="video/mp4" />
-                </video>
-                {/* {done ? (
-                  <video
-                    controls
-                    id="video"
-                    width="100%"
-                    autoPlay
-                  >
-                    <track kind="captions" />
-                    <source src="/gamedemo.mp4" type="video/mp4" />
-                  </video>
-                ) : (
-                  <video preload="none" controls id="video" width="100%">
-                    <track kind="captions" />
-                    <source src="/gamedemo.mp4" type="video/mp4" />
-                  </video>
-                )} */}
-              </Box>
+              <OverviewVideo ref={videoRef} height={height} />
             </Slider>
+          </Box>
+          <Box display={{ md: 'none', xs: 'block' }}>
+            {/* TEXT */}
+            <OverviewText ref={textRef} index={index} height={height} />
+            {/* VIDEO */}
+            <OverviewVideo ref={videoRef} height={height} />
           </Box>
         </Grid>
       </Grid>
