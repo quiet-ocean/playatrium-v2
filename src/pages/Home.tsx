@@ -41,7 +41,7 @@ export const Home = () => {
     // REGISTER SCROLL ANIMATION PLUGIN
     gsap.registerPlugin(ScrollTrigger)
 
-    // applyOverviewTween()
+    applyOverviewTween()
 
     // ENABLE SCROLL AFTER HERO ANIMATION
     document.body.style.overflow = 'hidden'
@@ -91,7 +91,7 @@ export const Home = () => {
       if (!isExecuted) {
         console.log('execute handle wheel')
         isExecuted = true
-        applyOverviewTween()
+        // applyOverviewTween()
       }
     }
   }
