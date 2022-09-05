@@ -264,11 +264,11 @@ export const Home = () => {
           <IntegrationsSection state={playState} />
         </GridBgContainer>
       </SectionContainer>
-      <SectionContainer minHeight="100vh !important" height="100% !important">
+      <SectionContainer height="100% !important">
         <GridBgContainer
           sx={{
             height: '100% !important',
-            minHeight: '100vh !important',
+            // minHeight: '100vh !important',
           }}
         >
           <BuildersSection />
