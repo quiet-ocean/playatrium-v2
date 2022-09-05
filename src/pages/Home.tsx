@@ -36,8 +36,7 @@ export const Home = () => {
     // REGISTER SCROLL ANIMATION PLUGIN
     gsap.registerPlugin(ScrollTrigger)
 
-    // applyOverviewTween()
-    applyIntegrationsTween()
+    applyOverviewTween()
 
     // ENABLE SCROLL AFTER HERO ANIMATION
     document.body.style.overflow = 'hidden'
@@ -87,13 +86,13 @@ export const Home = () => {
         // end: '+=400%',
         invalidateOnRefresh: true,
         markers: false,
-        onKill: (self) => {
-          console.log('on kill')
-          self.disable()
-        },
+        // onKill: (self) => {
+        //   self.disable()
+        // },
         onLeave: function (self) {
           self.disable()
           console.log('on leave')
+          applyIntegrationsTween()
           // tween.kill()
           // self.animation.progress(1)
           // applyTweenForIntegrations()

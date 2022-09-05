@@ -27,9 +27,9 @@ const ProjectIntegrations = ({ animate }: { animate: boolean }) => {
         <Grid
           item
           md={3}
-          sx={{ color: palette.text.primary, pt: { md: 50, x: 16 } }}
+          sx={{ color: palette.text.primary, pt: { md: 30, x: 12 } }}
         >
-          <Box p={{ md: 20, xs: 12 }}/* pt={{ md: 50, xs: 20 }} */>
+          <Box p={{ md: 20, xs: 12 }}>
             <Typography variant="h3" fontSize={{ md: '48px', xs: '36px' }}>
               Project Integrations
             </Typography>
