@@ -38,7 +38,7 @@ export const OverviewSection = ({
   const textRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
 
-  const keyframe = 60
+  const keyframe = 70
 
   useEffect(() => {
     console.log('init overview ', done)

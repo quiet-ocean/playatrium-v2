@@ -34,8 +34,8 @@ export const Home = () => {
       ease: 'none',
       scrollTrigger: {
         anticipatePin: 1,
-        // end: '+=500%',
-        end: '+=400%',
+        end: '+=500%',
+        // end: '+=400%',
         invalidateOnRefresh: true,
         markers: false,
         onKill: (self) => {
@@ -70,6 +70,10 @@ export const Home = () => {
     setTimeout(() => {
       document.body.style.overflow = 'visible'
     }, 4200)
+
+    // SCROLL TO TOP
+    console.log('Scroll to top')
+    window.scrollTo({ behavior: 'smooth', top: 0 })
 
     // ADD SCROLL EVENT LISTENER
 
