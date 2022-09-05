@@ -32,7 +32,7 @@ const EndlessIntegrations = ({ animate }: { animate: boolean }) => {
           </Box>
         </Grid>
         <Grid item md={3} sx={{ color: palette.text.primary }}>
-          <Box p={{ md: 20, xs: 12 }} pt={{ md: 49, xs: 22 }}>
+          <Box p={{ md: 20, xs: 12 }} pt={{ md: 49, xs: 6 }}>
             <Typography variant="h3" fontSize={{ md: '48px', xs: '36px' }}>
               Endless Integrations
             </Typography>
