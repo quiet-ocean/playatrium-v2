@@ -41,7 +41,6 @@ export const OverviewSection = ({
   const keyframe = 70
 
   useEffect(() => {
-    console.log('init overview ', done)
     handleResize()
     window.addEventListener('resize', handleResize)
     // window.addEventListener('scroll', handleScroll, { passive: true })
@@ -72,7 +71,7 @@ export const OverviewSection = ({
         //   '<source src="/gamedemo.mp4" type="video/mp4" />' +
         //   '</video>'
 
-        console.log('replace video')
+        // console.log('replace video')
 
         setTimeout(() => {
           if (videoRef.current) {
@@ -100,10 +99,10 @@ export const OverviewSection = ({
   // }
   // }
   const handleResize = () => {
-    console.log(
-      document.documentElement.clientWidth,
-      document.documentElement.clientHeight
-    )
+    // console.log(
+    //   document.documentElement.clientWidth,
+    //   document.documentElement.clientHeight
+    // )
 
     setHeight(document.documentElement.clientHeight - 80 * 2 - 24)
   }

@@ -42,7 +42,6 @@ export const Home = () => {
     }, 4200)
 
     // SCROLL TO TOP
-    console.log('Scroll to top')
     window.scrollTo({ behavior: 'smooth', top: 0 })
 
     // ADD SCROLL EVENT LISTENER
@@ -103,7 +102,7 @@ export const Home = () => {
           start: 'top 0%',
           trigger: integrationsRef.current,
           onLeave: function (self) {
-            console.log('disable integration animation')
+            // console.log('disable integration animation')
             self.disable()
           },
         },
