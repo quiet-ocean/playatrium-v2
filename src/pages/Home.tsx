@@ -1,6 +1,6 @@
 import { Box } from '@mui/material'
-import type GSAPTimeline from 'gsap'
-import type GSAPTween from 'gsap'
+// import type GSAPTimeline from 'gsap'
+// import type GSAPTween from 'gsap'
 import { gsap } from 'gsap'
 // import type GSAPTween, GSAPTimeline, { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -34,8 +34,8 @@ export const Home = () => {
   const [done, setDone] = useState(false)
   // const [sticky, setSticky] = useState(false)
   const [playState, setPlayState] = useState<PlayState>('none')
-  const [overviewTween, setOverviewTween] = useState<GSAPTween>(null)
-  const [integrationTL, setIntegrationTL] = useState<GSAPTimeline>(null)
+  // const [overviewTween, setOverviewTween] = useState<GSAPTween>(null)
+  // const [integrationTL, setIntegrationTL] = useState<GSAPTimeline>(null)
 
   useEffect(() => {
     // REGISTER SCROLL ANIMATION PLUGIN
@@ -85,19 +85,19 @@ export const Home = () => {
     // }
   }, [playState])
   const handleWeel = () => {
-    console.log('handle wheel')
+    // console.log('handle wheel')
     let isExecuted = false
     return () => {
       if (!isExecuted) {
-        console.log('execute handle wheel')
+        // console.log('execute handle wheel')
         isExecuted = true
         // applyOverviewTween()
       }
     }
   }
   const applyOverviewTween = () => {
-    let tween = gsap.to(overviewRef.current, {
-      // gsap.to(ref.current, {
+    // let tween = gsap.to(overviewRef.current, {
+      gsap.to(overviewRef.current, {
       // backgroundColor: '#DAF7A6',
       ease: 'none',
       scrollTrigger: {
@@ -129,7 +129,7 @@ export const Home = () => {
       },
     })
     // setTween(tween)
-    setOverviewTween(tween)
+    // setOverviewTween(tween)
   }
   const applyIntegrationsTween = () => {
     if (integrationsRef.current) {
@@ -217,7 +217,7 @@ export const Home = () => {
         .to(integrationsRef.current?.querySelector('.endless-panel'), {
           duration: 1,
         })
-      setIntegrationTL(tl)
+      // setIntegrationTL(tl)
     }
   }
 
