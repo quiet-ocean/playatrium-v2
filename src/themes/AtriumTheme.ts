@@ -45,7 +45,16 @@ const AtriumTheme = createTheme({
               fontSize: '18px',
               padding: '16px',
             },
+            '&:hover': {
+              '& a': {
+                color: `${theme.palette.background.paper} !important`,
+              },
+              background: theme.palette.text.primary,
+              border: `1px solid ${theme.palette.background.paper}`,
+              color: `${theme.palette.background.paper} !important`,
+            },
             background: theme.palette.background.paper,
+            border: '1px solid transparent',
             borderRadius: 0,
             color: theme.palette.text.primary,
             fontFamily: 'Fractul Alt',
