@@ -48,7 +48,11 @@ export const IntegrationsSection = ({ state }: { state: PlayState }) => {
             <Box className="project-panel">
               <ProjectIntegrations animate={state === 'project'} />
             </Box>
-            <Box className="endless-panel" mt={3} sx={{ width: '100%'}}>
+            <Box
+              className="endless-panel"
+              mt={3}
+              sx={{ height: '100%', width: '100%' }}
+            >
               <EndlessIntegrations animate={state === 'endless'} />
             </Box>
           </IntegrationsContainer>
