@@ -220,7 +220,7 @@ export const Home = () => {
         })
       // setIntegrationTL(tl)
     }
-    console.log('init integrations animation')
+    // console.log('init integrations animation')
   }
 
   // const callback = () => {
