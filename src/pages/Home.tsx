@@ -20,7 +20,7 @@ import AtriumTheme from '../themes/AtriumTheme'
 
 export type PlayState = 'none' | 'project' | 'endless' | 'done'
 
-const overviewTweenEnd = '+=500%'
+const overviewTweenEnd = '+=1000%'
 const integrationTweenEnd = '+=500%'
 
 export const Home = () => {
