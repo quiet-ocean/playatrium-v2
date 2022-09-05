@@ -58,6 +58,7 @@ export const Builder = ({
         '&:hover': {
           opacity: 1,
         },
+        minHeight: { md: 660, xl: 720, xs: 690 },
         opacity: 0.3,
         transition: 'opacity 1s',
       }}

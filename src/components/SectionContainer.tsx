@@ -9,9 +9,6 @@ import { Box, styled } from '@mui/material'
 // }
 
 export const SectionContainer = styled(Box)(({ theme }) => ({
-  '&.header': {
-    padding: '0px !important',
-  },
   '&.light': {
     background: theme.palette.background.default,
   },

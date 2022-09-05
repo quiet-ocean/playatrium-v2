@@ -1,4 +1,5 @@
 import { Box, Typography, Grid, styled } from '@mui/material'
+import { useEffect } from 'react'
 
 import { GridBgContainer } from '../components'
 import { palette } from '../themes/AtriumTheme'
@@ -11,6 +12,9 @@ const Section = styled(Box)(({ theme }) => ({
   marginBottom: 80,
 }))
 export const Policy = () => {
+  useEffect(() => {
+    window.scrollTo({ behavior: 'smooth', top: 0 })
+  }, [])
   return (
     <Box mt={16}>
       <Box

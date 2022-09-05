@@ -1,4 +1,4 @@
-import { Box, Typography, Grid } from '@mui/material'
+import { Box, Typography, Grid, Button } from '@mui/material'
 
 import EndlessGif from '../../assets/gifs/endless.gif'
 import EndlessImage from '../../assets/gifs/endless.png'
@@ -6,31 +6,54 @@ import { palette } from '../../themes/AtriumTheme'
 
 const EndlessIntegrations = ({ animate }: { animate: boolean }) => {
   return (
-    <Box py={{ xs: 16 }}>
-      <Grid container justifyContent="center" columns={{ md: 10, xl: 12 }}>
-        <Grid item md={5}>
-          <Box py={16}>
+    <Box>
+      <Grid container justifyContent="center" columns={10}>
+        <Grid item md={7}>
+          <Box
+            p={25}
+            sx={{
+              '& img': {
+                maxHeight: { md: 'auto', xs: 360 },
+              },
+            }}
+          >
             <img
-              src={animate ? EndlessGif : EndlessImage}
+              src={EndlessGif}
               alt=""
-              width="100%"
+              // width="100%"
+              style={{ display: animate ? 'block' : 'none', margin: 'auto' }}
+            />
+            <img
+              src={EndlessImage}
+              alt=""
+              // width="100%"
+              style={{ display: !animate ? 'block' : 'none', margin: 'auto' }}
             />
           </Box>
         </Grid>
-        <Grid item md={1} />
-        <Grid
-          item
-          md={2}
-          sx={{ color: palette.text.primary, pt: { md: 50, xs: 16 } }}
-        >
-          <Typography variant="h3" fontSize={{ md: '48px', xs: '36px' }}>
-            Endless Integrations
-          </Typography>
-          <Typography variant="body2" mt={6}>
-            We’ve started with ASAC, and we are looking to integrate our next 50
-            projects. If you want a central hub inside Atrium, submit your
-            project today!
-          </Typography>
+        <Grid item md={3} sx={{ color: palette.text.primary }}>
+          <Box p={{ md: 20, xs: 12 }} pt={{ md: 30, xs: 22 }}>
+            <Typography variant="h3" fontSize={{ md: '48px', xs: '36px' }}>
+              Endless Integrations
+            </Typography>
+            <Typography variant="body2" mt={6}>
+              We’ve started with ASAC, and we are looking to integrate our next
+              50 projects. If you want a central hub inside Atrium, submit your
+              project today!
+            </Typography>
+            <Box mt={6}>
+              <Button
+                variant="primary"
+                // color="warning"
+                sx={{
+                  border: `1px solid ${palette.warning.main}`,
+                  color: palette.warning.main,
+                }}
+              >
+                Submit your Project
+              </Button>
+            </Box>
+          </Box>
         </Grid>
       </Grid>
     </Box>

@@ -89,7 +89,16 @@ export const BuildersSection = () => {
     }
   }
   return (
-    <Box id="team-section" py={{ md: 25, xs: 16 }} height="100%">
+    <Box
+      id="team-section"
+      py={{ md: 25, xs: 16 }}
+      height="100%"
+      sx={
+        {
+          // minHeight:
+        }
+      }
+    >
       <Box display="flex" justifyContent="center">
         <SubtitleText color={palette.error.main}>
           the grid builders
