@@ -1,4 +1,11 @@
-import { Box, Grid, Typography, ButtonGroup, Button } from '@mui/material'
+import {
+  Box,
+  Grid,
+  Typography,
+  ButtonGroup,
+  Button,
+  styled,
+} from '@mui/material'
 import React, { useState } from 'react'
 
 import profilePreviewImage from '../assets/images/profile-preview.png'
@@ -7,10 +14,37 @@ import { palette } from '../themes/AtriumTheme'
 
 import { SubtitleText } from './UpdatesSection'
 
-// const videoStyle = {
-//   borderRadius: '12px',
-//   height: '100%',
-// }
+const TabButton = styled(Button)(({ theme }) => ({
+  '&.active': {
+    background: theme.palette.info.main,
+    color: theme.palette.text.primary,
+  },
+  '&:hover:not(.active)': {
+    background: '#FFF',
+    cursor: 'pointer',
+    // '&.active': {
+    // background: '#387AE3',
+    // color: '#FFF',
+    // },
+  },
+  [theme.breakpoints.up('md')]: {
+    fontSize: 18,
+  },
+  [theme.breakpoints.down('md')]: {
+    fontSize: 16,
+  },
+  background: theme.palette.background.default,
+  border: `2px solid ${theme.palette.info.main} !important`,
+  borderRadius: 0,
+  color: theme.palette.info.main,
+  fontFamily: 'Fractul Alt',
+  // fontSize: { md: 18, xs: 16 },
+  fontWeight: 600,
+  // padding: { md: 16, xs: 8 },
+  padding: 16,
+  width: '100%',
+  zIndex: 10,
+}))
 export const ProfilesSection = () => {
   const [state, setState] = useState(true)
 
@@ -22,30 +56,19 @@ export const ProfilesSection = () => {
         width: '100%',
       }}
     >
-      <Button
-        variant="primary"
+      <TabButton
         className={`medium ${state ? 'active' : ''}`}
-        color="info"
-        sx={{
-          borderRight: '0px !important',
-          width: '100%',
-        }}
+        sx={{ borderRight: `0px !important` }}
         onClick={() => setState(true)}
       >
-        personal profile
-      </Button>
-      <Button
-        variant="primary"
+        Personal Profile
+      </TabButton>
+      <TabButton
         className={`medium ${!state ? 'active' : ''}`}
-        color="info"
-        sx={{
-          borderLeft: '0px !important',
-          width: '100%',
-        }}
         onClick={() => setState(false)}
       >
-        community hub
-      </Button>
+        Community Hub
+      </TabButton>
     </ButtonGroup>
   )
   return (
@@ -123,20 +146,6 @@ export const ProfilesSection = () => {
           <MultiSlideAnimationWrapper
             child1={<img src={profilePreviewImage} alt="" width="100%" />}
             child2={<img src={profilePreviewImage} alt="" width="100%" />}
-            // child1={
-            //   <video width="100%" height="100%" controls style={videoStyle}>
-            //     <track kind="captions" />
-            //     <source src="/gamedemo.mp4" type="video/mp4" />
-            //   </video>
-            //   // <CardMedia sx={{ height: '100%', width: '100%' }} src="/gamedemo.mp4" />
-            // }
-            // child2={
-            //   <video width="100%" height="100%" controls style={videoStyle}>
-            //     <track kind="captions" />
-            //     <source src="/gamedemo.mp4" type="video/mp4" />
-            //   </video>
-            //   // <CardMedia sx={{ height: '100%', width: '100%' }} src="/gamedemo.mp4" />
-            // }
             state={state}
           />
         </Grid>
