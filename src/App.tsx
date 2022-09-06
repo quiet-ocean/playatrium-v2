@@ -214,6 +214,7 @@ const App: React.FC = () => {
                     },
                     position: 'relative',
                   },
+                  px: { xl: 0, xs: 5 },
                   // minHeight: '1000px',
                 }}
               >
