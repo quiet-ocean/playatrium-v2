@@ -39,14 +39,23 @@ export const IntegrationsSection = ({ state }: { state: PlayState }) => {
                   hide={state !== 'project' && state !== 'none'}
                 />
               </Box>
-              <Box className="screen-panel" px={16}>
-                <Box />
-              </Box>
               <Box
                 className="endless-panel"
-                sx={{ height: '100%', width: '100%' }}
+                sx={{
+                  display:
+                    state === 'done' ||
+                    state === 'endless' ||
+                    state === 'sliding'
+                      ? 'block'
+                      : 'none',
+                  height: '100%',
+                  width: '100%',
+                }}
               >
                 <EndlessIntegrations animate={state === 'endless'} />
+              </Box>
+              <Box className="screen-panel" px={16}>
+                <Box />
               </Box>
             </IntegrationsContainer>
           </Box>

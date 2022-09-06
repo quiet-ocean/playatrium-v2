@@ -79,8 +79,8 @@ const App: React.FC = () => {
     gsap.registerPlugin(ScrollTrigger)
 
     // APPLY ANIMATION FOR OVERVIEW SECTION
-    applyOverviewTween()
-    // applyIntegrationsTween()
+    // applyOverviewTween()
+    applyIntegrationsTween()
 
     // ENABLE SCROLL AFTER HERO ANIMATION
     document.body.style.overflow = 'hidden'
@@ -156,12 +156,12 @@ const App: React.FC = () => {
         .add(() => {
           setPlayState('project')
         })
-        .to(integrationsRef.current?.querySelector('.endless-panel'), {
-          duration: 3,
-        })
-        .add(() => {
-          setPlayState('none')
-        })
+        // .to(integrationsRef.current?.querySelector('.endless-panel'), {
+        //   duration: 3,
+        // })
+        // .add(() => {
+        //   setPlayState('none')
+        // })
         // .to(
         //   integrationsRef.current?.querySelector
         // )
@@ -186,13 +186,13 @@ const App: React.FC = () => {
           duration: 3,
           top: '-100%',
         })
-        .to(
-          integrationsRef.current?.querySelector('.endless-panel'),
-          3,
-          // { top: '100%' },
-          { duration: 3, top: '0%' },
-          '-=3'
-        )
+        // .to(
+        //   integrationsRef.current?.querySelector('.endless-panel'),
+        //   3,
+        //   // { top: '100%' },
+        //   { duration: 3, top: '0%' },
+        //   '-=3'
+        // )
         // .fromTo(
         //   integrationsRef.current?.querySelector('.endless-panel'),
         //   { top: '100%' },
