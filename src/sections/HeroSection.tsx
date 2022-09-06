@@ -9,7 +9,8 @@ const HeroAnimationWrapper = styled(Box)(({ theme }) => ({
     height: '100%',
   },
   '& > div.main': {
-    cursor: 'url("/public/cursor.svg") 12 12, pointer',
+    // cursor: 'url("/public/cursor.svg") 12 12, pointer',
+    cursor: 'url("/cursor.svg") 12 12, pointer',
     transition: 'width 1s',
     width: '0%',
   },
