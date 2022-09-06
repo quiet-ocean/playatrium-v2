@@ -164,17 +164,19 @@ export const Footer = () => {
               order={{ md: 1, xs: 2 }}
               sx={{
                 '& .MuiTypography-root': {
+                  '& a': {
+                    color: palette.primary.light,
+                  },
                   '& a:hover': {
                     color: `${palette.warning.main} !important`,
                   },
+                  color: palette.primary.light,
                   zIndex: 10000,
                 },
               }}
             >
               <Typography variant="caption">
-                <Link to="/policy" style={{ color: palette.text.disabled }}>
-                  Privacy
-                </Link>
+                <Link to="/policy">Privacy</Link>
               </Typography>
               <Typography variant="caption">Terms of Use</Typography>
               <Typography variant="caption">© Atrium 2022</Typography>
