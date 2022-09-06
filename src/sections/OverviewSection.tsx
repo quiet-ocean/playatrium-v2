@@ -1,7 +1,7 @@
 import { Box, Typography, Grid } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 // import useMediaQuery from '@mui/material/useMediaQuery'
-import { useRef, useEffect, useState, forwardRef } from 'react'
+import { useRef, useEffect, useState, forwardRef, useMemo } from 'react'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
@@ -68,11 +68,32 @@ const OverviewText = forwardRef<
     </Box>
   )
 })
-const OverviewVideo = forwardRef<HTMLVideoElement, { height: number }>(
-  ({ height }, ref) => {
-    return (
+const OverviewVideo = forwardRef<
+  HTMLVideoElement,
+  { height: number; windowWidth: number }
+>(({ height, windowWidth }, ref) => {
+  const theme = useTheme()
+  const isMobile = theme.breakpoints.down('md')
+  // const [width, setWidth] = useState(0)
+  // useEffect(() => {
+  //   if (isMobile) {
+
+  //   }
+  // }, [height, isMobile])
+  const videoHeight = useMemo(
+    () => (isMobile ? ((windowWidth - 40) / 16) * 9 : height),
+    [height, isMobile, windowWidth]
+  )
+  const videoWidth = useMemo(
+    () => (isMobile ? windowWidth - 40 : (height * 16) / 9),
+    [height, isMobile, windowWidth]
+  )
+  // useEffect(() => {
+  //   console.log(height, windowWidth)
+  // }, [height, windowWidth])
+  return (
+    <Box py={{ md: 20, xs: 12 }}>
       <Box
-        py={{ md: 20, xs: 12 }}
         sx={{
           '& > video': {
             borderRadius: { md: '12px', xs: '8px' },
@@ -80,7 +101,10 @@ const OverviewVideo = forwardRef<HTMLVideoElement, { height: number }>(
             height: '100%',
             objectFit: 'fill',
           },
-          height: `${height}px`,
+          height: `${videoHeight}px`,
+          margin: 'auto',
+          // width: { md: `${videoWidth}px`, xs: '100%' },
+          width: `${videoWidth}px`,
         }}
         id="video-container"
       >
@@ -89,6 +113,7 @@ const OverviewVideo = forwardRef<HTMLVideoElement, { height: number }>(
           ref={ref}
           preload="none"
           controls
+          height="100%"
           id="video"
           width="100%"
           autoPlay
@@ -97,9 +122,9 @@ const OverviewVideo = forwardRef<HTMLVideoElement, { height: number }>(
           <source src="/gamedemo.mp4" type="video/mp4" />
         </video>
       </Box>
-    )
-  }
-)
+    </Box>
+  )
+})
 // const MobileContent = () => {
 
 // }
@@ -116,6 +141,8 @@ export const OverviewSection = ({
 }) => {
   const [index, setIndex] = useState(0)
   const [height, setHeight] = useState(0)
+  const [windowWidth, setWindowWidth] = useState(0)
+  // const [width, setWidth] = useState(0)
 
   const carouselRef = useRef<Slider>(null)
   const textRef = useRef<HTMLDivElement>(null)
@@ -152,8 +179,10 @@ export const OverviewSection = ({
       }, 500)
     }
   }, [index, done])
+
   const handleResize = () => {
     setHeight(document.documentElement.clientHeight - 80 * 2 - 24)
+    setWindowWidth(document.documentElement.clientWidth)
   }
   const handleAnimation = () => {
     setIndex((length * progress) / keyframe)
@@ -204,14 +233,22 @@ export const OverviewSection = ({
               {/* TEXT */}
               <OverviewText ref={textRef} index={index} height={height} />
               {/* VIDEO */}
-              <OverviewVideo ref={videoRef} height={height} />
+              <OverviewVideo
+                ref={videoRef}
+                height={height}
+                windowWidth={windowWidth}
+              />
             </Slider>
           </Box>
           <Box display={{ md: 'none', xs: 'block' }}>
             {/* TEXT */}
             <OverviewText ref={textRef} index={index} height={height} />
             {/* VIDEO */}
-            <OverviewVideo ref={videoRef} height={height} />
+            <OverviewVideo
+              ref={videoRef}
+              height={height}
+              windowWidth={windowWidth}
+            />
           </Box>
         </Grid>
       </Grid>

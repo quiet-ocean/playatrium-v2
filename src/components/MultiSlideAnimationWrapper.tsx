@@ -39,6 +39,9 @@ export const MultiSlideAnimationWrapper = ({
             height: '100%',
             width: '100%',
           },
+          '& video': {
+            borderRadius: { md: 18, xs: 12 },
+          },
           height: '100%',
           position: 'absolute',
           width: '100%',

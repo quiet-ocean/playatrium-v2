@@ -8,7 +8,7 @@ import MenuItem from '@mui/material/MenuItem'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import * as React from 'react'
-import { Link } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 import CrossIcon from '../assets/images/cross-icon-36.svg'
 import DiscordIcon from '../assets/images/discord-icon.svg'
@@ -18,12 +18,20 @@ import YoutubeIcon from '../assets/images/youtube-icon.svg'
 import { palette } from '../themes/AtriumTheme'
 const pages = ['updates', 'overview', 'integrations', 'profiles', 'team']
 
+function scrollToTop() {
+  window.scrollTo({ behavior: 'smooth', top: 0 })
+}
 const Logo = ({ sx }: { sx?: object }) => {
   return (
     <Box py={2} width="100%" sx={sx}>
-      <Link to="/">
+      <Box
+        sx={{
+          cursor: 'pointer',
+        }}
+        onClick={scrollToTop}
+      >
         <img src={logoType} alt="" />
-      </Link>
+      </Box>
     </Box>
   )
 }
@@ -72,6 +80,8 @@ const menuStyle = {
 }
 
 export const ResponsiveAppBar = () => {
+  const navigate = useNavigate()
+  const location = useLocation()
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -81,7 +91,15 @@ export const ResponsiveAppBar = () => {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null)
   }
+  const handleNavClick = (sectionId: string) => {
+    handleCloseNavMenu()
+    // console.log(location)
+    const isPolicy = location.pathname.indexOf('policy') > -1
 
+    if (isPolicy) {
+      navigate(`/#${sectionId}-section`)
+    }
+  }
   return (
     <AppBar position="static">
       <Container maxWidth="xl" /*sx={{ paddingRight: {xl: 30, xs: 6} }} */>
@@ -97,9 +115,9 @@ export const ResponsiveAppBar = () => {
               }}
             />
             <Box sx={{ height: 36, width: 36 }}>
-              <a href="/#">
+              <Box onClick={scrollToTop}>
                 <img src={CrossIcon} alt="" width="100%" height="100%" />
-              </a>
+              </Box>
             </Box>
           </Box>
 
@@ -128,11 +146,17 @@ export const ResponsiveAppBar = () => {
               onClose={handleCloseNavMenu}
               sx={menuStyle}
             >
-              <Box display="flex" justifyContent="center" pt={2} pb={10}>
+              <Box
+                display="flex"
+                justifyContent="center"
+                pt={2}
+                pb={10}
+                onClick={scrollToTop}
+              >
                 <img src={CrossIcon} alt="" width={36} height={36} />
               </Box>
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page} onClick={() => handleNavClick(page)}>
                   <Typography
                     variant="h4"
                     fontFamily={'Fractul Alt'}
@@ -214,7 +238,11 @@ export const ResponsiveAppBar = () => {
             >
               {pages.map((item: string, key: number) => (
                 <Box key={key}>
-                  <Button variant="primary">
+                  <Button
+                    variant="primary"
+                    id={`#${item}-section-nav`}
+                    onClick={() => handleNavClick(item)}
+                  >
                     <a href={`#${item}-section`}>{item}</a>
                   </Button>
                 </Box>

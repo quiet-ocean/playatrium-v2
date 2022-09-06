@@ -55,11 +55,11 @@ export const Builder = ({
       onMouseEnter={() => _handleHover(true)}
       onMouseLeave={() => _handleHover(false)}
       sx={{
-        '&:hover': {
-          opacity: 1,
-        },
+        // '&:hover': {
+        //   opacity: 1,
+        // },
         minHeight: { md: 660, xl: 720, xs: 690 },
-        opacity: 0.3,
+        // opacity: 0.3,
         transition: 'opacity 1s',
       }}
     >

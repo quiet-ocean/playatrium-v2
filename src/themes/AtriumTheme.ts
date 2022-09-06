@@ -26,9 +26,9 @@ const AtriumTheme = createTheme({
         // })
         root: ({ theme }) => ({
           '& a': {
-            '&:hover': {
-              color: '#FFF',
-            },
+            // '&:hover': {
+            //   color: '#FFF',
+            // },
             color: theme.palette.text.primary,
             textDecoration: 'none',
           },
@@ -45,7 +45,18 @@ const AtriumTheme = createTheme({
               fontSize: '18px',
               padding: '16px',
             },
+            '&:hover': {
+              '& a': {
+                // color: `${theme.palette.background.paper} !important`,
+              },
+              // background: theme.palette.text.primary,
+              // border: `1px solid ${theme.palette.background.paper}`,
+              // color: `${theme.palette.background.paper} !important`,
+              background: '#303030',
+              color: theme.palette.text.primary,
+            },
             background: theme.palette.background.paper,
+            border: '1px solid transparent',
             borderRadius: 0,
             color: theme.palette.text.primary,
             fontFamily: 'Fractul Alt',
@@ -81,8 +92,8 @@ const AtriumTheme = createTheme({
         {
           props: { color: 'info' },
           style: ({ theme }) => ({
-            // '&:hover, &.active': {
-            '&.active': {
+            '&:hover, &.active': {
+              // '&.active': {
               background: theme.palette.info.main,
               border: `1px solid ${theme.palette.info.main} !important`,
               color: theme.palette.text.primary,
