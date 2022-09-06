@@ -85,8 +85,8 @@ const App: React.FC = () => {
     gsap.registerPlugin(ScrollTrigger)
 
     // APPLY ANIMATION FOR OVERVIEW SECTION
-    // applyOverviewTween()
-    applyIntegrationsTween()
+    applyOverviewTween()
+    // applyIntegrationsTween()
 
     // ENABLE SCROLL AFTER HERO ANIMATION
     document.body.style.overflow = 'hidden'
