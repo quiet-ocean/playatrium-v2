@@ -164,6 +164,9 @@ export const Footer = () => {
               order={{ md: 1, xs: 2 }}
               sx={{
                 '& .MuiTypography-root': {
+                  '& a:hover': {
+                    color: `${palette.warning.main} !important`,
+                  },
                   zIndex: 10000,
                 },
               }}
