@@ -42,7 +42,7 @@ function HideOnScroll(props: Props) {
     setOpen(trigger)
   }, [trigger])
   return (
-    <Slide appear={false} direction="down" in={!open}>
+    <Slide appear={false} direction="down" in={true}>
       {children}
     </Slide>
   )
@@ -156,12 +156,12 @@ const App: React.FC = () => {
         .add(() => {
           setPlayState('project')
         })
-        .to(integrationsRef.current?.querySelector('.endless-panel'), {
-          duration: 3,
-        })
-        .add(() => {
-          setPlayState('none')
-        })
+        // .to(integrationsRef.current?.querySelector('.endless-panel'), {
+        //   duration: 3,
+        // })
+        // .add(() => {
+        //   setPlayState('none')
+        // })
         // .to(
         //   integrationsRef.current?.querySelector
         // )
@@ -186,13 +186,13 @@ const App: React.FC = () => {
           duration: 3,
           top: '-100%',
         })
-        .to(
-          integrationsRef.current?.querySelector('.endless-panel'),
-          3,
-          // { top: '100%' },
-          { duration: 3, top: '0%' },
-          '-=3'
-        )
+        // .to(
+        //   integrationsRef.current?.querySelector('.endless-panel'),
+        //   3,
+        //   // { top: '100%' },
+        //   { duration: 3, top: '0%' },
+        //   '-=3'
+        // )
         // .fromTo(
         //   integrationsRef.current?.querySelector('.endless-panel'),
         //   { top: '100%' },

@@ -83,7 +83,7 @@ export const BuildersSection = () => {
     speed: 2000,
   }
 
-  const settingsMemo = useMemo(() => ({ ...settings, touchMove }), [touchMove])
+  // const settingsMemo = useMemo(() => ({ ...settings, touchMove }), [touchMove])
   const handleHover = (hover: boolean) => {
     // console.log('handle hover in builders section ', hover)
     if (sliderRef.current) {
@@ -113,7 +113,7 @@ export const BuildersSection = () => {
         </SubtitleText>
       </Box>
       <Box mt={{ md: 20, xs: 16 }}>
-        <Slider {...settingsMemo} ref={sliderRef}>
+        <Slider {...settings} ref={sliderRef}>
           {new Array(10).fill(2).map((_, key: number) => (
             <Builder
               key={key}
