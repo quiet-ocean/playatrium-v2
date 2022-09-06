@@ -93,7 +93,7 @@ const AtriumTheme = createTheme({
           props: { color: 'info' },
           style: ({ theme }) => ({
             '&:hover, &.active': {
-            // '&.active': {
+              // '&.active': {
               background: theme.palette.info.main,
               border: `1px solid ${theme.palette.info.main} !important`,
               color: theme.palette.text.primary,

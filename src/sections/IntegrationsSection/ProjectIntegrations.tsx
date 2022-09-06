@@ -5,7 +5,13 @@ import WalkAroundGif from '../../assets/gifs/walkaround 1.gif'
 import WalkAroungImage from '../../assets/images/w.png'
 import { palette } from '../../themes/AtriumTheme'
 
-const ProjectIntegrations = ({ animate, hide }: { animate: boolean, hide: boolean }) => {
+const ProjectIntegrations = ({
+  animate,
+  hide,
+}: {
+  animate: boolean
+  hide: boolean
+}) => {
   const [animating, setAnimating] = useState(false)
 
   useEffect(() => {

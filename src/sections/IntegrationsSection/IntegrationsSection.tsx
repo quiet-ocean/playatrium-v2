@@ -1,7 +1,6 @@
 import { Box, Grid } from '@mui/material'
 import { useRef } from 'react'
 
-import { useContext, useEffect } from 'react'
 import type { PlayState } from '../../App'
 import { IntegrationsContainer } from '../../components'
 import { palette } from '../../themes/AtriumTheme'
@@ -35,7 +34,10 @@ export const IntegrationsSection = ({ state }: { state: PlayState }) => {
               className={`${state === 'done' ? 'done' : ''}`}
             >
               <Box className="project-panel">
-                <ProjectIntegrations animate={state === 'project'} hide={state !== 'project' && state !== 'none'} />
+                <ProjectIntegrations
+                  animate={state === 'project'}
+                  hide={state !== 'project' && state !== 'none'}
+                />
               </Box>
               <Box className="screen-panel" px={16}>
                 <Box />

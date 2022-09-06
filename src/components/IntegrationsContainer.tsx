@@ -21,11 +21,11 @@ export const IntegrationsContainer = styled(Box)(({ theme }) => ({
     top: '0% !important',
   },
   '&.done div.project-panel': {
-    visibility: 'hidden',
     '& img': {
       visibility: 'hidden',
       // display: 'none',
-    }
+    },
+    visibility: 'hidden',
   },
   height: '100%',
   overflow: 'hidden',

@@ -8,7 +8,6 @@ type TAppContext = {
 export const AppContext = createContext<TAppContext>({} as TAppContext)
 
 const AppProvider = ({ children }: { children: React.ReactNode }) => {
-
   const [integrationsPG, setIntegrationsPG] = useState(0)
   return (
     <AppContext.Provider value={{ integrationsPG, setIntegrationsPG }}>

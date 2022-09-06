@@ -2,13 +2,7 @@ import { Box, ThemeProvider, CssBaseline, AppBar, Slide } from '@mui/material'
 import useScrollTrigger from '@mui/material/useScrollTrigger'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import React, {
-  useState,
-  useEffect,
-  useCallback,
-  useRef,
-  useContext,
-} from 'react'
+import React, { useState, useEffect, useCallback, useRef } from 'react'
 import './index.css'
 import './App.css'
 import './fonts/andale/style.css'
@@ -22,7 +16,7 @@ import {
   ResponsiveAppBar,
   RootLayout,
 } from './components'
-import AppProvider, { AppContext } from './context/AppContext'
+import AppProvider from './context/AppContext'
 import { Home, Policy } from './pages'
 import AtriumTheme from './themes/AtriumTheme'
 
@@ -144,8 +138,8 @@ const App: React.FC = () => {
           onLeave: function (self) {
             self.disable()
           },
-          onUpdate: function (self) {
-            let p = parseInt((self.progress * 100).toFixed(1))
+          onUpdate: function () {
+            // let p = parseInt((self.progress * 100).toFixed(1))
             // setProgress(p)
           },
           pin: true,
