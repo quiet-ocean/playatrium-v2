@@ -92,34 +92,36 @@ const OverviewVideo = forwardRef<
   //   console.log(height, windowWidth)
   // }, [height, windowWidth])
   return (
-    <Box
-      py={{ md: 20, xs: 12 }}
-      sx={{
-        '& > video': {
-          borderRadius: { md: '12px', xs: '8px' },
-          // display: `${!done ? 'none' : 'block'}`,
-          height: '100%',
-          objectFit: 'fill',
-        },
-        height: `${videoHeight}px`,
-        margin: 'auto',
-        // width: { md: `${videoWidth}px`, xs: '100%' },
-        width: `${videoWidth}px`,
-      }}
-      id="video-container"
-    >
-      <video
-        muted
-        ref={ref}
-        preload="none"
-        controls
-        id="video"
-        width="100%"
-        autoPlay
+    <Box py={{ md: 20, xs: 12 }}>
+      <Box
+        sx={{
+          '& > video': {
+            borderRadius: { md: '12px', xs: '8px' },
+            // display: `${!done ? 'none' : 'block'}`,
+            height: '100%',
+            objectFit: 'fill',
+          },
+          height: `${videoHeight}px`,
+          margin: 'auto',
+          // width: { md: `${videoWidth}px`, xs: '100%' },
+          width: `${videoWidth}px`,
+        }}
+        id="video-container"
       >
-        <track kind="captions" />
-        <source src="/gamedemo.mp4" type="video/mp4" />
-      </video>
+        <video
+          muted
+          ref={ref}
+          preload="none"
+          controls
+          height="100%"
+          id="video"
+          width="100%"
+          autoPlay
+        >
+          <track kind="captions" />
+          <source src="/gamedemo.mp4" type="video/mp4" />
+        </video>
+      </Box>
     </Box>
   )
 })
