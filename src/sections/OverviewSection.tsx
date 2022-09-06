@@ -1,7 +1,7 @@
 import { Box, Typography, Grid } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 // import useMediaQuery from '@mui/material/useMediaQuery'
-import { useRef, useEffect, useState, forwardRef } from 'react'
+import { useRef, useEffect, useState, forwardRef, useMemo } from 'react'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
@@ -70,6 +70,10 @@ const OverviewText = forwardRef<
 })
 const OverviewVideo = forwardRef<HTMLVideoElement, { height: number }>(
   ({ height }, ref) => {
+    const width = useMemo(() => (height * 16) / 9, [height])
+    // useEffect(() => {
+    //   console.log('video width changed: ', width)
+    // }, [width])
     return (
       <Box
         py={{ md: 20, xs: 12 }}
@@ -80,7 +84,9 @@ const OverviewVideo = forwardRef<HTMLVideoElement, { height: number }>(
             height: '100%',
             objectFit: 'fill',
           },
+          margin: 'auto',
           height: `${height}px`,
+          width: `${width}px`,
         }}
         id="video-container"
       >
@@ -116,6 +122,7 @@ export const OverviewSection = ({
 }) => {
   const [index, setIndex] = useState(0)
   const [height, setHeight] = useState(0)
+  // const [width, setWidth] = useState(0)
 
   const carouselRef = useRef<Slider>(null)
   const textRef = useRef<HTMLDivElement>(null)
@@ -152,6 +159,7 @@ export const OverviewSection = ({
       }, 500)
     }
   }, [index, done])
+
   const handleResize = () => {
     setHeight(document.documentElement.clientHeight - 80 * 2 - 24)
   }
