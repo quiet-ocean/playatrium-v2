@@ -8,7 +8,7 @@ import {
 } from '@mui/material'
 import React, { useState } from 'react'
 
-import profilePreviewImage from '../assets/images/profile-preview.png'
+// import profilePreviewImage from '../assets/images/profile-preview.png'
 import { MultiSlideAnimationWrapper } from '../components'
 import { palette } from '../themes/AtriumTheme'
 
@@ -45,6 +45,25 @@ const TabButton = styled(Button)(({ theme }) => ({
   width: '100%',
   zIndex: 10,
 }))
+
+const ProfileVideo = () => {
+  return (
+    <video
+      muted
+      preload="none"
+      controls
+      id="video"
+      width="100%"
+      autoPlay
+      style={{
+        borderRadius: 12,
+      }}
+    >
+      <track kind="captions" />
+      <source src="/gamedemo.mp4" type="video/mp4" />
+    </video>
+  )
+}
 export const ProfilesSection = () => {
   const [state, setState] = useState(true)
 
@@ -144,8 +163,10 @@ export const ProfilesSection = () => {
           sx={{ order: { md: 2, xs: 1 } }}
         >
           <MultiSlideAnimationWrapper
-            child1={<img src={profilePreviewImage} alt="" width="100%" />}
-            child2={<img src={profilePreviewImage} alt="" width="100%" />}
+            // child1={<img src={profilePreviewImage} alt="" width="100%" />}
+            // child2={<img src={profilePreviewImage} alt="" width="100%" />}
+            child1={<ProfileVideo />}
+            child2={<ProfileVideo />}
             state={state}
           />
         </Grid>
