@@ -84,8 +84,21 @@ const UpdateItem = ({
       <Box
         sx={{
           '& img': {
-            height: !small ? '100%' : 'auto',
-            width: small ? '100%' : 'auto',
+            // height: !small ? '100%' : 'auto',
+            // width: small ? '100%' : 'auto',
+            // height: '100%',
+            height: {
+              lg: '100%',
+              // md: !small ? '100%' : 'auto',
+              md: '100%',
+              xs: !small ? '100%' : 'auto',
+            },
+            width: {
+              lg: 'auto',
+              // md: small ? '100%' : 'auto',
+              md: 'auto',
+              xs: small ? '100%' : 'auto',
+            },
           },
 
           // height: {
@@ -98,20 +111,7 @@ const UpdateItem = ({
           overflow: 'hidden',
         }}
       >
-        <img
-          src={image}
-          alt=""
-          // width="100%"
-          // height="100%"
-          // height={small ? `20vh` : `50vh`}
-          // height='100%'
-        />
-        {/* <Update1 /> */}
-        {/* <UpdateOne /> */}
-        {/* <UpdateTwo /> */}
-        {/* <SvgIcon component={update3} /> */}
-        {/* <SvgIcon component={Update2} />
-        <SvgIcon component={Update1} /> */}
+        <img src={image} alt="" />
       </Box>
       <Typography variant="caption">{date}</Typography>
       <Typography
@@ -182,15 +182,15 @@ export const UpdatesSection = () => {
     infinite: true,
 
     responsive: [
-      // {
-      //   breakpoint: 1200,
-      //   settings: {
-      //     slidesToShow: 3,
-      //     slidesToScroll: 3,
-      //     infinite: true,
-      //     dots: true
-      //   }
-      // },
+      {
+        breakpoint: 1200,
+        settings: {
+          // dots: true,
+          initialSlide: 3,
+          slidesToScroll: 3,
+          slidesToShow: 3,
+        },
+      },
       {
         breakpoint: 900,
         settings: {
