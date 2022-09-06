@@ -14,15 +14,9 @@ import ProjectIntegrations from './ProjectIntegrations'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
-import { AppContext } from '../../context/AppContext'
-
 export const IntegrationsSection = ({ state }: { state: PlayState }) => {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const { integrationsPG } = useContext(AppContext)
 
-  useEffect(() => {
-    console.log('integration animation progress is ', integrationsPG)
-  }, [integrationsPG])
   return (
     <Box
       id="integrations-section"
@@ -36,21 +30,24 @@ export const IntegrationsSection = ({ state }: { state: PlayState }) => {
       </Box>
       <Grid container columns={{ lg: 10, xl: 12 }} justifyContent="center">
         <Grid item xs={10} className="project-panel">
-          <IntegrationsContainer
-            className={`${state === 'done' ? 'done' : ''}`}
-          >
-            <Box className="project-panel">
-              <ProjectIntegrations animate={state === 'project'} />
-            </Box>
-            <Box className="screen-panel" />
-            <Box
-              className="endless-panel"
-              mt={3}
-              sx={{ height: '100%', width: '100%' }}
+          <Box pt={4}>
+            <IntegrationsContainer
+              className={`${state === 'done' ? 'done' : ''}`}
             >
-              <EndlessIntegrations animate={state === 'endless'} />
-            </Box>
-          </IntegrationsContainer>
+              <Box className="project-panel">
+                <ProjectIntegrations animate={state === 'project'} hide={state !== 'project' && state !== 'none'} />
+              </Box>
+              <Box className="screen-panel" px={16}>
+                <Box />
+              </Box>
+              <Box
+                className="endless-panel"
+                sx={{ height: '100%', width: '100%' }}
+              >
+                <EndlessIntegrations animate={state === 'endless'} />
+              </Box>
+            </IntegrationsContainer>
+          </Box>
         </Grid>
       </Grid>
     </Box>

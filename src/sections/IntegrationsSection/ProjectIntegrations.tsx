@@ -1,12 +1,31 @@
 import { Box, Typography, Grid } from '@mui/material'
+import { useState, useEffect } from 'react'
 
 import WalkAroundGif from '../../assets/gifs/walkaround 1.gif'
 import WalkAroungImage from '../../assets/images/w.png'
 import { palette } from '../../themes/AtriumTheme'
 
-const ProjectIntegrations = ({ animate }: { animate: boolean }) => {
+const ProjectIntegrations = ({ animate, hide }: { animate: boolean, hide: boolean }) => {
+  const [animating, setAnimating] = useState(false)
+
+  useEffect(() => {
+    if (animate) playAnimation()()
+  }, [animate])
+
+  const playAnimation = () => {
+    let isExecuted = false
+    return () => {
+      if (!isExecuted) {
+        isExecuted = true
+        setAnimating(true)
+        setTimeout(() => {
+          setAnimating(false)
+        }, 4000)
+      }
+    }
+  }
   return (
-    <Box>
+    <Box visibility={`${hide ? 'hidden' : 'visible'}`}>
       <Grid container justifyContent="center" columns={10}>
         <Grid item md={7}>
           <Box px={{ md: 25, xs: 3 }}>
@@ -14,13 +33,13 @@ const ProjectIntegrations = ({ animate }: { animate: boolean }) => {
               src={WalkAroungImage}
               alt=""
               width="100%"
-              style={{ display: !animate ? 'block' : 'none' }}
+              style={{ display: !animating ? 'block' : 'none' }}
             />
             <img
               src={WalkAroundGif}
               alt=""
               width="100%"
-              style={{ display: animate ? 'block' : 'none' }}
+              style={{ display: animating ? 'block' : 'none' }}
             />
           </Box>
         </Grid>
