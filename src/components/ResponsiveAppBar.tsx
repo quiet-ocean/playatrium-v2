@@ -18,12 +18,20 @@ import YoutubeIcon from '../assets/images/youtube-icon.svg'
 import { palette } from '../themes/AtriumTheme'
 const pages = ['updates', 'overview', 'integrations', 'profiles', 'team']
 
+function scrollToTop() {
+  window.scrollTo({ behavior: 'smooth', top: 0 })
+}
 const Logo = ({ sx }: { sx?: object }) => {
   return (
     <Box py={2} width="100%" sx={sx}>
-      <Link to="/">
+      <Box
+        sx={{
+          cursor: 'pointer',
+        }}
+        onClick={scrollToTop}
+      >
         <img src={logoType} alt="" />
-      </Link>
+      </Box>
     </Box>
   )
 }
@@ -107,9 +115,9 @@ export const ResponsiveAppBar = () => {
               }}
             />
             <Box sx={{ height: 36, width: 36 }}>
-              <a href="/#">
+              <Box onClick={scrollToTop}>
                 <img src={CrossIcon} alt="" width="100%" height="100%" />
-              </a>
+              </Box>
             </Box>
           </Box>
 
@@ -138,7 +146,13 @@ export const ResponsiveAppBar = () => {
               onClose={handleCloseNavMenu}
               sx={menuStyle}
             >
-              <Box display="flex" justifyContent="center" pt={2} pb={10}>
+              <Box
+                display="flex"
+                justifyContent="center"
+                pt={2}
+                pb={10}
+                onClick={scrollToTop}
+              >
                 <img src={CrossIcon} alt="" width={36} height={36} />
               </Box>
               {pages.map((page) => (
