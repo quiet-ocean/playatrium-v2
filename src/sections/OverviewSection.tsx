@@ -88,9 +88,9 @@ const OverviewVideo = forwardRef<
     () => (isMobile ? windowWidth - 40 : (height * 16) / 9),
     [height, isMobile, windowWidth]
   )
-  useEffect(() => {
-    console.log(height, windowWidth)
-  }, [height, windowWidth])
+  // useEffect(() => {
+  //   console.log(height, windowWidth)
+  // }, [height, windowWidth])
   return (
     <Box
       py={{ md: 20, xs: 12 }}
