@@ -42,6 +42,7 @@ const TabButton = styled(Button)(({ theme }) => ({
   fontWeight: 600,
   // padding: { md: 16, xs: 8 },
   padding: 16,
+  textTransform: 'capitalize',
   width: '100%',
   zIndex: 10,
 }))
