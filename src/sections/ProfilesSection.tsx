@@ -72,6 +72,7 @@ export const ProfilesSection = () => {
       variant="contained"
       aria-label="outlined primary button group"
       sx={{
+        boxShadow: 'none',
         width: '100%',
       }}
     >
