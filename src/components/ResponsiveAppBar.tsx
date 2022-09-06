@@ -84,6 +84,7 @@ export const ResponsiveAppBar = () => {
     setAnchorElNav(null)
   }
   const handleNavClick = (sectionId: string) => {
+    handleCloseNavMenu()
     // console.log(location)
     const isPolicy = location.pathname.indexOf('policy') > -1
 
@@ -141,7 +142,7 @@ export const ResponsiveAppBar = () => {
                 <img src={CrossIcon} alt="" width={36} height={36} />
               </Box>
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page} onClick={() => handleNavClick(page)}>
                   <Typography
                     variant="h4"
                     fontFamily={'Fractul Alt'}
