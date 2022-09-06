@@ -84,8 +84,8 @@ const OverviewVideo = forwardRef<HTMLVideoElement, { height: number }>(
             height: '100%',
             objectFit: 'fill',
           },
-          margin: 'auto',
           height: `${height}px`,
+          margin: 'auto',
           width: `${width}px`,
         }}
         id="video-container"
