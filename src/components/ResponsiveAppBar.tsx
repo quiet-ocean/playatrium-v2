@@ -8,7 +8,7 @@ import MenuItem from '@mui/material/MenuItem'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import * as React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 import CrossIcon from '../assets/images/cross-icon-36.svg'
 import DiscordIcon from '../assets/images/discord-icon.svg'
@@ -72,6 +72,8 @@ const menuStyle = {
 }
 
 export const ResponsiveAppBar = () => {
+  const navigate = useNavigate()
+  const location = useLocation()
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -81,7 +83,14 @@ export const ResponsiveAppBar = () => {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null)
   }
+  const handleNavClick = (sectionId: string) => {
+    // console.log(location)
+    const isPolicy = location.pathname.indexOf('policy') > -1
 
+    if (isPolicy) {
+      navigate(`/#${sectionId}-section`)
+    }
+  }
   return (
     <AppBar position="static">
       <Container maxWidth="xl" /*sx={{ paddingRight: {xl: 30, xs: 6} }} */>
@@ -214,7 +223,11 @@ export const ResponsiveAppBar = () => {
             >
               {pages.map((item: string, key: number) => (
                 <Box key={key}>
-                  <Button variant="primary">
+                  <Button
+                    variant="primary"
+                    id={`#${item}-section-nav`}
+                    onClick={() => handleNavClick(item)}
+                  >
                     <a href={`#${item}-section`}>{item}</a>
                   </Button>
                 </Box>
