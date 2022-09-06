@@ -83,9 +83,9 @@ const UpdateItem = ({
     >
       <Box
         sx={{
-          '& svg': {
-            height: '100%',
-            width: '100%',
+          '& img': {
+            height: !small ? '100%' : 'auto',
+            width: small ? '100%' : 'auto',
           },
 
           // height: {
@@ -94,13 +94,15 @@ const UpdateItem = ({
           //   md: small ? `198px` : `534px`,
           // }
           height: small ? `198px` : `534px`,
+          objectFit: 'cover',
+          overflow: 'hidden',
         }}
       >
         <img
           src={image}
           alt=""
-          width="100%"
-          height="100%"
+          // width="100%"
+          // height="100%"
           // height={small ? `20vh` : `50vh`}
           // height='100%'
         />
