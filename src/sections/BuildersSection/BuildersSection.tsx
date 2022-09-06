@@ -1,5 +1,5 @@
 import { Box } from '@mui/material'
-import { useRef } from 'react'
+import { useRef, useState, useMemo } from 'react'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
@@ -42,6 +42,7 @@ const builders: IBuilder[] = [
 ]
 export const BuildersSection = () => {
   const sliderRef = useRef<Slider>(null)
+  const [touchMove, setTouchMove] = useState(true)
 
   const settings = {
     arrows: false,
@@ -50,6 +51,7 @@ export const BuildersSection = () => {
     cssEase: 'linear',
     dots: false,
     infinite: true,
+    // pauseOnFocus
     // pauseOnHover: true,
     responsive: [
       {
@@ -81,10 +83,16 @@ export const BuildersSection = () => {
     speed: 2000,
   }
 
+  const settingsMemo = useMemo(() => ({ ...settings, touchMove }), [touchMove])
   const handleHover = (hover: boolean) => {
+    // console.log('handle hover in builders section ', hover)
     if (sliderRef.current) {
-      if (hover) sliderRef.current.slickPause()
-      else sliderRef.current.slickPlay()
+      if (hover) {
+        sliderRef.current.slickPause()
+      } else {
+        sliderRef.current.slickPlay()
+      }
+      setTouchMove(!hover)
     } else {
     }
   }
@@ -105,7 +113,7 @@ export const BuildersSection = () => {
         </SubtitleText>
       </Box>
       <Box mt={{ md: 20, xs: 16 }}>
-        <Slider {...settings} ref={sliderRef}>
+        <Slider {...settingsMemo} ref={sliderRef}>
           {new Array(10).fill(2).map((_, key: number) => (
             <Builder
               key={key}
