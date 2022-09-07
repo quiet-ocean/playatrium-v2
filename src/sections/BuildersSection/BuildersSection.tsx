@@ -61,7 +61,7 @@ export const BuildersSection = () => {
         breakpoint: 1440,
         settings: {
           initialSlide: 4,
-          slidesToScroll: 1,
+          // slidesToScroll: 4,
           slidesToShow: 4,
         },
       },
@@ -69,21 +69,26 @@ export const BuildersSection = () => {
         breakpoint: 900,
         settings: {
           initialSlide: 3,
-          slidesToScroll: 1,
+          // slidesToScroll: 3,
           slidesToShow: 3,
         },
       },
       {
         breakpoint: 600,
         settings: {
-          slidesToScroll: 1,
+          // slidesToScroll: 1,
           slidesToShow: 1,
         },
       },
     ],
-    slidesToScroll: 1,
+    // slidesToScroll: 5,
     slidesToShow: 5,
     speed: 2000,
+    // swipe: false,
+    touchMove: true,
+    // easing
+    // swipeToSlide: false,
+    // swipe: false,
   }
 
   const settingsMemo = useMemo(() => ({ ...settings, speed }), [speed])
