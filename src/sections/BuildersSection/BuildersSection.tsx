@@ -1,5 +1,6 @@
 import { Box } from '@mui/material'
-import { useRef, useState, useMemo } from 'react'
+import Button from '@mui/material/Button'
+import { useRef, useState, useMemo, useEffect } from 'react'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
@@ -40,14 +41,16 @@ const builders: IBuilder[] = [
     twitterLink: '',
   },
 ]
+const defaultSpeed = 2000
 export const BuildersSection = () => {
   const sliderRef = useRef<Slider>(null)
   const [touchMove, setTouchMove] = useState(true)
+  const [speed, setSpeed] = useState(defaultSpeed)
 
   const settings = {
     arrows: false,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 100,
     cssEase: 'linear',
     dots: false,
     infinite: true,
@@ -83,13 +86,19 @@ export const BuildersSection = () => {
     speed: 2000,
   }
 
-  // const settingsMemo = useMemo(() => ({ ...settings, touchMove }), [touchMove])
+  const settingsMemo = useMemo(() => ({ ...settings, speed }), [speed])
+
+  useEffect(() => {
+    console.log('settings are changed ', settingsMemo)
+  }, [settingsMemo])
   const handleHover = (hover: boolean) => {
     // console.log('handle hover in builders section ', hover)
     if (sliderRef.current) {
       if (hover) {
+        setSpeed(100)
         sliderRef.current.slickPause()
       } else {
+        setSpeed(defaultSpeed)
         sliderRef.current.slickPlay()
       }
       setTouchMove(!hover)
@@ -111,9 +120,25 @@ export const BuildersSection = () => {
         <SubtitleText color={palette.error.main}>
           the grid builders
         </SubtitleText>
+        <Button
+          onClick={() => {
+            console.log('pause slick')
+            sliderRef.current?.slickPause()
+          }}
+        >
+          pause
+        </Button>
+        <Button
+          onClick={() => {
+            console.log('play slick')
+            sliderRef.current?.slickPlay()
+          }}
+        >
+          play
+        </Button>
       </Box>
       <Box mt={{ md: 20, xs: 16 }}>
-        <Slider {...settings} ref={sliderRef}>
+        <Slider {...settingsMemo} ref={sliderRef}>
           {new Array(10).fill(2).map((_, key: number) => (
             <Builder
               key={key}
