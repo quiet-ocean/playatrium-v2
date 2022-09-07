@@ -1,5 +1,5 @@
 import { Box, ThemeProvider, CssBaseline, AppBar, Slide } from '@mui/material'
-import useScrollTrigger from '@mui/material/useScrollTrigger'
+// import useScrollTrigger from '@mui/material/useScrollTrigger'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import React, { useState, useEffect, useCallback, useRef } from 'react'
@@ -30,17 +30,19 @@ interface Props {
   children: React.ReactElement
 }
 
+// function HideOnScroll(props: Props) {
 function HideOnScroll(props: Props) {
-  const { children, window } = props
-  const [open, setOpen] = useState(false)
+  // const { children, window } = props
+  const { children } = props
+  // const [open, setOpen] = useState(false)
 
-  const trigger = useScrollTrigger({
-    target: window ? window() : undefined,
-  })
+  // const trigger = useScrollTrigger({
+  //   target: window ? window() : undefined,
+  // })
 
-  useEffect(() => {
-    setOpen(trigger)
-  }, [trigger])
+  // useEffect(() => {
+  //   setOpen(trigger)
+  // }, [trigger])
   return (
     <Slide appear={false} direction="down" in={true}>
       {children}

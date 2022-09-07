@@ -1,5 +1,4 @@
 import { Box } from '@mui/material'
-import Button from '@mui/material/Button'
 import { useRef, useState, useMemo, useEffect } from 'react'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
@@ -44,7 +43,6 @@ const builders: IBuilder[] = [
 const defaultSpeed = 2000
 export const BuildersSection = () => {
   const sliderRef = useRef<Slider>(null)
-  const [touchMove, setTouchMove] = useState(true)
   const [speed, setSpeed] = useState(defaultSpeed)
 
   const settings = {
@@ -106,7 +104,7 @@ export const BuildersSection = () => {
         setSpeed(defaultSpeed)
         sliderRef.current.slickPlay()
       }
-      setTouchMove(!hover)
+      // setTouchMove(!hover)
     } else {
     }
   }
