@@ -178,7 +178,7 @@ export const Footer = () => {
               <Typography variant="caption">
                 <Link to="/policy">Privacy</Link>
               </Typography>
-              <Typography variant="caption">Terms of Use</Typography>
+              {/* <Typography variant="caption">Terms of Use</Typography> */}
               <Typography variant="caption">© Atrium 2022</Typography>
             </Box>
             <Box

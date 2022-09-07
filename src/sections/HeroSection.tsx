@@ -1,5 +1,5 @@
 import { Box, styled, Typography, Collapse } from '@mui/material'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 
 import HeroImage from '../assets/images/hero.png'
 import { palette } from '../themes/AtriumTheme'
@@ -39,9 +39,11 @@ const HeroAnimationWrapper = styled(Box)(({ theme }) => ({
 const HeroAnimation = ({
   children,
   start,
+  handleClick,
 }: {
   children: React.ReactNode
   start: boolean
+  handleClick: AnyFunction
 }) => {
   const [fade, setFade] = useState(false)
   const [animClassName, setAnimClassName] = useState('')
@@ -99,7 +101,7 @@ const HeroAnimation = ({
             {children}
             <HeroAnimationWrapper className={animClassName}>
               <Box className="slide" />
-              <Box className="main custom-cursor" />
+              <Box className="main custom-cursor" onClick={handleClick} />
               <Box className="slide" />
             </HeroAnimationWrapper>
           </Box>
@@ -111,6 +113,7 @@ const HeroAnimation = ({
 export const HeroSection = ({ playAnimation }: { playAnimation?: boolean }) => {
   // const [_playAnimation, setPlayAnimation] = useState(false)
   const [startAnimation, setStartAnimation] = useState(false)
+  const sectionRef = useRef<HTMLDivElement>(null)
 
   // useEffect(() => {
   //   if (playAnimation) setTimeout(() => setPlayAnimation(true), 1200)
@@ -119,6 +122,15 @@ export const HeroSection = ({ playAnimation }: { playAnimation?: boolean }) => {
     if (playAnimation) setTimeout(() => setStartAnimation(true), 1200)
   }, [playAnimation])
 
+  const handleClick = () => {
+    gotoUpdateSection()
+  }
+  const gotoUpdateSection = () => {
+    window.scrollTo({
+      behavior: 'smooth',
+      top: sectionRef.current?.clientHeight,
+    })
+  }
   return (
     <Box
       sx={{
@@ -126,6 +138,7 @@ export const HeroSection = ({ playAnimation }: { playAnimation?: boolean }) => {
         pt: 16,
         width: '100%',
       }}
+      ref={sectionRef}
     >
       <Box
         className="grid-bg"
@@ -134,7 +147,7 @@ export const HeroSection = ({ playAnimation }: { playAnimation?: boolean }) => {
           position: 'relative',
         }}
       >
-        <HeroAnimation start={startAnimation}>
+        <HeroAnimation start={startAnimation} handleClick={handleClick}>
           <img src={HeroImage} alt="" width="100%" height="100%" />
         </HeroAnimation>
       </Box>

@@ -40,14 +40,15 @@ const builders: IBuilder[] = [
     twitterLink: '',
   },
 ]
+const defaultSpeed = 2000
 export const BuildersSection = () => {
   const sliderRef = useRef<Slider>(null)
-  const [touchMove, setTouchMove] = useState(true)
+  const [speed, setSpeed] = useState(defaultSpeed)
 
   const settings = {
     arrows: false,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 100,
     cssEase: 'linear',
     dots: false,
     infinite: true,
@@ -58,7 +59,7 @@ export const BuildersSection = () => {
         breakpoint: 1440,
         settings: {
           initialSlide: 4,
-          slidesToScroll: 1,
+          // slidesToScroll: 4,
           slidesToShow: 4,
         },
       },
@@ -66,33 +67,44 @@ export const BuildersSection = () => {
         breakpoint: 900,
         settings: {
           initialSlide: 3,
-          slidesToScroll: 1,
+          // slidesToScroll: 3,
           slidesToShow: 3,
         },
       },
       {
         breakpoint: 600,
         settings: {
-          slidesToScroll: 1,
+          // slidesToScroll: 1,
           slidesToShow: 1,
         },
       },
     ],
-    slidesToScroll: 1,
+    // slidesToScroll: 5,
     slidesToShow: 5,
     speed: 2000,
+    // swipe: false,
+    touchMove: true,
+    // easing
+    // swipeToSlide: false,
+    // swipe: false,
   }
 
-  // const settingsMemo = useMemo(() => ({ ...settings, touchMove }), [touchMove])
+  const settingsMemo = useMemo(() => ({ ...settings, speed }), [speed])
+
+  // useEffect(() => {
+  //   console.log('settings are changed ', settingsMemo)
+  // }, [settingsMemo])
   const handleHover = (hover: boolean) => {
     // console.log('handle hover in builders section ', hover)
     if (sliderRef.current) {
       if (hover) {
+        setSpeed(100)
         sliderRef.current.slickPause()
       } else {
+        setSpeed(defaultSpeed)
         sliderRef.current.slickPlay()
       }
-      setTouchMove(!hover)
+      // setTouchMove(!hover)
     } else {
     }
   }
@@ -113,7 +125,7 @@ export const BuildersSection = () => {
         </SubtitleText>
       </Box>
       <Box mt={{ md: 20, xs: 16 }}>
-        <Slider {...settings} ref={sliderRef}>
+        <Slider {...settingsMemo} ref={sliderRef}>
           {new Array(10).fill(2).map((_, key: number) => (
             <Builder
               key={key}

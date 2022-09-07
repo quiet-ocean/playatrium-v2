@@ -38,7 +38,9 @@ const Logo = ({ sx }: { sx?: object }) => {
 const JoinButton = () => {
   return (
     <Button variant="primary" color="warning" sx={{ width: '124px' }}>
-      join discord
+      <a href="https://discord.gg/4K2G8TxCKU" target="_blank">
+        join discord
+      </a>
     </Button>
   )
 }
