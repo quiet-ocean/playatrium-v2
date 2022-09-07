@@ -125,22 +125,6 @@ export const BuildersSection = () => {
         <SubtitleText color={palette.error.main}>
           the grid builders
         </SubtitleText>
-        <Button
-          onClick={() => {
-            console.log('pause slick')
-            sliderRef.current?.slickPause()
-          }}
-        >
-          pause
-        </Button>
-        <Button
-          onClick={() => {
-            console.log('play slick')
-            sliderRef.current?.slickPlay()
-          }}
-        >
-          play
-        </Button>
       </Box>
       <Box mt={{ md: 20, xs: 16 }}>
         <Slider {...settingsMemo} ref={sliderRef}>
