@@ -8,7 +8,6 @@ export const JoinSection = () => {
     <Box height={{ md: 560, xs: '100%' }}>
       <Grid
         container
-        // pt={9}
         justifyContent="center"
         columns={{ lg: 10, xl: 12 }}
         height="100%"
@@ -72,7 +71,6 @@ export const JoinSection = () => {
           <Box
             sx={{
               display: 'flex',
-              // flexDirection: 'column',
               height: '100%',
               justifyContent: 'center',
               width: '100%',

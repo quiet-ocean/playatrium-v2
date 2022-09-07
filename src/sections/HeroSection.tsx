@@ -111,13 +111,9 @@ const HeroAnimation = ({
   )
 }
 export const HeroSection = ({ playAnimation }: { playAnimation?: boolean }) => {
-  // const [_playAnimation, setPlayAnimation] = useState(false)
   const [startAnimation, setStartAnimation] = useState(false)
   const sectionRef = useRef<HTMLDivElement>(null)
 
-  // useEffect(() => {
-  //   if (playAnimation) setTimeout(() => setPlayAnimation(true), 1200)
-  // }, [playAnimation])
   useEffect(() => {
     if (playAnimation) setTimeout(() => setStartAnimation(true), 1200)
   }, [playAnimation])

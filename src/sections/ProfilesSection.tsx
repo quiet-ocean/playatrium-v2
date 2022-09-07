@@ -8,7 +8,6 @@ import {
 } from '@mui/material'
 import React, { useState } from 'react'
 
-// import profilePreviewImage from '../assets/images/profile-preview.png'
 import { MultiSlideAnimationWrapper } from '../components'
 import { palette } from '../themes/AtriumTheme'
 
@@ -22,10 +21,6 @@ const TabButton = styled(Button)(({ theme }) => ({
   '&:hover:not(.active)': {
     background: '#FFF',
     cursor: 'pointer',
-    // '&.active': {
-    // background: '#387AE3',
-    // color: '#FFF',
-    // },
   },
   [theme.breakpoints.up('md')]: {
     fontSize: 18,
@@ -38,9 +33,7 @@ const TabButton = styled(Button)(({ theme }) => ({
   borderRadius: 0,
   color: theme.palette.info.main,
   fontFamily: 'Fractul Alt',
-  // fontSize: { md: 18, xs: 16 },
   fontWeight: 600,
-  // padding: { md: 16, xs: 8 },
   padding: 16,
   textTransform: 'capitalize',
   width: '100%',
@@ -165,8 +158,6 @@ export const ProfilesSection = () => {
           sx={{ order: { md: 2, xs: 1 } }}
         >
           <MultiSlideAnimationWrapper
-            // child1={<img src={profilePreviewImage} alt="" width="100%" />}
-            // child2={<img src={profilePreviewImage} alt="" width="100%" />}
             child1={<ProfileVideo />}
             child2={<ProfileVideo />}
             state={state}

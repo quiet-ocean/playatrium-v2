@@ -16,11 +16,6 @@ import discordIcon from '../assets/images/discord-icon.svg'
 import atriumLogoType from '../assets/images/logo-type-large.svg'
 import twitterIcon from '../assets/images/twitter-icon.svg'
 import youtubeIcon from '../assets/images/youtube-icon.png'
-// import atriumLogoType from '../assets/images/logo-type-large.png'
-// import discordIcon from '../assets/images/discord-icon.png'
-// import logo100 from '../assets/images/cross-icon-100.png'
-// import twitterIcon from '../assets/images/twitter-icon.png'
-// import youtubeIcon from '../assets/images/youtube-icon.png'
 import { palette } from '../themes/AtriumTheme'
 import { isValidEmail } from '../utils'
 
@@ -42,8 +37,6 @@ const AtriumInput = ({
         id="outlined-adornment-weight"
         value={value}
         onChange={onChange}
-        // value={values.weight}
-        // onChange={handleChange('weight')}
         endAdornment={
           <InputAdornment
             position="end"
@@ -82,9 +75,6 @@ const AtriumInput = ({
 export const Footer = () => {
   const [email, setEmail] = useState('')
 
-  // useEffect(() => {
-  //   console.log(isValidEmail(email))
-  // }, [email])
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const _email = e.target.value
     setEmail(_email)
@@ -178,7 +168,6 @@ export const Footer = () => {
               <Typography variant="caption">
                 <Link to="/policy">Privacy</Link>
               </Typography>
-              {/* <Typography variant="caption">Terms of Use</Typography> */}
               <Typography variant="caption">© Atrium 2022</Typography>
             </Box>
             <Box

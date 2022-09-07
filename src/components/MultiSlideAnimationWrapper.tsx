@@ -15,7 +15,6 @@ export const MultiSlideAnimationWrapper = ({
   state: boolean
 }) => {
   const ref = useRef<Carousel>(null)
-  // ref.current.
   const [show, setShow] = useState(true)
   useEffect(() => {
     if (state) {
@@ -64,7 +63,6 @@ export const MultiSlideAnimationWrapper = ({
           <Box
             sx={{
               background: palette.background.default,
-              // border: '1px solid red',
               height: '100%',
               width: '100%',
             }}
