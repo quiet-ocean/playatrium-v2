@@ -26,7 +26,7 @@ interface Props {
    * Injected by the documentation to work in an iframe.
    * You won't need it on your project.
    */
-  window?: () => Window
+  // window?: () => Window
   children: React.ReactElement
 }
 
@@ -49,6 +49,7 @@ function HideOnScroll(props: Props) {
     </Slide>
   )
 }
+
 const sticky = 500
 
 const overviewTweenEnd = '+=1000%'

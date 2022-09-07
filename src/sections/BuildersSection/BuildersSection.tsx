@@ -1,5 +1,5 @@
 import { Box } from '@mui/material'
-import { useRef, useState, useMemo, useEffect } from 'react'
+import { useRef, useState, useMemo } from 'react'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
@@ -91,9 +91,9 @@ export const BuildersSection = () => {
 
   const settingsMemo = useMemo(() => ({ ...settings, speed }), [speed])
 
-  useEffect(() => {
-    console.log('settings are changed ', settingsMemo)
-  }, [settingsMemo])
+  // useEffect(() => {
+  //   console.log('settings are changed ', settingsMemo)
+  // }, [settingsMemo])
   const handleHover = (hover: boolean) => {
     // console.log('handle hover in builders section ', hover)
     if (sliderRef.current) {
