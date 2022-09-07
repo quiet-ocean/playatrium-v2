@@ -54,7 +54,7 @@ export const IntegrationsSection = ({ state }: { state: PlayState }) => {
               >
                 <EndlessIntegrations animate={state === 'endless'} />
               </Box>
-              <Box className="screen-panel" px={16}>
+              <Box className="screen-panel" px={{ md: 16, xs: 0 }}>
                 <Box />
               </Box>
             </IntegrationsContainer>

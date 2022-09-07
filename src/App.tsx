@@ -53,7 +53,7 @@ function HideOnScroll(props: Props) {
 const sticky = 500
 
 const overviewTweenEnd = '+=1000%'
-const integrationTweenEnd = '+=700%'
+const integrationTweenEnd = '+=800%'
 
 const App: React.FC = () => {
   const [animClass, setAnimClass] = useState('')
