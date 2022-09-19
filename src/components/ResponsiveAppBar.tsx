@@ -95,7 +95,6 @@ export const ResponsiveAppBar = () => {
   }
   const handleNavClick = (sectionId: string) => {
     handleCloseNavMenu()
-    // console.log(location)
     const isPolicy = location.pathname.indexOf('policy') > -1
 
     if (isPolicy) {
@@ -104,7 +103,7 @@ export const ResponsiveAppBar = () => {
   }
   return (
     <AppBar position="static">
-      <Container maxWidth="xl" /*sx={{ paddingRight: {xl: 30, xs: 6} }} */>
+      <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ minHeight: 64 }}>
           <Box
             width="100%"
@@ -131,7 +130,6 @@ export const ResponsiveAppBar = () => {
             }}
           >
             <Logo />
-            {/* <NavMenu /> */}
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -216,9 +214,6 @@ export const ResponsiveAppBar = () => {
               width: '100%',
             }}
           >
-            {/* <Box sx={{ height: 36, width: 36 }} onClick={handleOpenNavMenu}>
-              <img src={CrossIcon} alt="" width="100%" height="100%" />
-            </Box> */}
             <Box>
               <JoinButton />
             </Box>

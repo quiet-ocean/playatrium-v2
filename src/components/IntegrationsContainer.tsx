@@ -2,9 +2,7 @@ import { Box, styled } from '@mui/material'
 
 export const IntegrationsContainer = styled(Box)(({ theme }) => ({
   '& div.endless-panel': {
-    // background: theme.palette.common.black,
     position: 'absolute',
-    // top: '100%',
     top: 0,
   },
   '& div.screen-panel': {
@@ -24,7 +22,6 @@ export const IntegrationsContainer = styled(Box)(({ theme }) => ({
   '&.done div.project-panel': {
     '& img': {
       visibility: 'hidden',
-      // display: 'none',
     },
     visibility: 'hidden',
   },

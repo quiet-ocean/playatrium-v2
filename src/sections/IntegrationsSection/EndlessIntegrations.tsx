@@ -20,13 +20,11 @@ const EndlessIntegrations = ({ animate }: { animate: boolean }) => {
             <img
               src={EndlessGif}
               alt=""
-              // width="100%"
               style={{ display: animate ? 'block' : 'none', margin: 'auto' }}
             />
             <img
               src={EndlessImage}
               alt=""
-              // width="100%"
               style={{ display: !animate ? 'block' : 'none', margin: 'auto' }}
             />
           </Box>
@@ -44,7 +42,6 @@ const EndlessIntegrations = ({ animate }: { animate: boolean }) => {
             <Box mt={6}>
               <Button
                 variant="primary"
-                // color="warning"
                 sx={{
                   border: `1px solid ${palette.warning.main}`,
                   color: palette.warning.main,

@@ -52,14 +52,11 @@ export const BuildersSection = () => {
     cssEase: 'linear',
     dots: false,
     infinite: true,
-    // pauseOnFocus
-    // pauseOnHover: true,
     responsive: [
       {
         breakpoint: 1440,
         settings: {
           initialSlide: 4,
-          // slidesToScroll: 4,
           slidesToShow: 4,
         },
       },
@@ -67,35 +64,24 @@ export const BuildersSection = () => {
         breakpoint: 900,
         settings: {
           initialSlide: 3,
-          // slidesToScroll: 3,
           slidesToShow: 3,
         },
       },
       {
         breakpoint: 600,
         settings: {
-          // slidesToScroll: 1,
           slidesToShow: 1,
         },
       },
     ],
-    // slidesToScroll: 5,
     slidesToShow: 5,
     speed: 2000,
-    // swipe: false,
     touchMove: true,
-    // easing
-    // swipeToSlide: false,
-    // swipe: false,
   }
 
   const settingsMemo = useMemo(() => ({ ...settings, speed }), [speed])
 
-  // useEffect(() => {
-  //   console.log('settings are changed ', settingsMemo)
-  // }, [settingsMemo])
   const handleHover = (hover: boolean) => {
-    // console.log('handle hover in builders section ', hover)
     if (sliderRef.current) {
       if (hover) {
         setSpeed(100)
@@ -104,21 +90,11 @@ export const BuildersSection = () => {
         setSpeed(defaultSpeed)
         sliderRef.current.slickPlay()
       }
-      // setTouchMove(!hover)
     } else {
     }
   }
   return (
-    <Box
-      id="team-section"
-      py={{ md: 25, xs: 16 }}
-      height="100%"
-      sx={
-        {
-          // minHeight:
-        }
-      }
-    >
+    <Box id="team-section" py={{ md: 25, xs: 16 }} height="100%">
       <Box display="flex" justifyContent="center">
         <SubtitleText color={palette.error.main}>
           the grid builders

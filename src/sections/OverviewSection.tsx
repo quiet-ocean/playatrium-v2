@@ -192,8 +192,6 @@ export const OverviewSection = ({
     carouselRef.current?.slickNext()
   }
   const handleSlick = () => {
-    // console.log('handle slick')
-
     setDone(true)
   }
 
@@ -215,20 +213,7 @@ export const OverviewSection = ({
           <Box textAlign="center">
             <SubtitleText color={palette.error.main}>overview</SubtitleText>
           </Box>
-          <Box
-            sx={{
-              '& .slick-list': {
-                // height: `${height}px !important`,
-              },
-
-              // height: `${height}px`,
-
-              // overflowAnchor: 'auto',
-
-              // overflowY: { md: 'scroll', xs: 'visible' },
-              display: { md: 'block', xs: 'none' },
-            }}
-          >
+          <Box sx={{ display: { md: 'block', xs: 'none' } }}>
             <Slider ref={carouselRef} afterChange={handleSlick} {...settings}>
               {/* TEXT */}
               <OverviewText ref={textRef} index={index} height={height} />

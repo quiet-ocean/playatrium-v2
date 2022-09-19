@@ -7,7 +7,6 @@ import { palette } from '../../themes/AtriumTheme'
 import { SubtitleText } from '../UpdatesSection'
 
 import EndlessIntegrations from './EndlessIntegrations'
-// import HomeIntegrations from './HomeIntegrations'
 import ProjectIntegrations from './ProjectIntegrations'
 
 import 'slick-carousel/slick/slick.css'

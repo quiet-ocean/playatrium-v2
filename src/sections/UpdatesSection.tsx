@@ -4,19 +4,6 @@ import 'slick-carousel/slick/slick-theme.css'
 import React from 'react'
 import Slider from 'react-slick'
 
-// import { ReactComponent as Update1} from '../assets/images/update-1.svg'
-// // import update2 from '../assets/images/update-2.svg'
-// import update3 from '../assets/images/update-3.svg'
-// // import update4 from '../assets/images/update-4.svg'
-// // import update5 from '../assets/images/update-5.svg'
-// // import update6 from '../assets/images/update-6.svg'
-
-// // import { ReactComponent as UpdateOne } from '../assets/images/update-1.svg'
-// import { ReactComponent as Update2 } from '../assets/images/update-4.svg'
-
-// // import Update2 from '../assets/images/update-1.svg'
-// // import Update1 from '../assets/images/update-4.svg'
-
 import update1 from '../assets/images/update-1.png'
 import update2 from '../assets/images/update-2.png'
 import update3 from '../assets/images/update-3.png'
@@ -54,10 +41,6 @@ const UpdateItemWrapper = styled(Box)(() => ({
   display: 'flex',
   flexDirection: 'column',
   gap: '16px',
-  // height: `${
-  //   (window.innerHeight || window.document.documentElement.clientHeight) -
-  //   (200 + 100 + 22 + 40)
-  // }px`,
 }))
 const UpdateItem = ({
   image,
@@ -84,30 +67,20 @@ const UpdateItem = ({
       <Box
         sx={{
           '& img': {
-            // height: !small ? '100%' : 'auto',
-            // width: small ? '100%' : 'auto',
-            // height: '100%',
             height: {
               lg: '100%',
-              // md: !small ? '100%' : 'auto',
               md: '100%',
               xl: small ? 'auto' : '100%',
               xs: !small ? '100%' : 'auto',
             },
             width: {
               lg: 'auto',
-              // md: small ? '100%' : 'auto',
               md: 'auto',
               xl: small ? '100%' : 'auto',
               xs: small ? '100%' : 'auto',
             },
           },
 
-          // height: {
-          //   // lg: small ? `198px` : `534px`,
-          //   // md: small ? `186px` : `534px`,
-          //   md: small ? `198px` : `534px`,
-          // }
           height: small ? `198px` : `534px`,
           objectFit: 'cover',
           overflow: 'hidden',
@@ -134,7 +107,6 @@ export const UpdatesSection = () => {
     <UpdateItemWrapper>
       <UpdateItem
         image={update1}
-        // image=''
         date={`JULY 9TH 2022`}
         title="Atrium 2.0 is coming next month, see what’s to come!"
       />
@@ -177,7 +149,6 @@ export const UpdatesSection = () => {
   ]
   const settings = {
     arrows: false,
-    // autoplay: true,
     autoplaySpeed: 2000,
     cssEase: 'linear',
     dots: false,
@@ -187,7 +158,6 @@ export const UpdatesSection = () => {
       {
         breakpoint: 1200,
         settings: {
-          // dots: true,
           initialSlide: 3,
           slidesToScroll: 3,
           slidesToShow: 3,
@@ -210,7 +180,6 @@ export const UpdatesSection = () => {
         },
       },
     ],
-    // pauseOnHover: true,
     slidesToScroll: 1,
     slidesToShow: 2,
     speed: 2000,
