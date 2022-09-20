@@ -164,7 +164,7 @@ const App: React.FC = () => {
           opacity: 0,
         })
         .to(overviewRef.current?.querySelector('.overview-video'), {
-          // duration: 2,
+          duration: 2,
           opacity: 1,
         })
         .add(() => {
