@@ -31,10 +31,18 @@ const EndlessIntegrations = ({ animate }: { animate: boolean }) => {
         </Grid>
         <Grid item md={3} sx={{ color: palette.text.primary }}>
           <Box p={{ md: 16, xs: 4 }} pt={{ md: 50, xs: 8 }}>
-            <Typography variant="h3" fontSize={{ md: '48px', xs: '36px' }}>
+            <Typography
+              variant="h3"
+              fontSize={{ md: '48px', xs: '36px' }}
+              textAlign={{ md: 'left', xs: 'center' }}
+            >
               Endless Integrations
             </Typography>
-            <Typography variant="body2" mt={6}>
+            <Typography
+              variant="body2"
+              mt={6}
+              textAlign={{ md: 'left', xs: 'center' }}
+            >
               We’ve started with ASAC, and we are looking to integrate our next
               50 projects. If you want a central hub inside Atrium, submit your
               project today!
@@ -46,6 +54,7 @@ const EndlessIntegrations = ({ animate }: { animate: boolean }) => {
                 sx={{
                   border: `1px solid ${palette.warning.main}`,
                   color: palette.warning.main,
+                  width: { md: 'auto', xs: '100%' },
                 }}
               >
                 Submit your Project
