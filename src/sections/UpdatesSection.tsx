@@ -70,7 +70,8 @@ const UpdateItem = ({
             height: {
               lg: '100%',
               md: '100%',
-              xl: small ? 'auto' : '100%',
+              // xl: small ? '100%' : '100%',
+              xl: '100%',
               xs: !small ? '100%' : 'auto',
             },
             width: {
