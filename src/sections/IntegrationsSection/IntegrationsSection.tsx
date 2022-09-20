@@ -95,6 +95,9 @@ export const IntegrationsSection = () => {
                 <Box>
                   <img src={Main} alt="" />
                 </Box>
+                <ImgBox top={0} sx={{ opacity: `1 !important`}}>
+                  <img src={Main} alt="" />
+                </ImgBox>
               </Box>
             </Box>
           </Grid>
