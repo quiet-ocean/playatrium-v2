@@ -107,19 +107,12 @@ export const ProfilesSection = () => {
                 child1={
                   <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                     <Typography variant="h3">
-                      Personalize your Identity
+                      Social media, but web3 native.
                     </Typography>
                     <Typography variant="body2" mt={10}>
-                      User profiles offer one central location for user data
-                      across all channels and apps, amplifying representation of
-                      their digital identity.
+                      Build your user profile inside Atrium.
                     </Typography>
-                    <br />
-                    <Typography variant="body2">
-                      The experience Atrium offers in creating user profiles is
-                      innovative in terms of the interest and preferences of our
-                      users and the communities they are a part of.
-                    </Typography>
+                    {/* <Typography variant="body2">inside Atrium.</Typography> */}
                   </Box>
                 }
                 child2={
@@ -131,19 +124,18 @@ export const ProfilesSection = () => {
                     }}
                   >
                     <Typography variant="h3">
-                      Connect your communities
+                      Join your favourite NFT communities
                     </Typography>
                     <Typography variant="body2" mt={10}>
-                      User profiles offer one central location for user data
-                      across all channels and apps, amplifying representation of
-                      their digital identity.
+                      We put all the best community building tools all in one
+                      place.
                     </Typography>
-                    <br />
+                    {/* <br />
                     <Typography variant="body2">
                       The experience Atrium offers in creating user profiles is
                       innovative in terms of the interest and preferences of our
                       users and the communities they are a part of.
-                    </Typography>
+                    </Typography> */}
                   </Box>
                 }
               />
