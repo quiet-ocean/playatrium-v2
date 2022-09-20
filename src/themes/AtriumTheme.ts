@@ -45,15 +45,15 @@ const AtriumTheme = createTheme({
               fontSize: '18px',
               padding: '16px',
             },
-            '&:hover': {
+            '&:hover, &.active': {
               '& a': {
                 // color: `${theme.palette.background.paper} !important`,
               },
               // background: theme.palette.text.primary,
               // border: `1px solid ${theme.palette.background.paper}`,
               // color: `${theme.palette.background.paper} !important`,
-              background: '#303030',
-              color: theme.palette.text.primary,
+              background: theme.palette.warning.main,
+              color: theme.palette.text.secondary,
             },
             background: theme.palette.background.paper,
             border: '1px solid transparent',

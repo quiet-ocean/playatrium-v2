@@ -41,6 +41,7 @@ const EndlessIntegrations = ({ animate }: { animate: boolean }) => {
             </Typography>
             <Box mt={6}>
               <Button
+                className="medium active"
                 variant="primary"
                 sx={{
                   border: `1px solid ${palette.warning.main}`,
