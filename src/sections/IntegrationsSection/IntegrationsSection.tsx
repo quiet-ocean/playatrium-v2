@@ -118,14 +118,20 @@ export const IntegrationsSection = () => {
                   },
                 }}
               >
+                <ImgBox left="20%" top="-20%" large>
+                  <img src={Img1} alt="" />
+                </ImgBox>
+                <ImgBox right="10%" top="18%" large>
+                  <img src={Img2} alt="" />
+                </ImgBox>
+                <ImgBox left="10%" top="65%" large>
+                  <img src={Img3} alt="" />
+                </ImgBox>
                 <ImgBox left="0%" top="10%">
                   <img src={Img4} alt="" />
                 </ImgBox>
                 <ImgBox right="25%" top="-16%">
                   <img src={Img5} alt="" />
-                </ImgBox>
-                <ImgBox right="10%" top="18%" large>
-                  <img src={Img2} alt="" />
                 </ImgBox>
                 <ImgBox
                   right="18%"
@@ -135,12 +141,6 @@ export const IntegrationsSection = () => {
                   bgcolor="#FFF"
                 >
                   <img src={Img6} alt="" />
-                </ImgBox>
-                <ImgBox left="20%" top="-20%" large>
-                  <img src={Img1} alt="" />
-                </ImgBox>
-                <ImgBox left="10%" top="65%" large>
-                  <img src={Img3} alt="" />
                 </ImgBox>
                 <Box className="main">
                   <img src={Main} alt="" />
