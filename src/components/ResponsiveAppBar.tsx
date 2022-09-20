@@ -81,6 +81,25 @@ const menuStyle = {
   },
 }
 
+const MenuToggleButton = ({
+  children,
+  onClick,
+}: {
+  children: React.ReactNode
+  onClick: AnyFunction
+}) => (
+  <Button
+    variant="primary"
+    color="inherit"
+    sx={{
+      border: `1px solid ${palette.common.white}`,
+      px: 7,
+    }}
+    onClick={onClick}
+  >
+    {children}
+  </Button>
+)
 export const ResponsiveAppBar = () => {
   const navigate = useNavigate()
   const location = useLocation()
@@ -129,17 +148,20 @@ export const ResponsiveAppBar = () => {
               width: '100%',
             }}
           >
-            <Logo />
+            {/* <Logo /> */}
+            <MenuToggleButton onClick={handleOpenNavMenu}>
+              Menu
+            </MenuToggleButton>
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
-                horizontal: 'left',
+                horizontal: 'center',
                 vertical: 'bottom',
               }}
               keepMounted
               transformOrigin={{
-                horizontal: 'left',
+                horizontal: 'center',
                 vertical: 'top',
               }}
               open={Boolean(anchorElNav)}
@@ -148,12 +170,19 @@ export const ResponsiveAppBar = () => {
             >
               <Box
                 display="flex"
-                justifyContent="center"
-                pt={2}
-                pb={10}
+                justifyContent="space-between"
+                py={10}
+                px={6}
                 onClick={scrollToTop}
               >
-                <img src={CrossIcon} alt="" width={36} height={36} />
+                <Box>
+                  <img src={CrossIcon} alt="" width={36} height={36} />
+                </Box>
+                <Box>
+                  <MenuToggleButton onClick={handleCloseNavMenu}>
+                    Close
+                  </MenuToggleButton>
+                </Box>
               </Box>
               {pages.map((page) => (
                 <MenuItem key={page} onClick={() => handleNavClick(page)}>
@@ -203,7 +232,7 @@ export const ResponsiveAppBar = () => {
               width: '100%',
             }}
           >
-            <Box sx={{ height: 36, width: 36 }} onClick={handleOpenNavMenu}>
+            <Box sx={{ height: 36, width: 36 }} onClick={scrollToTop}>
               <img src={CrossIcon} alt="" width="100%" height="100%" />
             </Box>
           </Box>

@@ -45,15 +45,15 @@ const AtriumTheme = createTheme({
               fontSize: '18px',
               padding: '16px',
             },
-            '&:hover': {
+            '&:hover, &.active': {
               '& a': {
                 // color: `${theme.palette.background.paper} !important`,
               },
               // background: theme.palette.text.primary,
               // border: `1px solid ${theme.palette.background.paper}`,
               // color: `${theme.palette.background.paper} !important`,
-              background: '#303030',
-              color: theme.palette.text.primary,
+              background: theme.palette.warning.main,
+              color: theme.palette.text.secondary,
             },
             background: theme.palette.background.paper,
             border: '1px solid transparent',
@@ -106,14 +106,19 @@ const AtriumTheme = createTheme({
         {
           props: { color: 'warning' },
           style: ({ theme }) => ({
+            '& > a': {
+              color: theme.palette.text.secondary,
+            },
+            '&:hover > a': {
+              color: `${theme.palette.warning.main} !important`,
+            },
             '&:hover, &.active': {
               background: theme.palette.text.secondary,
               border: `1px solid ${theme.palette.warning.main} !important`,
-              color: theme.palette.warning.main,
+              color: `${theme.palette.warning.main} !important`,
             },
             background: theme.palette.warning.main,
             border: `1px solid transparent`,
-            color: theme.palette.text.secondary,
           }),
         },
       ],
@@ -194,7 +199,7 @@ const AtriumTheme = createTheme({
       fontSize: '64px',
       fontWeight: 600,
       letterSpacing: '-0.03em',
-      lineHeight: '70px',
+      lineHeight: '110%',
       textAlign: 'center',
     },
     h2: {

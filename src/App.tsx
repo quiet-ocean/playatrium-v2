@@ -37,15 +37,19 @@ function HideOnScroll(props: Props) {
 
 const sticky = 500
 
-const overviewTweenEnd = '+=1000%'
+const overviewTweenEnd = '+=500%'
 const integrationTweenEnd = '+=800%'
 
 const App: React.FC = () => {
   const [animClass, setAnimClass] = useState('')
   const overviewRef = useRef<HTMLDivElement>(null)
   const integrationsRef = useRef<HTMLDivElement>(null)
-  const [overviewPG, setOverviewPG] = useState(0)
-  const [playState, setPlayState] = useState<PlayState>('none')
+  // const [overviewPG, setOverviewPG] = useState(0)
+  const [overviewVideoStart, setOverviewVideoStart] = useState(false)
+  // const [integrationPG, setIntegrationPG] = useState(0)
+  const [integrationPlayState, setIntegrationPlayState] =
+    useState<PlayState>('none')
+
   const [scrollUp, setScrollUp] = useState(false)
   const [y, setY] = useState(window.scrollY)
 
@@ -87,30 +91,70 @@ const App: React.FC = () => {
     }
   }, [handleNavigation])
   const applyOverviewTween = () => {
-    const setProgress = setOverviewPG
-    gsap.to(overviewRef.current, {
-      ease: 'none',
-      scrollTrigger: {
-        anticipatePin: 1,
-        end: overviewTweenEnd,
-        invalidateOnRefresh: true,
-        markers: false,
-        onLeave: function (self) {
-          self.disable()
-          applyIntegrationsTween()
-        },
-        onUpdate: (self) => {
-          let p = parseInt((self.progress * 100).toFixed(1))
-          // setOverviewPG(p)
-          setProgress(p)
-        },
-        pin: true,
-        refreshPriority: 1,
-        start: 'top 0%',
-        toggleActions: 'play reset play reset',
-        trigger: overviewRef.current,
-      },
-    })
+    // const setProgress = setOverviewPG
+    // gsap.to(overviewRef.current, {
+    //   ease: 'none',
+    //   scrollTrigger: {
+    //     anticipatePin: 1,
+    //     end: overviewTweenEnd,
+    //     invalidateOnRefresh: true,
+    //     markers: false,
+    //     onLeave: function (self) {
+    //       self.disable()
+    //       applyIntegrationsTween()
+    //     },
+    //     onUpdate: (self) => {
+    //       let p = parseInt((self.progress * 100).toFixed(1))
+    //       // setOverviewPG(p)
+    //       setProgress(p)
+    //     },
+    //     pin: true,
+    //     refreshPriority: 1,
+    //     start: 'top 0%',
+    //     toggleActions: 'play reset play reset',
+    //     trigger: overviewRef.current,
+    //   },
+    // })
+    if (overviewRef.current) {
+      gsap
+        .timeline({
+          scrollTrigger: {
+            anticipatePin: 1,
+            end: () => overviewTweenEnd,
+            onLeave: function (self) {
+              // self.disable()
+              self.disable()
+              applyIntegrationsTween()
+            },
+            // onUpdate: (self) => {},
+            pin: true,
+            scrub: true,
+            start: 'top 0%',
+            trigger: overviewRef.current,
+          },
+        })
+        .add(() => {
+          // setDone(false)
+        })
+        .delay(3)
+        .to(overviewRef.current?.querySelector('.overview-text'), {
+          duration: 1,
+          opacity: 1,
+        })
+        .delay(3)
+        .to(overviewRef.current?.querySelector('.overview-text'), {
+          duration: 1,
+          opacity: 0,
+        })
+        .to(overviewRef.current?.querySelector('.overview-video'), {
+          duration: 2,
+          opacity: 1,
+        })
+        .add(() => {
+          setOverviewVideoStart(true)
+        })
+        .delay(3)
+    }
   }
   const applyIntegrationsTween = () => {
     if (integrationsRef.current) {
@@ -135,10 +179,10 @@ const App: React.FC = () => {
       })
       // .delay(3)
       tl.add(() => {
-        if (playState === 'done') tl.pause()
+        if (integrationPlayState === 'done') tl.pause()
       })
         .add(() => {
-          setPlayState('project')
+          setIntegrationPlayState('project')
         })
         // .to(integrationsRef.current?.querySelector('.endless-panel'), {
         //   duration: 3,
@@ -155,7 +199,7 @@ const App: React.FC = () => {
           top: '0%',
         })
         .add(() => {
-          setPlayState('sliding')
+          setIntegrationPlayState('sliding')
         })
         // .add(() => {
         //   const projectPanels = document.getElementsByClassName('.project-panel')
@@ -188,7 +232,7 @@ const App: React.FC = () => {
         // .pause()
         // .kill()
         .add(() => {
-          setPlayState('done')
+          setIntegrationPlayState('done')
         })
         .to(integrationsRef.current?.querySelector('.endless-panel'), {
           duration: 1,
@@ -221,8 +265,9 @@ const App: React.FC = () => {
                       <Home
                         overviewRef={overviewRef}
                         integrationsRef={integrationsRef}
-                        overviewPG={overviewPG}
-                        playState={playState}
+                        // overviewPG={overviewPG}
+                        overviewVideoStart={overviewVideoStart}
+                        integrationPlayState={integrationPlayState}
                         animClass={animClass}
                       />
                     }

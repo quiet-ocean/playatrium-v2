@@ -6,9 +6,10 @@ import {
   Button,
   styled,
 } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 
 import { MultiSlideAnimationWrapper } from '../components'
+import useIntersectionObserver from '../hooks/useIntersectionObserver'
 import { palette } from '../themes/AtriumTheme'
 
 import { SubtitleText } from './UpdatesSection'
@@ -48,6 +49,7 @@ const ProfileVideo = () => {
       controls
       id="video"
       width="100%"
+      // height={335}
       autoPlay
       style={{
         borderRadius: 12,
@@ -58,8 +60,27 @@ const ProfileVideo = () => {
     </video>
   )
 }
+const ProfileSectionContainer = styled(Box)(() => ({
+  '&.hide': {
+    opacity: 0,
+  },
+  '&.show': {
+    opacity: 1,
+  },
+  opacity: 0,
+  transition: 'opacity 1s',
+}))
 export const ProfilesSection = () => {
+  const [sectionClass, setSectionClass] = useState('')
   const [state, setState] = useState(true)
+  const section = useRef<Element>(null)
+  const observer = useIntersectionObserver(section, {})
+
+  useEffect(() => {
+    // console.log('intersected ', observer?.isIntersecting)
+    if (observer?.isIntersecting) setSectionClass('show')
+    else setSectionClass('hide')
+  }, [observer])
 
   const TabButtonGroup = () => (
     <ButtonGroup
@@ -86,7 +107,12 @@ export const ProfilesSection = () => {
     </ButtonGroup>
   )
   return (
-    <Box py={{ md: 25, xs: 16 }} id="profiles-section">
+    <ProfileSectionContainer
+      ref={section}
+      id="profiles-section"
+      py={{ md: 25, xs: 16 }}
+      className={sectionClass}
+    >
       <Grid container justifyContent="center" columns={{ lg: 10, xl: 12 }}>
         <Grid item xl={10} xs={12} width="100%">
           <Box width="100%">
@@ -97,7 +123,7 @@ export const ProfilesSection = () => {
           </Box>
         </Grid>
         <Grid item xl={3} lg={3} sx={{ order: { md: 1, xs: 2 } }}>
-          <Box py={{ md: 25, xs: 16 }} pr={{ md: 10, xs: 0 }}>
+          <Box py={{ md: 25, xs: 9 }} pr={{ md: 10, xs: 0 }}>
             <Box display={{ md: 'block', xs: 'none' }}>
               <TabButtonGroup />
             </Box>
@@ -107,19 +133,12 @@ export const ProfilesSection = () => {
                 child1={
                   <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                     <Typography variant="h3">
-                      Personalize your Identity
+                      Social media, but web3 native.
                     </Typography>
                     <Typography variant="body2" mt={10}>
-                      User profiles offer one central location for user data
-                      across all channels and apps, amplifying representation of
-                      their digital identity.
+                      Build your user profile inside Atrium.
                     </Typography>
-                    <br />
-                    <Typography variant="body2">
-                      The experience Atrium offers in creating user profiles is
-                      innovative in terms of the interest and preferences of our
-                      users and the communities they are a part of.
-                    </Typography>
+                    {/* <Typography variant="body2">inside Atrium.</Typography> */}
                   </Box>
                 }
                 child2={
@@ -131,19 +150,18 @@ export const ProfilesSection = () => {
                     }}
                   >
                     <Typography variant="h3">
-                      Connect your communities
+                      Join your favourite NFT communities
                     </Typography>
                     <Typography variant="body2" mt={10}>
-                      User profiles offer one central location for user data
-                      across all channels and apps, amplifying representation of
-                      their digital identity.
+                      We put all the best community building tools all in one
+                      place.
                     </Typography>
-                    <br />
+                    {/* <br />
                     <Typography variant="body2">
                       The experience Atrium offers in creating user profiles is
                       innovative in terms of the interest and preferences of our
                       users and the communities they are a part of.
-                    </Typography>
+                    </Typography> */}
                   </Box>
                 }
               />
@@ -154,7 +172,7 @@ export const ProfilesSection = () => {
           item
           xl={7}
           lg={7}
-          pt={{ md: 25, xs: 16 }}
+          pt={{ md: 25, xs: 9 }}
           sx={{ order: { md: 2, xs: 1 } }}
         >
           <MultiSlideAnimationWrapper
@@ -164,6 +182,6 @@ export const ProfilesSection = () => {
           />
         </Grid>
       </Grid>
-    </Box>
+    </ProfileSectionContainer>
   )
 }
