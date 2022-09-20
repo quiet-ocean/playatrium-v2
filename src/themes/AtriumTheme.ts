@@ -194,7 +194,7 @@ const AtriumTheme = createTheme({
       fontSize: '64px',
       fontWeight: 600,
       letterSpacing: '-0.03em',
-      lineHeight: '70px',
+      lineHeight: '110%',
       textAlign: 'center',
     },
     h2: {
