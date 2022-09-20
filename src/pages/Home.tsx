@@ -17,17 +17,16 @@ import AtriumTheme from '../themes/AtriumTheme'
 export const Home = ({
   overviewRef,
   integrationsRef,
-  overviewPG,
-  playState,
+  overviewVideoStart,
+  integrationPlayState,
   animClass,
 }: {
   overviewRef: React.RefObject<HTMLDivElement>
   integrationsRef: React.RefObject<HTMLDivElement>
-  overviewPG: number
-  playState: PlayState
+  overviewVideoStart: boolean
+  integrationPlayState: PlayState
   animClass: string
 }) => {
-  const [done, setDone] = useState(false)
 
   useEffect(() => {
     window.scrollTo({ behavior: 'smooth', top: 0 })
@@ -67,11 +66,7 @@ export const Home = ({
         id="overview-container"
       >
         <GridBgContainer>
-          <OverviewSection
-            progress={overviewPG}
-            done={done}
-            setDone={setDone}
-          />
+          <OverviewSection videoStart={overviewVideoStart} />
         </GridBgContainer>
       </SectionContainer>
       <SectionContainer className="light">
@@ -81,7 +76,7 @@ export const Home = ({
       </SectionContainer>
       <SectionContainer ref={integrationsRef}>
         <GridBgContainer>
-          <IntegrationsSection state={playState} />
+          <IntegrationsSection state={integrationPlayState} />
         </GridBgContainer>
       </SectionContainer>
       <SectionContainer height="100% !important">
