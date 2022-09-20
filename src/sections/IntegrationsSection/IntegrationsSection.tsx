@@ -1,24 +1,42 @@
-import { Box, Grid, Typography, Button } from '@mui/material'
-import { useRef } from 'react'
+import { Box, Grid, Typography, Button, styled } from '@mui/material'
+import { useRef, useState } from 'react'
 
 // import type { PlayState } from '../../App'
-import Main from '../../assets/images/integrations/main.png'
-import { SubtitleText } from '../../components'
-import { palette } from '../../themes/AtriumTheme'
 
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
-// import Img1 from '../../assets/images/integrations/1.png'
-// import Img2 from '../../assets/images/integrations/2.png'
-// import Img3 from '../../assets/images/integrations/3.png'
-// import Img4 from '../../assets/images/integrations/4.png'
-// import Img5 from '../../assets/images/integrations/5.png'
-// import Img6 from '../../assets/images/integrations/6.png'
+import Img1 from '../../assets/images/integrations/1.png'
+import Img2 from '../../assets/images/integrations/2.png'
+import Img3 from '../../assets/images/integrations/3.png'
+import Main from '../../assets/images/integrations/main.png'
+import Img4 from '../../assets/images/integrations/sm-1.png'
+import Img5 from '../../assets/images/integrations/sm-2.png'
+import Img6 from '../../assets/images/integrations/sm-3.png'
+import { SubtitleText } from '../../components'
+import { palette } from '../../themes/AtriumTheme'
 
+const ImgBox = styled(Box)(() => ({
+  '& .hover': {
+    opacity: 1,
+  },
+  '& > img': {
+    height: '100%',
+    width: '100%',
+  },
+  opacity: 0.1,
+  position: 'absolute',
+  transition: 'opacity 1s',
+}))
 export const IntegrationsSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
+  const [imgBoxClass, setImgBoxClass] = useState('')
 
+  const handleMouseEnter = () => {
+    console.log('hover')
+    setImgBoxClass('hover')
+  }
+  const handleMouseLeave = () => setImgBoxClass('')
   return (
     <Box id="integrations-section" ref={sectionRef} height="100%">
       <Box
@@ -30,26 +48,53 @@ export const IntegrationsSection = () => {
         <Grid container justifyContent="center" columns={{ lg: 10, xl: 12 }}>
           <Grid item xl={6} md={4} xs={12}>
             <Box
-              px={{ md: 25, xs: 0 }}
+              position="relative"
               sx={{
                 '& img': {
                   maxHeight: { md: 300, xs: 150 },
                 },
+                display: 'flex',
+                justifyContent: 'center',
+                width: '100%',
               }}
             >
-              {/* <img
-              src={EndlessGif}
-              alt=""
-              style={{ display: animate ? 'block' : 'none', margin: 'auto' }}
-            />
-            <img
-              src={EndlessImage}
-              alt=""
-              style={{ display: !animate ? 'block' : 'none', margin: 'auto' }}
-            />
-             */}
-              <Box p={12}>
-                <img src={Main} alt="" />
+              <Box
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                className={imgBoxClass}
+                sx={{
+                  '&.hover > div': {
+                    opacity: 1,
+                  }
+                }}
+              >
+                <ImgBox left="0%" top="10%" width={96} height={96}>
+                  <img src={Img4} alt="" />
+                </ImgBox>
+                <ImgBox right="25%" top="-8%" width={96} height={96}>
+                  <img src={Img5} alt="" />
+                </ImgBox>
+                <ImgBox right="10%" top="18%" width={160} height={160}>
+                  <img src={Img2} alt="" />
+                </ImgBox>
+                <ImgBox
+                  right="18%"
+                  top="75%"
+                  width={96}
+                  height={96}
+                  bgcolor="#FFF"
+                >
+                  <img src={Img6} alt="" />
+                </ImgBox>
+                <ImgBox left="20%" top="-20%" width={160} height={160}>
+                  <img src={Img1} alt="" />
+                </ImgBox>
+                <ImgBox left="10%" top="65%" width={160} height={160}>
+                  <img src={Img3} alt="" />
+                </ImgBox>
+                <Box>
+                  <img src={Main} alt="" />
+                </Box>
               </Box>
             </Box>
           </Grid>
