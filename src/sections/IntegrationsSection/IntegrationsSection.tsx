@@ -1,18 +1,16 @@
 import { Box, Grid } from '@mui/material'
 import { useRef } from 'react'
 
-import type { PlayState } from '../../App'
-import { IntegrationsContainer } from '../../components'
+// import type { PlayState } from '../../App'
+import { SubtitleText } from '../../components'
 import { palette } from '../../themes/AtriumTheme'
-import { SubtitleText } from '../UpdatesSection'
 
 import EndlessIntegrations from './EndlessIntegrations'
-import ProjectIntegrations from './ProjectIntegrations'
 
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
-export const IntegrationsSection = ({ state }: { state: PlayState }) => {
+export const IntegrationsSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
 
   return (
@@ -29,34 +27,7 @@ export const IntegrationsSection = ({ state }: { state: PlayState }) => {
       <Grid container columns={{ lg: 10, xl: 12 }} justifyContent="center">
         <Grid item xs={10} className="project-panel">
           <Box pt={4}>
-            <IntegrationsContainer
-              className={`${state === 'done' ? 'done' : ''}`}
-            >
-              <Box className="project-panel">
-                <ProjectIntegrations
-                  animate={state === 'project'}
-                  hide={state !== 'project' && state !== 'none'}
-                />
-              </Box>
-              <Box
-                className="endless-panel"
-                sx={{
-                  display:
-                    state === 'done' ||
-                    state === 'endless' ||
-                    state === 'sliding'
-                      ? 'block'
-                      : 'none',
-                  height: '100%',
-                  width: '100%',
-                }}
-              >
-                <EndlessIntegrations animate={state === 'endless'} />
-              </Box>
-              <Box className="screen-panel" px={{ md: 16, xs: 0 }}>
-                <Box />
-              </Box>
-            </IntegrationsContainer>
+            <EndlessIntegrations />
           </Box>
         </Grid>
       </Grid>

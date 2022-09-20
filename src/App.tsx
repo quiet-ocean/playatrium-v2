@@ -19,7 +19,7 @@ import AppProvider from './context/AppContext'
 import { Home, Policy } from './pages'
 import AtriumTheme from './themes/AtriumTheme'
 
-export type PlayState = 'none' | 'project' | 'endless' | 'done' | 'sliding'
+// export type PlayState = 'none' | 'project' | 'endless' | 'done' | 'sliding'
 
 interface Props {
   children: React.ReactElement
@@ -38,7 +38,7 @@ function HideOnScroll(props: Props) {
 const sticky = 500
 
 const overviewTweenEnd = '+=500%'
-const integrationTweenEnd = '+=800%'
+// const integrationTweenEnd = '+=800%'
 
 const App: React.FC = () => {
   const [animClass, setAnimClass] = useState('')
@@ -47,8 +47,8 @@ const App: React.FC = () => {
   // const [overviewPG, setOverviewPG] = useState(0)
   const [overviewVideoStart, setOverviewVideoStart] = useState(false)
   // const [integrationPG, setIntegrationPG] = useState(0)
-  const [integrationPlayState, setIntegrationPlayState] =
-    useState<PlayState>('none')
+  // const [integrationPlayState, setIntegrationPlayState] =
+  // useState<PlayState>('none')
 
   const [scrollUp, setScrollUp] = useState(false)
   const [y, setY] = useState(window.scrollY)
@@ -91,30 +91,6 @@ const App: React.FC = () => {
     }
   }, [handleNavigation])
   const applyOverviewTween = () => {
-    // const setProgress = setOverviewPG
-    // gsap.to(overviewRef.current, {
-    //   ease: 'none',
-    //   scrollTrigger: {
-    //     anticipatePin: 1,
-    //     end: overviewTweenEnd,
-    //     invalidateOnRefresh: true,
-    //     markers: false,
-    //     onLeave: function (self) {
-    //       self.disable()
-    //       applyIntegrationsTween()
-    //     },
-    //     onUpdate: (self) => {
-    //       let p = parseInt((self.progress * 100).toFixed(1))
-    //       // setOverviewPG(p)
-    //       setProgress(p)
-    //     },
-    //     pin: true,
-    //     refreshPriority: 1,
-    //     start: 'top 0%',
-    //     toggleActions: 'play reset play reset',
-    //     trigger: overviewRef.current,
-    //   },
-    // })
     if (overviewRef.current) {
       gsap
         .timeline({
@@ -124,7 +100,7 @@ const App: React.FC = () => {
             onLeave: function (self) {
               // self.disable()
               self.disable()
-              applyIntegrationsTween()
+              // applyIntegrationsTween()
             },
             // onUpdate: (self) => {},
             pin: true,
@@ -156,89 +132,89 @@ const App: React.FC = () => {
         .delay(3)
     }
   }
-  const applyIntegrationsTween = () => {
-    if (integrationsRef.current) {
-      // const setProgress = setIntegrationsPG
-      let tl = gsap.timeline({
-        scrollTrigger: {
-          anticipatePin: 1,
-          end: () => integrationTweenEnd,
-          onLeave: function (self) {
-            self.disable()
-          },
-          onUpdate: function () {
-            // let p = parseInt((self.progress * 100).toFixed(1))
-            // setProgress(p)
-          },
-          pin: true,
-          scrub: true,
-          start: 'top 0%',
-          trigger: integrationsRef.current,
-        },
-        // defaults: {ease: "none"}
-      })
-      // .delay(3)
-      tl.add(() => {
-        if (integrationPlayState === 'done') tl.pause()
-      })
-        .add(() => {
-          setIntegrationPlayState('project')
-        })
-        // .to(integrationsRef.current?.querySelector('.endless-panel'), {
-        //   duration: 3,
-        // })
-        // .add(() => {
-        //   setPlayState('none')
-        // })
-        // .to(
-        //   integrationsRef.current?.querySelector
-        // )
-        .add('start')
-        .to(integrationsRef.current?.querySelector('.screen-panel'), {
-          duration: 3,
-          top: '0%',
-        })
-        .add(() => {
-          setIntegrationPlayState('sliding')
-        })
-        // .add(() => {
-        //   const projectPanels = document.getElementsByClassName('.project-panel')
-        //   let projectPanel = projectPanels.length ? projectPanels[0] : null
+  // const applyIntegrationsTween = () => {
+  //   if (integrationsRef.current) {
+  //     // const setProgress = setIntegrationsPG
+  //     let tl = gsap.timeline({
+  //       scrollTrigger: {
+  //         anticipatePin: 1,
+  //         end: () => integrationTweenEnd,
+  //         onLeave: function (self) {
+  //           self.disable()
+  //         },
+  //         onUpdate: function () {
+  //           // let p = parseInt((self.progress * 100).toFixed(1))
+  //           // setProgress(p)
+  //         },
+  //         pin: true,
+  //         scrub: true,
+  //         start: 'top 0%',
+  //         trigger: integrationsRef.current,
+  //       },
+  //       // defaults: {ease: "none"}
+  //     })
+  //     // .delay(3)
+  //     tl.add(() => {
+  //       if (integrationPlayState === 'done') tl.pause()
+  //     })
+  //       .add(() => {
+  //         setIntegrationPlayState('project')
+  //       })
+  //       // .to(integrationsRef.current?.querySelector('.endless-panel'), {
+  //       //   duration: 3,
+  //       // })
+  //       // .add(() => {
+  //       //   setPlayState('none')
+  //       // })
+  //       // .to(
+  //       //   integrationsRef.current?.querySelector
+  //       // )
+  //       .add('start')
+  //       .to(integrationsRef.current?.querySelector('.screen-panel'), {
+  //         duration: 3,
+  //         top: '0%',
+  //       })
+  //       .add(() => {
+  //         setIntegrationPlayState('sliding')
+  //       })
+  //       // .add(() => {
+  //       //   const projectPanels = document.getElementsByClassName('.project-panel')
+  //       //   let projectPanel = projectPanels.length ? projectPanels[0] : null
 
-        //   if (projectPanel) {
-        //     projectPanel?.style.visibility = 'hidden'
-        //   }
-        //   // [0]?.style.visibility = 'hidden'
-        // })
-        .to(integrationsRef.current?.querySelector('.screen-panel'), {
-          duration: 3,
-          top: '-100%',
-        })
-        // .to(
-        //   integrationsRef.current?.querySelector('.endless-panel'),
-        //   3,
-        //   // { top: '100%' },
-        //   { duration: 3, top: '0%' },
-        //   '-=3'
-        // )
-        // .fromTo(
-        //   integrationsRef.current?.querySelector('.endless-panel'),
-        //   { top: '100%' },
-        //   { duration: 3, top: '0%' }
-        // )
-        .to(integrationsRef.current?.querySelector('.endless-panel'), {
-          duration: 3,
-        })
-        // .pause()
-        // .kill()
-        .add(() => {
-          setIntegrationPlayState('done')
-        })
-        .to(integrationsRef.current?.querySelector('.endless-panel'), {
-          duration: 1,
-        })
-    }
-  }
+  //       //   if (projectPanel) {
+  //       //     projectPanel?.style.visibility = 'hidden'
+  //       //   }
+  //       //   // [0]?.style.visibility = 'hidden'
+  //       // })
+  //       .to(integrationsRef.current?.querySelector('.screen-panel'), {
+  //         duration: 3,
+  //         top: '-100%',
+  //       })
+  //       // .to(
+  //       //   integrationsRef.current?.querySelector('.endless-panel'),
+  //       //   3,
+  //       //   // { top: '100%' },
+  //       //   { duration: 3, top: '0%' },
+  //       //   '-=3'
+  //       // )
+  //       // .fromTo(
+  //       //   integrationsRef.current?.querySelector('.endless-panel'),
+  //       //   { top: '100%' },
+  //       //   { duration: 3, top: '0%' }
+  //       // )
+  //       .to(integrationsRef.current?.querySelector('.endless-panel'), {
+  //         duration: 3,
+  //       })
+  //       // .pause()
+  //       // .kill()
+  //       .add(() => {
+  //         setIntegrationPlayState('done')
+  //       })
+  //       .to(integrationsRef.current?.querySelector('.endless-panel'), {
+  //         duration: 1,
+  //       })
+  //   }
+  // }
   return (
     <React.Fragment>
       <CssBaseline />
@@ -267,7 +243,7 @@ const App: React.FC = () => {
                         integrationsRef={integrationsRef}
                         // overviewPG={overviewPG}
                         overviewVideoStart={overviewVideoStart}
-                        integrationPlayState={integrationPlayState}
+                        // integrationPlayState={integrationPlayState}
                         animClass={animClass}
                       />
                     }

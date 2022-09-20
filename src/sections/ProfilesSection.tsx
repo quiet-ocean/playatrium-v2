@@ -8,11 +8,9 @@ import {
 } from '@mui/material'
 import React, { useState, useRef, useEffect } from 'react'
 
-import { MultiSlideAnimationWrapper } from '../components'
+import { MultiSlideAnimationWrapper, SubtitleText } from '../components'
 import useIntersectionObserver from '../hooks/useIntersectionObserver'
 import { palette } from '../themes/AtriumTheme'
-
-import { SubtitleText } from './UpdatesSection'
 
 const TabButton = styled(Button)(({ theme }) => ({
   '&.active': {
