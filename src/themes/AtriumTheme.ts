@@ -106,14 +106,19 @@ const AtriumTheme = createTheme({
         {
           props: { color: 'warning' },
           style: ({ theme }) => ({
+            '& > a': {
+              color: theme.palette.text.secondary,
+            },
+            '&:hover > a': {
+              color: `${theme.palette.warning.main} !important`,
+            },
             '&:hover, &.active': {
               background: theme.palette.text.secondary,
               border: `1px solid ${theme.palette.warning.main} !important`,
-              color: theme.palette.warning.main,
+              color: `${theme.palette.warning.main} !important`,
             },
             background: theme.palette.warning.main,
             border: `1px solid transparent`,
-            color: theme.palette.text.secondary,
           }),
         },
       ],
