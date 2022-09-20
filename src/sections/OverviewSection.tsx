@@ -56,16 +56,23 @@ const OverviewVideo = forwardRef<
     [height, isMobile, windowWidth]
   )
   return (
-    <Box py={{ md: 10, xs: 6 }}>
+    <Box
+      py={{ md: 10, xs: 6 }}
+      height="100%"
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+    >
       <Box
         sx={{
           '& > video': {
             borderRadius: { md: '12px', xs: '8px' },
             height: '100%',
-            objectFit: 'fill',
+            objectFit: 'cover',
           },
-          height: `${videoHeight}px`,
+          height: { md: `${videoHeight}px`, xs: '80%' },
           margin: 'auto',
+          overflow: 'hidden',
           width: `${videoWidth}px`,
         }}
         id="video-container"
@@ -123,18 +130,25 @@ export const OverviewSection = ({ videoStart }: { videoStart: boolean }) => {
     <Box
       id="overview-section"
       height="100%"
-      py={{ md: 20, xs: 16 }}
+      py={{ md: 20, xs: 20 }}
       sx={{
         '& > div, & > div > div, & > div > div > div': {
           height: '100%',
         },
       }}
     >
-      <Grid container columns={{ lg: 10, xl: 12 }} justifyContent="center">
-        <Grid item lg={10}>
+      <Grid
+        container
+        columns={{ lg: 10, xl: 12 }}
+        justifyContent="center"
+        width="100%"
+      >
+        <Grid item lg={10} xs={12} width={{ md: '', xs: '100%' }}>
           <Box
             sx={{
-              /*display: { md: 'block', xs: 'none' },*/ position: 'relative',
+              /*display: { md: 'block', xs: 'none' },*/
+              position: 'relative',
+              width: '100%',
             }}
           >
             <Box className="overview-text" sx={{ height: '100%', opacity: 0 }}>
@@ -157,10 +171,12 @@ export const OverviewSection = ({ videoStart }: { videoStart: boolean }) => {
             <Box
               className="overview-video"
               sx={{
+                height: '100%',
                 left: 0,
                 opacity: videoStart ? `1 !important` : 0,
                 position: 'absolute',
                 top: 0,
+                width: '100%',
               }}
             >
               <OverviewVideo
