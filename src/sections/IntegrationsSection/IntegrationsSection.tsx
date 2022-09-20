@@ -71,7 +71,7 @@ export const IntegrationsSection = () => {
                 <ImgBox left="0%" top="10%" width={96} height={96}>
                   <img src={Img4} alt="" />
                 </ImgBox>
-                <ImgBox right="25%" top="-8%" width={96} height={96}>
+                <ImgBox right="25%" top="-16%" width={96} height={96}>
                   <img src={Img5} alt="" />
                 </ImgBox>
                 <ImgBox right="10%" top="18%" width={160} height={160}>
