@@ -1,5 +1,5 @@
 import { Box } from '@mui/material'
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 
 import type { PlayState } from '../App'
 import { SectionContainer, GridBgContainer } from '../components'
@@ -27,7 +27,6 @@ export const Home = ({
   integrationPlayState: PlayState
   animClass: string
 }) => {
-
   useEffect(() => {
     window.scrollTo({ behavior: 'smooth', top: 0 })
   }, [])

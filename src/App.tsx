@@ -133,7 +133,7 @@ const App: React.FC = () => {
     //   },
     // })
     if (overviewRef.current) {
-      let tl = gsap
+      gsap
         .timeline({
           scrollTrigger: {
             anticipatePin: 1,
@@ -168,7 +168,6 @@ const App: React.FC = () => {
           opacity: 1,
         })
         .add(() => {
-          console.log('start overview video')
           setOverviewVideoStart(true)
         })
     }

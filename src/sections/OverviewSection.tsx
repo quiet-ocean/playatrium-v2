@@ -6,18 +6,7 @@ import { palette } from '../themes/AtriumTheme'
 
 import { SubtitleText } from './UpdatesSection'
 
-const text: string =
-  'Atrium is a virtual world where users across all Layer-1 networks can build, own, and monetize their online experience through an interoperable pixel-art metaverse.'
-
-const startPos = text.indexOf('build')
-const endPos = text.indexOf('through')
-
-const OverviewText = forwardRef<
-  HTMLDivElement,
-  {
-    height: number
-  }
->(({ height }, ref) => {
+const OverviewText = forwardRef<HTMLDivElement>((_, ref) => {
   const theme = useTheme()
 
   return (
@@ -116,7 +105,6 @@ export const OverviewSection = ({ videoStart }: { videoStart: boolean }) => {
   }, [])
 
   useEffect(() => {
-    console.log('video start: ', videoStart)
     if (videoStart) {
       setTimeout(() => {
         if (videoRef.current) {
@@ -145,7 +133,9 @@ export const OverviewSection = ({ videoStart }: { videoStart: boolean }) => {
       <Grid container columns={{ lg: 10, xl: 12 }} justifyContent="center">
         <Grid item lg={10}>
           <Box
-            sx={{ /*display: { md: 'block', xs: 'none' },*/ position: 'relative' }}
+            sx={{
+              /*display: { md: 'block', xs: 'none' },*/ position: 'relative',
+            }}
           >
             <Box className="overview-text" sx={{ height: '100%', opacity: 0 }}>
               <Box textAlign="center">
@@ -161,7 +151,7 @@ export const OverviewSection = ({ videoStart }: { videoStart: boolean }) => {
                   justifyContent: 'center',
                 }}
               >
-                <OverviewText ref={textRef} height={height} />
+                <OverviewText ref={textRef} />
               </Box>
             </Box>
             <Box
