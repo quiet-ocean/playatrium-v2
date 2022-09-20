@@ -65,7 +65,7 @@ export const Builder = ({
     >
       <img src={builder.pfp} alt="" width="100%" />
       <BuilderContent className={hover ? 'hover' : ''}>
-        <Typography variant="body2" sx={{ textTransform: 'uppercase' }}>
+        <Typography variant="body2" sx={{ textTransform: 'none' }}>
           {builder.title}
         </Typography>
         <Typography variant="h4">{builder.name}</Typography>
