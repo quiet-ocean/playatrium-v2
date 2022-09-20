@@ -49,6 +49,7 @@ const ProfileVideo = () => {
       controls
       id="video"
       width="100%"
+      // height={335}
       autoPlay
       style={{
         borderRadius: 12,
@@ -122,7 +123,7 @@ export const ProfilesSection = () => {
           </Box>
         </Grid>
         <Grid item xl={3} lg={3} sx={{ order: { md: 1, xs: 2 } }}>
-          <Box py={{ md: 25, xs: 16 }} pr={{ md: 10, xs: 0 }}>
+          <Box py={{ md: 25, xs: 9 }} pr={{ md: 10, xs: 0 }}>
             <Box display={{ md: 'block', xs: 'none' }}>
               <TabButtonGroup />
             </Box>
@@ -171,7 +172,7 @@ export const ProfilesSection = () => {
           item
           xl={7}
           lg={7}
-          pt={{ md: 25, xs: 16 }}
+          pt={{ md: 25, xs: 9 }}
           sx={{ order: { md: 2, xs: 1 } }}
         >
           <MultiSlideAnimationWrapper
