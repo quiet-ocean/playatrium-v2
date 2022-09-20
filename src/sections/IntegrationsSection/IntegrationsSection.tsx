@@ -1,5 +1,6 @@
+import type { BoxProps } from '@mui/material'
 import { Box, Grid, Typography, Button, styled } from '@mui/material'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 // import type { PlayState } from '../../App'
 
@@ -14,9 +15,15 @@ import Img4 from '../../assets/images/integrations/sm-1.png'
 import Img5 from '../../assets/images/integrations/sm-2.png'
 import Img6 from '../../assets/images/integrations/sm-3.png'
 import { SubtitleText } from '../../components'
+import useIntersectionObserver from '../../hooks/useIntersectionObserver'
 import { palette } from '../../themes/AtriumTheme'
 
-const ImgBox = styled(Box)(() => ({
+interface ImgBoxProps extends BoxProps {
+  large?: boolean
+}
+const rotateDeg = 6.46
+
+const ImgBox = styled(Box)<ImgBoxProps>(({ theme, large }) => ({
   '& .hover': {
     opacity: 1,
   },
@@ -26,19 +33,49 @@ const ImgBox = styled(Box)(() => ({
   },
   opacity: 0.1,
   position: 'absolute',
-  transition: 'opacity 1s',
+  transition: 'all 1s',
+  // width: { md: `${large ? 160 : 96}`, xs: `${large ? 84 : 58}` },
+  [theme.breakpoints.up('md')]: {
+    height: large ? 160 : 96,
+    width: large ? 160 : 96,
+  },
+  [theme.breakpoints.down('md')]: {
+    height: large ? 84 : 58,
+    width: large ? 84 : 58,
+  },
 }))
 export const IntegrationsSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
   const [imgBoxClass, setImgBoxClass] = useState('')
+  const [sectionStyle, setSectionStyle] = useState({ opacity: 0 })
+
+  let observer = useIntersectionObserver(sectionRef, {})
+
+  useEffect(() => {
+    if (observer?.isIntersecting) {
+      displaySection()
+    } else {
+      hideSection()
+    }
+  }, [observer])
+  const displaySection = () =>
+    setTimeout(() => setSectionStyle({ opacity: 1 }), 1000)
+  const hideSection = () => setSectionStyle({ opacity: 0 })
 
   const handleMouseEnter = () => {
-    console.log('hover')
     setImgBoxClass('hover')
   }
   const handleMouseLeave = () => setImgBoxClass('')
   return (
-    <Box id="integrations-section" ref={sectionRef} height="100%">
+    <Box
+      id="integrations-section"
+      ref={sectionRef}
+      height="100%"
+      sx={{
+        transition: 'opacity 1s',
+        ...sectionStyle,
+      }}
+    >
       <Box
         height="100%"
         display="flex"
@@ -46,7 +83,14 @@ export const IntegrationsSection = () => {
         justifyContent="center"
       >
         <Grid container justifyContent="center" columns={{ lg: 10, xl: 12 }}>
-          <Grid item xl={6} md={4} xs={12}>
+          <Grid
+            item
+            xl={6}
+            md={4}
+            xs={12}
+            py={{ md: 0, xs: 20 }}
+            width={{ md: 'auto', xs: '80%' }}
+          >
             <Box
               position="relative"
               sx={{
@@ -65,16 +109,22 @@ export const IntegrationsSection = () => {
                 sx={{
                   '&.hover > div': {
                     opacity: 1,
-                  }
+                  },
+                  '&.hover > div:nth-child(even):not(.main)': {
+                    transform: `rotateZ(-${rotateDeg}deg)`,
+                  },
+                  '&.hover > div:nth-child(odd):not(.main)': {
+                    transform: `rotateZ(${rotateDeg}deg)`,
+                  },
                 }}
               >
-                <ImgBox left="0%" top="10%" width={96} height={96}>
+                <ImgBox left="0%" top="10%">
                   <img src={Img4} alt="" />
                 </ImgBox>
-                <ImgBox right="25%" top="-16%" width={96} height={96}>
+                <ImgBox right="25%" top="-16%">
                   <img src={Img5} alt="" />
                 </ImgBox>
-                <ImgBox right="10%" top="18%" width={160} height={160}>
+                <ImgBox right="10%" top="18%" large>
                   <img src={Img2} alt="" />
                 </ImgBox>
                 <ImgBox
@@ -86,18 +136,23 @@ export const IntegrationsSection = () => {
                 >
                   <img src={Img6} alt="" />
                 </ImgBox>
-                <ImgBox left="20%" top="-20%" width={160} height={160}>
+                <ImgBox left="20%" top="-20%" large>
                   <img src={Img1} alt="" />
                 </ImgBox>
-                <ImgBox left="10%" top="65%" width={160} height={160}>
+                <ImgBox left="10%" top="65%" large>
                   <img src={Img3} alt="" />
                 </ImgBox>
-                <Box>
+                <Box className="main">
                   <img src={Main} alt="" />
                 </Box>
-                <ImgBox top={0} sx={{ opacity: `1 !important`}}>
+                <Box
+                  position="absolute"
+                  top={0}
+                  sx={{ opacity: `1 !important` }}
+                  className="main"
+                >
                   <img src={Main} alt="" />
-                </ImgBox>
+                </Box>
               </Box>
             </Box>
           </Grid>
