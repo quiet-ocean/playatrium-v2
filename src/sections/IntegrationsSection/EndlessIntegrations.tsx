@@ -1,10 +1,16 @@
 import { Box, Typography, Grid, Button } from '@mui/material'
 
-import EndlessGif from '../../assets/gifs/endless.gif'
-import EndlessImage from '../../assets/gifs/endless.png'
+import Main from '../../assets/images/integrations/main.png'
 import { palette } from '../../themes/AtriumTheme'
 
-const EndlessIntegrations = ({ animate }: { animate: boolean }) => {
+// import Img1 from '../../assets/images/integrations/1.png'
+// import Img2 from '../../assets/images/integrations/2.png'
+// import Img3 from '../../assets/images/integrations/3.png'
+// import Img4 from '../../assets/images/integrations/4.png'
+// import Img5 from '../../assets/images/integrations/5.png'
+// import Img6 from '../../assets/images/integrations/6.png'
+
+const EndlessIntegrations = () => {
   return (
     <Box>
       <Grid container justifyContent="center" columns={10}>
@@ -17,7 +23,7 @@ const EndlessIntegrations = ({ animate }: { animate: boolean }) => {
               },
             }}
           >
-            <img
+            {/* <img
               src={EndlessGif}
               alt=""
               style={{ display: animate ? 'block' : 'none', margin: 'auto' }}
@@ -27,6 +33,10 @@ const EndlessIntegrations = ({ animate }: { animate: boolean }) => {
               alt=""
               style={{ display: !animate ? 'block' : 'none', margin: 'auto' }}
             />
+             */}
+            <Box p={12}>
+              <img src={Main} alt="" />
+            </Box>
           </Box>
         </Grid>
         <Grid item md={3} sx={{ color: palette.text.primary }}>

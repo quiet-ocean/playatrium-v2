@@ -2,9 +2,8 @@ import { Box, Typography, Grid } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import { useRef, useEffect, useState, forwardRef, useMemo } from 'react'
 
+import { SubtitleText } from '../components'
 import { palette } from '../themes/AtriumTheme'
-
-import { SubtitleText } from './UpdatesSection'
 
 const OverviewText = forwardRef<HTMLDivElement>((_, ref) => {
   const theme = useTheme()

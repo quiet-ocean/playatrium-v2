@@ -1,7 +1,7 @@
 import { Box } from '@mui/material'
 import React, { useEffect } from 'react'
 
-import type { PlayState } from '../App'
+// import type { PlayState } from '../App'
 import { SectionContainer, GridBgContainer } from '../components'
 import {
   HeroSection,
@@ -17,13 +17,13 @@ export const Home = ({
   overviewRef,
   integrationsRef,
   overviewVideoStart,
-  integrationPlayState,
+  // integrationPlayState,
   animClass,
 }: {
   overviewRef: React.RefObject<HTMLDivElement>
   integrationsRef: React.RefObject<HTMLDivElement>
   overviewVideoStart: boolean
-  integrationPlayState: PlayState
+  // integrationPlayState: PlayState
   animClass: string
 }) => {
   useEffect(() => {
@@ -71,7 +71,8 @@ export const Home = ({
       </SectionContainer>
       <SectionContainer ref={integrationsRef}>
         <GridBgContainer>
-          <IntegrationsSection state={integrationPlayState} />
+          {/* <IntegrationsSection state={integrationPlayState} /> */}
+          <IntegrationsSection />
         </GridBgContainer>
       </SectionContainer>
       <SectionContainer height="100% !important">
