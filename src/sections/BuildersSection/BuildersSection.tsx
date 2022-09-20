@@ -4,39 +4,93 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
 
-import BuilderImage from '../../assets/images/builder.png'
+// import BuilderImage from '../../assets/images/builder.png'
+
+import Crooks from '../../assets/images/builders/crooks.png'
+import Devon from '../../assets/images/builders/devon.png'
+import Hades from '../../assets/images/builders/hades.png'
+import Jackson from '../../assets/images/builders/jackson.png'
+import Josh from '../../assets/images/builders/josh.png'
+import Raul from '../../assets/images/builders/raul.png'
+import Snowstorm from '../../assets/images/builders/snowstorm.png'
+import Swiftyyy from '../../assets/images/builders/swiftyyy.png'
 import { palette } from '../../themes/AtriumTheme'
 import { SubtitleText } from '../UpdatesSection'
 
-import type { IBuilder } from './Builder'
 import { Builder } from './Builder'
+import type { IBuilder } from './Builder'
 
 const builders: IBuilder[] = [
   {
-    bio: 'He’s good with the numbers and shit, hisis motto is C.R.E.A.M. Overall chill dude tho. ',
+    bio: "Oversees and executes the company' financial strategies.",
     discordLink: '',
     name: 'snowstorm',
-    pfp: BuilderImage,
+    pfp: Snowstorm,
     tags: ['finance guy', 'outdoors junkie'],
-    title: 'cfo',
+    title: 'Chief Financial Officer',
     twitterLink: '',
   },
   {
-    bio: '',
+    bio: 'Determines the visual direction and design language of Atrium.',
     discordLink: '',
-    name: '',
-    pfp: '',
-    tags: [''],
-    title: '',
+    name: 'Crooks',
+    pfp: Crooks,
+    tags: ['Illustrator', 'Right hand OP'],
+    title: 'Art Director',
     twitterLink: '',
   },
   {
-    bio: '',
+    bio: 'Leads brand management, marketing communications, market research and product marketing.',
     discordLink: '',
-    name: '',
-    pfp: '',
-    tags: [''],
-    title: '',
+    name: 'Price of Pain',
+    pfp: Devon,
+    tags: ['Marketing Genius', 'Workaholic'],
+    title: 'Chief Marketing Officer',
+    twitterLink: '',
+  },
+  {
+    bio: 'Visionary behind the Atrium platform who establishes company strategy and guildes the team to success.',
+    discordLink: '',
+    name: 'Hades',
+    pfp: Hades,
+    tags: ['Product God', 'Workaholic'],
+    title: 'Chief Executive Officer',
+    twitterLink: '',
+  },
+  {
+    bio: 'Oversees and excutes all visual content including branding, website, and product interface.',
+    discordLink: '',
+    name: 'Maverick',
+    pfp: Jackson,
+    tags: ['Product God'],
+    title: 'Chief Branding Officer',
+    twitterLink: '',
+  },
+  {
+    bio: "Spearheads the design of Atrium's pixel art metavers.",
+    discordLink: '',
+    name: 'Joshau',
+    pfp: Josh,
+    tags: ['Pixel Artist', 'Old Head'],
+    title: 'Game Design Lead',
+    twitterLink: '',
+  },
+  {
+    bio: 'Leads the Atrium development team building a world-class gaming product.',
+    discordLink: '',
+    name: 'Raul',
+    pfp: Raul,
+    tags: ['C#/ Typescript', 'Rust'],
+    title: 'Software Developer',
+    twitterLink: '',
+  },
+  {
+    bio: 'Graphic Designer for all things Atrium. Making things pretty on your eyes.',
+    discordLink: '',
+    name: 'Swiftyyy',
+    pfp: Swiftyyy,
+    tags: ['Colorbind Designer', 'Degenerate'],
+    title: 'Graphic Designer',
     twitterLink: '',
   },
 ]
@@ -102,12 +156,8 @@ export const BuildersSection = () => {
       </Box>
       <Box mt={{ md: 20, xs: 16 }}>
         <Slider {...settingsMemo} ref={sliderRef}>
-          {new Array(10).fill(2).map((_, key: number) => (
-            <Builder
-              key={key}
-              builder={builders[0]}
-              handleHover={handleHover}
-            />
+          {builders.map((item: IBuilder, key: number) => (
+            <Builder key={key} builder={item} handleHover={handleHover} />
           ))}
         </Slider>
       </Box>

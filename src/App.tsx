@@ -1,5 +1,4 @@
 import { Box, ThemeProvider, CssBaseline, AppBar, Slide } from '@mui/material'
-// import useScrollTrigger from '@mui/material/useScrollTrigger'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import React, { useState, useEffect, useCallback, useRef } from 'react'
@@ -21,28 +20,14 @@ import { Home, Policy } from './pages'
 import AtriumTheme from './themes/AtriumTheme'
 
 export type PlayState = 'none' | 'project' | 'endless' | 'done' | 'sliding'
+
 interface Props {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  // window?: () => Window
   children: React.ReactElement
 }
 
-// function HideOnScroll(props: Props) {
 function HideOnScroll(props: Props) {
-  // const { children, window } = props
   const { children } = props
-  // const [open, setOpen] = useState(false)
 
-  // const trigger = useScrollTrigger({
-  //   target: window ? window() : undefined,
-  // })
-
-  // useEffect(() => {
-  //   setOpen(trigger)
-  // }, [trigger])
   return (
     <Slide appear={false} direction="down" in={true}>
       {children}
@@ -64,11 +49,9 @@ const App: React.FC = () => {
   // const [integrationPG, setIntegrationPG] = useState(0)
   const [integrationPlayState, setIntegrationPlayState] =
     useState<PlayState>('none')
+
   const [scrollUp, setScrollUp] = useState(false)
   const [y, setY] = useState(window.scrollY)
-
-  // const { setIntegrationsPG } = useContext(AppContext)
-  // console.log('set integration progress function: ', setIntegrationsPG)
 
   const handleNavigation = useCallback(() => {
     if (y > window.scrollY) {
