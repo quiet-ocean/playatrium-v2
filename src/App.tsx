@@ -52,7 +52,7 @@ function HideOnScroll(props: Props) {
 
 const sticky = 500
 
-const overviewTweenEnd = '+=1000%'
+const overviewTweenEnd = '+=500%'
 const integrationTweenEnd = '+=800%'
 
 const App: React.FC = () => {
@@ -140,7 +140,7 @@ const App: React.FC = () => {
             end: () => overviewTweenEnd,
             onLeave: function (self) {
               // self.disable()
-              self.kill()
+              self.disable()
               applyIntegrationsTween()
             },
             // onUpdate: (self) => {},
@@ -155,12 +155,12 @@ const App: React.FC = () => {
         })
         .delay(3)
         .to(overviewRef.current?.querySelector('.overview-text'), {
-          duration: 2,
+          duration: 1,
           opacity: 1,
         })
         .delay(3)
         .to(overviewRef.current?.querySelector('.overview-text'), {
-          duration: 2,
+          duration: 1,
           opacity: 0,
         })
         .to(overviewRef.current?.querySelector('.overview-video'), {
