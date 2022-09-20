@@ -13,7 +13,7 @@ export const JoinSection = () => {
         height="100%"
       >
         <Grid item lg={5}>
-          <Box p={{ md: 5, xs: 0 }} height="100%">
+          <Box py={{ md: 5, xs: 0 }} height="100%">
             <Box
               py={{ md: 25, xs: 16 }}
               sx={{
@@ -24,7 +24,7 @@ export const JoinSection = () => {
                 justifyContent: 'center',
               }}
             >
-              <Typography variant="h3">Join our Community</Typography>
+              <Typography variant="h3">Get Exclusive Access</Typography>
               <Box
                 py={6}
                 sx={{
