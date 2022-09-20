@@ -50,10 +50,10 @@ const OverviewVideo = forwardRef<
     () => (isMobile ? ((windowWidth - 40) / 16) * 9 : height),
     [height, isMobile, windowWidth]
   )
-  const videoWidth = useMemo(
-    () => (isMobile ? windowWidth - 40 : (height * 16) / 9),
-    [height, isMobile, windowWidth]
-  )
+  // const videoWidth = useMemo(
+  //   () => (isMobile ? windowWidth - 40 : (height * 16) / 9),
+  //   [height, isMobile, windowWidth]
+  // )
   return (
     <Box
       py={{ md: 10, xs: 6 }}
@@ -72,7 +72,8 @@ const OverviewVideo = forwardRef<
           height: { md: `${videoHeight}px`, xs: '80%' },
           margin: 'auto',
           overflow: 'hidden',
-          width: `${videoWidth}px`,
+          // width: `${videoWidth}px`,
+          width: '100%',
         }}
         id="video-container"
       >
