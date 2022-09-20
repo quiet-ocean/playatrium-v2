@@ -3,6 +3,7 @@ import { useTheme } from '@mui/material/styles'
 import { useRef, useEffect, useState, forwardRef, useMemo } from 'react'
 
 import { SubtitleText } from '../components'
+import useIntersectionObserver from '../hooks/useIntersectionObserver'
 import { palette } from '../themes/AtriumTheme'
 
 const OverviewText = forwardRef<HTMLDivElement>((_, ref) => {
@@ -56,11 +57,11 @@ const OverviewVideo = forwardRef<
   // )
   return (
     <Box
-      py={{ md: 10, xs: 6 }}
+      py={{ md: 10, xs: 0 }}
       height="100%"
       display="flex"
       flexDirection="column"
-      justifyContent="center"
+      justifyContent={{ md: 'center', xs: 'start' }}
     >
       <Box
         sx={{
@@ -70,7 +71,7 @@ const OverviewVideo = forwardRef<
             objectFit: 'cover',
           },
           height: { md: `${videoHeight}px`, xs: '80%' },
-          margin: 'auto',
+          margin: { md: 'auto', xs: 'none' },
           overflow: 'hidden',
           // width: `${videoWidth}px`,
           width: '100%',
@@ -98,9 +99,11 @@ const OverviewVideo = forwardRef<
 export const OverviewSection = ({ videoStart }: { videoStart: boolean }) => {
   const [height, setHeight] = useState(0)
   const [windowWidth, setWindowWidth] = useState(0)
+  const sectionRef = useRef<Element>(null)
 
   const textRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
+  const observer = useIntersectionObserver(sectionRef, {})
 
   useEffect(() => {
     handleResize()
@@ -112,7 +115,7 @@ export const OverviewSection = ({ videoStart }: { videoStart: boolean }) => {
   }, [])
 
   useEffect(() => {
-    if (videoStart) {
+    if (videoStart && observer?.isIntersecting) {
       setTimeout(() => {
         if (videoRef.current) {
           videoRef.current?.play()
@@ -129,6 +132,7 @@ export const OverviewSection = ({ videoStart }: { videoStart: boolean }) => {
   return (
     <Box
       id="overview-section"
+      ref={sectionRef}
       height="100%"
       py={{ md: 20, xs: 20 }}
       sx={{
