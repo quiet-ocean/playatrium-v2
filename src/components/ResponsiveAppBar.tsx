@@ -85,7 +85,7 @@ const MenuToggleButton = ({
   children,
   onClick,
 }: {
-  chidlren: React.ReactNode
+  children: React.ReactNode
   onClick: AnyFunction
 }) => (
   <Button
