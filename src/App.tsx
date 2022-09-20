@@ -21,13 +21,14 @@ import { Home, Policy } from './pages'
 import AtriumTheme from './themes/AtriumTheme'
 
 export type PlayState = 'none' | 'project' | 'endless' | 'done' | 'sliding'
+
 interface Props {
   /**
    * Injected by the documentation to work in an iframe.
    * You won't need it on your project.
    */
   // window?: () => Window
-  children: React.ReactElement
+  children: React.ReactElement,
 }
 
 // function HideOnScroll(props: Props) {
