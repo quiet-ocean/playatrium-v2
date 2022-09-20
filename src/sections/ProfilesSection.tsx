@@ -6,9 +6,10 @@ import {
   Button,
   styled,
 } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 
 import { MultiSlideAnimationWrapper } from '../components'
+import useIntersectionObserver from '../hooks/useIntersectionObserver'
 import { palette } from '../themes/AtriumTheme'
 
 import { SubtitleText } from './UpdatesSection'
@@ -58,8 +59,27 @@ const ProfileVideo = () => {
     </video>
   )
 }
+const ProfileSectionContainer = styled(Box)(() => ({
+  '&.hide': {
+    opacity: 0,
+  },
+  '&.show': {
+    opacity: 1,
+  },
+  opacity: 0,
+  transition: 'opacity 1s',
+}))
 export const ProfilesSection = () => {
+  const [sectionClass, setSectionClass] = useState('')
   const [state, setState] = useState(true)
+  const section = useRef<Element>(null)
+  const observer = useIntersectionObserver(section, {})
+
+  useEffect(() => {
+    // console.log('intersected ', observer?.isIntersecting)
+    if (observer?.isIntersecting) setSectionClass('show')
+    else setSectionClass('hide')
+  }, [observer])
 
   const TabButtonGroup = () => (
     <ButtonGroup
@@ -86,7 +106,12 @@ export const ProfilesSection = () => {
     </ButtonGroup>
   )
   return (
-    <Box py={{ md: 25, xs: 16 }} id="profiles-section">
+    <ProfileSectionContainer
+      ref={section}
+      id="profiles-section"
+      py={{ md: 25, xs: 16 }}
+      className={sectionClass}
+    >
       <Grid container justifyContent="center" columns={{ lg: 10, xl: 12 }}>
         <Grid item xl={10} xs={12} width="100%">
           <Box width="100%">
@@ -156,6 +181,6 @@ export const ProfilesSection = () => {
           />
         </Grid>
       </Grid>
-    </Box>
+    </ProfileSectionContainer>
   )
 }
