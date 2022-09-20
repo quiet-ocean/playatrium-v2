@@ -6,7 +6,6 @@ import { SectionContainer, GridBgContainer } from '../components'
 import {
   HeroSection,
   IntegrationsSection,
-  UpdatesSection,
   OverviewSection,
   ProfilesSection,
   BuildersSection,
@@ -53,9 +52,6 @@ export const Home = ({
             </GridBgContainer>
           </Box>
         </Box>
-      </SectionContainer>
-      <SectionContainer className="update light" height="100% !important">
-        <UpdatesSection />
       </SectionContainer>
       <SectionContainer
         sx={{
