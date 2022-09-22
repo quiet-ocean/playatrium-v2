@@ -92,7 +92,6 @@ export const IntegrationsSection = () => {
             width={{ md: 'auto', xs: '80%' }}
           >
             <Box
-              position="relative"
               sx={{
                 '& img': {
                   maxHeight: { md: 300, xs: 150 },
@@ -106,6 +105,7 @@ export const IntegrationsSection = () => {
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
                 className={imgBoxClass}
+                position="relative"
                 sx={{
                   '&.hover > div': {
                     opacity: 1,
@@ -118,24 +118,24 @@ export const IntegrationsSection = () => {
                   },
                 }}
               >
-                <ImgBox left="20%" top="-20%" large>
+                <ImgBox left="-10%" top="-25%" large>
                   <img src={Img1} alt="" />
                 </ImgBox>
-                <ImgBox right="10%" top="18%" large>
+                <ImgBox right="-25%" top="18%" large>
                   <img src={Img2} alt="" />
                 </ImgBox>
-                <ImgBox left="10%" top="65%" large>
+                <ImgBox left="-22%" top="65%" large>
                   <img src={Img3} alt="" />
                 </ImgBox>
-                <ImgBox left="0%" top="10%">
+                <ImgBox left="-40%" top="25%">
                   <img src={Img4} alt="" />
                 </ImgBox>
-                <ImgBox right="25%" top="-16%">
+                <ImgBox right="2%" top="-12%">
                   <img src={Img5} alt="" />
                 </ImgBox>
                 <ImgBox
-                  right="18%"
-                  top="75%"
+                  right="-9%"
+                  top="79%"
                   width={96}
                   height={96}
                   bgcolor="#FFF"
