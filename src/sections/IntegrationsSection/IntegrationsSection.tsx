@@ -1,6 +1,14 @@
 import type { BoxProps } from '@mui/material'
-import { Box, Grid, Typography, Button, styled } from '@mui/material'
-import { useEffect, useRef, useState } from 'react'
+import {
+  Box,
+  Grid,
+  Typography,
+  Button,
+  styled,
+  useTheme,
+  useMediaQuery,
+} from '@mui/material'
+import { useEffect, useRef, useState, useCallback } from 'react'
 
 // import type { PlayState } from '../../App'
 
@@ -18,10 +26,12 @@ import { SubtitleText } from '../../components'
 import useIntersectionObserver from '../../hooks/useIntersectionObserver'
 import { palette } from '../../themes/AtriumTheme'
 
+const imgs = [Img1, Img2, Img3, Img4, Img5, Img6]
 interface ImgBoxProps extends BoxProps {
   large?: boolean
 }
 const rotateDeg = 6.46
+const pie = 3.141592
 
 const ImgBox = styled(Box)<ImgBoxProps>(({ theme, large }) => ({
   '& .hover': {
@@ -31,6 +41,7 @@ const ImgBox = styled(Box)<ImgBoxProps>(({ theme, large }) => ({
     height: '100%',
     width: '100%',
   },
+  // border: `1px solid red`,
   opacity: 0.1,
   position: 'absolute',
   transition: 'all 1s',
@@ -40,16 +51,22 @@ const ImgBox = styled(Box)<ImgBoxProps>(({ theme, large }) => ({
     width: large ? 160 : 96,
   },
   [theme.breakpoints.down('md')]: {
-    height: large ? 84 : 58,
-    width: large ? 84 : 58,
+    height: large ? 80 : 60,
+    width: large ? 80 : 60,
   },
 }))
+
 export const IntegrationsSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
   const [imgBoxClass, setImgBoxClass] = useState('')
   const [sectionStyle, setSectionStyle] = useState({ opacity: 0 })
+  // const [startPoint, setStartPoint] = useState<Point>({ x: 0, y: 0 })
+  // const [rectSize, setRectSize] = useState<Point>({ x: 0, y: 0 })
 
   let observer = useIntersectionObserver(sectionRef, {})
+  const theme = useTheme()
+
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
 
   useEffect(() => {
     if (observer?.isIntersecting) {
@@ -58,6 +75,63 @@ export const IntegrationsSection = () => {
       hideSection()
     }
   }, [observer])
+  // useEffect(() => {
+  //   handleResize()
+  // }, [])
+  // const handleResize = () => {
+  //   const rect = sectionRef.current?.querySelector('.main')?.getBoundingClientRect()
+  //   // console.log(rect);
+  //   // setStartPoint({ x: -200, y: -200 })
+  //   setStartPoint({ x: 0, y: 200 })
+  //   setRectSize({ x: 300, y: 300 })
+  // }
+  // const getDegree = (rad: number) => {
+  //   return (rad / pie) * 180
+  // }
+  const getPosition = useCallback(
+    (i: number) => {
+      const index = i % 3
+      const type = Math.floor(i / 3)
+      // console.log(index, type)
+
+      const imgSize = type === 0 ? (isMobile ? 96 : 160) : isMobile ? 60 : 80
+      const primaryAngle = type === 0 ? -15 : 40
+      const alpha = (primaryAngle / 180) * pie
+      let x = 0
+      let y = 0
+      const l = type === 0 ? (isMobile ? 100 : 180) : isMobile ? 100 : 220
+      const rectSize = isMobile ? 180 : 300
+      // let x = startPoint.x
+      // let y = startPoint.y
+
+      // const l = Math.sqrt(x * x + y * y)
+
+      y = Math.cos(((index * 2) / 3) * pie + alpha) * l
+      x = Math.sin(((index * 2) / 3) * pie + alpha) * l
+      // if (index !== 0) {
+      //   const l = Math.sqrt(x * x + y * y)
+      //   // const a = getDegree(Math.atan(y / x))
+      //   const alpha = Math.atan(y / x)
+
+      //   console.log(l, alpha)
+
+      //   const beta = (2 / 3) * pie * index - alpha
+      //   x = Math.pow(-1, index) * l * Math.cos(beta)
+      //   y = Math.pow(-1, index + 1) * l * Math.sin(beta)
+      // }
+
+      const left = x + rectSize / 2 - imgSize / 2
+      const top = y + rectSize / 2 - imgSize / 2
+
+      // console.log(startPoint.x, left, top)
+      return {
+        left,
+        top,
+      }
+    },
+    [isMobile]
+  )
+
   const displaySection = () =>
     setTimeout(() => setSectionStyle({ opacity: 1 }), 1000)
   const hideSection = () => setSectionStyle({ opacity: 0 })
@@ -95,7 +169,7 @@ export const IntegrationsSection = () => {
             <Box
               sx={{
                 '& img': {
-                  maxHeight: { md: 300, xs: 150 },
+                  maxHeight: { md: 300, xs: 180 },
                 },
                 display: 'flex',
                 justifyContent: 'center',
@@ -119,40 +193,28 @@ export const IntegrationsSection = () => {
                   },
                 }}
               >
-                <ImgBox left="-10%" top="-25%" large>
-                  <img src={Img1} alt="" />
-                </ImgBox>
-                <ImgBox right="-25%" top="18%" large>
-                  <img src={Img2} alt="" />
-                </ImgBox>
-                <ImgBox left="-22%" top="65%" large>
-                  <img src={Img3} alt="" />
-                </ImgBox>
-                <ImgBox left="-40%" top="25%">
-                  <img src={Img4} alt="" />
-                </ImgBox>
-                <ImgBox right="2%" top="-12%">
-                  <img src={Img5} alt="" />
-                </ImgBox>
-                <ImgBox
-                  right="-9%"
-                  top="79%"
-                  width={96}
-                  height={96}
-                  bgcolor="#FFF"
+                {imgs.map((item: string, key: number) => (
+                  <ImgBox {...getPosition(key)} large={key < 3} bgcolor="#FFF">
+                    <img src={item} alt="" />
+                  </ImgBox>
+                ))}
+                <Box
+                  className="main"
+                  width={{ md: 300, xs: 180 }}
+                  height={{ md: 300, xs: 180 }}
+                  visibility="hidden"
                 >
-                  <img src={Img6} alt="" />
-                </ImgBox>
-                <Box className="main">
-                  <img src={Main} alt="" />
+                  <img src={Main} alt="" width="100%" height="100%" />
                 </Box>
                 <Box
                   position="absolute"
                   top={0}
                   sx={{ opacity: `1 !important` }}
+                  width={{ md: 300, xs: 180 }}
+                  height={{ md: 300, xs: 180 }}
                   className="main"
                 >
-                  <img src={Main} alt="" />
+                  <img src={Main} alt="" width="100%" height="100%" />
                 </Box>
               </Box>
             </Box>
