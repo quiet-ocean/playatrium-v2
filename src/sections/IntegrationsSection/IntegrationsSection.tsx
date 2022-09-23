@@ -71,6 +71,7 @@ export const IntegrationsSection = () => {
       id="integrations-section"
       ref={sectionRef}
       height="100%"
+      py={{ md: 0, xs: 10 }}
       sx={{
         transition: 'opacity 1s',
         ...sectionStyle,
