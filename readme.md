@@ -1,7 +1,12 @@
+# PlayAtrium Landing
+
+### environment
+```
+node version: 16.19.0
+```
 ### yarn
 
 ```sh
-cd myapp
 yarn install
 yarn validate # The installation was successful if no error occurs after running 'validate'.
 yarn dev
@@ -10,7 +15,6 @@ yarn dev
 ### npm
 
 ```sh
-cd myapp
 npm install
 npm run validate # The installation was successful if no error occurs after running 'validate'.
 npm run dev
